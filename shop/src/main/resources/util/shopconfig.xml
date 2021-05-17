@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="member" type="shop.model.MemberBean" />	
+		<typeAlias alias="address" type="shop.model.AddressBean" />	
+		<typeAlias alias="category" type="shop.model.CategoryBean" />	
+		<typeAlias alias="coupon" type="shop.model.CouponBean" />	
+		<typeAlias alias="grade" type="shop.model.GradeBean" />	
+		<typeAlias alias="heart" type="shop.model.HeartBean" />						
+		<typeAlias alias="notice" type="shop.model.NoticeBean" />		
+		<typeAlias alias="order_table" type="shop.model.OrderBean" />		
+		<typeAlias alias="order_detail" type="shop.model.OrderDetailBean" />		
+		<typeAlias alias="product" type="shop.model.ProductBean" />		
+		<typeAlias alias="product_detail" type="shop.model.ProductDetailBean" />		
+		<typeAlias alias="quetion" type="shop.model.QuestionBean" />		
+		<typeAlias alias="review" type="shop.model.ReviewBean" />		
+		<typeAlias alias="size_table" type="shop.model.SizeBean" />		
+		<typeAlias alias="cart" type="shop.model.CartBean" />		
+	</typeAliases>
+	
+</configuration>
