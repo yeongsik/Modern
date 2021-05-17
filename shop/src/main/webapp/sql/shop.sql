@@ -12,8 +12,8 @@ create Sequence product_seq;
 create sequence product_detail_seq;
 
 
-insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'wool round knit warmsand' ,0 , 72000,
-							100 , sysdate , 1 , 'top_knit_s' , product_seq.nextval , 0 )
+insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'wool round knit warmsand' ,0, 72000,
+							100 , sysdate , 1 , 'top_knit_s' , product_seq.nextval, 0 )
 
 insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'knit1' , null , null , 'knit1_detail');
 

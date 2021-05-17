@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import url("main.css");
+
+
+/* header */
+.header-container{
+    padding : 20px 7.5%;
+    border-bottom: 1px solid var(--color-grey);
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-category-detail-nav , .header-member-section{
+    display: flex;
+    justify-content: space-between;
+}
+.sitename{
+    font-weight: 900;
+    font-size:var(--font-size-h2);
+}
+.header-category-shop{
+    margin : 10px 0;
+}
+.header-category-name{
+    font-size:15px;
+    font-weight: 600;
+}
+.header-category-detail-nav {
+    width: 300px;
+    font-size: 14px;   
+}
+.header-member-section {
+    width: 130px;
+    font-size : 25px;
+}

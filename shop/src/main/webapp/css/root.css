@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+:root {
+    /* 
+    색상 관련 
+    
+    베이지 컬러는 포인트 컬러로 일단 넣어봤습니다. 
+    UI 설계이미지 회원탈퇴 ( 약관 박스 배경색 ) 
+    넣어보시고 별로면 피드백 부탁
+    */
+    
+    --bg-color : #EAEBF0;
+    --color-black : #2d2d2d;
+    --color-white : #f8f8f8;
+    --color-grey :  #97989b;
+    --color-lightgrey : #c5c5c5;
+    --color-beige : #dbd8ce;
+    
+    /* 폰트 관련 */
+    --font-kor : 'Noto Sans KR', sans-serif;
+    --font-eng : 'Raleway', sans-serif;
+    
+    /* 
+        아이콘이랑 폰트 사이즈 일단 함께 사용해보죠 
+        폰트 사이즈 6가지로 나눴는데 사용해보고 불편한 부분 말해주세요 
+    */
+    --font-size-h1 : 40px; 
+    --font-size-h2 : 35px;
+    --font-size-h3 : 30px;
+    --font-size-h4 : 25px;
+    --font-size-h5 : 20px;
+    --font-size-h6 : 15px;
+
+}   
