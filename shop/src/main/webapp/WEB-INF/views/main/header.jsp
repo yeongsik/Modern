@@ -22,9 +22,9 @@
                 <div class="sitename eng">Man</div>
             </div>
             <div class="header-category-nav">
-                <div class="header-category-name header-category-about eng">ABOUT</div>
+                <div class="header-category-name header-category-about eng"><a href="about.shop">ABOUT</a></div>
                 <div class="header-category-name header-category-shop eng" id="shop">SHOP</div>
-                <div class="header-category-name header-category-notice eng">NOTICE</div>
+                <div class="header-category-name header-category-notice eng"><a href="notice.shop">NOTICE</a></div>
             </div>
             <div class="header-category-detail-nav" id="header_nav">
                 <div class="header-category-detail-nav-name header-category-detail-nav-top eng"><a href="">Top</a></div>
@@ -35,18 +35,18 @@
             <div class="header-member-section">
        			<c:if test="${sessionScope.id == null }">
 	            	<div class="header-member-section-content eng">
-	            		<a class="eng" href="">LogIn</a>
+	            		<a class="eng" href="login.shop">LogIn</a>
 	            	</div>
             	</c:if>
             	<c:if test="${sessionScope.id != null }">
 	                <div class="header-member-section-content header-member-section-heart">
-	                    <a href=""><i class="fas fa-heart"></i></a>
+	                    <a href="heart.shop"><i class="fas fa-heart"></i></a>
 	                </div>
 	                <div class="header-member-section-content header-member-section-cart">
-	                    <a href=""><i class="fas fa-shopping-cart"></i></a>
+	                    <a href="cart.shop"><i class="fas fa-shopping-cart"></i></a>
 	                </div>
 	                <div class="header-member-section-content header-member-section-member">
-	                    <a href=""><i class="fas fa-user"></i></a>
+	                    <a href="mypage.shop"><i class="fas fa-user"></i></a>
 	                </div>
             	</c:if>
             </div>

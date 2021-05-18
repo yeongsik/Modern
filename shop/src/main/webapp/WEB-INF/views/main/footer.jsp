@@ -15,7 +15,7 @@
     </script>
 </head>
 <body>
-	<footer>
+	 <footer>
         <div class="footer-container">
             <div class="footer-site">
                 <div class="footer-site-subject eng">
@@ -28,7 +28,7 @@
             </div>
             <div class="footer-notice-wrapper">
                 <div class="footer-notice-subject kor">
-                    Notice
+                    <a class="footer-notice-subject kor" href="notice.shop">Notice</a>
                 </div>
                 <div class="footer-notice-content-wrapper kor">
                     <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
@@ -66,10 +66,10 @@
                     Owner | 홍길동 고길동
                 </div>
                 <div class="footer-info-acceptance kor footer-info-content">
-                    <a class="footer-info-content" href="">개인정보처리방침</a>
+                    <a class="footer-info-content" href="personalinfo.shop">개인정보처리방침</a>
                 </div>
                 <div class="footer-info-userule kor footer-info-content">
-                    <a class="footer-info-content" href="">이용약관</a>
+                    <a class="footer-info-content" href="userule.shop">이용약관</a>
                 </div>
             </div>
         </div>

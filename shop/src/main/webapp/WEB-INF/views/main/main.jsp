@@ -17,37 +17,51 @@
 </head>
 <body>
     <%@ include file="header.jsp" %>
-    <div class="container">
+      <div class="container">
         <section class="main-content-wrapper">
             <div class="main-content-view">
-                <div class="main-content-view1 main-content-view-wrapper">
-                    <div>
+                <div class="main-content-view1 main-content-view-wrapper" onclick="location.href='notice.shop'">
+                    <div class="main-content-view-img-wrapper">
                         <img class="main-content-view-img" src="image/update.jpg">
-                    </div> 
-                </div>
+                    </div>
+                    <div class="main-content-view-desc eng">
+                        <div class="main-content-view-desc-subject">
+                            Notice
+                        </div>
+                        <div class="main-content-view-desc-detail">
+                            Notice-detail is kwelfweoiks
+                        </div>
+                    </div>
+                </div>  
                 <div class="main-content-view2 main-content-view-wrapper">
-                    <div class="main-content-view-desc eng" id ="main-view-btn">
-                        <a class="main-content-view-text" href="">Update</a>
+                    <div class="main-content-view2-wrapper">
+                        <div class="main-content-newitem-subject eng">
+                            New Item
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="main-content-items">
-                <div class="main-content-items-new">
-                    <div class="main-content-items-new-img">
-                        
-                    </div>
-                    <div class="main-content-items-new-desc">
-
-                    </div>
-                </div>
-                <div class="main-content-items-best">
-                    <div class="main-content-items-best-img">
-
-                    </div>
-                    <div class="main-content-items-best-desc">
-
+            <div class="main-content-view">
+                <div class="main-content-view2 main-content-view-wrapper">
+                    <div class="main-content-view2-wrapper">
+                        <div class="main-content-newitem-subject eng">
+                            Best Item
+                        </div>
                     </div>
                 </div>
+                <div class="main-content-view1 main-content-view-wrapper" onclick="location.href='about.shop'">
+                    <div class="main-content-view-img-wrapper">
+                        <img class="main-content-view-img" src="image/update.jpg">
+                    </div>
+                    <div class="main-content-view-desc desc2 eng">
+                        <div class="main-content-view-desc-subject">
+                            About
+                        </div>
+                        <div class="main-content-view-desc-detail">
+                            About detail
+                        </div>
+                    </div>
+                </div>  
             </div>
         </section>
     </div>
