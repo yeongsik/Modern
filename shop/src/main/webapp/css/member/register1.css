@@ -1,0 +1,225 @@
+/*-------------------*/
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-section-wrapper{
+   display:flex;
+   justify-content: center;
+   height:600px;
+}
+
+.main-section-container{
+    display:flex;
+    margin: 90px;
+}
+.register-form {
+    display:flex;
+    height:300px;
+}
+.register-main-wrapper {
+    display:flex;
+    width:320px;
+}
+.register-main-text {
+    text-align: center;
+    font-size: var(--font-size-h3);
+    width:315px;
+}
+.register-contents-wrapper {
+    width:300px;
+    height:800px;
+}
+
+/*체크 부분  */
+.fas, 
+.fa-check {
+    color: var(--color-darkgrey);
+}
+ 
+.register-box-wrapper {
+    position: relative;
+}
+.register-input-contents {
+    width:315px;
+    height:100px;
+}
+.register-id-box{
+    padding: 5px;
+    list-style:none;
+    height: 70px;
+}
+.register-id-title{
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+}
+.register-id-input-wrapper {
+    margin-top: 5px;
+}
+.register-id-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+input:focus {
+    outline:none;
+    box-shadow: 0 0 0 1px #97989b;
+}
+.register-pw-box {
+    position:relative;
+    padding: 5px;
+    list-style:none;
+    height: 70px;
+
+}
+.register-pw-title {
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+}
+.register-pw-input-wrapper {
+    margin-top: 5px;
+}
+.register-pw-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-pw-confirm-box {
+    position:relative;
+    padding: 5px;
+    list-style:none;
+}
+.register-pw-confirm-title {
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+}
+.register-pw-input-confirm {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-phone-box {
+    position: relative;
+    margin-top: 10px;
+    padding: 5px;
+    list-style:none;
+    height:50px;
+    width:300px;
+}
+.register-phone-title {
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+}
+.register-phone-input-wrapper{
+    margin-right:5px;
+}
+.register-phone-input {
+    margin-top: 5px;
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.result-divs {
+    height:5px;
+}
+.result-divs1 {
+    margin-bottom:10px;
+}
+.register-phone-input-button{
+    height:35.5px;
+    outline: 1px solid #c4c6c5;
+    padding: 0 2px;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+}
+.register-verify-box-check-list-start {
+    list-style: none;
+    padding: 0;
+    height: 130px;
+    width:300px;
+}
+.register-verify-box-check-all {
+    padding: 0 0 30px 0;
+    
+}
+.register-verify-box-check-list1,
+.register-verify-box-check-list2,
+.register-verify-box-check-list3 {
+    height:25px;
+    font-size: 12px;
+}
+.register-verify-box-check-1{
+    box-shadow: none;
+} 
+.register-verify-box-check-2{
+    box-shadow: none;
+    position: relative;
+    top: 2.5px;
+}
+.register-verify-box-check-3,
+.register-verify-box-check-4 {   
+    box-shadow: none;
+    position: relative;
+    top: 2.5px;
+}.register-verify-box-check-a {
+    color:#2d2d2d;
+}
+.register-verify-contents{
+    margin-top: 230px;
+}
+.register-verify-contents-wrapper {
+    padding:auto;
+    margin-left:2px;
+    height: 150px;
+}
+.register-phone-input-verify-wrapper-box{
+    margin-left:5px;
+}
+.register-phone-verify-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-phone-input-verify-wrapper {
+    padding: 5px;
+}
+.register-btn-wrapper {
+    padding:5px;
+}
+.register-btn-wrapper-input {
+    height:30px;
+    width:307px;
+    padding: 5px 0 30px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+}
+.register-btn-verify-wrapper {
+    margin-top:15px;
+    width:307px;
+}
+.register-btn-verify-wrapper-input {
+    height:30px;
+    width:307px;
+    padding: 5px 0 30px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+}
+
