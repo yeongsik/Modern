@@ -2,8 +2,40 @@
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberns">
-	
+	<!--로그인  -->
+    <select id="id_check" parameterType="String" resultType="member">
+    	select * from member where member_id=#{id}
+    </select>
     
+    <!--회원가입 -->
+    <!-- <insert id="member_register2" parameterType="member">
+    insert into member (member_id,pw,email,domain,email_auth,phone,birth,gender, 
+    nickname,accept_mail,purchase_point,grade_point,join_date,grade) values 
+    (#{member_id},#{pw},#{email},#{domain},0,0,0,
+    0,#{nickname},0,0,0,sysdate,0)
+    </insert> -->
+    <!--회원가입 -->
+    <insert id="member_register2" parameterType="member">
+    insert into member (member_id,pw,email,domain,phone,birth,gender, 
+    nickname,join_date) values 
+    (#{member_id},#{pw},#{email},#{domain},0,0,0,#{nickname,sysdate})
+    </insert>
+    
+    <!--회원가입1 -->
+    <!-- <insert id="member_register1" parameterType="member">
+    insert into member (member_id,pw,phone,join_date) values 
+    (#{member_id},#{pw},0,sysdate)
+    </insert>
+    회원가입2
+    <insert id="member_register2" parameterType="member">
+    insert into member (email,birth,gender, nickname) values 
+    (#{email},0,0,#{nickname})
+    </insert> -->
+    
+    <!--아이디 찾기  -->
+    <select id="pwd_find" parameterType="member" resultType="member">
+    	select * from member where member_id=#{id}
+    </select>
 </mapper>
 
     

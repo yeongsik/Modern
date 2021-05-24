@@ -11,9 +11,11 @@ select * from order_detail;
 create Sequence product_seq;
 create sequence product_detail_seq;
 
+insert into member (member_id,pw,email,domain,email_auth,phone,birth,gender,nickname,accept_mail,purchase_point,grade_point,join_date,grade)
+values ('evankim1','1234Dbwnd!','fun906@gmail.com','gmail.com',0,'01012345678','881220','1','dora1',0,0,0,sysdate,0);
 
-insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'wool round knit warmsand' ,0 , 72000,
-							100 , sysdate , 1 , 'top_knit_s' , product_seq.nextval , 0 )
+insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'wool round knit warmsand' ,0, 72000,
+							100 , sysdate , 1 , 'top_knit_s' , product_seq.nextval, 0 )
 
 insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'knit1' , null , null , 'knit1_detail');
 

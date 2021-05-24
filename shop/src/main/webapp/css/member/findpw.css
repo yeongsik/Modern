@@ -1,0 +1,114 @@
+:root {   
+    --bg-color : #EAEBF0;
+    --color-black : #2d2d2d;
+    --color-white : #f8f8f8;
+    --color-grey :  #97989b;
+    --color-lightgrey : #c5c5c5;
+    --color-beige : #dbd8ce;
+    --color-darkgrey : #3d3d3d;
+
+    /* 폰트 관련 */
+    --font-kor : 'Noto Sans KR', sans-serif;
+    --font-eng : 'Raleway', sans-serif;
+    
+    --font-size-h1 : 40px; 
+    --font-size-h2 : 35px;
+    --font-size-h3 : 30px;
+    --font-size-h4 : 25px;
+    --font-size-h5 : 20px;
+    --font-size-h6 : 15px;
+
+}   
+/*-------------------*/
+
+.main-section-wrapper{
+   display:flex;
+   justify-content: center;
+}
+
+.main-section-container{
+    margin: 90px;
+}
+.register-form {
+    height:600px;
+}
+.register-main {
+    width:320px;
+}
+.register-main-text {
+    text-align: center;
+    font-size: var(--font-size-h4);
+    width:315px;
+}
+.register-contents-wrapperr {
+    width:400px;
+    height:400px;
+}
+/*체크 부분  */
+.fas, 
+.fa-check {
+    color: var(--color-darkgrey);
+}
+.register-box-wrapper {
+    height: 60px;
+}
+.register-input-contents {
+    height: 50px;
+}
+.register-phone-box{
+    width:430px;
+    padding: 5px;
+    list-style:none;
+}
+.register-phone-title{
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+}
+.register-phone-input-wrapper {
+    margin-top: 5px;
+}
+.register-phone-input-first {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-phone-input-second {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+    margin-top:17px;
+}
+input:focus {
+    outline:none;
+    box-shadow: 0 0 0 1px #97989b;
+}
+.register-phone-input-button{
+    height:34px;
+    outline: 1px solid #c4c6c5;
+    padding: 0 2px;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+}
+.register-btn-wrapper {
+    padding:5px;
+    margin-top: 70px;
+}
+.register-btn-wrapper-input {
+    height:30px;
+    width:307px;
+    padding: 5px 0 25px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+    margin-top:25px;
+}
+.result-divs {
+    height:5px;
+}

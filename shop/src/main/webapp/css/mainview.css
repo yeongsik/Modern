@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url("main.css");
+
+/* 메인화면 */
+.main-content-view {
+    width : 100%;
+    height : 400px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+.main-content-view1 {
+    width : 70%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.main-content-view2{
+    width : 30%;
+    position : relative;
+    
+}
+.main-content-view-img {
+    width : 100%;
+    transition: all 0.2s;
+}
+
+
+.main-content-view-desc {
+    position: absolute;
+    top : 70%;
+    left : 5%;
+    color : var(--color-white);
+    text-shadow: 2px 2px var(--color-black);
+}
+
+.main-content-view-desc-subject {
+    font-size : 30px;
+}
+.main-content-view-desc-detail {
+    padding : 10px 0;
+}
+.main-content-view2-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.main-content-newitem-subject {
+    color:var(--color-black);
+    font-size : 25px;
+    border : 1px solid var(--color-black);
+    line-height: 150px;
+    width : 150px;
+    height: 150px;
+    text-align: center;
+    margin-top : 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.main-content-newitem-subject:hover {
+    margin : 120px 0 0 30px;
+    background-color: var(--color-black);
+    color : var(--color-white);
+}
+.desc2 {
+    width : 200px;
+    top: 10%;
+    left : 70%;
+    text-align: right;
+}
