@@ -11,6 +11,9 @@ a{
 .kor {
     font-family: var(--font-kor);
 }
+body {
+	background-color: var(--bg-color);
+}
 .container {
     display: flex;
     justify-content: center;
@@ -19,4 +22,10 @@ a{
     width:85%;
     padding: 150px 0;
     position: relative;
+}
+img {
+    transition: all 0.3s;
+}
+img:hover {
+    transform: scale(1.05);
 }

@@ -1,0 +1,338 @@
+
+@import url("reset.css");
+@import url("root.css");
+@import url("main.css");
+
+body {
+    color: var(--color-black);
+}
+input {
+    box-sizing: border-box;
+}
+input:focus {
+    outline: none;
+}
+
+/* 좌우 분리 */
+.left-content {
+    width: 45%;
+    float: left;
+    margin-left: 10%;
+}
+.right-content {
+    width: 30%;
+    float: right;
+    margin-right: 10%;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+/* 공통항목 */
+.content-table-title {
+    display: flex;
+    align-items: stretch;
+    height: 70px;
+    position: relative;
+}
+.content-table {
+    display: flex;
+    flex-wrap: nowrap;
+    vertical-align: top;
+}
+.content-title {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-h4);
+    font-weight: 700;
+    vertical-align: top;
+    text-align: left;
+    line-height: 25px;
+}
+.content-dscr {
+    position: absolute;
+    right: 0;
+    font-size: .75rem;
+    color: var(--color-grey);
+    top: 50%;
+}
+.inf-label {
+    width: 130px;
+    line-height: 54px;
+}
+
+/* 왼쪽 항목 */
+.left-content-wrapper {
+    border-top: 4px solid var(--color-black);
+    padding-bottom: 30px;
+}
+.select-btn {
+	flex: 1;
+	width: 130px;
+	height: 42px;
+}
+.tab1 {
+	border: 1px solid var(--color-lightgrey);
+	border-right: 0;
+	border-radius: 1px;
+	padding-bottom: 0;
+	background: transparent;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	z-index: 100;
+}
+.tab2 {
+	border: 1px solid var(--color-lightgrey);
+	border-radius: 1px;
+	padding-bottom: 0;
+	background: var(--color-lightgrey);
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	z-index: 100;
+}
+.tab11 {
+	border-bottom: 1px solid transparent;
+	background-color: transparent;
+}
+.tab22 {
+	border-bottom: 1px solid var(--color-lightgrey);
+	background-color: var(--color-lightgrey);
+}
+.right-btn {
+	flex: 2;
+	border-bottom: 1px solid var(--color-lightgrey);
+}
+
+.addressInf1 {
+	display: block;
+}
+.addressInf2 {
+	display: none;
+}
+
+.inf-input {
+    flex: 1;
+    padding-top: 10px;
+}
+.input-box {
+    max-width: 320px;
+    position: relative;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid var(--color-lightgrey);
+    border-radius: 2px;
+}
+.input-text {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 14px;
+    background-color: transparent;
+    border: var(--color-lightgrey);
+    outline: none;
+}
+.input-box-zip {
+    display: flex;
+    max-width: 320px;
+    position: relative;
+    height: 42px;
+    background-color: transparent;
+}
+.input-zip {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid var(--color-lightgrey);
+    border-radius: 2px;
+    padding: 0 12px;
+}
+.zip-btn {
+    cursor: pointer;
+    width: 102px;
+    height: 42px;
+    margin-left: 8px;
+    background: var(--color-lightgrey);
+    border: 0;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+}
+.inf-input-tel {
+    display: flex;
+    max-width: 320px;   
+    padding-top: 10px;
+}
+.inf-input-tel span {
+    width: 22px;
+    line-height: 42px;
+    text-align: center;
+}
+.input-box-tel {
+    display: inline-block;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid var(--color-lightgrey);
+    border-radius: 2px;
+}
+.input-tel {
+    width: 100%;
+    padding: 0 12px;
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    line-height: 42px;  
+}
+.memo-select {
+    width: 100%;
+    height: 42px;
+    border: 0;
+    padding: 0 12px;
+    background-color: transparent;
+}
+.memo-select:focus-visible {
+    outline: none;
+}
+.input-box-memo {
+    display: none;
+    max-width: 320px;
+    position: relative;
+    background-color: transparent;
+    border: 1px solid var(--color-lightgrey);
+    border-top: 0;
+    border-radius: 0 0 2px 2px;
+}
+.input-textarea {
+    display: block;
+    overflow: auto;
+    line-height: 20px;
+    width: 100%;
+    height: 100px;
+    padding: 14px;
+    background-color: transparent;
+    border: var(--color-lightgrey);
+    outline: none;
+    color: var(--color-black);
+    box-sizing: border-box;
+    resize: none;
+}
+.input-box-point {
+    display: flex;
+    max-width: 320px;
+    position: relative;
+    height: 42px;
+    background-color: transparent;
+}
+.input-point {
+    flex: 1;
+    border: 1px solid var(--color-lightgrey);
+    border-radius: 2px;
+    padding: 0 12px;
+    background-color: transparent;
+}
+.point-btn {
+    cursor: pointer;
+    width: 102px;
+    height: 42px;
+    margin-left: 8px;
+    background: var(--color-lightgrey);
+    border: 0;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+}
+.usable-point {
+    font-size: 12px;
+}
+/* 오른쪽 항목 */
+.right-content-wrapper {
+    border-top: 4px solid var(--color-black);
+    padding-bottom: 30px;
+}
+.product-list {
+    overflow-y: auto;
+    max-height: 400px;
+    min-height: 210px;
+    border-top: 1px solid var(--color-lightgrey);
+}
+.product-inf-tr {
+    display: block;
+    margin-top: 20px;
+}
+.product {
+    display: flex;
+}
+.product-img {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+}
+.product-img img {
+    height: 150px;
+}
+.product-inf {
+    display: inline-block;
+    padding-left: 25px;
+}
+.product-name {
+    font-size: var(--font-size-h5);
+    font-weight: 600;
+    padding: 4px 0;
+}
+.product-option {
+    font-size: var(--font-size-h6);
+    color: var(--color-grey);
+    padding: 4px 0;
+}
+.product-price {
+    font-size: var(--font-size-h6);
+    padding: 4px 0;
+}
+.right-content-block {
+    border-top: 1px solid var(--color-lightgrey);
+    padding: 24px 0;
+}
+.price-input {
+    flex: 1;
+    padding-top: 20px;
+}
+.price-label {
+    padding-top: 20px;
+    font-size: var(--font-size-h6);
+}
+.price-box {
+    height: 22px;
+    font-size: var(--font-size-h6);
+    font-weight: 700;
+    text-align: right;
+}
+.totalinf-input {
+    flex: 1;
+    padding-top: 25px;
+}
+.totalprice-label {
+    padding-top: 25px;
+    font-weight: 700;
+    line-height: 25px;
+}
+.totalprice-box {
+    font-weight: 700;
+    font-size: var(--font-size-h4);
+    text-align: right;
+    color: red;
+}
+.checkout-btn {
+    width: 100%;
+    height: 54px;
+    border: 0;
+    border-radius: 2px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-size: var(--font-size-h4);
+}
