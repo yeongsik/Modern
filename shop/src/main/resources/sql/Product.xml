@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+	
+	<!-- 상품목록 -->
+	<!-- top -->
+	<select id="productlist_top_tshirts" parameterType="int" resultType="product">
+	<![CDATA[select * from (select rownum rnum, * from product) where category = top_tshirts and rnum >= ((#{page}-1)* 9+1) and rnum <= (#{page} * 9)order by product_date desc 
+	]]>
+	</select>
+	<select id="productlist_top_shirts" parameterType="int" resultType="product">
+	select * from product where category = top_shirts order by product_date desc 
+	</select>
+	<select id="productlist_top_knit" parameterType="int" resultType="product">
+	select * from product where category = top_knit order by product_date desc 
+	</select>
+    
+    <!-- 상품 총 갯수 -->
+    <select id ="productcount_top_tshirts" parameterType="String" resultType="int">
+    	select count(product_id) from product where category = #{category}
+    </select>
+    
+</mapper>

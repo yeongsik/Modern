@@ -19,7 +19,7 @@
     <div class="header-container">
         <header class="header-wrapper">
             <div class="header-sitename">
-                <div class="sitename eng">Man</div>
+                <div class="sitename eng"><a href="main.shop">Man</a></div>
             </div>
             <div class="header-category-nav">
                 <div class="header-category-name header-category-about eng"><a href="about.shop">ABOUT</a></div>
@@ -27,10 +27,10 @@
                 <div class="header-category-name header-category-notice eng"><a href="notice.shop">NOTICE</a></div>
             </div>
             <div class="header-category-detail-nav" id="header_nav">
-                <div class="header-category-detail-nav-name header-category-detail-nav-top eng"><a href="">Top</a></div>
-                <div class="header-category-detail-nav-name header-category-detail-nav-bottom eng"><a href="">Bottom</a></div>
-                <div class="header-category-detail-nav-name header-category-detail-nav-outer eng"><a href="">Outer</a></div>
-                <div class="header-category-detail-nav-name header-category-detail-nav-acc eng"><a href="">Acc</a></div>
+                <div class="header-category-detail-nav-name header-category-detail-nav-top eng"><a href="productlist.shop?category=top_tshirts">Top</a></div>
+                <div class="header-category-detail-nav-name header-category-detail-nav-bottom eng"><a href="productlist.shop?category=bottom_jean">Bottom</a></div>
+                <div class="header-category-detail-nav-name header-category-detail-nav-outer eng"><a href="productlist.shop?category=outer_jacket">Outer</a></div>
+                <div class="header-category-detail-nav-name header-category-detail-nav-acc eng"><a href="productlist.shop?category=acc_shoes">Acc</a></div>
             </div>
             <div class="header-member-section">
        			<c:if test="${sessionScope.id == null }">

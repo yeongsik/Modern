@@ -3,11 +3,13 @@ select * from order_table;
 select * from product;
 select * from product_detail;
 select * from CATEGORY;
-
+select * from member;
 select * from member;
 select * from order_table;
 select * from order_detail;
+select * from grade;
 
+select * from member;
 create Sequence product_seq;
 create sequence product_detail_seq;
 
