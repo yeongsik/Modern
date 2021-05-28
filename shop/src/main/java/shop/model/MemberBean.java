@@ -5,7 +5,7 @@ public class MemberBean {
 	private String pw;
 	private String email;
 	private int email_auth;
-	private int phone;
+	private String phone;
 	private int birth;
 	private int gender;
 	private String nickname;
@@ -39,10 +39,10 @@ public class MemberBean {
 	public void setEmail_auth(int email_auth) {
 		this.email_auth = email_auth;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public int getBirth() {

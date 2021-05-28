@@ -1,17 +1,10 @@
 package shop.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.mail.internet.MimeMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +106,37 @@ public class MemberController {
 		return "member/member_login";
 	}
 
+	// 로그인 검사
+		@RequestMapping(value = "login_check.shop", method = RequestMethod.POST)
+		public String member_login_check(@RequestParam("member_id") String member_id, 
+										@RequestParam("pw") String pw,
+										HttpSession session, Model model) throws Exception {
+			int result = 0;
+			MemberBean m = service.userCheck(member_id);
+
+			if (m == null) {
+				result = 1;
+				model.addAttribute("result", result);
+				return "member/loginResult";
+			} else {
+				if (m.getPw().equals(pw)) {
+					session.setAttribute("member_id", member_id);
+
+					String nickname = m.getNickname();
+
+					model.addAttribute("nickname", nickname);
+
+					return "main/main";
+				} else {
+					result = 2;
+					model.addAttribute("result", result);
+
+					return "member/loginResult";
+				}
+			}
+		}
+
+	
 	// 비밀번호 찾기 이메일 인증
 
 	@RequestMapping(value = "/member_findpw_ok.shop", method = RequestMethod.POST)

@@ -15,11 +15,11 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
- 	<script src="<%=request.getContextPath()%>/js/member.js"></script>
+ 	<script src="<%=request.getContextPath()%>/js/member/member.js"></script>
 <title>회원가입</title>
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../main/header.jsp" %>
 	<div class="container">
 	<section class="main-section-wrapper">
 		<div class="main-section-container">
@@ -115,7 +115,6 @@
 		</div>
 	</section>
 	</div>
-	<div>
-	</div>
+<!-- <%@ include file="../main/footer.jsp" %> -->
 </body>
 </html>
