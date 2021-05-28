@@ -61,6 +61,7 @@ function id_check() {
         success: function (data) { 
       	  if(data==1){	//중복 ID
       		var newtext='<font color="red">중복 아이디입니다.</font>';
+				$("#idCheckComplete").hide();
       			$("#idCheckResult").text('');
         		$("#idCheckResult").show();
         		$("#idCheckResult").append(newtext);
@@ -89,6 +90,7 @@ function nickname_check() {
         success: function (data) { 
       	  if(data==1){	//중복 ID
       		var newtext='<font color="red">중복 닉네임입니다.</font>';
+				$("#nicknameCheckComplete").hide();
       			$("#nicknameResult").text('');
         		$("#nicknameResult").show();
         		$("#nicknameResult").append(newtext);
