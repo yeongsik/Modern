@@ -1,22 +1,18 @@
+ 
 /*-------------------*/
-.container {
-    display: flex;
-    justify-content: center;
-}
 
 .main-section-wrapper{
    display:flex;
    justify-content: center;
-   height:600px;
+   height:100%;
 }
 
 .main-section-container{
-    display:flex;
+    width:350px;
     margin: 90px;
 }
 .register-form {
-    display:flex;
-    height:300px;
+    height:600px;
 }
 .register-main-wrapper {
     display:flex;
@@ -24,12 +20,12 @@
 }
 .register-main-text {
     text-align: center;
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-h5);
     width:315px;
 }
 .register-contents-wrapper {
     width:300px;
-    height:800px;
+    height:350px;
 }
 
 /*체크 부분  */
@@ -42,19 +38,19 @@
     position: relative;
 }
 .register-input-contents {
+    height: 340px;
     width:315px;
-    height:100px;
 }
 .register-id-box{
     padding: 5px;
     list-style:none;
-    height: 70px;
 }
 .register-id-title{
     font-size: var(--font-size-h6);
     font: var(--font-kor);
 }
 .register-id-input-wrapper {
+    width:390px;
     margin-top: 5px;
 }
 .register-id-input {
@@ -64,16 +60,23 @@
     border: 1.5px solid #dbd8ce;
     border-radius: 2px;
 }
+.register-id-input-button{
+    height:33.5px;
+    outline: 1px solid #c4c6c5;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+    position: relative;
+    bottom:1px;
+}
 input:focus {
     outline:none;
     box-shadow: 0 0 0 1px #97989b;
 }
 .register-pw-box {
-    position:relative;
     padding: 5px;
     list-style:none;
-    height: 70px;
-
+    margin-top:10px;
 }
 .register-pw-title {
     font-size: var(--font-size-h6);
@@ -90,13 +93,16 @@ input:focus {
     border-radius: 2px;
 }
 .register-pw-confirm-box {
-    position:relative;
+    margin-top: 10px;
     padding: 5px;
     list-style:none;
 }
 .register-pw-confirm-title {
     font-size: var(--font-size-h6);
     font: var(--font-kor);
+}
+.register-pw-input-confirm-wrapper {
+    margin-top: 5px;
 }
 .register-pw-input-confirm {
     width: 300px;
@@ -107,7 +113,6 @@ input:focus {
 }
 .register-phone-box {
     position: relative;
-    margin-top: 10px;
     padding: 5px;
     list-style:none;
     height:50px;
@@ -129,10 +134,7 @@ input:focus {
     border-radius: 2px;
 }
 .result-divs {
-    height:5px;
-}
-.result-divs1 {
-    margin-bottom:10px;
+    height:10px;
 }
 .register-phone-input-button{
     height:35.5px;
@@ -142,6 +144,7 @@ input:focus {
     background-color: #97989b;
     border-style: none;
 }
+
 .register-verify-box-check-list-start {
     list-style: none;
     padding: 0;
@@ -175,7 +178,7 @@ input:focus {
     color:#2d2d2d;
 }
 .register-verify-contents{
-    margin-top: 230px;
+    margin-top: 25px;
 }
 .register-verify-contents-wrapper {
     padding:auto;

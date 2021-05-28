@@ -1,6 +1,12 @@
 function check() {
     // db와 비교해서 추가 작성 필요
-    if ($.trim($("#email").val()) == "") {
+    if ($.trim($("#authId").val()) == "") {
+        $("#idInputCheck").text("아이디를 입력하세요.");
+        $("#idInputCheck").css("color", "red");
+        $("#authId").focus();
+        return false;
+    }
+	if ($.trim($("#email").val()) == "") {
         $("#emailInputCheck").text("이메일을 입력하세요.");
         $("#emailInputCheck").css("color", "red");
         $("#email").focus();
@@ -15,7 +21,15 @@ function check() {
 }
 
 $(function () {
-
+	
+	$("#authId").keyup(function () {
+        if ($("#authId").val() == "") {
+            $("#idInputCheck").empty();
+        } else {
+            $("#idInputCheck").empty();
+        }
+    });
+	
     $("#email").keyup(function () {
         var inputEmail = $("#email").val();
         var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;

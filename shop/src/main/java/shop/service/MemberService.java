@@ -16,16 +16,21 @@ public class MemberService {
 	//회원가입
 	public void insertMember(MemberBean member) throws Exception{
 		md.insertMember(member);
+		
 	}
 	//중복아이디 체크
 	public int checkMemberId(String id) throws Exception{
 		return md.checkMemberId(id);
 	}
 	
-	//아이디 찾기
-	public MemberBean findpwd(MemberBean member)throws Exception {
-		return md.findpwd(member);
+	//비밀번호 찾기
+	public MemberBean findpw(MemberBean m)throws Exception {
+		return md.findpw(m);
 	}
 	
+	//중복닉네임 체크
+	public int checkNickname(String nick) throws Exception{
+		return md.checkNickname(nick);
+	}
 	
 }
