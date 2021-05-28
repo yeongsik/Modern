@@ -33,4 +33,8 @@ public class MemberService {
 		return md.checkNickname(nick);
 	}
 	
+	// 로그인 검사
+	public MemberBean userCheck(String id)throws Exception{
+		return md.userCheck(id);
+	}
 }

@@ -35,6 +35,12 @@ public class MemberDAO {
 		session.insert("member_register", m);
 	}
 	
+	// 로그인 검사
+	@Transactional
+	public MemberBean userCheck(String member_id)throws Exception{
+		return (MemberBean) session.selectOne("login_check", member_id);
+	}
+	
 	//비밀번호 찾기
 	public MemberBean findpw(MemberBean mb) throws Exception {
 

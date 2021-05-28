@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/member/register2.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="<%=request.getContextPath()%>/js/member.js"></script> 
+    <script src="<%=request.getContextPath()%>/js/member/member.js"></script> 
     <title>회원가입</title>
 </head>
 <body>
@@ -25,7 +25,7 @@ String pw = (String)session.getAttribute("pw");
 String phone = (String)session.getAttribute("phone");
 int accept_mail = (Integer)session.getAttribute("accept_mail");
 %>
-
+<%@ include file="../main/header.jsp" %>
     <section class="main-section-wrapper">
         <div class="main-section-container">
             <form method="POST" action="member_complete.shop" onsubmit="return joinCheck2()">
@@ -57,8 +57,8 @@ int accept_mail = (Integer)session.getAttribute("accept_mail");
                                 </li>
                                 <li class="register-email-input-wrapper">
                                     <input type="text" class="register-email-input" id="email" name="email" placeholder="이메일을 입력해주세요">
+                                	<div class="result-divs" id="emailCheckResult"></div>
                                 </li>
-                                <div class="result-divs" id="emailCheckResult"></div>
                             </ol>
                             <ol class="register-birth-box">
                                 <li class="register-birth-title">주민등록번호
@@ -67,17 +67,18 @@ int accept_mail = (Integer)session.getAttribute("accept_mail");
                                 <li class="register-birth-input-wrapper">
                                     <input type="text" class="register-birth-input" id="birth" name="birth" maxlength="6" placeholder="ex)021231"> -
                                     <input type="password" maxlength="1" class="register-birth-input-second" id="gender" name="gender"> * * * * * *
+                                	<div class="result-divs" id="birthResult"></div>
                                 </li>
-                                <div class="result-divs" id="birthResult"></div>
                             </ol>
                         </div>
                     </div>
                     <div class="register-btn-wrapper">
-                        <input type="submit" class="register-btn-wrapper-input" value="회원가입">
+                        <input type="submit" class="register-btn-wrapper-input" onclick="joinCheck1()" value="회원가입">
                     </div>
                 </article>        
             </form>
         </div>
     </section>
+<!-- <%@ include file="../main/footer.jsp" %> -->
 </body>
 </html>

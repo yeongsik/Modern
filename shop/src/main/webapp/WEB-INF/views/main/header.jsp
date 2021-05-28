@@ -33,12 +33,12 @@
                 <div class="header-category-detail-nav-name header-category-detail-nav-acc eng"><a href="">Acc</a></div>
             </div>
             <div class="header-member-section">
-       			<c:if test="${sessionScope.id == null }">
+       			<c:if test="${sessionScope.member_id == null }">
 	            	<div class="header-member-section-content eng">
 	            		<a class="eng" href="login.shop">LogIn</a>
 	            	</div>
             	</c:if>
-            	<c:if test="${sessionScope.id != null }">
+            	<c:if test="${sessionScope.member_id != null }">
 	                <div class="header-member-section-content header-member-section-heart">
 	                    <a href="heart.shop"><i class="fas fa-heart"></i></a>
 	                </div>
