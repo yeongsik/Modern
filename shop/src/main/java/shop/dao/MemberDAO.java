@@ -13,27 +13,31 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession session;
 	
-	//아이디 중복 체크 
-	@Transactional 
-	  public int checkMemberId(String id) throws Exception {
-		int reId = 0;
-		MemberBean mb = (MemberBean) session.selectOne("id_check", id);
-		if(mb != null)
-			reId = 1; 
-		
-		return reId;
+	//아이디 중복 체크  
+	public int checkMemberId(String id) throws Exception {
+		int re = -1;	// 사용 가능한 ID
+		MemberBean mb = (MemberBean) session.selectOne("login_check", id);
+		if (mb != null)
+			re = 1; 	// 중복id
+		return re;
 	}
+	//닉네임 중복 체크  
+		public int checkNickname(String nick) throws Exception {
+			int re1 = -1;	// 사용 가능한 ID
+			MemberBean mb = (MemberBean) session.selectOne("nickname_check", nick);
+			if (mb != null)
+				re1 = 1; 	// 중복id
+			return re1;
+		}
 	
 	// 회원 가입
-	@Transactional
-	public void insertMember(MemberBean member) throws Exception {
-		session.insert("member_register2", member);
+	public void insertMember(MemberBean m) throws Exception {
+		session.insert("member_register", m);
 	}
 	
-	//아이디 찾기
-	@Transactional
-	public MemberBean findpwd(MemberBean member) throws Exception {
+	//비밀번호 찾기
+	public MemberBean findpw(MemberBean mb) throws Exception {
 
-		return (MemberBean) session.selectOne("findpwd", member);
+		return (MemberBean) session.selectOne("find_pw", mb);
 	}
 }

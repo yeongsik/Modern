@@ -8,20 +8,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-		  rel="stylesheet"><link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/root.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member/register2.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+		  rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/root.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/member/register2.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="<%=request.getContextPath()%>/js/member.js"></script> 
     <title>회원가입</title>
 </head>
 <body>
+<% 
+String member_id = (String)session.getAttribute("member_id");
+String pw = (String)session.getAttribute("pw");
+String phone = (String)session.getAttribute("phone");
+int accept_mail = (Integer)session.getAttribute("accept_mail");
+%>
+
     <section class="main-section-wrapper">
         <div class="main-section-container">
-            <form method="POST" name="member" action="member_register2_go.shop" onsubmit="return joinCheck2()">
+            <form method="POST" action="member_complete.shop" onsubmit="return joinCheck2()">
+            	<input type="hidden" id="member_id" name="member_id" value="<%=member_id%>"> 
+				<input type="hidden" id="pw" name="pw" value="<%=pw%>"> 
+				<input type="hidden" id="phone" name="phone" value="<%=phone%>"> 
+				<input type="hidden" id="accept_mail" name="accept_mail" value="<%=accept_mail%>">
                 <div class="register-main-wrapper"> 
                     <div class="register-main-text">
                         회원가입
@@ -35,16 +46,17 @@
                                     <i class="fas fa-check" id="nicknameCheckComplete"></i>
                                 </li>
                                 <li class="register-nickname-input-wrapper">
-                                    <input type="text" class="register-nickname-input" id="nickname" name="member" maxlength="12"  placeholder="닉네임을 입력해주세요.">
+                                    <input type="text" class="register-nickname-input" id="nickname" name="nickname" maxlength="12"  placeholder="닉네임을 입력해주세요.">
+                                    <input type="button" class="register-nickname-input-button"  value="중복 체크" onclick="nickname_check()">
+                                	<div class="result-divs" id="nicknameResult"></div>
                                 </li>
-                                <div class="result-divs" id="nicknameResult"></div>
                             </ol>
                             <ol class="register-email-box">
                                 <li class="register-email-title">이메일
                                     <i class="fas fa-check" id="emailCheckComplete"></i>
                                 </li>
                                 <li class="register-email-input-wrapper">
-                                    <input type="text" class="register-email-input" id="email" name="member" placeholder="이메일을 입력해주세요">
+                                    <input type="text" class="register-email-input" id="email" name="email" placeholder="이메일을 입력해주세요">
                                 </li>
                                 <div class="result-divs" id="emailCheckResult"></div>
                             </ol>
@@ -53,7 +65,7 @@
                                     <i class="fas fa-check" id="birthCheckComplete"></i>
                                 </li>
                                 <li class="register-birth-input-wrapper">
-                                    <input type="text" class="register-birth-input" id="birth" name="member" maxlength="6" placeholder="ex)021231"> -
+                                    <input type="text" class="register-birth-input" id="birth" name="birth" maxlength="6" placeholder="ex)021231"> -
                                     <input type="password" maxlength="1" class="register-birth-input-second" id="gender" name="gender"> * * * * * *
                                 </li>
                                 <div class="result-divs" id="birthResult"></div>
@@ -61,7 +73,7 @@
                         </div>
                     </div>
                     <div class="register-btn-wrapper">
-                        <input type="submit" class="register-btn-wrapper-input" onclick="member_login.shop" value="회원가입">
+                        <input type="submit" class="register-btn-wrapper-input" value="회원가입">
                     </div>
                 </article>        
             </form>

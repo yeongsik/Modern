@@ -3,14 +3,13 @@
 <%
  request.setCharacterEncoding("utf-8");
  
- String id=request.getParameter("memid"); 
+ String nickname=request.getParameter("memnickname")
  System.out.println("member_id="+id);
  
  MemberDAO md = new MemberDAO();
 
- int re=md.checkMemberId(id);
+ int re1=md.checkNickname(nick);
  //1이면 중복 -1이면 사용가능 아이디
 
  out.println(re);
 %>
- 

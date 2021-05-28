@@ -1,11 +1,17 @@
 package shop.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.mail.internet.MimeMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import scala.util.parsing.json.JSONObject;
 import shop.model.MemberBean;
 import shop.service.MemberService;
 
@@ -25,95 +29,124 @@ import shop.service.MemberService;
 public class MemberController {
 	@Autowired
 	private MemberService service;
-	
+
 	// 로그인 페이지
-	@RequestMapping ("login.shop")
+	@RequestMapping("login.shop")
 	public String login() {
-		
+
 		return "member/member_login";
 	}
-	// 아이디 중복 체크
-		@RequestMapping(value = "/member_idcheck.shop", method = RequestMethod.POST)
-		public String member_idcheck(@RequestParam("member_id") String id, Model model) throws Exception {
 
-			int result = service.checkMemberId(id);
-			model.addAttribute("result", result);
+	// 아이디 중복
+	// ID중복검사 ajax함수로 처리부분
+	@RequestMapping(value = "/member_idcheck.shop", method = RequestMethod.POST)
+	public String member_idcheck(@RequestParam("memid") String id, Model model) throws Exception {
 
-			return "member/member_idcheck";
-		}
-	
-	// 아이디 찾기 
+		int result = service.checkMemberId(id);
+		model.addAttribute("result", result);
+
+		return "member/idcheckResult";
+	}
+
+	// 닉네임 중복
+	@RequestMapping(value = "/member_nickcheck.shop", method = RequestMethod.POST)
+	public String member_nicknamecheck(@RequestParam("memnickname") String nick, Model model) throws Exception {
+
+		int result1 = service.checkNickname(nick);
+		model.addAttribute("result1", result1);
+
+		return "member/nickcheckResult";
+	}
+
+	// 아이디 찾기
 	@RequestMapping("member_findid.shop")
 	public String findid() {
-		
+
 		return "member/member_findid";
 	}
-	
+
 	// 비밀번호 찾기
-	@RequestMapping("member_findpw.shop")
-	public String findpw() {
-		
+	@RequestMapping(value = "/member_findpw.shop")
+	public String member_findpw() {
+
 		return "member/member_findpw";
 	}
-	
-	//회원가입 폼
-	//회원가입 1페이지
-		@RequestMapping(value= "/member_register1.shop")
-		public String member_register1(MemberBean member) {
-		
+
+	// 회원가입 폼
+	@RequestMapping(value = "/member_register1.shop")
+	public String member_register1() {
+
 		return "member/member_register1";
-		}
-	//	회원가입 2페이지 폼
-		@RequestMapping(value= "/member_register2.shop")
-		public String member_register2(MemberBean member) {
-		
-		return "member/member_register2";
-		}	
-	
-		//회원가입 2페이지
-	@RequestMapping(value ="/member_register2_go.shop", method = RequestMethod.POST)
-	public String member_register2_go(@ModelAttribute MemberBean member) throws Exception {
-		
-		System.out.println("member.getMember_id");
-		
-		service.insertMember(member);
-		
-		System.out.println("member.getPw");
-		return "redirect:member_login.shop";
 	}
-	
-	// 이메일 인증
-	@RequestMapping(value = "/pwd_find_ok.shop", method = RequestMethod.POST)
-	public String pwd_find_ok(@ModelAttribute MemberBean mem, HttpServletRequest request, HttpServletResponse response, Model model)
-			throws Exception {
+
+	// 회원가입 2페이지
+	@RequestMapping(value = "/member_register2.shop")
+	public String member_register2(HttpServletRequest request, HttpSession session) {
+		System.out.println("1");
+		String member_id = request.getParameter("member_id");
+		String pw = request.getParameter("pw");
+		String phone = request.getParameter("phone");
+		String accept_mail1 = request.getParameter("accept_mail_value");
+
+		int accept_mail;
+
+		if (accept_mail1.equals("y")) {
+			accept_mail = 1;
+		} else {
+			accept_mail = 0;
+		}
+
+		session.setAttribute("member_id", member_id);
+		session.setAttribute("pw", pw);
+		session.setAttribute("phone", phone);
+		session.setAttribute("accept_mail", accept_mail);
+
+		return "member/member_register2";
+	}
+
+	// 회원가입 저장
+	@RequestMapping(value = "/member_complete.shop", method = RequestMethod.POST)
+	public String register_complete(@ModelAttribute MemberBean member) throws Exception {
+
+		service.insertMember(member);
+
+		return "member/member_login";
+	}
+
+	// 비밀번호 찾기 이메일 인증
+
+	@RequestMapping(value = "/member_findpw_ok.shop", method = RequestMethod.POST)
+	public String pwd_find_ok(@ModelAttribute MemberBean mem, HttpServletRequest request, HttpServletResponse response,
+			Model model) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 
-		MemberBean member = service.findpwd(mem);
-		
+		MemberBean member = service.findpw(mem);
+
 		Random random = new Random();
 		int key = random.nextInt(4589362) + 49311;
+		System.out.println("key");
 
 		if (member == null) {// 값이 없는 경우
 
-			return "member/member_findid";
+			return "member/auth_result";
 
 		} else {
 
 			// Mail Server 설정
 			String charSet = "utf-8";
 			String hostSMTP = "smtp.naver.com";
-			String hostSMTPid = "fun6@naver.com";
-			String hostSMTPpwd = "92Q1CSUXD63Q"; // 비밀번호 입력해야함
+			String hostSMTPid = "fun8905@naver.com";
+			String hostSMTPpwd = "1234Dbwnd!!!***"; // 비밀번호 입력해야함
 
-			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "fun6@naver.com";
+			// 보내는 사람 EMail, 제목, 내용 
+			String fromEmail = "fun8905@naver.com"; 
 			String fromName = "관리자";
 			String subject = "비밀번호 찾기";
 
-			// 받는 사람 E-Mail 주소
-			String mail = request.getParameter("e_mail"); 
-			
-			 try {
+			// 받는 사람 E-Mail 주소 
+			String mail = request.getParameter("email");
+
+			try {
 				HtmlEmail email = new HtmlEmail();
 				email.setDebug(true);
 				email.setCharset(charSet);
@@ -126,23 +159,22 @@ public class MemberController {
 				email.addTo(mail, charSet);
 				email.setFrom(fromEmail, fromName, charSet);
 				email.setSubject(subject);
-				email.setHtmlMsg("<p align = 'center'>인증번호 전송</p><br>" + "<div align='center'> 인증번호 : "
-						+ key + "</div>");
+				email.setHtmlMsg("<p align = 'center'>인증번호 전송</p><br>" + "<div align='center'> 인증번호 : " + member.getPw()
+						+ "</div>");
 				email.send();
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-			 	
-			model.addAttribute("pwdok", "등록된 email을 확인 하세요~!!");
-			
-			return "member/member_findid";
+
+			model.addAttribute("find_pw", "등록된 email을 확인 하세요~!!");
+
+			return "member/member_findpw";
 
 		}
-		
-		
+
 	}
-	
-	//휴대폰 인증
+
+	// 휴대폰 인증
 	/*
 	 * @RequestMapping(value = "/sendSms.shop") public String
 	 * sendSms(@ModelAttribute MemberBean mem, HttpServletResponse request, Model

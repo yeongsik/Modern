@@ -4,7 +4,6 @@ public class MemberBean {
 	private String member_id;
 	private String pw;
 	private String email;
-	private String domain;
 	private int email_auth;
 	private int phone;
 	private int birth;
@@ -33,12 +32,6 @@ public class MemberBean {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getDomain() {
-		return domain;
-	}
-	public void setDomain(String domain) {
-		this.domain = domain;
 	}
 	public int getEmail_auth() {
 		return email_auth;

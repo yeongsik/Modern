@@ -12,14 +12,14 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
             rel="stylesheet">
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="./find.js"></script>
+        <script src="<%=request.getContextPath()%>/js/member/find.js"></script>
         <title> 비밀번호 찾기 </title>
     </head>
     <body>
         <section class="main-section-wrapper">
             <div class="main-section-container">
-                <form method="POST" action="#" onsubmit="return check()">
-                    <div class="register-main-wrapper">
+                <form method="post" action="member_findpw_ok.shop" onsubmit="return check()">
+                <div class="register-main-wrapper">
                         <div class="register-main-text">
                             비밀번호 찾기
                         </div>
@@ -29,15 +29,24 @@
                             <div class="register-input-contents">
                                 <ol class="register-phone-box">
                                     <li class="register-phone-title">
+                                        아이디
+                                    </li>
+                                    <li class="register-phone-input-wrapper">
+                                        <input
+                                            class="register-phone-input-first"
+                                            id="authId" name="member_id"
+                                            placeholder="아이디를 입력해주세요.">
+                                    </li>        
+                                    <div class="result-divs" id="idInputCheck"></div>
+                                    <li class="register-phone-title">
                                         이메일 주소
                                     </li>
                                     <li class="register-phone-input-wrapper">
                                         <input
-                                            type="text"
                                             class="register-phone-input-first"
-                                            id="email"
+                                            id="email" name="email"
                                             placeholder="등록하신 이메일을 입력해주세요.">
-                                        <input type="button" class="register-phone-input-button" value="인증메일 전송">
+                                        <input type="submit"  class="register-phone-input-button" value="인증메일 전송">
                                     </li>
                                     <div class="result-divs" id="emailInputCheck"></div>
                                     <li class="register-phone-input-wrapper">
@@ -52,10 +61,10 @@
                             </div>
                         </div>
                         <div class="register-btn-wrapper">
-                            <input type="submit" class="register-btn-wrapper-input" value="이메일 인증 확인">
+                            <input type="button" class="register-btn-wrapper-input" value="이메일 인증 확인">
                         </div>
                     </article>
-                </form>
+                </form> 
             </div>
         </section>
     </body>
