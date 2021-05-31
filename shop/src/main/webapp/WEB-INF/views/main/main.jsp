@@ -16,7 +16,7 @@
     </script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="header.jsp"%>
       <div class="container">
         <section class="main-content-wrapper">
             <div class="main-content-view">

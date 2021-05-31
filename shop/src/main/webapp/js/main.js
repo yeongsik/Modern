@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	
-	
 	// 상품 리스트 js 
 	
     /*var asideCheck = 0; 
