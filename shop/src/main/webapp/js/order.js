@@ -50,12 +50,13 @@ function openDaumPostcodeNew() {
     }).open();
 };
 
+
 $(document).ready(function(){
 	/* 우측 상품/금액정보 스크롤 */
-	$(window).on("scroll", function(){
+/*	$(window).on("scroll", function(){
 	    var elements = $('.sticky');
 	    Stickyfill.add(elements);
-	})
+	})*/
 
 	/* 기존배송지 클릭 */
 	$("#tab1").click(function(){
@@ -105,4 +106,8 @@ $(document).ready(function(){
 			$("#inputHidden2").css("display","none");
 		}
 	});
+	
+	/* 결제방법 선택 $('input[name="payment"]:checked').val() */
+	if($('input[name="payment"]:checked').val() == "creditCard"){
+	
 });

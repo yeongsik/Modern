@@ -10,13 +10,46 @@
     <link rel="stylesheet" type="text/css" href="css/order.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script> -->
 	<script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script type="text/javascript">
+	/* 아임포트 결제 API */
+		var IMP = window.IMP;
+			IMP.init('imp45220237');
+		function pay() {
+			IMP.request_pay({
+			    pg : 'html5_inicis',
+			    pay_method : 'vbank',
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : '주문명:결제테스트',
+			    amount : 14000,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울특별시 강남구 삼성동',
+			    buyer_postcode : '123-456'
+			}, function(rsp) {
+			    if ( rsp.success ) {
+			        var msg = '결제가 완료되었습니다.';
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			    } else {
+			        var msg = '결제에 실패하였습니다.';
+			        msg += '에러내용 : ' + rsp.error_msg;
+			    }
+	
+			    alert(msg);
+			});
+		};
+	</script>
     <script src="js/order.js"></script>
 
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../main/header.jsp" %>
     <section class="container kor">
         <div class="main-content-wrapper kor">
 
@@ -300,21 +333,21 @@
                <div class="left-content-wrapper">
                    <div class="content-table-title">
                        <p class="content-title">결제 방법</p>
+                   </div>	
+                   <div class="content-table">
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="creditCard" value="creditCard" checked />
+							<label for="creditCard" class="creditCard">신용카드</label>
+						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="vBank" value="vBank" />
+							<label for="vBank" class="vBank">무통장입금</label>
+						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="kakaoPay" value="kakaoPay" />
+							<label for="kakaoPay" class="kakaoPay">카카오페이</label>
+						</div>
                    </div>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum rem, laborum veritatis in nisi dolore, exercitationem ratione placeat ullam reprehenderit libero. Possimus distinctio ab minima accusantium ipsa non iusto facere.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolorum sit consequuntur rem ad voluptates minus, debitis ullam deleniti, doloremque voluptatibus aliquid aliquam inventore tenetur esse voluptas deserunt sunt. Perferendis.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptates unde nihil voluptatem nisi laboriosam voluptatum ducimus dolor odit labore numquam incidunt delectus reiciendis distinctio eum soluta deleniti, repellendus adipisci.</p>
-                   <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem ex sed necessitatibus reprehenderit ea deleniti assumenda nihil similique. Perspiciatis, aut itaque! Cum, nihil. Quasi vel optio culpa quas vero!</p>
-                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur commodi consequatur explicabo. Temporibus debitis eveniet magni sunt! Pariatur a nemo enim ipsa quasi. Sunt fugit qui repellat voluptates nemo voluptatibus.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus soluta et, accusamus quia porro ad minima unde tenetur, debitis quod similique vitae aliquid veniam cupiditate nihil veritatis adipisci facere doloribus?</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex itaque suscipit quam eius fuga eligendi, sequi velit quisquam, blanditiis necessitatibus error quae laboriosam rerum repellat! Rem laboriosam corrupti accusantium beatae.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum rem, laborum veritatis in nisi dolore, exercitationem ratione placeat ullam reprehenderit libero. Possimus distinctio ab minima accusantium ipsa non iusto facere.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolorum sit consequuntur rem ad voluptates minus, debitis ullam deleniti, doloremque voluptatibus aliquid aliquam inventore tenetur esse voluptas deserunt sunt. Perferendis.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptates unde nihil voluptatem nisi laboriosam voluptatum ducimus dolor odit labore numquam incidunt delectus reiciendis distinctio eum soluta deleniti, repellendus adipisci.</p>
-                   <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem ex sed necessitatibus reprehenderit ea deleniti assumenda nihil similique. Perspiciatis, aut itaque! Cum, nihil. Quasi vel optio culpa quas vero!</p>
-                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur commodi consequatur explicabo. Temporibus debitis eveniet magni sunt! Pariatur a nemo enim ipsa quasi. Sunt fugit qui repellat voluptates nemo voluptatibus.</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus soluta et, accusamus quia porro ad minima unde tenetur, debitis quod similique vitae aliquid veniam cupiditate nihil veritatis adipisci facere doloribus?</p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex itaque suscipit quam eius fuga eligendi, sequi velit quisquam, blanditiis necessitatibus error quae laboriosam rerum repellat! Rem laboriosam corrupti accusantium beatae.</p>
                </div>
            </div>
 
@@ -445,11 +478,11 @@
 
                 <!-- 결제 버튼 -->
                 <div class="right-content-block" style="padding-bottom: 0; border-top: 0;">
-                    <button type="button" class="checkout-btn">결제하기</button>
+                    <button type="button" class="checkout-btn" onclick="pay()">결제하기</button>
                 </div>
            </div>
          </div>
     </section>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../main/footer.jsp" %>
 </body>
 </html>

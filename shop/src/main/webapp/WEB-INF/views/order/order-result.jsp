@@ -8,73 +8,65 @@
     <title>주문결과</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/order.css">
+    <link rel="stylesheet" type="text/css" href="css/order-result.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script>
-	<script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/order.js"></script>
 
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../main/header.jsp" %>
     <section class="container kor">
         <div class="main-content-wrapper kor">
-        	<p>이용해 주셔서 감사합니다.</p>
-        	<p>주문이 정상적으로 완료되었습니다.</p>
-        	<p>주문번호 <span>20210101-00001</span></p>
+			<div class="top-content-wrapper">
+				<p class="top-content-title" style="">주문결과</p>
+				<p class="top-content-dscr">이용해 주셔서 감사합니다.</p>
+				<p class="top-content-dscr">주문이 정상적으로 완료되었습니다.</p>
+				<p class="top-content-ordernum">주문번호 <a href="#">20210101-00001</a></p>
+			</div>
            <div class="left-content">
                <!-- 배송정보 -->
-               <div class="left-content-wrapper">
+               <div class="left-content-wrapper" style="border: 0;">
                    <div class="content-table-title">
                        <p class="content-title">배송정보</p>
                    </div>
 
 
 	                   <div class="content-table">
-	                       <div class="inf-label">
+	                       <div class="inf-label-result">
 	                           수령인
 	                       </div>
-	                       <div class="inf-input">
+	                       <div class="inf-result">
 	                       		홍길동
 	                       </div>
 	                   </div>
 	                   <div class="content-table">
-	                       <div class="inf-label">
+	                       <div class="inf-label-result">
 	                           배송지
 	                       </div>
-	                       <div class="inf-input">
-	                           04104
+	                       <div class="inf-result">
+	                           04104 서울 마포구 신촌로 176 3층 302호
 	                       </div>
 	                   </div>
 	                   <div class="content-table">
-	                       <div class="inf-label">
-	                           
-	                       </div>
-	                       <div class="inf-input">
-	                           서울 마포구 신촌로 176 3층 302호
-	                       </div>
-	                   </div>
-	                   <div class="content-table">
-	                       <div class="inf-label">
+	                       <div class="inf-label-result">
 	                           연락처1
 	                       </div>
-	                       <div class="inf-input">
+	                       <div class="inf-result">
 	                           010-1234-5678
 	                       </div>
 	                   </div>
 	                   <div class="content-table">
-	                       <div class="inf-label">
+	                       <div class="inf-label-result">
 	                            연락처2
 	                       </div>
-	                       <div class="inf-input">
+	                       <div class="inf-result">
 
 	                       </div>
 	                   </div>
 	                   <div class="content-table">
-	                       <div class="inf-label">
+	                       <div class="inf-label-result">
 								배송메모
 	                       </div>
-	                       <div class="inf-input">
+	                       <div class="inf-result">
 	                           무인택배함에 보관바랍니다.
 	                       </div>
 	                   </div>
@@ -88,18 +80,18 @@
                         <p class="content-title">쿠폰 / 포인트</p>
                     </div>
                     <div class="content-table">
-                        <div class="inf-label">
+                        <div class="inf-label-result">
                             쿠폰
                         </div>
-                        <div class="inf-input">
+                        <div class="inf-result">
                             사용 안함
                         </div>
                     </div>
                     <div class="content-table">
-                        <div class="inf-label">
+                        <div class="inf-label-result">
                             포인트
                         </div>
-                        <div class="inf-input">
+                        <div class="inf-result">
                             0P
                         </div>
                     </div>
@@ -112,19 +104,19 @@
                        <p class="content-title">결제 방법</p>
                    </div>
                    <div class="content-table">
-                        <div class="inf-label">
+                        <div class="inf-label-result">
                             신용카드
                         </div>
-                        <div class="inf-input">
+                        <div class="inf-result">
                             86,500원 (신한카드 / 일시불)
                         </div>
                     </div>
                </div>
            </div>
 
-           <div class="right-content">
+           <div class="right-result-content">
                 <!-- 주문상품 정보 -->
-                <div class="right-content-wrapper">
+                <div class="right-content-wrapper" style="border: 0;">
                     <div class="content-table-title">
                         <p class="content-title">주문상품 정보</p>
                     </div>
@@ -180,7 +172,7 @@
                     </div>
                 </div>
                 <!-- 금액 안내 -->
-                <div class="right-content-block">
+                <div class="right-content-block" style="padding: 0;">
                     <div class="content-table">
                         <div class="price-label">
                             총 상품금액
@@ -232,10 +224,13 @@
                         </div>
                     </div>
                 </div>
-
            </div>
+           
+			<div class="bottom-content-wrapper">
+				<button type="button" class="result-out-btn" onclick="location.href='./main.shop'">홈으로 이동</button>
+			</div>
          </div>
     </section>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../main/footer.jsp" %>
 </body>
 </html>
