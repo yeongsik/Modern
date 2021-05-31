@@ -19,7 +19,7 @@
     <div class="header-container">
         <header class="header-wrapper">
             <div class="header-sitename">
-                <div class="sitename eng"><a href="main.shop">Man</a></div>
+                <div class="sitename eng"><a href="main.shop">Modern</a></div>
             </div>
             <div class="header-category-nav">
                 <div class="header-category-name header-category-about eng"><a href="about.shop">ABOUT</a></div>
@@ -33,12 +33,12 @@
                 <div class="header-category-detail-nav-name header-category-detail-nav-acc eng"><a href="">Acc</a></div>
             </div>
             <div class="header-member-section">
-       			<%-- <c:if test="${sessionScope.id == null }">
+		<c:if test="${sessionScope.member_id == null }">
 	            	<div class="header-member-section-content eng">
 	            		<a class="eng" href="login.shop">LogIn</a>
 	            	</div>
-            	</c:if> --%>
-            	<%-- <c:if test="${sessionScope.id != null }"> --%>
+            	</c:if> 
+            	<c:if test="${sessionScope.member_id != null }">
 	                <div class="header-member-section-content header-member-section-heart">
 	                    <a href="member_interest.shop"><i class="fas fa-heart"></i></a>
 	                </div>
@@ -48,7 +48,7 @@
 	                <div class="header-member-section-content header-member-section-member">
 	                    <a href="member_main.shop"><i class="fas fa-user"></i></a>
 	                </div>
-            	<%-- </c:if> --%>
+            	</c:if>
             </div>
         </header>
     </div>
