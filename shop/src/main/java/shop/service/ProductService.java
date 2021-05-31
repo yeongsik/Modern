@@ -21,6 +21,7 @@ public class ProductService {
 		return pd.getProductList_Top_shirts(page);
 	}
 	public List<ProductBean> getProductList_Top_knit(int page) throws Exception {
+		System.out.println("service_top_knit");
 		return pd.getProductList_Top_knit(page);
 	}
 	public List<ProductBean> getProductList_Bottom_jean(int page) throws Exception {

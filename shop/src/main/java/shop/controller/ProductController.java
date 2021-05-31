@@ -1,7 +1,10 @@
 package shop.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +22,17 @@ public class ProductController {
 	private ProductService ProductService;
 	
 	@RequestMapping ("productlist.shop")
-	public String productlist(@RequestParam String category  , Model model) throws Exception{
+	public String productlist(@RequestParam String category ,HttpServletRequest request  , Model model) throws Exception{
+		System.out.println("productlist.shop");
+		System.out.println(category);
 		
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		int page = 1;
 		int limit = 9; // 한 화면에 출력할 상품 수 
+		if ( request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
 		int listcount = ProductService.getProductCount(category);
-		
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = (((int) ((double) page / 10 + 0.9)) -1) * 10 +1;
 		
@@ -34,13 +41,13 @@ public class ProductController {
 		if (endpage > startpage + 10 -1)
 			endpage = startpage + 10 -1 ;
 		
-		if(category =="top_tshirts") {
+		if(category =="top_tshirts") 
 			productlist = ProductService.getProductList_Top_tshirts(page);
-		} else if (category =="top_shirts") {
+		if (category =="top_shirts") 
 			productlist = ProductService.getProductList_Top_shirts(page);
-		} else if (category =="top_knit") {
+		if (category =="top_knit") 
 			productlist = ProductService.getProductList_Top_knit(page);
-		}
+		
 		
 		if(category =="bottom_jean") {
 			productlist = ProductService.getProductList_Bottom_jean(page);
@@ -64,14 +71,16 @@ public class ProductController {
 			productlist = ProductService.getProductList_Acc_jewelry(page);
 		}
 		
-		
 		model.addAttribute("productlist",productlist);
 		model.addAttribute("page" , page);
 		model.addAttribute("startpage" , startpage);
 		model.addAttribute("endpage" , endpage);
 		model.addAttribute("maxpage" , maxpage);
 		model.addAttribute("listcount" , listcount);
+		model.addAttribute("category", category);
 		
-		return "productlist.jsp";
+		System.out.println(productlist);
+		System.out.println(listcount);
+		return "product/productlist";
 	}
 }

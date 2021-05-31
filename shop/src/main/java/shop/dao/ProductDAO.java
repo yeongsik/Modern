@@ -23,6 +23,7 @@ public class ProductDAO {
 		return list;
 	}
 	public List<ProductBean> getProductList_Top_knit(int page ) throws Exception {
+		System.out.println("dao.top_knit");
 		List<ProductBean> list = session.selectList("Product.productlist_top_knit",page);
 		return list;
 	}

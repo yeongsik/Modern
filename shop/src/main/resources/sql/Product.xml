@@ -3,22 +3,44 @@
 
 <mapper namespace="Product">
 	
+	<sql id ="productlist">
+		select * from (select distinct product_name , p.*  from product as p )
+	</sql>
 	<!-- 상품목록 -->
 	<!-- top -->
 	<select id="productlist_top_tshirts" parameterType="int" resultType="product">
-	<![CDATA[select * from (select rownum rnum, * from product) where category = top_tshirts and rnum >= ((#{page}-1)* 9+1) and rnum <= (#{page} * 9)order by product_date desc 
-	]]>
+		<![CDATA[
+		select * from 
+		 (select rownum rnum,p.* from
+	  	 (select * from product left outer join product_detail on product.product_detail = product_detail.product_detail 
+	  	 where category_id = 'top_tshirts' order by product_date desc)) 
+	   		 where rnum >= ((#{page}-1) * 9+1)  and rnum <= (#{page} * 9)
+		]]>
 	</select>
 	<select id="productlist_top_shirts" parameterType="int" resultType="product">
-	select * from product where category = top_shirts order by product_date desc 
+		<![CDATA[
+		select * from 
+		 (select rownum rnum,p.* from
+	  	 (select * from product left outer join product_detail on product.product_detail = product_detail.product_detail 
+	  	 where category_id = 'top_shirts' order by product_date desc)) 
+	   		 where rnum >= ((#{page}-1) * 9+1)  and rnum <= (#{page} * 9)
+		]]>
 	</select>
 	<select id="productlist_top_knit" parameterType="int" resultType="product">
-	select * from product where category = top_knit order by product_date desc 
+		<![CDATA[
+		select * from 
+		 (select rownum rnum,p.* from
+	  	 (select * from product left outer join product_detail on product.product_detail = product_detail.product_detail
+	  	 where category_id = 'top_knit' order by product_date desc)) 
+	   		 where rnum >= ((#{page}-1) * 9+1)  and rnum <= (#{page} * 9)
+		]]>
 	</select>
+	
     
     <!-- 상품 총 갯수 -->
-    <select id ="productcount_top_tshirts" parameterType="String" resultType="int">
-    	select count(product_id) from product where category = #{category}
+    <select id ="productcount" parameterType="String" resultType="int">
+    	select count(distinct product_name) from product where category_id = #{category}
     </select>
+    
     
 </mapper>
