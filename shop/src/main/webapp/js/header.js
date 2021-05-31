@@ -11,4 +11,4 @@ $(document).ready(function() {
         $(".header-category-detail-nav-name").hide();
         return false;
     })
-})
+}) 

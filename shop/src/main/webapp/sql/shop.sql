@@ -40,6 +40,8 @@ select distinct product_name ,
 create Sequence product_seq;
 create sequence product_detail_seq;
 
+insert into member (member_id,pw,email,domain,email_auth,phone,birth,gender,nickname,accept_mail,purchase_point,grade_point,join_date,grade)
+values ('evankim1','1234Dbwnd!','fun906@gmail.com','gmail.com',0,'01012345678','881220','1','dora1',0,0,0,sysdate,0);
 
 insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'round knit cream' ,0, 72000,
 							'round knit cream_stock' , sysdate , 2 , 'top_knit' , product_seq.nextval, 0 );

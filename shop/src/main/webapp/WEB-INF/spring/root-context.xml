@@ -43,7 +43,7 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean><!-- mybatis ORM DB 연동 프레임웍 연결 -->
 	
-
+	
 	<!-- 트랜잭션 매니저 설정(트랜잭션 처리를 위한 객체를 생성) -->
 	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
 		<property name="dataSource" ref="dataSource"/> </bean> 트랜잭션 어노테이션 인식 <tx:annotation-driven 

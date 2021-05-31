@@ -2,8 +2,27 @@
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberns">
-	
+	<!--로그인  -->
+    <select id="login_check" parameterType="String" resultType="member">
+    	select * from member where member_id=#{member_id}
+    </select>
     
+    <!--회원가입 -->
+    <insert id="member_register" parameterType="member">
+    insert into member values (#{member_id}, #{pw}, #{email}, 0, 
+    #{phone}, #{birth}, #{gender}, #{nickname}, #{accept_mail}, 0, 0, sysdate,'bronze')
+    </insert>
+   
+    
+    <!--비밀번호 찾기  -->
+    <select id="find_pw" parameterType="member" resultType="member">
+    	select * from member where member_id=#{member_id} and email=#{email}
+    </select>
+    
+    <!--닉네임 중복체크  -->
+    <select id="nickname_check" parameterType="String" resultType="member">
+    	select * from member where nickname=#{nickname}
+    </select>
 </mapper>
 
     

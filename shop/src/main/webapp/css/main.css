@@ -29,6 +29,7 @@ img {
 img:hover {
     transform: scale(1.05);
 }
+
 /* 스크롤바 전체 */
 ::webkit-scrollbar {
 	width : 10px;
@@ -46,3 +47,4 @@ img:hover {
 	
 	
 }
+
