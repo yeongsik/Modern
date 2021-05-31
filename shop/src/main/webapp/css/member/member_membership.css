@@ -1,0 +1,116 @@
+@charset "UTF-8";
+@import url(member_root.css);
+@import url(member_header.css);
+@import url(member_aside.css);
+
+/* aside */
+#grade {
+	font-weight :600 !important;
+}
+
+/* article */
+.member-content-article-container {
+  width: 80%;
+  margin-top: 60px;
+  padding-left: 50px;
+}
+.member-content-article-header {
+  font: var(--font-kor);
+  font-size: var(--font-size-h5);
+  font-weight: bolder;
+  border-bottom: 3px solid var(--color-black);
+  padding-bottom: 14px;
+}
+/* status */
+.member-content-article-status {
+  display: flex;
+  padding-top: 30px;
+}
+.member-content-article-status-accumulate,
+.member-content-article-status-point,
+.member-content-article-status-sign {
+  margin-right: 15px;
+}
+.member-content-article-satus-info {
+  margin-bottom: 8px;
+}
+
+.member-content-article-status-accumulate > strong,
+.member-content-article-status-point > strong {
+  font-size: 24px;
+}
+.member-content-article-status-accumulate > span {
+  font-size: 24px;
+  color: var(--color-lightgrey);
+}
+.member-content-article-status-sign {
+  font-size: 24px;
+  padding: 26px 18px 0 18px;
+}
+.member-content-article-status-result_status {
+  color: rgb(20, 170, 255);
+}
+.member-content-article-status-result_status > strong {
+  font-size: 24px;
+  color: rgb(20, 170, 255);
+}
+
+.member-content-article-next-level {
+  margin-top: 30px;
+  background-color: rgb(247, 247, 247);
+  font-size: 16px;
+  padding: 16px 8px 16px 8px;
+}
+.member-content-article-next-level > span {
+  color: rgb(20, 170, 255);
+  font-weight: 600;
+}
+.member-content-article-manual {
+  margin-top: 15px;
+}
+.member-content-article-manual > ul > li {
+  list-style: inside;
+  font-size: 14px;
+  color: rgb(119, 119, 119);
+  padding-left: 8px;
+  margin-bottom: 5px;
+}
+.member-content-article-manual > ul > li::marker {
+  width: 3px;
+  height: 3px;
+}
+
+.member-content-article-grade_table {
+  margin-top: 80px;
+}
+.member-content-article-grade_table-header {
+  display: flex;
+  font-size: 16px;
+  font-weight: 550;
+  border-bottom: 2px solid var(--color-black);
+  margin-right: 30px;
+  padding-bottom: 12px;
+}
+.member-content-article-grade_table-header-tier,
+.member-content-article-grade_table-header-tier_score {
+  width: 20%;
+}
+.member-content-article-grade_table-header-benefit {
+  width: 60%;
+  text-align: center;
+}
+.member-content-article-grade_table-manual {
+  margin-top: 10px;
+}
+.member-content-article-grade_table-tier {
+  display: flex;
+}
+.member-content-article-grade_table-tier-tier_name,
+.member-content-article-grade_table-tier-tier_guide {
+  width: 20%;
+  padding: 10px 0 10px 0;
+}
+.member-content-article-grade_table-tier-tier_benefit {
+  width: 60%;
+  padding: 10px 0 10px 20px;
+}

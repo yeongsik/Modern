@@ -1,0 +1,125 @@
+@charset "UTF-8";
+@import url(member_root.css);
+@import url(member_header.css);
+@import url(member_aside.css);
+
+/* article */
+.member-content-article-container {
+  width: 80%;
+  margin-top: 60px;
+  padding-left: 50px;
+}
+.member-content-article-header {
+  font: var(--font-kor);
+  font-size: var(--font-size-h5);
+  font-weight: bolder;
+}
+
+.member-content-article-options {
+  font: var(--font-kor);
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 80px;
+}
+.member-content-article-options > select {
+  font: var(--font-kor);
+  width: 150px;
+  height: 30px;
+  margin-left: 15px;
+  padding-left: 10px;
+  -webkit-appearance: none;
+  background-color: var(--color-lightgrey);
+  border: none;
+}
+.member-content-article-items {
+  border-top: 3px solid var(--color-grey);
+  border-bottom: 3px solid var(--color-grey);
+  margin-top: 30px;
+}
+.member-content-article-items-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey);
+  padding: 12px 0 12px 0;
+}
+.member-content-article-items-header-no,
+.member-content-article-items-header-check_btn {
+  width: 5%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+.member-content-article-items-header-product {
+  width: 25%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+.member-content-article-items-header-price,
+.member-content-article-items-header-membership_discount,
+.member-content-article-items-header-Quantity,
+.member-content-article-items-header-order_price,
+.member-content-article-items-header-order_state,
+.member-content-article-items-header-delivery_fee {
+  width: 11%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.member-content-article-items-showcase {
+  font: var(--font-kor);
+  padding: 18px 0 18px 0;
+}
+.member-content-article-items-showcase-list {
+  display: flex;
+  margin-bottom: 20px;
+}
+.member-content-article-items-no,
+.member-content-article-items-check_btn {
+  width: 5%;
+  text-align: center;
+  font-size: 12px;
+}
+.member-content-article-items-product {
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+}
+.member-content-article-items-price,
+.member-content-article-items-membership_discount,
+.member-content-article-items-Quantity,
+.member-content-article-items-order_price,
+.member-content-article-items-order_state,
+.member-content-article-items-delivery_fee {
+  width: 11%;
+  text-align: center;
+  font-size: 12px;
+}
+.member-content-article-items-Quantity {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.member-content-article-items-Quantity > button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 26px;
+}
+.member-content-article-items-Quantity > input {
+  width: 28px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+}
+.member-content-article-items-order_state > button {
+  background: none;
+  border: 1px solid var(--color-grey);
+  padding: 8px;
+}
