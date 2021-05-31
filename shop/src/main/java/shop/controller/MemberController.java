@@ -20,7 +20,7 @@ import org.springframework.ui.Model;
 @Controller
 public class MemberController {
   @Autowired
-  private MemberService memberservice;
+  private MemberService service;
 
   // 마이페이지 메인화면
   @RequestMapping("member_main.shop")

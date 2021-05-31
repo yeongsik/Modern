@@ -107,7 +107,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* 결제방법 선택 $('input[name="payment"]:checked').val() */
+	/* 결제방법 선택 $('input[name="payment"]:checked').val() 
 	if($('input[name="payment"]:checked').val() == "creditCard"){
-	
+	*/
 });
