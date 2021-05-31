@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import url(member_root.css);
+@import url(member_header.css);
+
+/* member-content-section */
+.member-content-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 80px 2px 0 2px;
+}
+
+/* 공통 속성 설정 */
+.member-content-section-order,
+.member-content-section-profile,
+.member-content-section-cart,
+.member-content-section-coupon,
+.member-content-section-board,
+.member-content-section-address {
+  width: 30%;
+  height: 300px;
+  outline: 2px solid var(--color-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-content-section-order-title,
+.member-content-section-profile-title,
+.member-content-section-cart-title,
+.member-content-section-coupon-title,
+.member-content-section-board-title,
+.member-content-section-address-title {
+  font: var(--font-eng);
+  font-size: var(--font-size-h4);
+  font-weight: bold;
+  margin: 60px;
+}
+
+.member-content-section-order-subtitle,
+.member-content-section-profile-subtitle,
+.member-content-section-cart-subtitle,
+.member-content-section-coupon-subtitle,
+.member-content-section-board-subtitle,
+.member-content-section-address-subtitle {
+  font: var(--font-kor);
+  font-size: var(--font-size-h5);
+}
+/* 공통 margin-bottom 설정 */
+.member-content-section-order,
+.member-content-section-profile,
+.member-content-section-cart {
+  margin-bottom: 80px;
+}
+
+.member-content-section-order:hover,
+.member-content-section-profile:hover,
+.member-content-section-cart:hover,
+.member-content-section-coupon:hover,
+.member-content-section-board:hover,
+.member-content-section-address:hover {
+  cursor: pointer;
+}

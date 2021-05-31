@@ -8,6 +8,8 @@ select * from member;
 select * from order_table;
 select * from order_detail;
 
+select * from notice;
+
 create Sequence product_seq;
 create sequence product_detail_seq;
 

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+:root {
+  /* 색상 */
+  --bg-color: #eaebf0;
+  --color-black: #2d2d2d;
+  --color-white: #f8f8f8;
+  --color-grey: #97989b;
+  --color-lightgrey: #c5c5c5;
+  --color-beige: #dbd8ce;
+
+  /* 폰트 */
+  --font-kor: "Noto Sans KR", sans-serif;
+  --font-eng: "Raleway", sans-serif;
+
+  /* 폰트 사이즈 */
+  --font-size-h1: 40px;
+  --font-size-h2: 35px;
+  --font-size-h3: 30px;
+  --font-size-h4: 25px;
+  --font-size-h5: 20px;
+  --font-size-h6: 15px;
+}
+
+/* reset */
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+/* 공통  */
+
+/* wrapper */
+.member-content-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0 100px 0;
+}
+
+/* content main */
+.member-content-container {
+  width: 85%;
+}
+.member-content-main-container {
+  display: flex;
+}

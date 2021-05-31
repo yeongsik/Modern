@@ -20,3 +20,9 @@ a{
     padding: 150px 0;
     position: relative;
 }
+img {
+    transition: all 0.3s;
+}
+img:hover {
+    transform: scale(1.05);
+}
