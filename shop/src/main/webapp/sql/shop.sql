@@ -37,6 +37,8 @@ select distinct product_name ,
 				product_discount ,
 				product_date from product where category_id = 'top_knit' order by product_date desc;
 
+select * from notice;
+
 create Sequence product_seq;
 create sequence product_detail_seq;
 

@@ -1,12 +1,16 @@
 package shop.dao;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public class NoticeDAO {
-	
-	@Autowired
-	private SqlSession session;
+import shop.model.NoticeBean;
+
+public interface NoticeDAO {
+  
+  public int getListCount() throws Exception;
+    
+  public List<NoticeBean> getBoardList(int page) throws Exception;
+  
+  public void updateView(int notice_id) throws Exception;
+  
+  public NoticeBean getNoticeDetail(int notice_id) throws Exception;
 }

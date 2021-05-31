@@ -1,0 +1,100 @@
+@charset "UTF-8";
+@import url(member_root.css);
+@import url(member_header.css);
+@import url(member_aside.css);
+
+/* aside */
+#point {
+	font-weight :600 !important;
+}
+
+/* article */
+.member-content-article-container {
+  width: 80%;
+  margin-top: 60px;
+  padding-left: 50px;
+}
+.member-content-article-header {
+  font: var(--font-kor);
+  font-size: var(--font-size-h4);
+  font-weight: bolder;
+}
+.member-content-article-hedaer-title {
+  font: var(--font-kor);
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--color-grey);
+}
+.member-content-article-header-point {
+  font: var(--font-kor);
+  margin-top: 30px;
+  font-size: 17px;
+  font-weight: initial;
+}
+.member-content-article-header-point-sub {
+  font: var(--font-kor);
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  margin-top: 5px;
+}
+.member-content-article-header-infomation {
+  font: var(--font-kor);
+  margin-top: 50px;
+  font-size: var(--font-size-h6);
+  font-weight: initial;
+  color: var(--color-grey);
+}
+.member-content-article-options {
+  font: var(--font-kor);
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 80px;
+}
+.member-content-article-options > select {
+  font: var(--font-kor);
+  width: 150px;
+  height: 30px;
+  margin-left: 15px;
+  padding-left: 10px;
+  -webkit-appearance: none;
+  background-color: var(--color-lightgrey);
+  border: none;
+}
+.member-content-article-items {
+  border-top: 3px solid var(--color-grey);
+  margin-top: 8px;
+}
+.member-content-article-items-header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--color-grey);
+  padding: 24px 0 24px 0;
+  margin-bottom: 5px;
+}
+.member-content-article-items-header-point,
+.member-content-article-items-header-date {
+  width: 15%;
+  text-align: center;
+}
+.member-content-article-items-header-type {
+  width: 70%;
+  text-align: center;
+}
+.member-content-article-items-showcase {
+  font: var(--font-kor);
+}
+.member-content-article-items-showcase-list {
+  display: flex;
+  /* margin-bottom: 20px; */
+  padding: 25px 0 25px 0;
+  border-bottom: 1px solid rgb(237, 237, 237);
+}
+.member-content-article-items-point,
+.member-content-article-items-date {
+  width: 15%;
+  text-align: center;
+}
+.member-content-article-items-type {
+  width: 70%;
+}
