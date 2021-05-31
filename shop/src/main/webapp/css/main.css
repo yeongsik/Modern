@@ -11,6 +11,9 @@ a{
 .kor {
     font-family: var(--font-kor);
 }
+body {
+	background-color: var(--bg-color);
+}
 .container {
     display: flex;
     justify-content: center;
