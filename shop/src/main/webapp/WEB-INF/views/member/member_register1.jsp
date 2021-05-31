@@ -75,8 +75,8 @@
 										class="register-verify-box-check-1"
 										id="checkAll"> 
 										모두 동의 (선택 정보 포함)
+										<div id="checkboxResult"></div>
 									</li>
-									<div id="checkboxResult"></div>
 									<li class="register-verify-box-check-list1"><input
 										type="checkbox" class="register-verify-box-check-2"
 										id="checkbox1">
@@ -115,6 +115,6 @@
 		</div>
 	</section>
 	</div>
-<!-- <%@ include file="../main/footer.jsp" %> -->
+	<%@ include file="../main/footer.jsp" %>
 </body>
 </html>

@@ -30,69 +30,69 @@
     <title>로그인</title>
 </head>
 <body>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../main/header.jsp" %>
 	<div class="container">
-    <section class="main-section-wrapper">
-        <div class="main-section-container">
-            <form method="POST"  action="main.shop" onsubmit="return loginCheck()">
-                <div class="login-main-wrapper"> 
-                    <div class="login-main-text">
-                        로그인
-                    </div>
-                </div>
-                <article class="login-contents-wrapper">
-                    <div class="login-box-wrapper">
-                        <div class="login-input-contents">
-                            <ol class="login-id-box"> 
-                                <li class="login-id-title"> 
-                                    아이디
-                                </li>
-                                <li class="login-id-input-wrapper">
-                                    <input type="text" class="login-id-input" id="loginId" maxlength="12" placeholder="아이디를 입력해주세요." >
-                                </li>
-                                <div class="result-divs" id="loginIdResult"></div>
-                            </ol>
-                            <ol class="login-pw-box">
-                                <li class="login-pw-title">
-                                    비밀번호
-                                </li>
-                                <li class="login-pw-input-wrapper">
-                                    <input type="password" class="login-pw-input" id="loginPw" maxlength="12"  placeholder="비밀번호를 입력해주세요">
-                                </li>
-                                <div class="result-divs" id="longinPwResult"></div>
-                            </ol>
-                            <div class="login-btn-wrapper">
-                                <input type="submit" class="login-btn-wrapper-input"  value="로그인">
-                            </div>
-                        </div>
-                    </div>
-                        <div class="login-find-contents"> 
-                            <div class="login-find-contents-wrapper">
-                                <div class="login-find-text"> 
-                                    <a href="javascript:void(0)" onclick="member_findid()"  class="login-find-text-id" >아이디 찾기</a>
-                                    <a href="javascript:void(0)" onclick="member_findpw()"  class="login-find-text-pw" >비밀번호 찾기</a>
-                                    <a href="javascript:void(0)" onclick="location='member_register1.shop'"  class="login-find-text-member" >회원가입</a>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="login-signup-wrapper"> 
-                        <div class="login-external-contents"> 
-                            <a href="#" class="login-external-contents-gg" >
-                                <i class="fab fa-google"></i>
-                            </a>
-                            <a href="#" class="login-external-contents-fb" >
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                            <a href="#" class="login-external-contents-gh" >
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-				</article>
-            </form>
-        </div>
-    </section>
+	    <section class="main-section-wrapper">
+	        <div class="main-section-container">
+	            <form method="POST"  action="main.shop" onsubmit="return loginCheck()">
+	                <div class="login-main-wrapper"> 
+	                    <div class="login-main-text">
+	                        로그인
+	                    </div>
+	                </div>
+	                <article class="login-contents-wrapper">
+	                    <div class="login-box-wrapper">
+	                        <div class="login-input-contents">
+	                            <ol class="login-id-box"> 
+	                                <li class="login-id-title"> 
+	                                    아이디
+	                                </li>
+	                                <li class="login-id-input-wrapper">
+	                                    <input type="text" class="login-id-input" id="loginId" maxlength="12" placeholder="아이디를 입력해주세요." >
+	                             	   <div class="result-divs" id="loginIdResult"></div>
+	                                </li>
+	                            </ol>
+	                            <ol class="login-pw-box">
+	                                <li class="login-pw-title">
+	                                    비밀번호
+	                                </li>
+	                                <li class="login-pw-input-wrapper">
+	                                    <input type="password" class="login-pw-input" id="loginPw" maxlength="12"  placeholder="비밀번호를 입력해주세요">
+	                               		<div class="result-divs" id="longinPwResult"></div>
+	                                </li>
+	                            </ol>
+	                            <div class="login-btn-wrapper">
+	                                <input type="submit" class="login-btn-wrapper-input"  value="로그인">
+	                            </div>
+	                        </div>
+	                    </div>
+	                        <div class="login-find-contents"> 
+	                            <div class="login-find-contents-wrapper">
+	                                <div class="login-find-text"> 
+	                                    <a href="javascript:void(0)" onclick="member_findid()"  class="login-find-text-id" >아이디 찾기</a>
+	                                    <a href="javascript:void(0)" onclick="member_findpw()"  class="login-find-text-pw" >비밀번호 찾기</a>
+	                                    <a href="javascript:void(0)" onclick="location='member_register1.shop'"  class="login-find-text-member" >회원가입</a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    <div class="login-signup-wrapper"> 
+	                        <div class="login-external-contents"> 
+	                            <a href="#" class="login-external-contents-gg" >
+	                                <i class="fab fa-google"></i>
+	                            </a>
+	                            <a href="#" class="login-external-contents-fb" >
+	                                <i class="fab fa-facebook"></i>
+	                            </a>
+	                            <a href="#" class="login-external-contents-gh" >
+	                                <i class="fab fa-github"></i>
+	                            </a>
+	                        </div>
+	                    </div>
+					</article>
+	            </form>
+	        </div>
+	    </section>
     </div>
-    <%@ include file="footer.jsp" %>
+	<%@ include file="../main/footer.jsp" %>
 </body>
 </html>
