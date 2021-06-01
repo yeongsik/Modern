@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
-    <script src="main.js"></script>
     <script 
     src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
     </script>
@@ -19,7 +18,7 @@
         <div class="footer-container">
             <div class="footer-site">
                 <div class="footer-site-subject eng">
-                    Man
+                    Modern
                 </div>
                 <div class="footer-site-sns">
                     <a class="sns" href=""><i class="fab fa-facebook-square"></i></a>

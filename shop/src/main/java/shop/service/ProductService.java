@@ -49,6 +49,10 @@ public class ProductService {
 		return pd.getProductList_Acc_jewelry(page);
 	}
 	
+	public ProductBean getProductOne(int product_id) throws Exception {
+		return pd.getProductOne(product_id);
+	}
+	
 	/* 상품 목록 수 */
 	public int getProductCount(String category) throws Exception {
 		return pd.getProductCount(category);

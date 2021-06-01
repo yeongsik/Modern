@@ -59,6 +59,10 @@ public class ProductDAO {
 		List<ProductBean> list = session.selectList("Product.productlist_acc_jewelry" , page);
 		return list;
 	}
+	public ProductBean getProductOne(int product_id) throws Exception {
+		ProductBean product = session.selectOne("Product.product_detail", product_id);
+		return product;
+	}
 	
 	public int getProductCount(String category) throws Exception {
 		int count = 0;

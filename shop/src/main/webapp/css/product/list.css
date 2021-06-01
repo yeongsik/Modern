@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("main.css");
+@import url("css/main.css");
 
 /* 상품리스트 */
 .aside-btn-wrapper{
@@ -62,7 +62,7 @@
 .product-list-aside {
     padding-top : 40px;
     flex-grow : 2;
-    width : 40%;
+    width : 20%;
     
 }
 .product-list-content-subject {
@@ -82,35 +82,36 @@
     display: inline;
 }
 .product-list-content-container {
-    padding : 50px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap : wrap;
+    padding: 50px 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns:3fr 3fr 3fr;
+    row-gap: 50px;
 }
 .product-list-detail-wrapper{
-    width : 30%;
-    display: flex;
-    justify-content: center;
     position: relative;
+    margin:0 auto;
+    cursor:pointer;
 }
 .product-list-img {
     width: 250px;
+    vertical-align: middle;
     object-fit: cover;
     transition : all 0.3s;
 }
 .product-list-img:hover {
     -webkit-filter: opacity(.4) drop-shadow(0 0 0 var(--color-white));
     filter: opacity(.4) drop-shadow(0 0 0 var(--color-white));
-    
 }
 .product-detail-content{
+    top:60%;
+    left:50%;
+    width:250px;
     position: absolute;
     text-align: center;
-    top:50%;
-    display: none;
+    transform: translate( -50%, 0% );
+    
 }
-
-
 .product-detail {
     display: block;
     padding-top : 10px;

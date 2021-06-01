@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>상품리스트</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/product/list.css">
+    <link rel="stylesheet" type="text/css" href="css/product/list.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
-    <script src="<%=request.getContextPath()%>/js/product/list.js"></script>
+    <script src="js/product/list.js"></script>
     <script 
     src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
     </script>
@@ -150,9 +150,9 @@
                   </c:if>
                     <div class="product-list-content-container">
                     	<c:forEach items ="${productlist }" var ="product">
-                        <div class="product-list-detail-wrapper">
+                        <div class="product-list-detail-wrapper" id="product_id" onClick="location.href='product_detail.shop?product_id=${product.product_id}'">
                             <div class="product-list-img-wrapper">
-                                <img class="product-list-img" src="image/knit샘플이미지1.png">
+                                <img class="product-list-img" src="product_images/${product.product_thumbnail}.png">
                             </div>
                             <div class="product-detail-content" id="list-detail-desc1">
                                 <span class="product-detail-subject product-detail eng">
@@ -162,7 +162,7 @@
                                     ${product.product_price}
                                 </span>
                                 <div class="product-detail-heart product-detail eng">
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-heart like-product"></i>
                                 </div>
                             </div>
                         </div>
