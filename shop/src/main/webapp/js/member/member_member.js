@@ -264,9 +264,9 @@ $(function() {
 
 //2페이지 소환
 $(function() {
-	/*$("#nicknameCheckComplete").hide();
+	$("#nicknameCheckComplete").hide();
 	$("#emailCheckComplete").hide();
-	$("#birthCheckComplete").hide();*/
+	$("#birthCheckComplete").hide();
 	
 	
 	$("#next").click(function(){
@@ -277,6 +277,10 @@ $(function() {
 			$("#afterSending").hide();
 		}	
 	});
+	//회원가입 alert
+	$("#register_button").click(function(){
+		alert("회원가입되었습니다.");
+	})
 	// 닉네임 중복확인 검사 추가 필요
 	$("#nickname").keyup(function() {
 		if ($("#nickname").val() == "") {
