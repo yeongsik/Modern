@@ -19,7 +19,7 @@
 <script src="./js/member/member_member.js"></script>
 <title>회원가입</title>
 </head>
-<body>
+<body> 
 	<%@ include file="../main/header.jsp"%>
 	<section class="main-section-wrapper">
 		<div class="container">

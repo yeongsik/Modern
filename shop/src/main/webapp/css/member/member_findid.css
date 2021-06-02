@@ -12,7 +12,7 @@
 .register-form {
     height:320px;
 }
-.register-main {
+.register-main { 
     display:flex;
     width:320px;
 }

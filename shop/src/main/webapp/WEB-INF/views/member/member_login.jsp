@@ -17,7 +17,7 @@
     <script src="./js/main.js"></script>
     <script src="./js/member/member_login.js"></script>
     
-    <script>
+    <script> 
     
     function member_findid(){
    	 window.open("member_findid.shop","아이디찾기","width=460,height=320");

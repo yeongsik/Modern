@@ -14,7 +14,7 @@ function loginCheck() {
     }
 }
 
-$(function(){
+$(function(){ 
     
     $("#loginId").keyup(function () { 
         if($("#loginId").val()== ""){

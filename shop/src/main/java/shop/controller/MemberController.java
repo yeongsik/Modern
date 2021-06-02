@@ -60,7 +60,7 @@ public class MemberController {
   public String withDraw() {
     return "member/member_withdraw";
   }
-
+ 
   // 회원 등급
   @RequestMapping("member_membership.shop")
   public String membership() {

@@ -14,7 +14,7 @@
 }
 .register-main {
     display:flex;
-    width:320px;
+    width:320px; 
 }
 .register-main-text {
     text-align: center;

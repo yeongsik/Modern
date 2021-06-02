@@ -14,7 +14,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- <script src="./js/member/member_find.js"></script> -->
 <title>아이디 찾기</title>
-</head>
+</head> 
 <body>
 	<c:if test="${empty sendok}">
 		<section class="main-section-wrapper">

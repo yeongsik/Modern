@@ -20,7 +20,7 @@ function joinCheck1() {
 		$("#pwCheckResult2").css("color", "red");
 		$("#joinPw2").focus();
 		return false;
-	}
+	} 
 	if ($.trim($("#phoneNum").val()) == "") {
 		$("#phoneCheckResult").text("휴대폰 번호를 입력해주세요.");
 		$("#phoneCheckResult").css("color", "red");
