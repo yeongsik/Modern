@@ -9,14 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import shop.service.MemberService;
 import shop.model.MemberBean;
-import org.springframework.ui.Model;
+import shop.service.MemberService;
 @Controller
 public class MemberController {
   @Autowired
@@ -191,35 +191,42 @@ public class MemberController {
 	}
 
 	// 로그인 검사
-		@RequestMapping(value = "login_check.shop", method = RequestMethod.POST)
-		public String member_login_check(@RequestParam("member_id") String member_id, 
-										@RequestParam("pw") String pw,
-										HttpSession session, Model model) throws Exception {
-			int result = 0;
-			MemberBean m = service.userCheck(member_id);
-
-			if (m == null) {
-				result = 1;
+	@RequestMapping(value = "/member_login_check.shop", method = RequestMethod.POST)
+	public String member_login_check(@RequestParam(value = "loginId") String loginId, 
+									@RequestParam(value = "loginPw") String loginPw,
+									HttpSession session, Model model) throws Exception {
+		int result = 0;
+		MemberBean m = service.userCheck(loginId);
+		System.out.println("컨트롤러 로그인검사");
+		
+		if (m == null) {
+			result = 1;
+			model.addAttribute("result", result);
+			return "member/loginResult";
+		} else {
+			if (m.getPw().equals(loginPw)) {
+				session.setAttribute("member_id", loginId);
+				String nickname = m.getNickname();
+				model.addAttribute("nickname", nickname);
+				return "main/main";
+			} else {
+				result = 2;
 				model.addAttribute("result", result);
 				return "member/loginResult";
-			} else {
-				if (m.getPw().equals(pw)) {
-					session.setAttribute("member_id", member_id);
-
-					String nickname = m.getNickname();
-
-					model.addAttribute("nickname", nickname);
-
-					return "main/main";
-				} else {
-					result = 2;
-					model.addAttribute("result", result);
-
-					return "member/loginResult";
-				}
 			}
 		}
-
+	}
+	
+	// 로그아웃
+	@RequestMapping("member_logout.shop")
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "member/member_logout";
+	}
+	
+	
 	
 	// 비밀번호 찾기 이메일 인증
 
@@ -281,11 +288,5 @@ public class MemberController {
 		}
 
 	}
-  
-  
-  
-  
-  
-  
-  
+	
 }
