@@ -55,7 +55,7 @@ public class MemberController {
     return "member/member_update";
   }
   
-  // 회원 탈퇴
+  // 회원 탈퇴  
   @RequestMapping("member_withdraw.shop")
   public String withDraw() {
     return "member/member_withdraw";
