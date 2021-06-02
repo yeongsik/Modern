@@ -18,7 +18,7 @@
 		<typeAlias alias="question" type="shop.model.QuestionBean" />		
 		<typeAlias alias="review" type="shop.model.ReviewBean" />		
 		<typeAlias alias="size_table" type="shop.model.SizeBean" />		
-		<typeAlias alias="cart" type="shop.model.CartBean" />		
+		<typeAlias alias="cart" type="shop.model.CartBean" />	
 	</typeAliases>
 	
 </configuration>

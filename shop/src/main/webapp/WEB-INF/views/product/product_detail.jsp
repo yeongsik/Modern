@@ -24,7 +24,7 @@
              <form method="POST" action ="">
                 <div class="product-detail-first-wrapper">
                     <div class="product-detail-first-product_img">
-                        <img class="product-detail-product_img" src="image/knit샘플이미지1.png">
+                        <img class="product-detail-product_img" src="product_images/${product.product_thumbnail}.png">
                     </div>
                     <div class="product-detail-first-product_subject">
                         <div class="product-detail-product-name-wrapper">
@@ -51,7 +51,7 @@
                             *모델 178cm / 76kg / L 사이즈 착용하였습니다.
                         </div>
                         <div class="product-detail-point kor">
-                            적립금 : ${buyingPoint}
+                            적립금 : ${buyingPoint}P
                         </div>
                         <div class="product-detail-product_description kor">
                         배송 정보
@@ -86,7 +86,7 @@
                     </div>
                     <div class="description-section-wrapper">
                         <div class="product-detail-img-wrapper tab-content current" id="tab-1">
-                            <img class="product-detail-img" src="image/product_detail_sample.jpg">
+                            <img class="product-detail-img" src="product_images/${product.product_description}.jpg">
                         </div>
                         <div class="product-detail-img-wrapper shopping-info tab-content" id="tab-2">
                             <div class="product-description-notice-wrapper">

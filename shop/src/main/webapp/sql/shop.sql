@@ -46,9 +46,9 @@ select * from product left outer join product_detail
     	on product.product_detail = product_detail.product_detail where product_id = 62
 -- product_detail_sample < detail 이미지 샘플 ADDRESS
 -- color (1~12) : black , white , blue , green , yellow , orange , grey, beige , pink , navy, khaki , brown
-insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'cashmere round knit avocado' ,0, 72000,
-							'cashmere round knit avocado_stock' , sysdate , 4 , 'top_knit' , product_seq.nextval, 0 );
-insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'knit5' , null , null , 'product_detail_sample');
+insert into PRODUCT values ( product_seq.nextval , 'top_tshirts' , 'heavy long sleeve black' ,0, 55000,
+							'heavy long sleeve black_stock' , sysdate , 1 , 'top_tshirts' , product_seq.nextval, 0 , null);
+insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'tshirts6' , null , null , 'product_detail_sample');
 
 
 							
@@ -108,3 +108,5 @@ insert into size_table values ('acc_jewelry' , 's,m,l' , 'acc_jewelry_size');
 
 update product set product_name = 'cashmere round knit deep blue' where product_id = 35;
 update product set color = 10 where product_id = 35;
+
+alter table product add (page number);

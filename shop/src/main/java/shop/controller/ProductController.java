@@ -22,9 +22,9 @@ public class ProductController {
 	private ProductService ProductService;
 	
 	@RequestMapping ("productlist.shop")
-	public String productlist(@RequestParam String category ,HttpServletRequest request  , Model model) throws Exception{
+	public String productlist(ProductBean product ,HttpServletRequest request  , Model model) throws Exception{
 		System.out.println("productlist.shop");
-		System.out.println(category);
+		System.out.println(product);
 		
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		int page = 1;
@@ -32,7 +32,9 @@ public class ProductController {
 		if ( request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		int listcount = ProductService.getProductCount(category);
+		
+		product.setPage(page);
+		int listcount = ProductService.getProductCount(product);
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = (((int) ((double) page / 10 + 0.9)) -1) * 10 +1;
 		
@@ -41,39 +43,15 @@ public class ProductController {
 		if (endpage > startpage + 10 -1)
 			endpage = startpage + 10 -1 ;
 		
-		if(category.equals("top_tshirts")) 
-			{productlist = ProductService.getProductList_Top_tshirts(page);} else {}
-		if (category.equals("top_shirts")) 
-			{productlist = ProductService.getProductList_Top_shirts(page);} else {}
-		if (category.equals("top_knit")) 
-			{productlist = ProductService.getProductList_Top_knit(page);} else {}
-		if(category.equals("bottom_jean")) {
-			productlist = ProductService.getProductList_Bottom_jean(page);
-		} else if (category.equals("bottom_pants")) {
-			productlist = ProductService.getProductList_Bottom_pants(page);
-		} else if (category.equals("bottom_shorts")) {
-			productlist = ProductService.getProductList_Bottom_shorts(page);
-		}
-		if(category.equals("outer_jacket")) {
-			productlist = ProductService.getProductList_Outer_jacket(page);
-		} else if (category.equals("outer_coat")) {
-			productlist = ProductService.getProductList_Outer_coat(page);
-		}
-		if(category.equals("acc_shoes")) {
-			productlist = ProductService.getProductList_Acc_shoes(page);
-		} else if (category.equals("acc_socks")) {
-			productlist = ProductService.getProductList_Acc_socks(page);
-		} else if (category.equals("acc_jewelry")) {
-			productlist = ProductService.getProductList_Acc_jewelry(page);
-		}
-		
+		productlist = ProductService.getProductList(product);
+		System.out.println("productlist:"+productlist);
 		model.addAttribute("productlist",productlist);
 		model.addAttribute("page" , page);
 		model.addAttribute("startpage" , startpage);
 		model.addAttribute("endpage" , endpage);
 		model.addAttribute("maxpage" , maxpage);
 		model.addAttribute("listcount" , listcount);
-		model.addAttribute("category", category);
+		model.addAttribute("product_nav", product);
 		System.out.println(productlist);
 		System.out.println(listcount);
 		
@@ -91,7 +69,6 @@ public class ProductController {
 		int buyingPoint = (int) (product.getProduct_price() *0.01);
 		
 		// 사이즈 구하기 
-		
 		
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);

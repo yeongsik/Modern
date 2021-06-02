@@ -15,7 +15,7 @@ public class ProductBean {
 	private String size_id;
 	private int product_detail;
 	private int product_discount;
-	
+	private int page;
 	
 	// product_detail
 	
@@ -90,8 +90,12 @@ public class ProductBean {
 	public void setProduct_discount(int product_discount) {
 		this.product_discount = product_discount;
 	}
-	
-	
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
 	public String getProduct_thumbnail() {
 		return product_thumbnail;
 	}
@@ -117,4 +121,5 @@ public class ProductBean {
 		this.product_description = product_description;
 	}
 	
-}
+	
+}	

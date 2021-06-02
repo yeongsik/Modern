@@ -82,11 +82,11 @@
     display: inline;
 }
 .product-list-content-container {
-    padding: 50px 20px;
+    padding: 100px 20px;
     text-align: center;
     display: grid;
     grid-template-columns:3fr 3fr 3fr;
-    row-gap: 50px;
+    row-gap: 100px;
 }
 .product-list-detail-wrapper{
     position: relative;
@@ -110,7 +110,7 @@
     position: absolute;
     text-align: center;
     transform: translate( -50%, 0% );
-    
+    display: none;
 }
 .product-detail {
     display: block;

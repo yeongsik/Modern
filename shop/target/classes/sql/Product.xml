@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Product">
-	
-	
+<mapper namespace="Productns">
 	<!-- 상품목록 -->
 	<!-- top -->
-	<select id="productlist_top_tshirts" parameterType="int" resultType="product">
+	<select id="productlist" parameterType="shop.model.ProductBean" resultType="shop.model.ProductBean">
 		<![CDATA[
 		select * from 
 		 (select rownum rnum, p.* from
-	  	 (select * from product where category_id = 'top_tshirts' order by product_date desc) p ) 
+	  	 (select *  
+	  	 from product where category_id = #{category_id} order by product_date desc) p ) 
 	   		 where rnum >= ((#{page}-1) * 9+1)  and rnum <= (#{page} * 9)
 		]]>
 	</select>
-	<select id="productlist_top_shirts" parameterType="int" resultType="product">
+	<!-- <select id="productlist_top_shirts" parameterType="int" resultType="product">
 		<![CDATA[
 		select * from 
 		 (select rownum rnum, p.* from
@@ -104,16 +103,15 @@
 	  	 where category_id = 'acc_jewelry' order by product_date desc) p) 
 	   		 where rnum >= ((#{page}-1) * 9+1)  and rnum <= (#{page} * 9)
 		]]>
-	</select>
+	</select> -->
 	
     <!-- 상품 총 갯수 -->
-    <select id ="productcount" parameterType="String" resultType="int">
-    	select count(distinct product_name) from product where category_id = #{category}
+    <select id ="productcount" parameterType="product" resultType="int">
+    	select count(distinct product_name) from product where category_id = #{product.category_id}
     </select>
     
     <select id="product_detail" parameterType="int" resultType="product">
     	select * from product left outer join product_detail 
     	on product.product_detail = product_detail.product_detail where product_id = #{product_id}
     </select>
-    
 </mapper>

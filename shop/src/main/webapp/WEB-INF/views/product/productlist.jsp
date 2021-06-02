@@ -100,8 +100,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-list-content-wrapper">
-                  <c:if test="${category == 'top_tshirts' || category =='top_shirts' || category == 'top_knit'}">
+                <div class="product-list-content-wrapper" id="product_list_section_wrapper">
+                  <c:if test="${product_nav.category_id == 'top_tshirts' || product_nav.category_id =='top_shirts' || product_nav.category_id == 'top_knit'}">
                     <div class="product-list-content-subject eng">
                         	Top
                     </div>
@@ -113,7 +113,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'bottom_jean' || category =='bottom_pants' || category == 'bottom_shorts'}">
+                  <c:if test="${product_nav.category_id == 'bottom_jean' || product_nav.category_id =='bottom_pants' || product_nav.category_id == 'bottom_shorts'}">
                     <div class="product-list-content-subject eng">
                         	Bottom
                     </div>
@@ -125,7 +125,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'outer_coat' || category =='outer_jacket'}">
+                  <c:if test="${product_nav.category_id == 'outer_coat' || product_nav.category_id =='outer_jacket'}">
                     <div class="product-list-content-subject eng">
                         	Outer
                     </div>
@@ -136,7 +136,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'acc_shoes' || category =='acc_socks' || category == 'acc_jewelry'}">
+                  <c:if test="${product_nav.category_id == 'acc_shoes' || product_nav.category_id =='acc_socks' || product_nav.category_id == 'acc_jewelry'}">
                     <div class="product-list-content-subject eng">
                         	Acc
                     </div>
@@ -148,7 +148,7 @@
                         </ul>
                     </div>
                   </c:if>
-                    <div class="product-list-content-container">
+                    <div class="product-list-content-container" id="product_list_section">
                     	<c:forEach items ="${productlist }" var ="product">
                         <div class="product-list-detail-wrapper" id="product_id" onClick="location.href='product_detail.shop?product_id=${product.product_id}'">
                             <div class="product-list-img-wrapper">
