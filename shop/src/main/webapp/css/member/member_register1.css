@@ -1,0 +1,355 @@
+@import url(css/root.css);
+/*-------------------*/
+
+.main-section-wrapper{
+   display:flex;
+   justify-content: center;
+   height:100%;
+}
+
+.main-section-container{
+    width:350px;
+    margin: 50px;
+}
+.register-form {
+    height:600px;
+}
+.register-main-wrapper {
+    display:flex;
+    width:320px;
+}
+.register-main-text {
+    text-align: center;
+    font-size: var(--font-size-h3);
+    width:315px;
+}
+.register-contents-wrapper {
+    width:300px;
+    height:350px;
+}
+
+/*체크 부분  */
+.fas, 
+.fa-check {
+    color: var(--color-darkgrey);
+}
+ 
+.register-box-wrapper {
+    position: relative;
+}
+.register-input-contents {
+    height: 340px;
+    width:315px;
+}
+.register-id-box{
+    padding: 5px;
+    list-style:none;
+}
+.register-id-title{
+    font-size: var(--font-size-h5);
+    font: var(--font-kor);
+    margin-left:2.5px;
+}
+.register-id-input-wrapper {
+    width:390px;
+    margin-top: 5px;
+}
+.register-id-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-id-auth-input-button{
+    height:33.5px;
+    outline: 1px solid #c4c6c5;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+    position: relative;
+    bottom:1px;
+}
+.register-id-auth-input-button:hover {
+	cursor:pointer;
+}	
+input:focus {
+    outline:none;
+    box-shadow: 0 0 0 1px #97989b;
+}
+.register-pw-box {
+    padding: 5px;
+    list-style:none;
+    margin-top:10px;
+}
+.register-pw-title {
+    font-size: var(--font-size-h5);
+    font: var(--font-kor);
+    margin-left:2.5px;
+}
+.register-pw-input-wrapper {
+    margin-top: 5px;
+}
+.register-pw-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-pw-confirm-box {
+    margin-top: 10px;
+    padding: 5px;
+    list-style:none;
+}
+.register-pw-confirm-title {
+    font-size: var(--font-size-h5);
+    font: var(--font-kor);
+    margin-left:2.5px;
+}
+.register-pw-input-confirm-wrapper {
+    margin-top: 5px;
+}
+.register-pw-input-confirm {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-phone-box {
+    position: relative;
+    padding: 5px;
+    list-style:none;
+    height:50px;
+    width:300px;
+}
+.register-phone-title {
+    font-size: var(--font-size-h5);
+    font: var(--font-kor);
+    margin-left:2.5px;
+    margin-top:5px;
+}
+.register-phone-input-wrapper{
+    margin-right:5px;
+}
+.register-phone-input {
+    margin-top: 5px;
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.result-divs {
+    height:10px;
+}
+.register-phone-input-button{
+    height:35.5px;
+    outline: 1px solid #c4c6c5;
+    padding: 0 2px;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+}
+
+.register-verify-box-check-list-start {
+    list-style: none;
+    padding: 0;
+    height: 130px;
+    width:300px;
+}
+.register-verify-box-check-all {
+    padding: 0 0 30px 0;
+    
+}
+.register-verify-box-check-list1,
+.register-verify-box-check-list2,
+.register-verify-box-check-list3 {
+    height:25px;
+    font-size: 12px;
+}
+.register-verify-box-check-1{
+    box-shadow: none;
+} 
+.register-verify-box-check-2{
+    box-shadow: none;
+    position: relative;
+    top: 2.5px;
+}
+.register-verify-box-check-3,
+.register-verify-box-check-4 {   
+    box-shadow: none;
+    position: relative;
+    top: 2.5px;
+}.register-verify-box-check-a {
+    color:#2d2d2d;
+}
+.register-verify-contents{
+    margin-top: 0.5px;
+}
+.register-verify-contents-wrapper {
+    padding:auto;
+    margin-left:2px;
+    height: 150px;
+}
+.register-phone-input-verify-wrapper-box{
+    margin-left:5px;
+}
+.register-phone-verify-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-phone-input-verify-wrapper {
+    padding: 5px;
+}
+.register-btn-wrapper {
+    padding:5px;
+}
+.register-btn-wrapper-input-auth {
+    height:30px;
+    width:307px;
+    padding: 5px 0 30px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+    font-size: var(--font-size-h5);
+}
+.register-btn-wrapper-input-auth:hover {
+	cursor:pointer;
+}	
+.register-btn-verify-wrapper {
+    margin-top:15px;
+    width:307px;
+}
+.register-btn-verify-wrapper-input {
+    height:30px;
+    width:307px;
+    padding: 5px 0 30px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+    font-size:25px;
+}
+.register-btn-verify-wrapper-input:hover {
+	cursor:pointer;
+}
+
+/*2페이지 내용 css  */
+.register-secondpage-box-wrapper {
+    position: relative;
+    width:390px;
+}
+.register-secondpage-input-contents {
+    height: 290px;
+    width:315px;
+}
+.register-nickname-box{
+    padding: 5px;
+    list-style:none;
+}
+.register-nickname-title{
+    font-size: 20px;
+    font: var(--font-kor);
+    margin-top: 15px;
+}
+.register-nickname-input-wrapper {
+    width:390px;
+    margin-top: 5px;
+}
+.result-divs {
+    height:10px;
+}
+.register-nickname-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-nickname-input-button{
+    height:33.5px;
+    outline: 1px solid #c4c6c5;
+    color: #f9f9f9;
+    background-color: #97989b;
+    border-style: none;
+    position: relative;
+    bottom:1px;
+}
+.register-nickname-input-button:hover {
+	cursor:pointer;
+}
+input:focus {
+    outline:none;
+    box-shadow: 0 0 0 1px #97989b;
+}
+.register-email-box {
+    padding: 5px;
+    list-style:none;
+}
+.register-email-title {
+    margin-top: 15px;
+    font-size: 20px;
+    font: var(--font-kor);
+}
+.register-email-input-wrapper {
+    margin-top: 5px;
+}
+.register-email-input {
+    width: 300px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-birth-box {
+    padding: 5px;
+    list-style:none;
+}
+.register-birth-title {
+  	margin-top: 15px;
+  	font-size: 20px;
+    font: var(--font-kor);
+}
+.register-birth-input-wrapper {
+    margin-top: 5px;
+}
+.register-birth-input {
+    width: 130px;
+    height:30px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-birth-input-second {
+    height:30px;
+    width:20px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.register-btn-wrapper {
+    margin-bottom: 10px;
+}
+.register-btn-wrapper-input {
+    height:35px;
+    width:307px;
+    padding: 5px 0 25px 0;
+    margin-left:5px;
+    background-color: #97989b;
+    color: #f9f9f9;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+    font-size:25px;
+}
+.register-btn-wrapper-input:hover {
+	cursor:pointer;
+}

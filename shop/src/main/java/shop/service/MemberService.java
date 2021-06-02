@@ -13,28 +13,42 @@ public class MemberService {
 	@Autowired
 	private MemberDAO md;
 	
-	//회원가입
-	public void insertMember(MemberBean member) throws Exception{
-		md.insertMember(member);
-		
-	}
-	//중복아이디 체크
-	public int checkMemberId(String id) throws Exception{
-		return md.checkMemberId(id);
-	}
+		//회원가입
+		public void insertMember(MemberBean member) throws Exception{
+			md.insertMember(member);
+			
+		}
+		//중복아이디 체크
+		public int checkMemberId(String id) throws Exception{
+			return md.checkMemberId(id);
+		}
+		//중복닉네임 체크
+		public int checkNickname(String nick) throws Exception{
+			return md.checkNickname(nick);
+		}
+		//아이디 찾기
+		public MemberBean findid(MemberBean mba)throws Exception {
+			System.out.println("서비스닉네임");
+			System.out.println("닉네임 :"+mba.getNickname() );
+			return md.findid(mba);
+			
+		}
+		//비밀번호 찾기
+		public MemberBean findpw(MemberBean m)throws Exception {
+			
+			System.out.println("임시비밀번호 :"+m.getPw() );
+			return md.findpw(m);
+		}
+		//임시비밀번호 저장
+		public void updatepw(MemberBean mem)throws Exception {
+			
+			System.out.println("임시비밀번호1 :"+mem.getPw() );
+			md.updatepw(mem);
+		}
+		// 로그인 검사
+			public MemberBean userCheck(String id)throws Exception{
+				return md.userCheck(id);
+		}
 	
-	//비밀번호 찾기
-	public MemberBean findpw(MemberBean m)throws Exception {
-		return md.findpw(m);
-	}
 	
-	//중복닉네임 체크
-	public int checkNickname(String nick) throws Exception{
-		return md.checkNickname(nick);
-	}
-	
-	// 로그인 검사
-	public MemberBean userCheck(String id)throws Exception{
-		return md.userCheck(id);
-	}
 }

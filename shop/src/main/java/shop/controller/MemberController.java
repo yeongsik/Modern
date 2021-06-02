@@ -1,5 +1,6 @@
 package shop.controller;
 
+import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.service.MemberService;
+import shop.dao.MemberDAO;
 import shop.model.MemberBean;
 import org.springframework.ui.Model;
 @Controller
@@ -114,8 +117,8 @@ public class MemberController {
 		return "member/member_login";
 	}
 
-	// 아이디 중복
-	// ID중복검사 ajax함수로 처리부분
+	
+	// ID중복검사 
 	@RequestMapping(value = "/member_idcheck.shop", method = RequestMethod.POST)
 	public String member_idcheck(@RequestParam("memid") String id, Model model) throws Exception {
 
@@ -152,17 +155,14 @@ public class MemberController {
 	// 회원가입 폼
 	@RequestMapping(value = "/member_register1.shop")
 	public String member_register1() {
-
+			
 		return "member/member_register1";
 	}
 
-	// 회원가입 2페이지
-	@RequestMapping(value = "/member_register2.shop")
-	public String member_register2(HttpServletRequest request, HttpSession session) {
-		System.out.println("1");
-		String member_id = request.getParameter("member_id");
-		String pw = request.getParameter("pw");
-		String phone = request.getParameter("phone");
+	// 회원가입 저장
+	@RequestMapping(value = "/member_complete.shop", method = RequestMethod.POST)
+	public String register_complete(@ModelAttribute MemberBean member, HttpServletRequest request) throws Exception {
+		
 		String accept_mail1 = request.getParameter("accept_mail_value");
 
 		int accept_mail;
@@ -172,23 +172,13 @@ public class MemberController {
 		} else {
 			accept_mail = 0;
 		}
-
-		session.setAttribute("member_id", member_id);
-		session.setAttribute("pw", pw);
-		session.setAttribute("phone", phone);
-		session.setAttribute("accept_mail", accept_mail);
-
-		return "member/member_register2";
-	}
-
-	// 회원가입 저장
-	@RequestMapping(value = "/member_complete.shop", method = RequestMethod.POST)
-	public String register_complete(@ModelAttribute MemberBean member) throws Exception {
-
+		member.setAccept_mail(accept_mail);
+		
 		service.insertMember(member);
 
 		return "member/member_login";
 	}
+	
 
 	// 로그인 검사
 		@RequestMapping(value = "login_check.shop", method = RequestMethod.POST)
@@ -220,68 +210,157 @@ public class MemberController {
 			}
 		}
 
-	
-	// 비밀번호 찾기 이메일 인증
+		//아이디 찾기
+		@RequestMapping(value = "/member_findid_ok.shop", method = RequestMethod.POST)
+		public String member_findid_ok(@ModelAttribute MemberBean mb,  
+				HttpServletResponse response, HttpServletRequest request, Model model)
+				throws Exception {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			MemberBean member = service.findid(mb);
+			
+			if (member == null) {// 값이 없는 경우
+				return "member/auth_result";
+				
+			} else  {
 
-	@RequestMapping(value = "/member_findpw_ok.shop", method = RequestMethod.POST)
-	public String pwd_find_ok(@ModelAttribute MemberBean mem, HttpServletRequest request, HttpServletResponse response,
-			Model model) throws Exception {
-		response.setContentType("text/html;charset=UTF-8");
+				// Mail Server 설정
+				String charSet = "utf-8";
+				String hostSMTP = "smtp.naver.com";
+				String hostSMTPid = "fun8905@naver.com";
+				String hostSMTPpwd = "1234DBWND!!!***"; 
 
-		MemberBean member = service.findpw(mem);
+				// 보내는 사람 EMail, 제목, 내용
+				String fromEmail = "fun8905@naver.com";
+				String fromName = "관리자";
+				String subject = "아이디 찾기";
 
-		Random random = new Random();
-		int key = random.nextInt(4589362) + 49311;
-		System.out.println("key");
+				// 받는 사람 E-Mail 주소
+				String mail = member.getEmail();
+				String member_id = request.getParameter("member_id"); 
+				String nickname = request.getParameter("nickname");
+				
+				try {
+					HtmlEmail email = new HtmlEmail();
+					email.setDebug(true);
+					email.setCharset(charSet);
+					email.setSSL(true);
+					email.setHostName(hostSMTP);
+					email.setSmtpPort(995);
 
-		if (member == null) {// 값이 없는 경우
+					email.setAuthentication(hostSMTPid, hostSMTPpwd);
+					email.setTLS(true);
+					email.addTo(mail, charSet);
+					email.setFrom(fromEmail, fromName, charSet);
+					email.setSubject(subject);
+					email.setHtmlMsg(nickname + "님의" + "<div align='center'> 아이디는 : " + member.getMember_id() +" 입니다." + "</div>");
+					email.send();
+					
+				} catch (Exception e) {
+					System.out.println("메일 발송실패 :"+e);
+				}
+				model.addAttribute("member_id", member_id);
+				
+				out.println("<script>alert('인증번호가 발송되었습니다.'); </script>");
+				out.println("<script>self.close(); </script>");
+				
+				return "member/member_findid";
 
-			return "member/auth_result";
-
-		} else {
-
-			// Mail Server 설정
-			String charSet = "utf-8";
-			String hostSMTP = "smtp.naver.com";
-			String hostSMTPid = "fun8905@naver.com";
-			String hostSMTPpwd = "1234Dbwnd!!!***"; // 비밀번호 입력해야함
-
-			// 보내는 사람 EMail, 제목, 내용 
-			String fromEmail = "fun8905@naver.com"; 
-			String fromName = "관리자";
-			String subject = "비밀번호 찾기";
-
-			// 받는 사람 E-Mail 주소 
-			String mail = request.getParameter("email");
-
-			try {
-				HtmlEmail email = new HtmlEmail();
-				email.setDebug(true);
-				email.setCharset(charSet);
-				email.setSSL(true);
-				email.setHostName(hostSMTP);
-				email.setSmtpPort(587);
-
-				email.setAuthentication(hostSMTPid, hostSMTPpwd);
-				email.setTLS(true);
-				email.addTo(mail, charSet);
-				email.setFrom(fromEmail, fromName, charSet);
-				email.setSubject(subject);
-				email.setHtmlMsg("<p align = 'center'>인증번호 전송</p><br>" + "<div align='center'> 인증번호 : " + member.getPw()
-						+ "</div>");
-				email.send();
-			} catch (Exception e) {
-				System.out.println(e);
 			}
 
-			model.addAttribute("find_pw", "등록된 email을 확인 하세요~!!");
+		}
+		
+		// 비밀번호 찾기 이메일 인증
+		@RequestMapping(value = "/member_findpw_ok.shop", method = RequestMethod.POST)
+		public String member_findpw_ok(@ModelAttribute MemberBean mem, HttpServletResponse response, HttpServletRequest request, Model model)
+				throws Exception {
+			response.setContentType("text/html;charset=UTF-8");
+			
+			PrintWriter out = response.getWriter();
+			
+			String member_id = request.getParameter("member_id");
+			
+			/* BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); */	//암호화 인코더
+			
+			
+			  String key = ""; for (int i = 0; i < 12; i++) { key += (char) ((Math.random()
+			  * 26) + 97); }
+			 
+			MemberBean member = service.findpw(mem);
+			
+			
+			
+			if (member == null) {// 값이 없는 경우
+				
+				return "member/auth_result";
+				
+			} else {
 
-			return "member/member_findpw";
+				// Mail Server 설정
+				String charSet = "utf-8";
+				String hostSMTP = "smtp.gmail.com";
+				String hostSMTPid = "fun06140312@gmail.com";
+				String hostSMTPpwd = "1234Dbwnd!!!***"; // 비밀번호 입력해야함
+
+				// 보내는 사람 EMail, 제목, 내용
+				String fromEmail = "fun06140312@gmail.com";
+				String fromName = "관리자";
+				String subject = "비밀번호 찾기";
+
+				// 받는 사람 E-Mail 주소
+				String mail = member.getEmail();
+				
+				
+				try {
+					HtmlEmail email = new HtmlEmail();
+					email.setDebug(true);
+					email.setCharset(charSet);
+					email.setSSL(true);
+					email.setHostName(hostSMTP);
+					email.setSmtpPort(587);
+
+					email.setAuthentication(hostSMTPid, hostSMTPpwd);
+					email.setTLS(true);
+					email.addTo(mail, charSet);
+					email.setFrom(fromEmail, fromName, charSet);
+					email.setSubject(subject);
+					/* 임시비밀번호용
+					 * email.setHtmlMsg(member_id + "님의 임시 비밀번호는<br>" + "<div align='center'> " +
+					 * member.getPw() +"입니다." + "</div>");
+					 */
+					email.setHtmlMsg(member_id + "님의 임시 비밀번호는<br>" + "<div align='center'> "
+							+ key +"입니다." + "</div>");
+					email.send();
+					out.print("이메일을 발송했습니다.");
+					
+					
+				} catch (Exception e) {
+					System.out.println("메일 발송실패 :"+e);
+				}
+				
+				
+				mem.setPw(key); //임시비밀번호 저장
+				System.out.println("1");
+				
+				/* String securepw = encoder.encode(mem.getPw()); */ //비번 암호화
+				System.out.println("2");
+				
+				/* mem.setPw(securepw); */
+				System.out.println("3");
+				
+				service.updatepw(mem); //비번 저장
+				
+				model.addAttribute("member_id", member_id);
+				model.addAttribute("sendok", "이메일이 발송되었습니다.");
+				
+	
+				return "member/member_findpw";
+
+			}
 
 		}
-
-	}
-  
+		
   
   
   
