@@ -152,12 +152,12 @@ function nickname_check() {
         }
       });//$.ajax
 }
-/*$(function(){
+$(function(){
 	$("#secondPageup").hide();
 	$("#next").click(function(){
 		$("#secondPageup").show();
 	});
-});*/
+});
 
 
 $(function() {
@@ -167,7 +167,7 @@ $(function() {
 	$("#phoneCheckComplete").hide();
 
 	//인증번호입력란 숨기기
-	/*$("#afterSending").hide();*/
+	$("#afterSending").hide();
 	
 	//모두 동의 선택시 3개 체크박스 전체 선택
 	$("#checkAll").click(function() {
