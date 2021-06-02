@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문하기</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/order.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/order.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script> -->
@@ -17,6 +17,7 @@
 	/* 아임포트 결제 API */
 		var IMP = window.IMP;
 			IMP.init('imp45220237');
+
 		function pay() {
 			IMP.request_pay({
 			    pg : 'html5_inicis',
@@ -45,7 +46,7 @@
 			});
 		};
 	</script>
-    <script src="js/order.js"></script>
+    <script src="./js/order/order.js"></script>
 
 </head>
 <body>
@@ -336,17 +337,75 @@
                    </div>	
                    <div class="content-table">
 						<div class="payment-btn">
-							<input class="payment-select" type="radio" name="payment" id="creditCard" value="creditCard" checked />
-							<label for="creditCard" class="creditCard">신용카드</label>
+							<input class="payment-select" type="radio" name="payment" id="card" value="card" />
+							<label for="card" class="card">신용카드</label>
 						</div>
 						<div class="payment-btn">
-							<input class="payment-select" type="radio" name="payment" id="vBank" value="vBank" />
-							<label for="vBank" class="vBank">무통장입금</label>
+							<input class="payment-select" type="radio" name="payment" id="trans" value="trans" />
+							<label for="trans" class="trans">실시간계좌이체</label>
 						</div>
 						<div class="payment-btn">
-							<input class="payment-select" type="radio" name="payment" id="kakaoPay" value="kakaoPay" />
-							<label for="kakaoPay" class="kakaoPay">카카오페이</label>
+							<input class="payment-select" type="radio" name="payment" id="vbank" value="vbank" />
+							<label for="vbank" class="vbank">가상계좌</label>
 						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="kakaopay" value="kakaopay" />
+							<label for="kakaopay" class="kakaopay">카카오페이</label>
+						</div>
+                   </div>
+                   <div class="content-table">
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="phone" value="phone" />
+							<label for="phone" class="phone">휴대폰결제</label>
+						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="naverpay" value="naverpay" />
+							<label for="naverpay" class="naverpay">네이버페이</label>
+						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="samsung" value="samsung" />
+							<label for="samsung" class="samsung">삼성페이</label>
+						</div>
+						<div class="payment-btn">
+							<input class="payment-select" type="radio" name="payment" id="payco" value="payco" />
+							<label for="payco" class="payco">페이코</label>
+						</div>
+                   </div>
+                   <div class="content-table">
+                   		<div class="payment-dscr">
+                   			<div class="dscr-line">
+                  				<span class="dscr-ico">헤택</span>
+                  				<a href="#">제휴 카드사 2% 청구 할인
+	              					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 14 14">
+								 	 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+									</svg>
+								</a>
+                   			</div>
+                   			<div class="dscr-line">
+                  				<span class="dscr-ico">안내</span>
+                  				<a href="#">교환 및 반품 절차 안내
+	              					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 14 14">
+								 	 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+									</svg>
+								</a>
+                   			</div>
+                   			<div class="dscr-line">
+                  				<span class="dscr-ico">할부</span>
+                  				<a href="#">신용카드 무이자 할부 안내
+	              					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 14 14">
+								 	 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+									</svg>
+								</a>
+                   			</div>
+                   			<div class="dscr-line">
+                  				<span class="dscr-ico">안내</span>
+                  				<a href="#">품절 취소시 환불 안내
+	              					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 14 14">
+								 	 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+									</svg>
+								</a>
+                   			</div>
+                		</div>
                    </div>
                </div>
            </div>
