@@ -11,7 +11,7 @@
 		<div class="member-content-header-memberinfo">
 			<div class="member-content-header-memberinfo-grade">GOLD</div>
 			<div class="member-content-header-memberinfo-content">
-				<span>사용자</span>님 안녕하세요 <input type="button" value="등급 혜택 보기">
+				<span>${nickname}</span>님 안녕하세요 <input type="button" value="등급 혜택 보기">
 			</div>
 		</div>
 		<div class="member-content-hedaer-coupon">

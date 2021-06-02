@@ -181,20 +181,20 @@ public class MemberController {
 	
 
 	// 로그인 검사
-		@RequestMapping(value = "login_check.shop", method = RequestMethod.POST)
-		public String member_login_check(@RequestParam("member_id") String member_id, 
-										@RequestParam("pw") String pw,
-										HttpSession session, Model model) throws Exception {
+	@RequestMapping(value = "/member_login_check.shop", method = RequestMethod.POST)
+	public String member_login_check(@RequestParam(value = "loginId") String loginId, 
+									@RequestParam(value = "loginPw") String loginPw,
+									HttpSession session, Model model) throws Exception {
 			int result = 0;
-			MemberBean m = service.userCheck(member_id);
+			MemberBean m = service.userCheck(loginId);
 
 			if (m == null) {
 				result = 1;
 				model.addAttribute("result", result);
 				return "member/loginResult";
 			} else {
-				if (m.getPw().equals(pw)) {
-					session.setAttribute("member_id", member_id);
+				if (m.getPw().equals(loginPw)) {
+					session.setAttribute("member_id", loginId);
 
 					String nickname = m.getNickname();
 
@@ -208,6 +208,14 @@ public class MemberController {
 					return "member/loginResult";
 				}
 			}
+		}
+		//로그아웃
+		@RequestMapping("member_logout.shop")
+		public String logout(HttpSession session) {
+
+			session.invalidate();
+
+			return "member/member_logout";
 		}
 
 		//아이디 찾기

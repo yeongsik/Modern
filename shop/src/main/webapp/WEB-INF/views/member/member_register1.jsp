@@ -10,21 +10,18 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./css/reset.css">
-<link rel="stylesheet" type="text/css" href="./css/root.css">
-<link rel="stylesheet" type="text/css" href="./css/member/member_register1.css">
-<link rel="stylesheet" type="text/css" href="./css/header.css">
-<link rel="stylesheet" type="text/css" href="./css/footer.css">
+<link rel="stylesheet" type="text/css" href="./css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/member/register1.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="./js/member/member_member.js"></script>
+<script src="js/member/member.js"></script>
 <title>회원가입</title>
 </head>
-<body> 
+<body>
 	<%@ include file="../main/header.jsp"%>
 	<section class="main-section-wrapper">
 		<div class="container">
 			<div class="main-section-container">
-				<form method="POST" action= "member_complete.shop"
+				<form method="POST" action="member_complete.shop"
 					onsubmit="return joinCheck1()">
 					<input type="hidden" name="accept_mail_value"
 						id="accept_mail_value" value="n" />
@@ -137,8 +134,8 @@
 								</ol>
 							</div>
 							<div class="register-btn-wrapper">
-								<input type="submit" class="register-btn-wrapper-input" id="register_button"
-									onclick="joinCheck1() " value="회원가입">
+								<input type="submit" class="register-btn-wrapper-input"
+									id="register_button" onclick="joinCheck1() " value="회원가입">
 							</div>
 						</div>
 					</article>
@@ -149,4 +146,3 @@
 	<%-- <%@ include file="../main/footer.jsp" %> --%>
 </body>
 </html>
-					

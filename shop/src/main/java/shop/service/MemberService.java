@@ -46,8 +46,8 @@ public class MemberService {
 			md.updatepw(mem);
 		}
 		// 로그인 검사
-			public MemberBean userCheck(String id)throws Exception{
-				return md.userCheck(id);
+			public MemberBean userCheck(String loginId)throws Exception{
+				return md.userCheck(loginId);
 		}
 	
 	

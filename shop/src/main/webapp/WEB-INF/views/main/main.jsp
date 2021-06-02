@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>Shop</title>
-    <link rel="stylesheet" type="text/css" href="./css/mainview.css">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/mainview.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
@@ -17,7 +16,7 @@
     </script>
 </head>
 <body>
-    <%@ include file="./header.jsp"%>
+    <%@ include file="../main/header.jsp"%>
       <div class="container">
         <section class="main-content-wrapper">
             <div class="main-content-view">
@@ -66,7 +65,7 @@
             </div>
         </section>
     </div>
-    <%@ include file="./footer.jsp" %>
+    <%@ include file="../main/footer.jsp" %>
 </body>
 </html>
 
