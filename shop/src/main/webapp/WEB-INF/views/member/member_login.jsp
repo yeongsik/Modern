@@ -7,15 +7,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/root.css" />
-    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="../css/member/login.css" />
-    <link rel="stylesheet" type="text/css" href="../css/header.css" />
-    <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="./css/member/login.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/member/login.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/member/login.js"></script>
     
     <script>
     
@@ -34,7 +31,7 @@
 	<div class="container">
 	    <section class="main-section-wrapper">
 	        <div class="main-section-container">
-	            <form method="POST"  action="main.shop" onsubmit="return loginCheck()">
+	            <form method="POST"  action="member_login_check.shop" onsubmit="return loginCheck()">
 	                <div class="login-main-wrapper"> 
 	                    <div class="login-main-text">
 	                        로그인
@@ -48,7 +45,7 @@
 	                                    아이디
 	                                </li>
 	                                <li class="login-id-input-wrapper">
-	                                    <input type="text" class="login-id-input" id="loginId" maxlength="12" placeholder="아이디를 입력해주세요." >
+	                                    <input type="text" class="login-id-input" id="loginId" name="loginId" maxlength="12" placeholder="아이디를 입력해주세요." >
 	                             	   <div class="result-divs" id="loginIdResult"></div>
 	                                </li>
 	                            </ol>
@@ -57,7 +54,7 @@
 	                                    비밀번호
 	                                </li>
 	                                <li class="login-pw-input-wrapper">
-	                                    <input type="password" class="login-pw-input" id="loginPw" maxlength="12"  placeholder="비밀번호를 입력해주세요">
+	                                    <input type="password" class="login-pw-input" id="loginPw" name="loginPw" maxlength="12"  placeholder="비밀번호를 입력해주세요">
 	                               		<div class="result-divs" id="longinPwResult"></div>
 	                                </li>
 	                            </ol>

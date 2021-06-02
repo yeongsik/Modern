@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("css/main.css");
+@import url(main.css);
 
 /* 메인화면 */
 .main-content-view {

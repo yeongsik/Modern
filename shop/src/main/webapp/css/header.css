@@ -32,6 +32,27 @@
     font-size: 14px;   
 }
 .header-member-section {
-    width: 130px;
+    width: 70px;
     font-size : 25px;
+}
+.header-login-dropdown{
+	width: 120px;
+	height: 180px;
+	padding: 15px 10px;
+	background-color: var(--color-lightgrey);
+	border: 1px solid var(--color-grey);
+	border-radius: 5px;
+	position: absolute; 
+	right: 60px;
+	top: 65px;
+	transition: all .5s ease;
+	font-size: 20px;
+}
+.dropdown-nickname{
+	
+	font-size: 17px;
+	margin-bottom: 10px;
+}
+.drop-icon{
+	font-size: 15px;
 }

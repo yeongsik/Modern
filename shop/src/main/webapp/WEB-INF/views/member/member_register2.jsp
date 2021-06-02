@@ -9,13 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 		  rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-	<link rel="stylesheet" type="text/css" href="../css/root.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/member/register2.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+	<link rel="stylesheet" type="text/css" href="./css/member/register2.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../js/member/member.js"></script> 
+    <script src="./js/member/member.js"></script> 
     <title>회원가입</title>
 </head>
 <body>
@@ -79,6 +76,6 @@ int accept_mail = (Integer)session.getAttribute("accept_mail");
             </form>
         </div>
     </section>
-<!-- <%@ include file="../main/footer.jsp" %> -->
+	<%@ include file="../main/footer.jsp" %>
 </body>
 </html>

@@ -37,8 +37,8 @@ public class MemberDAO {
 	
 	// 로그인 검사
 	@Transactional
-	public MemberBean userCheck(String member_id)throws Exception{
-		return (MemberBean) session.selectOne("login_check", member_id);
+	public MemberBean userCheck(String loginId)throws Exception{
+		return (MemberBean) session.selectOne("login_check", loginId);
 	}
 	
 	//비밀번호 찾기

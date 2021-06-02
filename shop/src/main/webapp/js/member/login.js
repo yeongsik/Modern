@@ -15,7 +15,6 @@ function loginCheck() {
 }
 
 $(function(){
-    
     $("#loginId").keyup(function () { 
         if($("#loginId").val()== ""){
             $("#longinIdResult").text("아이디를 입력하세요2.");
