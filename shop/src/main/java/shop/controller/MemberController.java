@@ -49,7 +49,7 @@ public class MemberController {
     return "member/member_update";
   }
 
-  // 배송지 관리
+  // 배송지 관리 
   @RequestMapping("member_address.shop")
   public String address() {
     return "member/member_update";
