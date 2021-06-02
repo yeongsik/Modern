@@ -112,6 +112,12 @@
                         </div>
                     </div>
                </div>
+               <div class="left-content-wrapper">
+					<button type="button" class="result-out-btn" onclick="location.href='./main.shop'">홈으로 이동</button>
+               </div>
+               
+				
+
            </div>
 
            <div class="right-result-content">
@@ -226,9 +232,7 @@
                 </div>
            </div>
            
-			<div class="bottom-content-wrapper">
-				<button type="button" class="result-out-btn" onclick="location.href='./main.shop'">홈으로 이동</button>
-			</div>
+
          </div>
     </section>
     <%@ include file="../main/footer.jsp" %>

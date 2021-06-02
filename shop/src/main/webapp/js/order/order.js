@@ -107,7 +107,71 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* 결제방법 선택 $('input[name="payment"]:checked').val() 
-	if($('input[name="payment"]:checked').val() == "creditCard"){
-	*/
+	/* 결제방법 */
+	$('input[name="payment"]').change(function(){
+		/* 카드 */
+		if($(this).val() == "card"){
+			$(".card").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".card").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+		/* 실시간계좌이체 */
+		if($(this).val() == "trans"){
+			$(".trans").css("background","var(--color-black)")
+						.css("color","var(--color-white)");
+		} else {
+			$(".trans").css("background","transparent")
+						.css("color","var(--color-black)");
+		};
+		/* 가상계좌 */
+		if($(this).val() == "vbank"){
+			$(".vbank").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".vbank").css("background","transparent")
+							.css("color","var(--color-black)");			
+		};
+		/* 카카오페이 */
+		if($(this).val() == "kakaopay"){
+			$(".kakaopay").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".kakaopay").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+		/* 휴대폰결제 */
+		if($(this).val() == "phone"){
+			$(".phone").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".phone").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+		/* 네이버페이 */
+		if($(this).val() == "naverpay"){
+			$(".naverpay").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".naverpay").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+		/* 삼성페이 */
+		if($(this).val() == "samsung"){
+			$(".samsung").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".samsung").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+		/* 페이코 */
+		if($(this).val() == "payco"){
+			$(".payco").css("background","var(--color-black)")
+							.css("color","var(--color-white)");
+		} else {
+			$(".payco").css("background","transparent")
+							.css("color","var(--color-black)");
+		};
+	});
 });
