@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import shop.dao.ProductDAO;
 import shop.model.ProductBean;
-import shop.model.ProductInput;
 
 @Service
 public class ProductService {
