@@ -42,13 +42,16 @@ select * from notice;
 create Sequence product_seq;
 create sequence product_detail_seq;
 
-
-insert into PRODUCT values ( product_seq.nextval , 'top_knit' , 'round knit cream' ,0, 72000,
-							'round knit cream_stock' , sysdate , 2 , 'top_knit' , product_seq.nextval, 0 );
+select * from product left outer join product_detail 
+    	on product.product_detail = product_detail.product_detail where product_id = 62
+-- product_detail_sample < detail 이미지 샘플 ADDRESS
+-- color (1~12) : black , white , blue , green , yellow , orange , grey, beige , pink , navy, khaki , brown
+insert into PRODUCT values ( product_seq.nextval , 'top_tshirts' , 'heavy long sleeve black' ,0, 55000,
+							'heavy long sleeve black_stock' , sysdate , 1 , 'top_tshirts' , product_seq.nextval, 0 , null);
+insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'tshirts6' , null , null , 'product_detail_sample');
 
 
 							
-insert into PRODUCT_DETAIL values (product_detail_seq.nextval , 'knit2' , null , null , 'knit2_detail');
 insert into stock values ( 'round knit cream_stock' , 100 , 100 , 100 , null , null , null , null , null );
 
 
@@ -83,7 +86,7 @@ select * from (select row_number() over(partition by product.product_name ) as r
 p where rnum >=1 and rnum <= 9;
 select * from product where category_id = 'top_knit' order by product_date desc;
 select * from 
-		 (select rownum rnum,p.* from
+		 (select rownum rnum, p.* from
 	  	 (select * from product left outer join product_detail on product.product_detail  = product_detail.product_detail where category_id = 'top_knit' order by product_date desc) p)
 	  	 where rnum >=1 and rnum <= 2;
 delete from size_table;
@@ -105,4 +108,5 @@ insert into size_table values ('acc_jewelry' , 's,m,l' , 'acc_jewelry_size');
 
 update product set product_name = 'cashmere round knit deep blue' where product_id = 35;
 update product set color = 10 where product_id = 35;
--- color (1~12) : black , white , blue , green , yellow , orange , grey, beige , pink , navy, khaki , brown
+
+alter table product add (page number);
