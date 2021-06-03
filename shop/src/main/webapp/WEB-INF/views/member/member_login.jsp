@@ -12,8 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/member/member_login.js"></script>
-    
+    <script src="./js/member/login.js"></script>
     <script> 
     
     function member_findid(){

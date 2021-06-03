@@ -33,7 +33,7 @@ public class MemberDAO {
 		// 회원 가입
 		public void insertMember(MemberBean m) throws Exception {
 		session.insert("member_register", m);
-	}
+		}
 		//아이디 찾기
 		public MemberBean findid(MemberBean idm) throws Exception {
 			System.out.println("dao닉네임");
@@ -59,4 +59,5 @@ public class MemberDAO {
 		public MemberBean userCheck(String loginId)throws Exception{
 			return (MemberBean) session.selectOne("login_check", loginId);
 		}
+
 }

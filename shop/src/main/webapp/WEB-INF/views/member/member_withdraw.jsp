@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
-  <%@ include file="./main/header.jsp"%>  
+  <%@ include file="../main/header.jsp"%>  
   <section class="member-content-wrapper">
     <!-- content header -->
     <div class="member-content-container">
@@ -41,6 +41,6 @@
       </div>
     </div>
   </section>  
-   <%@ include file="./main/footer.jsp"%>  
+   <%@ include file="../main/footer.jsp"%>  
 </body>
 </html>

@@ -21,12 +21,12 @@
   <section class="member-content-wrapper">
     <!-- content header -->
     <div class="member-content-container">
-      <%@ include file="./member/member_header.jsp"%>  
+      <%@ include file="../member/member_header.jsp"%>  
 
       <!-- content main -->
       <div class="member-content-main-container">
         <!-- aside -->
-         <%@ include file="./member/member_aside.jsp"%>  
+         <%@ include file="../member/member_aside.jsp"%>  
 
         <!-- article -->
         <div class="member-content-article-container">

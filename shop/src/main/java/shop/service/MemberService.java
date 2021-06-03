@@ -49,6 +49,4 @@ public class MemberService {
 			public MemberBean userCheck(String loginId)throws Exception{
 				return md.userCheck(loginId);
 		}
-	
-	
 }
