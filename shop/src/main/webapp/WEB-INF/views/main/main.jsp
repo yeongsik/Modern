@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
-    <script src="./js/main.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
     <script 
     src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
     </script>
