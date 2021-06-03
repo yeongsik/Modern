@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="kr">
@@ -9,21 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 		  rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-	<link rel="stylesheet" type="text/css" href="../css/root.css">
-	<link rel="stylesheet" type="text/css" href="../css/header.css">
-	<link rel="stylesheet" type="text/css" href="../css/member/register2.css">
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/root.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/member/register2.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../js/member/member.js"></script> 
+    <script src="js/member/member.js"></script> 
     <title>회원가입</title>
 </head>
 <body>
 <% 
-String member_id = (String)session.getAttribute("member_id");
-String pw = (String)session.getAttribute("pw");
-String phone = (String)session.getAttribute("phone");
-int accept_mail = (Integer)session.getAttribute("accept_mail");
+	String member_id = (String)session.getAttribute("member_id");
+	String pw = (String)session.getAttribute("pw");
+	String phone = (String)session.getAttribute("phone");
+	int accept_mail = (Integer)session.getAttribute("accept_mail");
 %>
 <%@ include file="../main/header.jsp" %>
     <section class="main-section-wrapper">
