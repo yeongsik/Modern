@@ -3,17 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="kr">
-<<<<<<< HEAD
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./css/member_findid.css" />
+<link rel="stylesheet" type="text/css" href="./css/member/member_findid.css" />
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- <script src="./js/member/member_find.js"></script> -->
+<script src="./js/member_find.js"></script>
 <title>아이디 찾기</title>
 </head> 
 <body>

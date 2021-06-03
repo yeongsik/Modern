@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +11,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/main.css" />
-<link rel="stylesheet" type="text/css" href="css/member/register1.css">
+<link rel="stylesheet" type="text/css" href="./css/member/member_register1.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/member/member.js"></script>
+<script src="./js/member/member.js"></script>
 <title>회원가입</title>
 </head>
 <body>

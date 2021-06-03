@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="kr">
-<<<<<<< HEAD
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +12,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- <script src="./js/member_find.js"></script> -->
+<script src="./js/member_find.js"></script>
 <title>비밀번호 찾기</title>
 </head>  
 <body> 
