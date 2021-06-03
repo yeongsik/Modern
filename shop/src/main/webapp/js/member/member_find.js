@@ -18,7 +18,7 @@ function check() {
         $("#authNum").focus();
         return false;
     }
-}
+} 
 
 $(function () {
 	
