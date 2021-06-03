@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>상품리스트</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/product/list.css">
+    <link rel="stylesheet" type="text/css" href="css/product/list.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
-    <script src="<%=request.getContextPath()%>/js/product/list.js"></script>
+    <script src="js/product/list.js"></script>
     <script 
     src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
     </script>
@@ -100,8 +100,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-list-content-wrapper">
-                  <c:if test="${category == 'top_tshirts' || category =='top_shirts' || category == 'top_knit'}">
+                <div class="product-list-content-wrapper" id="product_list_section_wrapper">
+                  <c:if test="${product_nav.category_id == 'top_tshirts' || product_nav.category_id =='top_shirts' || product_nav.category_id == 'top_knit'}">
                     <div class="product-list-content-subject eng">
                         	Top
                     </div>
@@ -113,7 +113,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'bottom_jean' || category =='bottom_pants' || category == 'bottom_shorts'}">
+                  <c:if test="${product_nav.category_id == 'bottom_jean' || product_nav.category_id =='bottom_pants' || product_nav.category_id == 'bottom_shorts'}">
                     <div class="product-list-content-subject eng">
                         	Bottom
                     </div>
@@ -125,7 +125,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'outer_coat' || category =='outer_jacket'}">
+                  <c:if test="${product_nav.category_id == 'outer_coat' || product_nav.category_id =='outer_jacket'}">
                     <div class="product-list-content-subject eng">
                         	Outer
                     </div>
@@ -136,7 +136,7 @@
                         </ul>
                     </div>
                   </c:if>
-                  <c:if test="${category == 'acc_shoes' || category =='acc_socks' || category == 'acc_jewelry'}">
+                  <c:if test="${product_nav.category_id == 'acc_shoes' || product_nav.category_id =='acc_socks' || product_nav.category_id == 'acc_jewelry'}">
                     <div class="product-list-content-subject eng">
                         	Acc
                     </div>
@@ -148,11 +148,11 @@
                         </ul>
                     </div>
                   </c:if>
-                    <div class="product-list-content-container">
+                    <div class="product-list-content-container" id="product_list_section">
                     	<c:forEach items ="${productlist }" var ="product">
-                        <div class="product-list-detail-wrapper">
+                        <div class="product-list-detail-wrapper" id="product_id" onClick="location.href='product_detail.shop?product_id=${product.product_id}'">
                             <div class="product-list-img-wrapper">
-                                <img class="product-list-img" src="image/knit샘플이미지1.png">
+                                <img class="product-list-img" src="product_images/${product.product_thumbnail}.png">
                             </div>
                             <div class="product-detail-content" id="list-detail-desc1">
                                 <span class="product-detail-subject product-detail eng">
@@ -162,7 +162,7 @@
                                     ${product.product_price}
                                 </span>
                                 <div class="product-detail-heart product-detail eng">
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-heart like-product"></i>
                                 </div>
                             </div>
                         </div>

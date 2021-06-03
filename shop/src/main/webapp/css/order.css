@@ -1,4 +1,4 @@
-
+@charset "UTF-8";
 @import url("reset.css");
 @import url("root.css");
 @import url("main.css");
@@ -19,6 +19,7 @@ button:focus {
 /* 상단 주문결과 */
 .top-content-wrapper {
     border-top: 4px solid var(--color-black);
+    border-bottom: 4px solid var(--color-black);
     margin: 0 10%;
     padding-bottom: 30px;
     text-align: center;
@@ -40,10 +41,15 @@ button:focus {
     width: 30%;
     float: right;
     margin-right: 10%;
-	position: sticky;
-	position: -webkit-sticky;
     top: 0;
 }
+.right-result-content {
+    width: 30%;
+    float: right;
+    margin-right: 10%;
+    top: 0;
+}
+
 
 /* 공통항목 */
 .content-table-title {
@@ -124,9 +130,11 @@ button:focus {
 
 .addressInf1 {
 	display: block;
+	margin-top: 15px;
 }
 .addressInf2 {
 	display: none;
+	margin-top: 15px;
 }
 
 .inf-input {
@@ -263,40 +271,111 @@ button:focus {
 }
 .payment-btn {
 	flex: 1;
-	margin: 0 10px;
+	margin: 5px 5px;
 	height: 44px;
 	border: 1px solid var(--color-lightgrey);
 	background: transparent;
 	text-align: center;
 }
+/* ----------------------------------------------------- */
 .payment-select {
 	display: none;
 }
-.creditCard {
+.card {
 	display: flex;
 	justify-content: center;	
 	cursor: pointer;
 	line-height: 44px;
 }
-.vBank {
+.trans {
 	display: flex;
 	justify-content: center;	
 	cursor: pointer;
 	line-height: 44px;
 }
-.kakaoPay {
+.vbank {
 	display: flex;
 	justify-content: center;	
 	cursor: pointer;
 	line-height: 44px;
 }
-
+.kakaopay {
+	display: flex;
+	justify-content: center;	
+	cursor: pointer;
+	line-height: 44px;
+}
+.phone {
+	display: flex;
+	justify-content: center;	
+	cursor: pointer;
+	line-height: 44px;
+}
+.naverpay {
+	display: flex;
+	justify-content: center;	
+	cursor: pointer;
+	line-height: 44px;
+}
+.samsung {
+	display: flex;
+	justify-content: center;	
+	cursor: pointer;
+	line-height: 44px;
+}
+.payco {
+	display: flex;
+	justify-content: center;	
+	cursor: pointer;
+	line-height: 44px;
+}
+/* ----------------------------------------------------- */
+.payment-dscr {
+	background: #dddddd;
+	margin: 15px 0;
+	padding: 10px 15px;
+	flex: 1;
+}
+.dscr-line {
+	height: 30px;
+	line-height: 30px;
+	
+}
+.dscr-ico {
+	background: var(--color-white);
+	margin: 0 7px 0 0;
+	padding: 0 4px;
+	font-size: small;
+}
+/* 왼쪽 결과 */
+.inf-label-result {
+	flex: 1;
+	height: 40px;
+	line-height: 40px;
+}
+.inf-result {
+	flex: 3;
+	height: 40px;
+	line-height: 40px;
+}
+.result-out-btn {
+	cursor: pointer;
+    width: 100%;
+    height: 54px;
+    border: 0;
+    border-radius: 2px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-size: var(--font-size-h4);
+    margin-top: 30px;
+}
 
 /* 오른쪽 항목 */
 .right-content-wrapper {
     border-top: 4px solid var(--color-black);
     padding-bottom: 30px;
 }
+
 .product-list {
     overflow-y: auto;
     max-height: 400px;
