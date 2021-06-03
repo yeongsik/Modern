@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,9 +23,9 @@ public class ProductController {
 	private ProductService ProductService;
 	
 	@RequestMapping ("productlist.shop")
-	public String productlist(ProductBean product ,HttpServletRequest request  , Model model) throws Exception{
+	public String productlist(@ModelAttribute ProductBean input ,HttpServletRequest request , Model model) throws Exception{
 		System.out.println("productlist.shop");
-		System.out.println(product);
+		System.out.println(input.getCategory_id());
 		
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		int page = 1;
@@ -32,9 +33,8 @@ public class ProductController {
 		if ( request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		
-		product.setPage(page);
-		int listcount = ProductService.getProductCount(product);
+		input.setPage(page);
+		int listcount = ProductService.getProductCount(input);
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = (((int) ((double) page / 10 + 0.9)) -1) * 10 +1;
 		
@@ -43,7 +43,7 @@ public class ProductController {
 		if (endpage > startpage + 10 -1)
 			endpage = startpage + 10 -1 ;
 		
-		productlist = ProductService.getProductList(product);
+		productlist = ProductService.getProductList(input);
 		System.out.println("productlist:"+productlist);
 		model.addAttribute("productlist",productlist);
 		model.addAttribute("page" , page);
@@ -51,7 +51,7 @@ public class ProductController {
 		model.addAttribute("endpage" , endpage);
 		model.addAttribute("maxpage" , maxpage);
 		model.addAttribute("listcount" , listcount);
-		model.addAttribute("product_nav", product);
+		model.addAttribute("product_nav", input);
 		System.out.println(productlist);
 		System.out.println(listcount);
 		

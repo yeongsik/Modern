@@ -3,7 +3,6 @@ package shop.model;
 import java.util.Date;
 
 public class ProductBean {
-	
 	private int product_id;
 	private String category_id;
 	private String product_name;
@@ -16,13 +15,11 @@ public class ProductBean {
 	private int product_detail;
 	private int product_discount;
 	private int page;
-	
-	// product_detail
-	
 	private String product_thumbnail;
 	private String product_img2;
 	private String product_img3;
 	private String product_description;
+	
 	
 	public int getProduct_id() {
 		return product_id;
@@ -120,6 +117,4 @@ public class ProductBean {
 	public void setProduct_description(String product_description) {
 		this.product_description = product_description;
 	}
-	
-	
 }	

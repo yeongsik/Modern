@@ -14,8 +14,8 @@ public class ProductService {
 	private ProductDAO pd;
 	
 	/* 상품목록 */
-	public List<ProductBean> getProductList(ProductBean product) throws Exception {
-		return pd.getProductList(product);
+	public List<ProductBean> getProductList(ProductBean input) throws Exception {
+		return pd.getProductList(input);
 	}
 //	public List<ProductBean> getProductList_Top_shirts(int page) throws Exception {
 //		return pd.getProductList_Top_shirts(page);
