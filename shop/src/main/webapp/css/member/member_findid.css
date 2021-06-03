@@ -1,22 +1,25 @@
+@import url(css/root.css);
+
 .main-section-wrapper{
    display:flex;
    justify-content: center;
+   margin-left:20px;
 }
 
 .main-section-container{
     margin: 10px;
 }
 .register-form {
-    height:600px;
+    height:320px;
 }
-.register-main {
+.register-main { 
     display:flex;
     width:320px;
 }
 .register-main-text {
     text-align: center;
-    font-size: var(--font-size-h4);
-    width:315px;
+    font-size: 30px;
+    width:420px;
 }
 .register-contents-wrapperr {
     display:flex;
@@ -40,7 +43,8 @@
     list-style:none;
 }
 .register-phone-title{
-    font-size: var(--font-size-h6);
+    height:25px;
+    font-size: 25px;
     font: var(--font-kor);
     margin-top: 15px;
     
@@ -74,6 +78,10 @@ input:focus {
     color: #f9f9f9;
     background-color: #97989b;
     border-style: none;
+    margin-left:15px;
+}
+.register-phone-input-button:hover {
+	cursor:pointer;
 }
 .register-btn-wrapper {
     padding:5px;
@@ -81,7 +89,7 @@ input:focus {
 }
 .register-btn-wrapper-input {
     height:30px;
-    width:307px;
+    width:50px;
     padding: 5px 0 25px 0;
     background-color: #97989b;
     color: #f9f9f9;
@@ -89,7 +97,11 @@ input:focus {
     border-radius: 2px;
     border-style: none;
     position:relative;
-    top:100px;
+    top:50px;
+    left: 150px;
+}
+.register-btn-wrapper-input:hover {
+	cursor:pointer;
 }
 .result-divs {
     height:5px;

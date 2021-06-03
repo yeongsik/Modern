@@ -22,15 +22,14 @@
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
+
 <%-- 	<c:if test="${sessionScope.id == null }"> 
 		  <script>
 			   alert("로그인이 필요한 서비스 입니다.");
 			   location.href="login.shop";
 		  </script>
-	</c:if>
-	<c:if test="${sessionScope.id != null }"> --%>
-
-
+		</c:if>
+		<c:if test="${sessionScope.id != null }"> --%>
 	<section class="member-content-wrapper">
 		<div class="member-content-container">
 			<%@ include file="../member/member_header.jsp"%>
@@ -76,7 +75,7 @@
 			</div>
 		</div>
 	</section>
-<%-- 	</c:if> --%>
+	<%-- 	</c:if> --%>
 	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>

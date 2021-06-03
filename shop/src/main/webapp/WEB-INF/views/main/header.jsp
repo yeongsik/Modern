@@ -15,7 +15,9 @@
 <script src="js/header.js"></script>
 <script src="https://kit.fontawesome.com/78e568182c.js"
 	crossorigin="anonymous">
-    </script>
+
+ </script>
+
 </head>
 <body>
 	<div class="header-container">
@@ -59,20 +61,24 @@
 					</div>
 				</c:if>
 				<c:if test="${sessionScope.member_id != null }">
-					<div class="header-member-section-content header-member-section-cart">
+
+					<div
+						class="header-member-section-content header-member-section-cart">
 						<a href="member_cart.shop"><i class="fas fa-shopping-cart"></i></a>
 					</div>
-					<div class="header-member-section-content header-member-section-member header-member">
+					<div
+						class="header-member-section-content header-member-section-member header-member">
 						<a href="member_main.shop"><i class="fas fa-user"></i></a>
 					</div>
-<!-- 					<div class="header-member-section-content header-member-section-heart">
-							<a href="member_interest.shop">Heart</a>
-						</div> -->
 					<ul class="header-login-dropdown">
-						<li class="dropdown-nickname"><i class="fas fa-user drop-icon"></i><br><br>${nickname}님,<br><br>환영합니다.<br><hr></li>
-						
-						<li class="header-member-mypage"><a href="member_main.shop">MyPage</a><br><hr></li>
-<!-- 						<li class="header-member-section-content header-member-section-heart">
+						<li class="dropdown-nickname">
+						<i	class="fas fa-user drop-icon"></i><br>
+						<br>${nickname}님,<br>
+						<br>환영합니다.<br>
+						<hr></li>
+						<li class="header-member-mypage"><a href="member_main.shop">MyPage</a><br>
+						<hr></li>
+						<!-- <li class="header-member-section-content header-member-section-heart">
 							<a href="member_interest.shop">Heart</a>
 						</li> -->
 						<li class="dropdown-logout"><a href="member_logout.shop">Logout</a></li>

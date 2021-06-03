@@ -1,3 +1,5 @@
+@import url(css/root.css);
+
 /*-------------------*/
 .container {
     display: flex;
@@ -11,7 +13,7 @@
 
 .main-section-container{
     display:flex;
-    margin: 90px;
+    margin: 50px; 
 }
 .login-form {
     height:600px;
@@ -41,19 +43,22 @@
     height: 230px;
 }
 .login-id-box{
+	margin-top:15px;
+	width: 307px;
     padding: 5px;
     list-style:none;
 }
 .login-id-title{
     font-size: var(--font-size-h6);
     font: var(--font-kor);
+    font-size: 20px;
 }
 .login-id-input-wrapper {
     margin-top: 5px;
 }
 .login-id-input {
     width: 300px;
-    height:30px;
+    height:35px;
     font: var(--font-kor);
     border: 1.5px solid #dbd8ce;
     border-radius: 2px;
@@ -64,19 +69,22 @@ input:focus {
 }
 
 .login-pw-box {
+	width: 307px;
+    margin-top: 15px;
     padding: 5px;
     list-style:none;
 }
 .login-pw-title {
     font-size: var(--font-size-h6);
     font: var(--font-kor);
+    font-size: 20px;
 }
 .login-pw-input-wrapper {
     margin-top: 5px;
 }
 .login-pw-input {
     width: 300px;
-    height:30px;
+    height:35px;
     font: var(--font-kor);
     border: 1.5px solid #dbd8ce;
     border-radius: 2px;
@@ -86,24 +94,29 @@ input:focus {
     margin-top: 30px;
 }
 .login-btn-wrapper-input {
-    height:30px;
+    height:40px;
     width:308px;
-    padding: 5px 0 25px 0;
+    padding: 5px 0 5px 0;
     background-color: #97989b;
     color: #f9f9f9;
     outline: 1px solid #c4c6c5;
     font: var(--font-kor);
     border-radius: 2px;
     border-style: none;
+    font-size: 22px;
 }
+.login-btn-wrapper-input:hover {
+	cursor:pointer;
+} 
 .login-find-contents {
+    margin-top:30px;
     padding:15px 5px ;
 }
 .login-find-contents-wrapper {
     width:306px;
 }
 .login-find-text {
-    font-size: 12px;
+    font-size: 15px;
 }
 .login-find-text-id{
     text-decoration: none;
