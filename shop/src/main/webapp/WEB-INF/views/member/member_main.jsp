@@ -3,33 +3,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- css -->
-<link rel="stylesheet" href="css/member/member_main.css">
-<!-- js -->
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- 구글 폰트 -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap"
-	rel="stylesheet">
-<title>마이페이지</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- css -->
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/member/member_main.css">
+	<!-- js -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 구글 폰트 -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous"> </script>
+	<title>마이페이지</title>
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
-
-<%-- 	<c:if test="${sessionScope.id == null }"> 
-		  <script>
-			   alert("로그인이 필요한 서비스 입니다.");
-			   location.href="login.shop";
-		  </script>
-		</c:if>
-		<c:if test="${sessionScope.id != null }"> --%>
 	<section class="member-content-wrapper">
 		<div class="member-content-container">
 			<%@ include file="../member/member_header.jsp"%>
@@ -75,7 +65,6 @@
 			</div>
 		</div>
 	</section>
-	<%-- 	</c:if> --%>
 	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>

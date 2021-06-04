@@ -3,21 +3,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- css -->
-  <link rel="stylesheet" href="css/member/member_item_review.css">
-  <!-- js -->
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="js/member/member_item_review.js"></script>
-  <!-- 구글 폰트 -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- css -->
+	<link rel="stylesheet" href="css/member/member_item_review.css">
+	<link rel="stylesheet" href="css/main.css">
+	<!-- js -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/member/member_item_review.js"></script>
+	<script src="js/main.js"></script>
+	<!-- 구글 폰트 -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>
