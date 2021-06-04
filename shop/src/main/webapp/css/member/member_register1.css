@@ -11,6 +11,7 @@
     margin: 50px;
 }
 .register-form {
+    display:flex;
    /*  height:600px; */
 } 
 .register-main-wrapper {
@@ -24,7 +25,6 @@
 }
 .register-contents-wrapper {
     width:300px;
-  /*   height:350px; */
 }
 
 /*체크 부분  */
@@ -48,6 +48,7 @@
     font-size: var(--font-size-h5);
     font: var(--font-kor);
     margin-left:2.5px;
+    margin-top:25px;
 }
 .register-id-input-wrapper {
     width:390px;
@@ -185,7 +186,7 @@ input:focus {
     color:#2d2d2d;
 }
 .register-verify-contents{
-    margin-top: 0.5px;
+    margin-top: 15px;
 }
 .register-verify-contents-wrapper {
     padding:auto;
@@ -337,9 +338,9 @@ input:focus {
 .register-btn-wrapper {
     margin-bottom: 10px;
 }
-.register-btn-wrapper-input {
-    height:35px;
-    width:307px;
+.register-btn-wrapper-input-button {
+    height:40px;
+    width:310px;
     padding: 5px 0 25px 0;
     margin-left:5px;
     background-color: #97989b;
@@ -349,6 +350,6 @@ input:focus {
     border-radius: 2px;
     font-size:25px;
 }
-.register-btn-wrapper-input:hover {
+.register-btn-wrapper-input-button:hover {
 	cursor:pointer;
 }

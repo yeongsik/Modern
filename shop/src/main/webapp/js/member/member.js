@@ -1,8 +1,8 @@
 //회원가입 1p
 
 function joinCheck1() {
-	
-	
+
+
 	if ($.trim($("#joinId").val()) == "") {
 		$("#idCheckResult").text("아이디를 입력해주세요.");
 		$("#idCheckResult").css("color", "red");
@@ -20,7 +20,7 @@ function joinCheck1() {
 		$("#pwCheckResult2").css("color", "red");
 		$("#joinPw2").focus();
 		return false;
-	} 
+	}
 	if ($.trim($("#phoneNum").val()) == "") {
 		$("#phoneCheckResult").text("휴대폰 번호를 입력해주세요.");
 		$("#phoneCheckResult").css("color", "red");
@@ -48,7 +48,7 @@ function joinCheck1() {
 	} else {
 		$("#accept_mail_value").val('n');
 	}
-	
+
 	//2페이지 유효성 검사
 	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 	var genterTest = /^[1-4]{1}$/;
@@ -95,70 +95,67 @@ function joinCheck1() {
 		return false;
 	}
 }
-	
 
-	//아이디 중복확인
+
+//아이디 중복확인 초기형
 function id_check() {
-		var memid=$("#joinId").val();
-		
-    $.ajax({
-        type:"POST",
-        url:"member_idcheck.shop",
-        data: {"memid":memid},        //키 벨류값
-        success: function (data) { 
-      	  if(data==1){	//중복 ID
-      		var newtext='<font color="red">중복 아이디입니다.</font>';
-      			$("#idCheckResult").text('');
-        		$("#idCheckResult").show();
-        		$("#idCheckResult").append(newtext);
-          		$("#joinId").val('').focus();
-          		return false;
-	     
-      	  }else{	//사용 가능한 ID
-      		var newtext='<font color="blue">사용가능한 아이디입니다.</font>';
-      		$("#idCheckResult").text('');
-      		$("#idCheckResult").show();
-      		$("#idCheckResult").append(newtext);
-      		$("#joinPw1").focus();
-      	  }  	    	  
-        }
-      });//$.ajax
+	var memid = $("#joinId").val();
+
+	$.ajax({
+		type: "POST",
+		url: "member_idcheck.shop",
+		data: { "memid": memid },        //키 벨류값
+		success: function(data) {
+			if (data.cnt > 0) {	//중복 ID
+				var newtext = '<font color="red">중복 아이디입니다.</font>';
+				$("#idCheckResult").text('');
+				$("#idCheckResult").show();
+				$("#idCheckResult").append(newtext);
+				$("#joinId").val('').focus();
+				return false;
+
+			} else if ($.trim($("#joinId").val()) == "") {
+				$("#idCheckResult").text("아이디를 입력해주세요.");
+				$("#idCheckResult").css("color", "red");
+				$("#joinId").focus()
+			} else {	//사용 가능한 ID
+				var newtext = '<font color="blue">사용가능한 아이디입니다.</font>';
+				$("#idCheckResult").text('');
+				$("#idCheckResult").show();
+				$("#idCheckResult").append(newtext);
+				$("#joinPw1").focus();
+			}
+		}
+	});//$.ajax
 }
 
 //닉네임 중복확인
 function nickname_check() {
-		var memnickname=$("#nickname").val();
-		
-    $.ajax({
-        type:"POST",
-        url:"member_nickcheck.shop",
-        data: {"memnickname":memnickname},        //키 벨류값
-        success: function (data) { 
-      	  if(data==1){	//중복 ID
-      		var newtext='<font color="red">중복 닉네임입니다.</font>';
-      			$("#nicknameResult").text('');
-        		$("#nicknameResult").show();
-        		$("#nicknameResult").append(newtext);
-          		$("#nickname").val('').focus();
-          		return false;
-	     
-      	  }else{	//사용 가능한 ID
-      		var newtext='<font color="blue">사용가능한 닉네임입니다.</font>';
-      		$("#nicknameResult").text('');
-      		$("#nicknameResult").show();
-      		$("#nicknameResult").append(newtext);
-      		$("#email").focus();
-      	  }  	    	  
-        }
-      });//$.ajax
-}
-$(function(){
-	$("#secondPageup").hide();
-	$("#next").click(function(){
-		$("#secondPageup").show();
-	});
-});
+	var memnickname = $("#nickname").val();
 
+	$.ajax({
+		type: "POST",
+		url: "member_nickcheck.shop",
+		data: { "memnickname": memnickname },        //키 벨류값
+		success: function(data) {
+			if (data == 1) {	//중복 ID
+				var newtext = '<font color="red">중복 닉네임입니다.</font>';
+				$("#nicknameResult").text('');
+				$("#nicknameResult").show();
+				$("#nicknameResult").append(newtext);
+				$("#nickname").val('').focus();
+				return false;
+
+			} else {	//사용 가능한 ID
+				var newtext = '<font color="blue">사용가능한 닉네임입니다.</font>';
+				$("#nicknameResult").text('');
+				$("#nicknameResult").show();
+				$("#nicknameResult").append(newtext);
+				$("#email").focus();
+			}
+		}
+	});//$.ajax
+}
 
 $(function() {
 	$("#idCheckComplete").hide();
@@ -168,7 +165,7 @@ $(function() {
 
 	//인증번호입력란 숨기기
 	$("#afterSending").hide();
-	
+
 	//모두 동의 선택시 3개 체크박스 전체 선택
 	$("#checkAll").click(function() {
 		if ($("#checkAll").prop("checked")) {
@@ -267,20 +264,21 @@ $(function() {
 	$("#nicknameCheckComplete").hide();
 	$("#emailCheckComplete").hide();
 	$("#birthCheckComplete").hide();
-	
-	
-	$("#next").click(function(){
-		if($("#joinId").val() == "" || $("#joinPw1").val() == "") {
+	$("#secondPageup").hide();
+
+	$("#next").click(function() {
+		if ($("#joinId").val() == "" || $("#joinPw1").val() == "" || $("#joinPw2").val() == "" || $("#phoneNum").val() == "" || ($("#accept_mail").is("checked", "true"))) {
 			$("#secondPageup").hide();
-		}else {
-			$("#secondPageup").show()
+		} else if ($("#checkbox1").is(":checked") && $("#checkbox2").is(":checked")) {
+			$("#secondPageup").show();
+		} else if (($("#accept_mail").is(":checked")==true)) {
+			$("#secondPageup").hide();
+		} else {
+			$("#secondPageup").hide()
 			$("#afterSending").hide();
-		}	
+		}
 	});
-	//회원가입 alert
-	$("#register_button").click(function(){
-		alert("회원가입되었습니다.");
-	})
+	
 	// 닉네임 중복확인 검사 추가 필요
 	$("#nickname").keyup(function() {
 		if ($("#nickname").val() == "") {
