@@ -23,18 +23,18 @@ public class ProductController {
 	private ProductService ProductService;
 	
 	@RequestMapping ("productlist.shop")
-	public String productlist(@ModelAttribute ProductBean input ,HttpServletRequest request , Model model) throws Exception{
+	public String productlist(@ModelAttribute ProductBean product ,HttpServletRequest request , Model model) throws Exception{
 		System.out.println("productlist.shop");
-		System.out.println(input.getCategory_id());
+		System.out.println(product.getCategory_id());
 		
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		int page = 1;
 		int limit = 9; // 한 화면에 출력할 상품 수 
 		if ( request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
-		}
-		input.setPage(page);
-		int listcount = ProductService.getProductCount(input);
+		} 
+			product.setPage(page);
+		int listcount = ProductService.getProductCount(product);
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = (((int) ((double) page / 10 + 0.9)) -1) * 10 +1;
 		
@@ -43,21 +43,33 @@ public class ProductController {
 		if (endpage > startpage + 10 -1)
 			endpage = startpage + 10 -1 ;
 		
-		productlist = ProductService.getProductList(input);
+		productlist = ProductService.getProductList(product);
 		System.out.println("productlist:"+productlist);
 		model.addAttribute("productlist",productlist);
-		model.addAttribute("page" , page);
+		model.addAttribute("currentPage" , page);
 		model.addAttribute("startpage" , startpage);
 		model.addAttribute("endpage" , endpage);
 		model.addAttribute("maxpage" , maxpage);
 		model.addAttribute("listcount" , listcount);
-		model.addAttribute("product_nav", input);
+		model.addAttribute("product_nav", product);
 		System.out.println(productlist);
 		System.out.println(listcount);
 		
 		return "product/productlist";
 	}
-	
+	@RequestMapping ("productlistadd.shop")
+	public String productlistadd(String category_id , int currentPage ,ProductBean product , Model model) throws Exception {
+		System.out.println(category_id);
+		System.out.println(currentPage);
+		product.setCategory_id(category_id);
+		product.setPage(currentPage);
+		
+		List<ProductBean> productlist = new ArrayList<ProductBean>();
+		productlist = ProductService.getProductList(product);
+		model.addAttribute("productlist",productlist);
+		model.addAttribute("page" , product.getPage());
+		return "product/productlistadd";
+	}
 	@RequestMapping("product_detail.shop") 
 	public String product_detail(@RequestParam int product_id , Model model) throws Exception {
 		System.out.println("product_detail");

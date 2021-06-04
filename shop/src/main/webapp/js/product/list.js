@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+	
+	console
     var asideCheck = 0; 
     $("#aside-list").hide();
     $(".header-category-detail-nav-name").hide();
@@ -34,14 +35,32 @@ $(document).ready(function() {
         $(this).find(".product-detail-content").css("display" ,"none")
     })
 	// 무한 스크롤
+	var currentPage = 1;
 	$(window).scroll(function(){
 		var scrollHeight = $(document).height();
 		var scrollPosition =$(window).height()+$(window).scrollTop();
 		
 		if(scrollPosition > scrollHeight){
-			alert("무한스크롤");
+			/*alert("무한스크롤");*/
+			const url = new URL(window.location.href);
+			const urlParams = url.searchParams;
+			var category_id = urlParams.get('category_id');
+			/*alert(category_id);
+			alert(currentPage);*/
+			currentPage = currentPage +1; 
+			$.ajax({
+				url: "productlistadd.shop",
+				type: "post",
+				data: {"category_id" : category_id ,
+					  "currentPage" : currentPage },
+				success: function(data) {
+					$("#product_list_section").append(data);
+				},
+				error: function(){
+					alert("상품목록이 없습니다.")
+				}
+			})
 			
-			$("#product_list_section").append('<div id="test">wefwefwe</div>');
 		}
 	})
 })
