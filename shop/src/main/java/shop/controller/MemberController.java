@@ -187,10 +187,13 @@ public class MemberController {
 	public String member_login_check(@RequestParam(value = "loginId") String loginId, 
 									@RequestParam(value = "loginPw") String loginPw,
 									HttpSession session, Model model) throws Exception {
-
+		
 		int result = 0;
 		MemberBean m = service.userCheck(loginId);
 		System.out.println("컨트롤러 로그인검사");
+		System.out.println("loginId: " + loginId);
+		System.out.println("loginPw: " + loginPw);
+		
 		
 		if (m == null) {
 			result = 1;
@@ -198,9 +201,13 @@ public class MemberController {
 			return "member/loginResult";
 		} else {
 			if (m.getPw().equals(loginPw)) {
-				session.setAttribute("member_id", loginId);
-				String nickname = m.getNickname();
-				model.addAttribute("nickname", nickname);
+				/*
+				 * session.setAttribute("member_id", loginId); session.setAttribute("pw",
+				 * loginPw); session.setAttribute("nickname", m.getNickname());
+				 * session.setAttribute("purchase_point", m.getPurchase_point());
+				 */
+				session.setAttribute("m", m);
+				
 				return "main/main";
 			} else {
 				result = 2;

@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main.css" />
 <link rel="stylesheet" type="text/css" href="css/member/register1.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/member/member.js"></script>
+<script src="js/member/member_member.js"></script>
 <title>회원가입</title>
 </head>
 <body>
@@ -22,8 +21,7 @@
 	<section class="main-section-wrapper">
 		<div class="container">
 			<div class="main-section-container">
-				<form method="POST" action="member_complete.shop"
-					onsubmit="return joinCheck1()">
+				<form method="POST" action="member_complete.shop" onsubmit="return joinCheck1()">
 					<input type="hidden" name="accept_mail_value"
 						id="accept_mail_value" value="n" />
 					<div class="register-main-wrapper">
