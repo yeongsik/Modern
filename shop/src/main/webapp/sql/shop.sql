@@ -9,7 +9,7 @@ select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
-
+select * from review;
 
 select * from heart;
 create table stock (
