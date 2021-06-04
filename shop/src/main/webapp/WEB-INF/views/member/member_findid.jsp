@@ -11,10 +11,11 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="./js/member/member_find.js"></script>
 <title>아이디 찾기</title>
-</head> 
+</head>
 <body>
 	<c:if test="${empty sendok}">
 		<section class="main-section-wrapper">

@@ -8,11 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>Modern</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/root.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/product/product_detail.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
@@ -25,7 +20,7 @@
     </script>
 </head>
 <body>
-    <%@ include file="/WEB-INF/views/main/header.jsp"%>
+    <%@ include file="../main/header.jsp"%>
     <div class="container">
         <section class="main-content-wrapper">
              <form method="POST" action ="">
@@ -143,7 +138,7 @@
             </form>
         </section>
     </div>
-    <%@ include file="/WEB-INF/views/main/footer.jsp"%>
+    <%@ include file="../main/footer.jsp"%>
 </body>
 </html>
 
