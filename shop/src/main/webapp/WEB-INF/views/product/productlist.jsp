@@ -8,6 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>상품리스트</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/root.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/product/list.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
@@ -21,6 +26,7 @@
     <%@ include file="/WEB-INF/views/main/header.jsp"%>
     <div class="container">
         <section class="main-content-wrapper">
+        <input type="hidden" id="page" value="${page}">
             <div class="aside-btn-wrapper" id="aside-btn" >
                 <i class="fas fa-briefcase"></i>
             </div>
@@ -32,13 +38,13 @@
                            			Top
                            	</div>
                             <div class="list-aside-top-t_shirts list-aside-content eng">
-                                <a href="productlist.shop?category=top_tshirts">T-shirts</a>
+                                <a href="productlist.shop?category_id=top_tshirts">T-shirts</a>
                             </div>
                             <div class="list-aside-top-t_shirts list-aside-content eng">
-                                <a href="productlist.shop?category=top_tshirts">Shirts</a>
+                                <a href="productlist.shop?category_id=top_tshirts">Shirts</a>
                             </div>
                             <div class="list-aside-top-t_shirts list-aside-content eng">
-                                <a href="productlist.shop?category=top_knit">Knit</a>
+                                <a href="productlist.shop?category_id=top_knit">Knit</a>
                             </div>
                         </div>
                         <div class="product-list-aside-bottom">
@@ -46,13 +52,13 @@
                                 Bottom
                             </div>
                             <div class="list-aside-bottom-jean list-aside-content eng">
-                                <a href="productlist.shop?category=bottom_jean">Jean</a>
+                                <a href="productlist.shop?category_id=bottom_jean">Jean</a>
                             </div>
                             <div class="list-aside-bottom-pants list-aside-content eng">
-                                <a href="productlist.shop?category=bottom_pants">Pants</a>
+                                <a href="productlist.shop?category_id=bottom_pants">Pants</a>
                             </div>
                             <div class="list-aside-bottom-shorts list-aside-content eng">
-                                <a href="productlist.shop?category=bottom_shorts">Shorts</a>
+                                <a href="productlist.shop?category_id=bottom_shorts">Shorts</a>
                             </div>
                         </div>
                         <div class="product-list-aside-outer">
@@ -60,10 +66,10 @@
                                 Outer
                             </div>
                             <div class="list-aside-outer-coat list-aside-content eng">
-                                <a href="productlist.shop?category=outer_coat">Coat</a>
+                                <a href="productlist.shop?category_id=outer_coat">Coat</a>
                             </div>
                             <div class="list-aside-outer-jacket list-aside-content eng">
-                                <a href="productlist.shop?category=outer_jacket">Jacket</a>
+                                <a href="productlist.shop?category_id=outer_jacket">Jacket</a>
                             </div>
                         </div>
                         <div class="product-list-aside-acc">
@@ -71,13 +77,13 @@
                                 Acc
                             </div>
                             <div class="list-aside-acc-shoes list-aside-content eng">
-                                <a href="productlist.shop?category=acc_shoes">Shoes</a>
+                                <a href="productlist.shop?category_id=acc_shoes">Shoes</a>
                             </div>
                             <div class="list-aside-acc-socks list-aside-content eng">
-                                <a href="productlist.shop?category=acc_socks">Socks</a>
+                                <a href="productlist.shop?category_id=acc_socks">Socks</a>
                             </div>
                             <div class="list-aside-acc-jewelry list-aside-content eng">
-                                <a href="productlist.shop?category=acc_jewelry">Jewelry</a>
+                                <a href="productlist.shop?category_id=acc_jewelry">Jewelry</a>
                             </div>
                         </div>
                     </div>
@@ -107,9 +113,9 @@
                     </div>
                     <div class="product-list-content-list eng">
                         <ul>
-                            <a href="productlist.shop?category=top_tshirts"><li class="list-nav">T-shirts</li></a>
-                            <a href="productlist.shop?category=top_shirts"><li class="list-nav">Shirts</li></a>
-                            <a href="productlist.shop?category=top_knit"><li class="list-nav">Knit</li></a>
+                            <a href="productlist.shop?category_id=top_tshirts"><li class="list-nav">T-shirts</li></a>
+                            <a href="productlist.shop?category_id=top_shirts"><li class="list-nav">Shirts</li></a>
+                            <a href="productlist.shop?category_id=top_knit"><li class="list-nav">Knit</li></a>
                         </ul>
                     </div>
                   </c:if>
@@ -119,9 +125,9 @@
                     </div>
                     <div class="product-list-content-list eng">
                         <ul>
-                            <a href="productlist.shop?category=bottom_jean"><li class="list-nav">Jean</li></a>
-                            <a href="productlist.shop?category=bottom_pants"><li class="list-nav">Pants</li></a>
-                            <a href="productlist.shop?category=bottom_shorts"><li class="list-nav">Shorts</li></a>
+                            <a href="productlist.shop?category_id=bottom_jean"><li class="list-nav">Jean</li></a>
+                            <a href="productlist.shop?category_id=bottom_pants"><li class="list-nav">Pants</li></a>
+                            <a href="productlist.shop?category_id=bottom_shorts"><li class="list-nav">Shorts</li></a>
                         </ul>
                     </div>
                   </c:if>
@@ -131,8 +137,8 @@
                     </div>
                     <div class="product-list-content-list eng">
                         <ul>
-                            <a href="productlist.shop?category=outer_coat"><li class="list-nav">Coat</li></a>
-                            <a href="productlist.shop?category=outer_jacket"><li class="list-nav">Jacket</li></a>
+                            <a href="productlist.shop?category_id=outer_coat"><li class="list-nav">Coat</li></a>
+                            <a href="productlist.shop?category_id=outer_jacket"><li class="list-nav">Jacket</li></a>
                         </ul>
                     </div>
                   </c:if>
@@ -142,14 +148,14 @@
                     </div>
                     <div class="product-list-content-list eng">
                         <ul>
-                            <a href="productlist.shop?category=acc_shoes"><li class="list-nav">Shoes</li></a>
-                            <a href="productlist.shop?category=acc_socks"><li class="list-nav">Socks</li></a>
-                            <a href="productlist.shop?category=acc_jewelry"><li class="list-nav">Jewelry</li></a>
+                            <a href="productlist.shop?category_id=acc_shoes"><li class="list-nav">Shoes</li></a>
+                            <a href="productlist.shop?category_id=acc_socks"><li class="list-nav">Socks</li></a>
+                            <a href="productlist.shop?category_id=acc_jewelry"><li class="list-nav">Jewelry</li></a>
                         </ul>
                     </div>
                   </c:if>
                     <div class="product-list-content-container" id="product_list_section">
-                    	<c:forEach items ="${productlist }" var ="product">
+                    	<%-- <c:forEach items ="${productlist }" var ="product">
                         <div class="product-list-detail-wrapper" id="product_id" onClick="location.href='product_detail.shop?product_id=${product.product_id}'">
                             <div class="product-list-img-wrapper">
                                 <img class="product-list-img" src="product_images/${product.product_thumbnail}.png">
@@ -166,7 +172,8 @@
                                 </div>
                             </div>
                         </div>
-                    	</c:forEach>
+                    	</c:forEach> --%>
+                    	<%@ include file="/WEB-INF/views/product/productlistadd.jsp"%>
                     </div>
                 </div>
             </div>

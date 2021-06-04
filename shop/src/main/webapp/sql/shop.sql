@@ -10,6 +10,8 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 
+
+select * from heart;
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,

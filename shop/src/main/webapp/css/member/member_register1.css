@@ -4,7 +4,6 @@
 .main-section-wrapper{
    display:flex;
    justify-content: center;
-   
 }
 
 .main-section-container{
@@ -13,6 +12,7 @@
 }
 .register-form {
     display:flex;
+   /*  height:600px; */
 } 
 .register-main-wrapper {
     display:flex;
@@ -25,7 +25,6 @@
 }
 .register-contents-wrapper {
     width:300px;
-    /* height:350px; */
 }
 
 /*체크 부분  */
@@ -38,7 +37,7 @@
     position: relative;
 }
 .register-input-contents {
-    height: 340px;
+    /* height: 340px; */
     width:315px;
 }
 .register-id-box{
@@ -192,7 +191,7 @@ input:focus {
 .register-verify-contents-wrapper {
     padding:auto;
     margin-left:2px;
-    height: 150px;
+   /*  height: 150px; */
 }
 .register-phone-input-verify-wrapper-box{
     margin-left:5px;
@@ -249,7 +248,7 @@ input:focus {
     width:390px;
 }
 .register-secondpage-input-contents {
-    height: 290px;
+    /* height: 290px; */
     width:315px;
 }
 .register-nickname-box{
