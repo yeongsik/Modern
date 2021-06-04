@@ -11,9 +11,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/main.css" />
-<link rel="stylesheet" type="text/css" href="css/member/register1.css">
+<link rel="stylesheet" type="text/css" href="./css/member/member_register1.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/member/member_member.js"></script>
+
 <title>회원가입</title>
 </head>
 <body>
@@ -147,7 +148,7 @@
 								</ol>
 							</div>
 							<div class="register-btn-wrapper">
-								<input type="submit" class="register-btn-wrapper-input kor"
+								<input type="submit" class="register-btn-wrapper-input-button kor"
 									id="register_button" onclick="joinCheck1() " value="회원가입">
 							</div>
 						</div>

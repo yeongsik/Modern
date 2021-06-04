@@ -5,11 +5,11 @@
 	<!-- 상품목록 -->
 	<!-- top -->
 	<select id="productlist" parameterType="shop.model.ProductBean" resultType="shop.model.ProductBean">
-		<![CDATA[
-		select * from 
-			(select rownum rnum,p.* from 
-        	(select * from product left outer join product_detail on product.product_detail = product_detail.product_detail
-        	 where category_id = #{category_id} order by product_date desc) p) 
+  	 	<![CDATA[
+      		  select * from 
+            (select rownum rnum,p.* from 
+            (select * from product left outer join product_detail on product.product_detail = product_detail.product_detail
+             where category_id = #{category_id} order by product_date desc) p) 
              where rnum >= ((#{page}-1) * 9+1) and rnum <= (#{page}*9)
         ]]>
 	</select>

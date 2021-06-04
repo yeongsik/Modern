@@ -5,11 +5,17 @@ select * from product_detail;
 select * from CATEGORY;
 select * from member;
 select * from member;
+select * from heart;
 select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
+<<<<<<< HEAD
 select * from review;
+=======
+
+delete from heart;
+>>>>>>> branch 'version1.0.2' of https://github.com/youngsik0266/modern.git
 
 select * from heart;
 create table stock (
