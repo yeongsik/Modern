@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
+import shop.model.HeartBean;
 import shop.model.MemberBean;
 
 
@@ -36,5 +37,15 @@ public class MemberService {
 	// 로그인 검사
 	public MemberBean userCheck(String id)throws Exception{
 		return md.userCheck(id);
+	}
+	
+	// 관심상품 등록
+	public int enrollLikey(HeartBean hb) throws Exception {
+	  return md.enrollLikey(hb);
+	}
+	
+	// 관심상품 등록 여부 확인
+	public int likeyState(HeartBean hb) throws Exception {
+	  return md.likeyState(hb);
 	}
 }

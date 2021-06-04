@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.model.ProductBean;
-import shop.model.ProductInput;
 import shop.service.ProductService;
 
 @Controller
@@ -74,6 +73,7 @@ public class ProductController {
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);
 		System.out.println(product_id);
+		
 		return "product/product_detail";
 	}
 }

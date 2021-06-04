@@ -5,10 +5,13 @@ select * from product_detail;
 select * from CATEGORY;
 select * from member;
 select * from member;
+select * from heart;
 select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
+
+delete from heart;
 
 create table stock (
 				stock_id varchar2(100) primary key,

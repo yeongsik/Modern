@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.service.MemberService;
+import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.ProductBean;
+
 import org.springframework.ui.Model;
 @Controller
 public class MemberController {
   @Autowired
   private MemberService service;
-
+  
   // 마이페이지 메인화면
   @RequestMapping("member_main.shop")
   public String main() {
@@ -279,10 +282,34 @@ public class MemberController {
 			return "member/member_findpw";
 
 		}
-
+ 
 	}
   
-  
+  // 관심상품 등록
+	@RequestMapping("product_likey.shop")
+  public String likey(
+      /* @RequestParam("member_id") String member_id, */ @RequestParam("product_id") int product_id, Model model) throws Exception {
+    /* System.out.println("member_id : " + member_id); */
+	  System.out.println("product_id : " + product_id);
+	  
+	  HeartBean hb = new HeartBean();
+    /* hb.setMember_id(member_id); */
+	  hb.setMember_id("hama");
+	  hb.setProduct_id(product_id);
+	  
+	  int result = service.enrollLikey(hb);
+	  System.out.println("result : " + result);
+	  
+	  // 관심상품 등록 여부 확인
+	  int likeyState = service.likeyState(hb);
+	  System.out.println("likeyState : " + likeyState);
+	  
+	  model.addAttribute("hb",hb);
+	  model.addAttribute("likeyState",likeyState);
+	  
+    return "forward:product_detail.shop";
+    /* return "product/product_detail"; */
+	}
   
   
   

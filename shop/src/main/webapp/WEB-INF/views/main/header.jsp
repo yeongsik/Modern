@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="css/main.css">
 <div class="header-container">
     <header class="header-wrapper">
         <div class="header-sitename">
@@ -18,12 +19,12 @@
             <div class="header-category-detail-nav-name header-category-detail-nav-acc eng"><a href="productlist.shop?category_id=acc_shoes">Acc</a></div>
         </div>
         <div class="header-member-section">
-		<c:if test="${sessionScope.member_id == null }">
+		<%-- <c:if test="${sessionScope.member_id == null }">
         	<div class="header-member-section-content eng">
         		<a class="eng" href="login.shop">LogIn</a>
         	</div>
        	</c:if> 
-       	<c:if test="${sessionScope.member_id != null }">
+       	<c:if test="${sessionScope.member_id != null }"> --%>
             <div class="header-member-section-content header-member-section-heart">
                 <a href="member_interest.shop"><i class="fas fa-heart"></i></a>
             </div>
@@ -33,7 +34,7 @@
             <div class="header-member-section-content header-member-section-member">
                 <a href="member_main.shop"><i class="fas fa-user"></i></a>
             </div>
-       	</c:if>
+       	<%-- </c:if> --%>
         </div>
     </header>
 </div>
