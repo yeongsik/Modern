@@ -18,8 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
     <script src="js/product/product_detail.js"></script>
-    <script 
-    src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/78e568182c.js"></script>
+    <script>
+      <c:set var="product_id" value="${product.product_id}" />
+      var p_id = '<c:out value='${product_id}'/>';
     </script>
 </head>
 <body>
@@ -37,7 +39,12 @@
                                 ${product.product_name}
                             </div>
                             <div class="product-detail-product-heart">
-                                <i class="fas fa-heart product-heart"></i>
+	                            <c:if test="${likeyState == 1}">
+									<i class="fas fa-heart product-heart"></i>
+								</c:if>    
+	                            <c:if test="${likeyState != 1}"> 
+									<i class="far fa-heart product-heart" onClick="enroll()"></i>
+								</c:if> 
                             </div>
                         </div>
                         <div class="product-detail-product-price kor">

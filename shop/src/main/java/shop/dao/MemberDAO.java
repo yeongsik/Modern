@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import shop.model.HeartBean;
 import shop.model.MemberBean;
 
 @Repository
@@ -60,4 +61,17 @@ public class MemberDAO {
 		return (MemberBean) session.selectOne("login_check", loginId);
 	}
 
+	// 관심상품 등록
+	public int enrollLikey(HeartBean hb) throws Exception {
+	  return session.insert("enroll_likey", hb);
+	}
+	
+	// 관심상품 등록 여부 확인
+	public int likeyState(HeartBean hb) throws Exception {
+	  int state = -1; // 미등록 상태
+	  HeartBean result = (HeartBean) session.selectOne("likey_state", hb);
+	  if(result != null) state = 1; // 등록 상태
+	  return state;
+	}
+	
 }

@@ -85,6 +85,7 @@ public class ProductController {
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);
 		System.out.println(product_id);
+		
 		return "product/product_detail";
 	}
 }
