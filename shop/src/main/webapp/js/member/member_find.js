@@ -1,5 +1,17 @@
 function check() {
     // db와 비교해서 추가 작성 필요
+    if ($.trim($("#authNick").val()) == "") {
+        $("#nickInputCheck").text("닉네임을 입력하세요.");
+        $("#nickInputCheck").css("color", "red");
+        $("#authNick").focus();
+        return false;
+    }
+	if ($.trim($("#email").val()) == "") {
+        $("#emailInputCheck").text("이메일을 입력하세요.");
+        $("#emailInputCheck").css("color", "red");
+        $("#email").focus();
+        return false;
+    }
     if ($.trim($("#authId").val()) == "") {
         $("#idInputCheck").text("아이디를 입력하세요.");
         $("#idInputCheck").css("color", "red");
@@ -12,13 +24,7 @@ function check() {
         $("#email").focus();
         return false;
     }
-    if ($.trim($("#authNum").val()) == "") {
-        $("#authNumInputCheck").text("인증번호를 입력하세요.");
-        $("#authNumInputCheck").css("color", "red");
-        $("#authNum").focus();
-        return false;
-    }
-}
+} 
 
 $(function () {
 	
@@ -27,6 +33,13 @@ $(function () {
             $("#idInputCheck").empty();
         } else {
             $("#idInputCheck").empty();
+        }
+    });
+	$("#authNick").keyup(function () {
+        if ($("#authNick").val() == "") {
+            $("#nickInputCheck").empty();
+        } else {
+            $("#nickInputCheck").empty();
         }
     });
 	
@@ -53,8 +66,6 @@ $(function () {
 });
 $("#sendMail").click(function() {// 메일 입력 유효성 검사
 		var mail = $("#mail").val(); //사용자의 이메일 입력값. 
-			
-			mail = mail+"@"+$("#domain").val(); //셀렉트 박스에 @뒤 값들을 더함.
 			$.ajax({
 				type : 'post',
 				url : '/checkMail',
