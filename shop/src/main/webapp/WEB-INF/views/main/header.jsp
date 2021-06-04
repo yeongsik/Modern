@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<script src="js/header.js"></script>
 	<div class="header-container">
 	    <header class="header-wrapper">
 	        <div class="header-sitename">
