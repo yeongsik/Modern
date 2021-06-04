@@ -35,8 +35,8 @@
 									<ol class="register-id-box">
 										<li class="register-id-title">아이디 <i class="fas fa-check"
 											id="idCheckComplete"></i></li>
-										<li class="register-id-input-wrapper"><input type="text"
-											class="register-id-input" id="joinId" name="member_id"
+										<li class="register-id-input-wrapper">
+										<input type="text" class="register-id-input" id="joinId" name="member_id"
 											maxlength="12" placeholder="아이디 입력"> <input
 											type="button" class="register-id-auth-input-button"
 											value="중복 확인" onclick="id_check()">
@@ -75,7 +75,7 @@
 											<li class="register-verify-box-check-all"><input
 												type="checkbox" class="register-verify-box-check-1"
 												id="checkAll"> 모두 동의 (선택 정보 포함)
-												<div id="checkboxResult"></div></li>
+												<div class="result-divs"  id="checkboxResult"></div></li>
 											<li class="register-verify-box-check-list1"><input
 												type="checkbox" class="register-verify-box-check-2"
 												id="checkbox1"> [필수]이용약관 동의 <a href="#"
@@ -134,7 +134,7 @@
 								</ol>
 							</div>
 							<div class="register-btn-wrapper">
-								<input type="submit" class="register-btn-wrapper-input"
+								<input type="submit" class="register-btn-wrapper-input-button"
 									id="register_button" onclick="joinCheck1() " value="회원가입">
 							</div>
 						</div>
@@ -143,6 +143,6 @@
 			</div>
 		</div>
 	</section>
-	<%-- <%@ include file="../main/footer.jsp" %> --%>
+	 <%@ include file="../main/footer.jsp" %>
 </body>
 </html>

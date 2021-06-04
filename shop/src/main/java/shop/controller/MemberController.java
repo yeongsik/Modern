@@ -178,7 +178,7 @@ public class MemberController {
 		
 		service.insertMember(member);
 
-		return "member/member_login";
+		return "member/register_result";
 	}
 	
 

@@ -12,7 +12,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="./js/member_find.js"></script>
+<script src="./js/member/member_find.js"></script>
 <title>아이디 찾기</title>
 </head> 
 <body>
@@ -31,14 +31,15 @@
 								<ol class="register-phone-box">
 									<li class="register-phone-title">닉네임</li>
 									<li class="register-phone-input-wrapper"><input
-										class="register-phone-input-first" id="authId" name="nickname"
+										class="register-phone-input-first" id="authNick" name="nickname"
 										placeholder="닉네임을 입력해주세요."></li>
-									<div class="result-divs" id="idInputCheck"></div>
+									<div class="result-divs" id="nickInputCheck"></div>
 									<li class="register-phone-title">이메일 주소</li>
 									<li class="register-phone-input-wrapper"><input
 										class="register-phone-input-first" id="email" name="email"
 										placeholder="등록하신 이메일을 입력해주세요."> <input type="submit"
-										class="register-phone-input-button" value="인증메일 받기"></li>
+										class="register-phone-input-button" id="sendMail" value="인증메일 받기"></li>
+									<div id="emailInputCheck"></div>	
 								</ol>
 							</div>
 						</div>
