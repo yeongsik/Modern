@@ -2,6 +2,7 @@
 
 function joinCheck1() {
 
+
 	if ($.trim($("#joinId").val()) == "") {
 		$("#idCheckResult").text("아이디를 입력해주세요.");
 		$("#idCheckResult").css("color", "red");
@@ -47,63 +48,113 @@ function joinCheck1() {
 	} else {
 		$("#accept_mail_value").val('n');
 	}
-	
 
+	//2페이지 유효성 검사
+	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	var genterTest = /^[1-4]{1}$/;
+
+	if ($.trim($("#nickname").val()) == "") {
+		$("#nicknameResult").css("color", "red");
+		$("#nickname").focus();
+		return false;
+	}
+	if ($.trim($("#email").val()) == "") {
+		$("#emailCheckResult").text("이메일을 입력해 주세요.");
+		$("#emailCheckResult").css("color", "red");
+		$("#email").focus();
+		return false;
+	}
+	if (!emailTest.test($("#email").val())) {
+		$("#emailCheckResult").text("유효한 이메일을 입력해 주세요.");
+		$("#emailCheckResult").css("color", "red");
+		$("#email").focus();
+		return false;
+	}
+	if ($.trim($("#birth").val()) == "") {
+		$("#birthResult").text("주민번호 앞자리를 입력해주세요");
+		$("#birthResult").css("color", "red");
+		$("#birth").focus();
+		return false;
+	}
+	if ($("#birth").val().length != 6) {
+		$("#birthResult").text("주민번호 앞자리를 올바르게 입력해 주세요");
+		$("#birthResult").css("color", "red");
+		$("#birth").focus();
+		return false;
+	}
+	if ($.trim($("#gender").val()) == "") {
+		$("#birthResult").text("주민번호 뒷자리 를 입력해 주세요");
+		$("#birthResult").css("color", "red");
+		$("#gender").focus();
+		return false;
+	}
+	if (!genterTest.test($("#gender").val())) {
+		$("#birthResult").text("주민번호 뒷자리를 올바르게 입력해 주세요");
+		$("#birthResult").css("color", "red");
+		$("#gender").focus();
+		return false;
+	}
 }
-	//아이디 중복확인
+
+
+//아이디 중복확인 초기형
 function id_check() {
-		var memid=$("#joinId").val();
-		
-    $.ajax({
-        type:"POST",
-        url:"member_idcheck.shop",
-        data: {"memid":memid},        //키 벨류값
-        success: function (data) { 
-      	  if(data==1){	//중복 ID
-      		var newtext='<font color="red">중복 아이디입니다.</font>';
-      			$("#idCheckResult").text('');
-        		$("#idCheckResult").show();
-        		$("#idCheckResult").append(newtext);
-          		$("#joinId").val('').focus();
-          		return false;
-	     
-      	  }else{	//사용 가능한 ID
-      		var newtext='<font color="blue">사용가능한 아이디입니다.</font>';
-      		$("#idCheckResult").text('');
-      		$("#idCheckResult").show();
-      		$("#idCheckResult").append(newtext);
-      		$("#joinPw1").focus();
-      	  }  	    	  
-        }
-      });//$.ajax
+	var memid = $("#joinId").val();
+
+	$.ajax({
+		type: "POST",
+		url: "member_idcheck.shop",
+		data: { "memid": memid },        //키 벨류값
+		success: function(data) {
+			if (data.cnt > 0) {	//중복 ID
+				var newtext = '<font color="red">중복 아이디입니다.</font>';
+				$("#idCheckResult").text('');
+				$("#idCheckResult").show();
+				$("#idCheckResult").append(newtext);
+				$("#joinId").val('').focus();
+				return false;
+
+			} else if ($.trim($("#joinId").val()) == "") {
+				$("#idCheckResult").text("아이디를 입력해주세요.");
+				$("#idCheckResult").css("color", "red");
+				$("#joinId").focus()
+			} else {	//사용 가능한 ID
+				var newtext = '<font color="blue">사용가능한 아이디입니다.</font>';
+				$("#idCheckResult").text('');
+				$("#idCheckResult").show();
+				$("#idCheckResult").append(newtext);
+				$("#joinPw1").focus();
+			}
+		}
+	});//$.ajax
 }
 
 //닉네임 중복확인
 function nickname_check() {
-		var memnickname=$("#nickname").val();
-		
-    $.ajax({
-        type:"POST",
-        url:"member_nickcheck.shop",
-        data: {"memnickname":memnickname},        //키 벨류값
-        success: function (data) { 
-      	  if(data==1){	//중복 ID
-      		var newtext='<font color="red">중복 닉네임입니다.</font>';
-      			$("#nicknameResult").text('');
-        		$("#nicknameResult").show();
-        		$("#nicknameResult").append(newtext);
-          		$("#nickname").val('').focus();
-          		return false;
-	     
-      	  }else{	//사용 가능한 ID
-      		var newtext='<font color="blue">사용가능한 닉네임입니다.</font>';
-      		$("#nicknameResult").text('');
-      		$("#nicknameResult").show();
-      		$("#nicknameResult").append(newtext);
-      		$("#email").focus();
-      	  }  	    	  
-        }
-      });//$.ajax
+	var memnickname = $("#nickname").val();
+
+	$.ajax({
+		type: "POST",
+		url: "member_nickcheck.shop",
+		data: { "memnickname": memnickname },        //키 벨류값
+		success: function(data) {
+			if (data == 1) {	//중복 ID
+				var newtext = '<font color="red">중복 닉네임입니다.</font>';
+				$("#nicknameResult").text('');
+				$("#nicknameResult").show();
+				$("#nicknameResult").append(newtext);
+				$("#nickname").val('').focus();
+				return false;
+
+			} else {	//사용 가능한 ID
+				var newtext = '<font color="blue">사용가능한 닉네임입니다.</font>';
+				$("#nicknameResult").text('');
+				$("#nicknameResult").show();
+				$("#nicknameResult").append(newtext);
+				$("#email").focus();
+			}
+		}
+	});//$.ajax
 }
 
 $(function() {
@@ -208,65 +259,30 @@ $(function() {
 	});
 });
 
-// 2p 닉네임 ajax로 중복검사 필요 휴대폰 인증에서 생년월일과 성별을 가져올 경우 생년월일과 성별입력란은 사용X 주민등록번호 형식으로
-// 입력을 받는데 생년월일으로 적혀있는게 어색하여 주민등록번호로 변경.
-function joinCheck2() {
-	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-	var genterTest = /^[1-4]{1}$/;
-
-	if ($.trim($("#nickname").val()) == "") {
-		$("#nicknameResult").text("닉네임을 입력해 주세요.");
-		$("#nicknameResult").css("color", "red");
-		$("#nickname").focus();
-		return false;
-	}
-	if ($.trim($("#email").val()) == "") {
-		$("#emailCheckResult").text("이메일을 입력해 주세요.");
-		$("#emailCheckResult").css("color", "red");
-		$("#email").focus();
-		return false;
-	}
-	if (!emailTest.test($("#email").val())) {
-		$("#emailCheckResult").text("유효한 이메일을 입력해 주세요.");
-		$("#emailCheckResult").css("color", "red");
-		$("#email").focus();
-		return false;
-	}
-	if ($.trim($("#birth").val()) == "") {
-		$("#birthResult").text("주민번호 앞자리를 입력해주세요");
-		$("#birthResult").css("color", "red");
-		$("#birth").focus();
-		return false;
-	}
-	if ($("#birth").val().length != 6) {
-		$("#birthResult").text("주민번호 앞자리를 올바르게 입력해 주세요");
-		$("#birthResult").css("color", "red");
-		$("#birth").focus();
-		return false;
-	}
-	if ($.trim($("#gender").val()) == "") {
-		$("#birthResult").text("주민번호 뒷자리 를 입력해 주세요");
-		$("#birthResult").css("color", "red");
-		$("#gender").focus();
-		return false;
-	}
-	if (!genterTest.test($("#gender").val())) {
-		$("#birthResult").text("주민번호 뒷자리를 올바르게 입력해 주세요");
-		$("#birthResult").css("color", "red");
-		$("#gender").focus();
-		return false;
-	}
-}
-
+//2페이지 소환
 $(function() {
 	$("#nicknameCheckComplete").hide();
 	$("#emailCheckComplete").hide();
 	$("#birthCheckComplete").hide();
+	$("#secondPageup").hide();
+
+	$("#next").click(function() {
+		if ($("#joinId").val() == "" || $("#joinPw1").val() == "" || $("#joinPw2").val() == "" || $("#phoneNum").val() == "" || ($("#accept_mail").is("checked", "true"))) {
+			$("#secondPageup").hide();
+		} else if ($("#checkbox1").is(":checked") && $("#checkbox2").is(":checked")) {
+			$("#secondPageup").show();
+		} else if (($("#accept_mail").is(":checked")==true)) {
+			$("#secondPageup").hide();
+		} else {
+			$("#secondPageup").hide()
+			$("#afterSending").hide();
+		}
+	});
+	
 	// 닉네임 중복확인 검사 추가 필요
 	$("#nickname").keyup(function() {
 		if ($("#nickname").val() == "") {
 			$("#nicknameCheckComplete").hide();
-			$("#nicknameResult").text("닉네임을 입력해 주세요.");
 			$("#nicknameResult").css("color", "red");
 			$("#nickname").focus();
 			return false;

@@ -1,0 +1,161 @@
+@import url(css/root.css);
+
+/*-------------------*/
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-section-wrapper{
+   display:flex;
+   justify-content: center;
+}
+
+.main-section-container{
+    display:flex;
+    margin: 50px; 
+}
+.login-form {
+    height:600px;
+}
+.login-main-wrapper {
+    display: flex;
+    width:320px;
+}
+.login-main-text {
+    text-align: center;
+    font-size: var(--font-size-h3);
+    width:315px;
+}
+.login-contents-wrapper {
+    width:300px;
+    height:400px;
+}
+/*체크 부분  */
+.fas, 
+.fa-check {
+    color: var(--color-darkgrey);
+}
+.login-box-wrapper {
+    height: 220px;
+}
+.login-input-contents {
+    height: 230px;
+}
+.login-id-box{
+	margin-top:15px;
+	width: 307px;
+    padding: 5px;
+    list-style:none;
+}
+.login-id-title{
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+    font-size: 20px;
+}
+.login-id-input-wrapper {
+    margin-top: 5px;
+}
+.login-id-input {
+    width: 300px;
+    height:35px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+input:focus {
+    outline:none;
+    box-shadow: 0 0 0 1px #97989b;
+}
+
+.login-pw-box {
+	width: 307px;
+    margin-top: 15px;
+    padding: 5px;
+    list-style:none;
+}
+.login-pw-title {
+    font-size: var(--font-size-h6);
+    font: var(--font-kor);
+    font-size: 20px;
+}
+.login-pw-input-wrapper {
+    margin-top: 5px;
+}
+.login-pw-input {
+    width: 300px;
+    height:35px;
+    font: var(--font-kor);
+    border: 1.5px solid #dbd8ce;
+    border-radius: 2px;
+}
+.login-btn-wrapper {
+    padding:5px;
+    margin-top: 30px;
+}
+.login-btn-wrapper-input {
+    height:40px;
+    width:308px;
+    padding: 5px 0 5px 0;
+    background-color: #97989b;
+    color: #f9f9f9;
+    outline: 1px solid #c4c6c5;
+    font: var(--font-kor);
+    border-radius: 2px;
+    border-style: none;
+    font-size: 22px;
+}
+.login-btn-wrapper-input:hover {
+	cursor:pointer;
+} 
+.login-find-contents {
+    margin-top:30px;
+    padding:15px 5px ;
+}
+.login-find-contents-wrapper {
+    width:306px;
+}
+.login-find-text {
+    font-size: 15px;
+}
+.login-find-text-id{
+    text-decoration: none;
+    color:#3d3d3d;
+    font: var(--font-kor);
+}
+.login-find-text-pw {
+    text-decoration: none;
+    color:#3d3d3d;
+    font: var(--font-kor);
+}
+.login-find-text-member {
+    text-decoration: none;
+    float:right;
+    color:#3d3d3d;
+    font: var(--font-kor);
+}
+.login-signup-wrapper {
+    padding:5px;
+    
+}
+.login-external-contents{ 
+    width:100px;
+}
+.login-external-contents-gg {
+    font-size:25px;
+    text-decoration: none;
+    color:#3d3d3d;
+}
+.login-external-contents-fb {
+    font-size:25px;
+    text-decoration: none;
+    color:#3d3d3d;
+}
+.login-external-contents-gh {
+    font-size:25px;
+    text-decoration: none;
+    color:#3d3d3d;
+}
+.result-divs {
+    height:5px;
+}

@@ -13,6 +13,7 @@ select * from stock;
 
 delete from heart;
 
+select * from heart;
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,

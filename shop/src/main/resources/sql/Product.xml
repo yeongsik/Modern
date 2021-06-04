@@ -12,7 +12,6 @@
              where category_id = #{category_id} order by product_date desc) p) 
              where rnum >= ((#{page}-1) * 9+1) and rnum <= (#{page}*9)
         ]]>
-            
 	</select>
 	
     <!-- 상품 총 갯수 -->
