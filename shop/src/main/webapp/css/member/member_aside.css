@@ -1,19 +1,19 @@
 @charset "UTF-8";
 /* aside */
 .member-content-nav-container {
-  width: 20%;
-  border: 1px solid var(--color-grey);
-  margin-top: 60px;
-  padding: 10px 0 30px 30px;
+	width: 20%;
+	border: 1px solid var(--color-grey);
+	margin-top: 60px;
+	padding: 10px 0 30px 30px;
+	color:var(--color-black);
 }
 .member-content-nav-items-title {
-  font: var(--font-kor);
-  font-size: var(--font-size-h5);
-  font-weight: bold;
-  margin: 15px 0 15px 0;
+	font-size:15px;
+	font-weight: 600;
+	margin: 15px 0 15px 0;
 }
 .member-content-nav-items-subtitle {
-  font: var(--font-kor);
-  margin-left: 20px;
-  margin-bottom: 10px;
+	font-size:12px;
+	margin-left: 20px;
+	margin-bottom: 10px;
 }

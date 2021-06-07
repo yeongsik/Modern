@@ -18,9 +18,9 @@
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>  
-  <section class="member-content-wrapper">
+  <section class="container">
     <!-- content header -->
-    <div class="member-content-container">
+    <div class="main-content-wrapper">
       <%@ include file="../member/member_header.jsp"%>  
 
       <!-- content main -->

@@ -1,65 +1,30 @@
-@import url(css/root.css);
+@charset "UTF-8";
+@import url("../main.css");
 
 /*-------------------*/
-.container {
-    display: flex;
-    justify-content: center;
-}
-
-.main-section-wrapper{
+.main-section-container{
    display:flex;
    justify-content: center;
-}
-
-.main-section-container{
-    display:flex;
-    margin: 50px; 
-}
-.login-form {
-    height:600px;
-}
-.login-main-wrapper {
-    display: flex;
-    width:320px;
 }
 .login-main-text {
     text-align: center;
     font-size: var(--font-size-h3);
-    width:315px;
-}
-.login-contents-wrapper {
-    width:300px;
-    height:400px;
-}
-/*체크 부분  */
-.fas, 
-.fa-check {
-    color: var(--color-darkgrey);
-}
-.login-box-wrapper {
-    height: 220px;
-}
-.login-input-contents {
-    height: 230px;
+    padding-bottom : 30px;
 }
 .login-id-box{
-	margin-top:15px;
-	width: 307px;
-    padding: 5px;
+	padding: 5px;
     list-style:none;
 }
-.login-id-title{
+.login-title{
     font-size: var(--font-size-h6);
-    font: var(--font-kor);
-    font-size: 20px;
+    font-size: 18px;
 }
-.login-id-input-wrapper {
-    margin-top: 5px;
+.login-input-wrapper {
+    margin-top: 15px;
 }
-.login-id-input {
+.login-input {
     width: 300px;
     height:35px;
-    font: var(--font-kor);
     border: 1.5px solid #dbd8ce;
     border-radius: 2px;
 }
@@ -69,75 +34,45 @@ input:focus {
 }
 
 .login-pw-box {
-	width: 307px;
-    margin-top: 15px;
-    padding: 5px;
+	padding: 5px;
     list-style:none;
-}
-.login-pw-title {
-    font-size: var(--font-size-h6);
-    font: var(--font-kor);
-    font-size: 20px;
-}
-.login-pw-input-wrapper {
-    margin-top: 5px;
-}
-.login-pw-input {
-    width: 300px;
-    height:35px;
-    font: var(--font-kor);
-    border: 1.5px solid #dbd8ce;
-    border-radius: 2px;
 }
 .login-btn-wrapper {
     padding:5px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .login-btn-wrapper-input {
     height:40px;
-    width:308px;
-    padding: 5px 0 5px 0;
+    width:100%;
+    padding: 5px;    
     background-color: #97989b;
     color: #f9f9f9;
     outline: 1px solid #c4c6c5;
-    font: var(--font-kor);
     border-radius: 2px;
     border-style: none;
-    font-size: 22px;
+    font-size: 20px;
 }
 .login-btn-wrapper-input:hover {
 	cursor:pointer;
 } 
 .login-find-contents {
-    margin-top:30px;
     padding:15px 5px ;
 }
-.login-find-contents-wrapper {
-    width:306px;
-}
-.login-find-text {
+.login-find-text{
     font-size: 15px;
-}
-.login-find-text-id{
     text-decoration: none;
     color:#3d3d3d;
-    font: var(--font-kor);
-}
-.login-find-text-pw {
-    text-decoration: none;
-    color:#3d3d3d;
-    font: var(--font-kor);
 }
 .login-find-text-member {
+	font-size: 15px;
     text-decoration: none;
-    float:right;
     color:#3d3d3d;
-    font: var(--font-kor);
+    float:right;
 }
 .login-signup-wrapper {
-    padding:5px;
-    
+    padding:10px;
 }
+
 .login-external-contents{ 
     width:100px;
 }

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./css/member/member_findpw.css" />
+<link rel="stylesheet" type="text/css" href="./css/member/member_find.css" />
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
@@ -23,29 +23,30 @@
 				<form method="post" action="member_findpw_ok.shop"
 					onsubmit="return check()">
 					<div class="register-main-wrapper">
-						<div class="register-main-text">비밀번호 찾기</div>
+						<div class="register-main-text kor">비밀번호 찾기</div>
 					</div>
 					<article class="register-contents-wrapper">
 						<div class="register-box-wrapper">
 							<div class="register-input-contents">
 								<ol class="register-phone-box">
-									<li class="register-phone-title">아이디</li>
-									<li class="register-phone-input-wrapper"><input
-										class="register-phone-input-first" name="member_id"
-										id="authId" placeholder="아이디를 입력해주세요.">
-										<div class="result-divs" id="idInputCheck"></div></li>
-									<li class="register-phone-title">이메일 주소</li>
-									<li class="register-phone-input-wrapper"><input
-										class="register-phone-input-first" name="email" id="email"
-										placeholder="등록하신 이메일을 입력해주세요."> <input type="submit"
-										class="register-phone-input-button" id="sendMail"
-										value="인증번호 받기">
-										<div class="result-divs" id="emailInputCheck"></div></li>
+									<li class="register-phone-title kor">아이디</li>
+									<li class="register-phone-input-wrapper">
+										<input class="register-phone-input-first" name="member_id" id="authId" placeholder="아이디를 입력해주세요.">
+										<div class="result-divs" id="idInputCheck"></div>
+									</li>
+									<li class="register-phone-title kor">이메일 주소</li>
+									<li class="register-phone-input-wrapper">
+										<input class="register-phone-input-first kor" name="email" id="email"
+											placeholder="등록하신 이메일을 입력해주세요."> 
+										<input type="submit" class="register-phone-input-button kor" id="sendMail"
+											value="인증번호 받기">
+										<div class="result-divs kor" id="emailInputCheck"></div>
+									</li>
 								</ol>
 							</div>
 						</div>
 						<div class="register-btn-wrapper">
-							<input type="button" class="register-btn-wrapper-input"
+							<input type="button" class="register-btn-wrapper-input kor"
 								onclick="self.close()" value="닫기">
 						</div>
 					</article>

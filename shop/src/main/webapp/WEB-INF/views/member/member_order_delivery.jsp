@@ -9,10 +9,8 @@
 	<title>Document</title>
 	<!-- css -->
 	<link rel="stylesheet" href="css/member/member_order_delivery.css">
-	<link rel="stylesheet" href="css/main.css">
 	<!-- js -->
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/main.js"></script>
 	<!-- 구글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
@@ -22,11 +20,11 @@
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>
-  <section class="member-content-wrapper">
+  <section class="container">
     <!-- content header -->
-    <div class="member-content-container">
+    <div class="main-content-wrapper">
       <%@ include file="../member/member_header.jsp"%>  
-
+	
       <!-- content main -->
       <div class="member-content-main-container">
         <!-- aside -->
@@ -34,7 +32,7 @@
 
         <!-- article -->
         <div class="member-content-article-container">
-          <div class="member-content-article-header">주문 / 배송조회</div>
+          <div class="member-content-article-header kor">주문 / 배송조회</div>
           <div class="member-content-article-procedure">
             <input type="button" value="0">
             <i class="fas fa-angle-right"></i>
@@ -48,15 +46,15 @@
           </div>
           <div class="member-content-article-procedure-tag">
             <ul>
-              <li class="member-content-article-procedure-tag-name">입금대기</li>
-              <li class="member-content-article-procedure-tag-name">결제완료</li>
-              <li class="member-content-article-procedure-tag-name">배송준비중</li>
-              <li class="member-content-article-procedure-tag-name">배송중</li>
-              <li class="member-content-article-procedure-tag-name">배송완료</li>
+              <li class="member-content-article-procedure-tag-name kor">입금대기</li>
+              <li class="member-content-article-procedure-tag-name kor">결제완료</li>
+              <li class="member-content-article-procedure-tag-name kor">배송준비중</li>
+              <li class="member-content-article-procedure-tag-name kor">배송중</li>
+              <li class="member-content-article-procedure-tag-name kor">배송완료</li>
             </ul>
           </div>
 
-          <div class="member-content-article-options">
+          <div class="member-content-article-options kor">
             총 2건
             <select>
               <option>날짜순</option>
@@ -67,33 +65,33 @@
           </div>
           <div class="member-content-article-items">
             <div class="member-content-article-items-header">
-                <div class="member-content-article-items-header-sub1">주문일</div>
-                <div class="member-content-article-items-header-sub2">주문번호</div>
-                <div class="member-content-article-items-header-sub3">상품정보</div>
-                <div class="member-content-article-items-header-sub4">수량</div>
-                <div class="member-content-article-items-header-sub5">상품금액</div>
-                <div class="member-content-article-items-header-sub6">진행상황</div>
-                <div class="member-content-article-items-header-sub7">상품평</div>
+                <div class="member-content-article-items-header-sub1 kor">주문일</div>
+                <div class="member-content-article-items-header-sub2 kor">주문번호</div>
+                <div class="member-content-article-items-header-sub3 kor">상품정보</div>
+                <div class="member-content-article-items-header-sub4 kor">수량</div>
+                <div class="member-content-article-items-header-sub5 kor">상품금액</div>
+                <div class="member-content-article-items-header-sub6 kor">진행상황</div>
+                <div class="member-content-article-items-header-sub7 kor">상품평</div>
             </div>
             <div class="member-content-article-items-showcase">
               <div class="member-content-article-items-showcase-list">
-                <div class="member-content-article-items-option1">2021.05.13</div>
-                <div class="member-content-article-items-option2">202105130001</div>
-                <div class="member-content-article-items-option3">티셔츠</div>
-                <div class="member-content-article-items-option4">1</div>
-                <div class="member-content-article-items-option5">89000</div>
-                <div class="member-content-article-items-option6">진행상황</div>
-                <div class="member-content-article-items-option7">상품평</div>
+                <div class="member-content-article-items-option kor">2021.05.13</div>
+                <div class="member-content-article-items-option kor">202105130001</div>
+                <div class="member-content-article-items-option kor">티셔츠</div>
+                <div class="member-content-article-items-option kor">1</div>
+                <div class="member-content-article-items-option kor">89000</div>
+                <div class="member-content-article-items-option kor">진행상황</div>
+                <div class="member-content-article-items-option kor">상품평</div>
               </div>
             </div>
             <div class="member-content-article-items-showcase-list">
-              <div class="member-content-article-items-option1">2021.05.13</div>
-              <div class="member-content-article-items-option2">202105130001</div>
-              <div class="member-content-article-items-option3">티셔츠</div>
-              <div class="member-content-article-items-option4">1</div>
-              <div class="member-content-article-items-option5">89000</div>
-              <div class="member-content-article-items-option6">진행상황</div>
-              <div class="member-content-article-items-option7">상품평</div>
+              <div class="member-content-article-items-option kor">2021.05.13</div>
+              <div class="member-content-article-items-option kor">202105130001</div>
+              <div class="member-content-article-items-option kor">티셔츠</div>
+              <div class="member-content-article-items-option kor">1</div>
+              <div class="member-content-article-items-option kor">89000</div>
+              <div class="member-content-article-items-option kor">진행상황</div>
+              <div class="member-content-article-items-option kor">상품평</div>
             </div>
           </div>
           </div>

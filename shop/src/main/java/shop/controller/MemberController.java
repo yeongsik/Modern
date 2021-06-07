@@ -27,6 +27,7 @@ public class MemberController {
   // 마이페이지 메인화면
   @RequestMapping("member_main.shop")
   public String main() {
+	  
     return "member/member_main";
   }
 
@@ -152,10 +153,10 @@ public class MemberController {
 	}
 
 	// 회원가입 폼
-	@RequestMapping(value = "/member_register1.shop")
+	@RequestMapping(value = "/member_register.shop")
 	public String member_register1() {
 			
-		return "member/member_register1";
+		return "member/member_register";
 	}
 
 	// 회원가입 저장

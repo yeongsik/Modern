@@ -12,7 +12,6 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <!-- 구글 폰트 -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -20,46 +19,46 @@
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
-	<section class="member-content-wrapper">
-		<div class="member-content-container">
+	<section class="container">
+		<div class="main-content-wrapper">
 			<%@ include file="../member/member_header.jsp"%>
-
+		
 			<!-- article -->
 			<div class="member-content-section">
-				<div class="member-content-section-order">
-					<div class="member-content-section-order-title">ORDER</div>
-					<div class="member-content-section-order-subtitle">
-						<a href="member_order.shop">주문내역</a>
+				<div class="mypage-main-section-wrapper mypage-margin-bottom">
+					<div class="mypage-main-section-title eng">ORDER</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_order.shop" class="kor">주문내역</a>
 					</div>
 				</div>
-				<div class="member-content-section-profile">
-					<div class="member-content-section-profile-title">PROFILE</div>
-					<div class="member-content-section-profile-subtitle">
-						<a href="member_profile.shop">회원정보</a>
+				<div class="mypage-main-section-wrapper mypage-margin-bottom">
+					<div class="mypage-main-section-title eng">PROFILE</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_profile.shop" class="kor">회원정보</a>
 					</div>
 				</div>
-				<div class="member-content-section-cart">
-					<div class="member-content-section-cart-title">CART</div>
-					<div class="member-content-section-cart-subtitle">
-						<a href="member_cart.shop">쇼핑백</a>
+				<div class="mypage-main-section-wrapper mypage-margin-bottom">
+					<div class="mypage-main-section-title eng">CART</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_cart.shop" class="kor">쇼핑백</a>
 					</div>
 				</div>
-				<div class="member-content-section-coupon">
-					<div class="member-content-section-coupon-title">COUPON</div>
-					<div class="member-content-section-coupon-subtitle">
-						<a href="member_coupon.shop">쿠폰내역</a>
+				<div class="mypage-main-section-wrapper">
+					<div class="mypage-main-section-title eng">COUPON</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_coupon.shop" class="kor">쿠폰내역</a>
 					</div>
 				</div>
-				<div class="member-content-section-board">
-					<div class="member-content-section-board-title">BOARD</div>
-					<div class="member-content-section-board-subtitle">
-						<a href="member_board.shop">게시물 관리</a>
+				<div class="mypage-main-section-wrapper">
+					<div class="mypage-main-section-title eng">BOARD</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_board.shop" class="kor">게시물 관리</a>
 					</div>
 				</div>
-				<div class="member-content-section-address">
-					<div class="member-content-section-address-title">ADDRESS</div>
-					<div class="member-content-section-address-subtitle">
-						<a href="member_address.shop">배송지 관리</a>
+				<div class="mypage-main-section-wrapper">
+					<div class="mypage-main-section-title eng">ADDRESS</div>
+					<div class="mypage-main-section-subtitle">
+						<a href="member_address.shop" class="kor">배송지 관리</a>
 					</div>
 				</div>
 			</div>

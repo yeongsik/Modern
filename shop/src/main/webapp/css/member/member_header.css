@@ -12,17 +12,14 @@
   flex-grow: 2;
 }
 .member-content-header-memberinfo-grade {
-  font: var(--font-eng);
   font-size: var(--font-size-h4);
-  font-weight: bold;
+  font-weight: 600;
   color: var(--color-black);
 }
 .member-content-header-memberinfo-content > span {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-header-memberinfo-content {
-  font: var(--font-kor);
   font-size: var(--font-size-h6);
 }
 .member-content-header-memberinfo-content > input {
@@ -33,7 +30,6 @@
 .member-content-header-memberinfo-content > input:hover {
   cursor: pointer;
 }
-
 /* coupon */
 .member-content-hedaer-coupon {
   flex-grow: 1;
@@ -43,15 +39,12 @@
   border-left: 2px solid var(--color-grey);
 }
 .member-content-header-coupon-header {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-header-coupon-content > span {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-header-coupon-content {
-  font: var(--font-kor);
   font-size: var(--font-size-h6);
 }
 
@@ -64,18 +57,14 @@
   border-left: 2px solid var(--color-grey);
 }
 .member-content-header-point-header {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-header-point-content > span {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-header-point-content {
-  font: var(--font-kor);
   font-size: var(--font-size-h6);
 }
-
 /* 공통 margin-bottom 설정 */
 .member-content-header-memberinfo-grade,
 .member-content-header-coupon-header,

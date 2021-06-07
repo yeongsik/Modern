@@ -9,7 +9,6 @@
 	<title>Document</title>
 	<!-- css -->
 	<link rel="stylesheet" href="css/member/member_interest.css">
-	<link rel="stylesheet" href="css/main.css">
 	<!-- js -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/mypage_interest.js"></script>
@@ -23,9 +22,9 @@
 </head>
 <body>
    <%@ include file="../main/header.jsp"%>  
-  <section class="member-content-wrapper">
+  <section class="container">
     <!-- content header -->
-    <div class="member-content-container">
+    <div class="main-content-wrapper">
       <%@ include file="../member/member_header.jsp"%>  
 
       <!-- content main -->

@@ -49,4 +49,5 @@ a {
 }
 .member-content-main-container {
   display: flex;
+  justify-content: space-between;
 }
