@@ -69,7 +69,10 @@ public class ProductDAO {
 	public int getProductCount(@ModelAttribute ProductBean product) throws Exception {
 		int count = 0;
 		count = ((Integer) session.selectOne("Productns.productcount" , product)).intValue();
-		
 		return count;
+	}
+	/* 상품 조회수 증가 */
+	public void upViewCount(int product_id) throws Exception {
+		session.update("Productns.upReadCount" , product_id);
 	}
 }

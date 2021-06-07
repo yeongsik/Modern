@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Modern</title>
 	<!-- css -->
 	<link rel="stylesheet" href="css/member/member_interest.css">
 	<!-- js -->
@@ -34,106 +34,66 @@
 
         <!-- article -->
         <div class="member-content-article-container">
-          <div class="member-content-article-header">관심상품</div>
+          <div class="member-content-article-header kor">관심상품</div>
           <div class="contour"></div>
           <div class="member-content-article-items">
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>  
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand"><a href="#" class="kor">쿠어</a></div>  
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand"><a href="#" class="kor">쿠어</a></div>
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand"><a href="#" class="kor">쿠어</a></div>
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
             
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand"><a href="#" class="kor">쿠어</a></div>
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
             
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand kor"><a href="#" class="kor">쿠어</a></div>
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
             
             <div class="member-content-article-item">
               <div class="member-content-article-item-img">
                 <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
               </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
+              <div class="member-content-article-item-brand"><a href="#" class="kor">쿠어</a></div>
+              <div class="member-content-article-item-product kor"><b>캐시미어 니트</b></div>
+              <div class="member-content-article-item-price kor">89,000</div>
+              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
             </div>
-            <div class="member-content-article-item">
-              <div class="member-content-article-item-img">
-                <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
-              </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
-            </div>
-            
-            <div class="member-content-article-item">
-              <div class="member-content-article-item-img">
-                <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
-              </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
-            </div>
-            
-            <div class="member-content-article-item">
-              <div class="member-content-article-item-img">
-                <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
-              </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
-            </div>
-            
-            <div class="member-content-article-item">
-              <div class="member-content-article-item-img">
-                <img src="https://developer.mozilla.org/static/img/favicon144.png" alt="Visit the MDN site" width=100 height=100>
-              </div>
-              <div class="member-content-article-item-brand"><a href="#">쿠어</a></div>
-              <div class="member-content-article-item-product"><b>캐시미어 니트</b></div>
-              <div class="member-content-article-item-price">89,000</div>
-              <div class="member-content-article-item-heart"><i class="fas fa-heart"></i>344</div>
-            </div>
-            
           </div>
         </div>
       </div>

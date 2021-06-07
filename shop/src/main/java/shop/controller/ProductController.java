@@ -61,6 +61,9 @@ public class ProductController {
 		ProductBean product = new ProductBean();
 		product = ProductService.getProductOne(product_id);
 		
+		
+		// 조회수 증가 
+		ProductService.upViewCount(product_id);
 		// 적립금 구하기
 		int buyingPoint = (int) (product.getProduct_price() *0.01);
 		

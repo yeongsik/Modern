@@ -18,7 +18,6 @@
   padding-left: 50px;
 }
 .member-content-article-header {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
   font-weight: bolder;
   border-bottom: 3px solid var(--color-black);

@@ -33,34 +33,34 @@
 
         <!-- article -->
         <div class="member-content-article-container">
-          <div class="member-content-article-header">장바구니</div>
+          <div class="member-content-article-header kor">장바구니</div>
 
           <div class="member-content-article-items">
             <div class="member-content-article-items-header">
-                <div class="member-content-article-items-header-no">번호</div>
+                <div class="member-content-article-items-header-no kor">번호</div>
                 <div class="member-content-article-items-header-check_btn"><input type="checkbox"></div>
-                <div class="member-content-article-items-header-product">상품명(옵션)</div>
-                <div class="member-content-article-items-header-price">판매가</div>
-                <div class="member-content-article-items-header-membership_discount">회원 할인</div>
-                <div class="member-content-article-items-header-Quantity">수량</div>
-                <div class="member-content-article-items-header-order_price">주문 금액<br>(적립 예정)</div>
-                <div class="member-content-article-items-header-order_state">주문 관리</div>
-                <div class="member-content-article-items-header-delivery_fee">배송비/배송 형태</div>
+                <div class="member-content-article-items-header-product kor">상품명(옵션)</div>
+                <div class="member-content-article-items-header-price kor">판매가</div>
+                <div class="member-content-article-items-header-membership_discount kor">회원 할인</div>
+                <div class="member-content-article-items-header-Quantity kor">수량</div>
+                <div class="member-content-article-items-header-order_price kor">주문 금액<br>(적립 예정)</div>
+                <div class="member-content-article-items-header-order_state kor">주문 관리</div>
+                <div class="member-content-article-items-header-delivery_fee kor">배송비/배송 형태</div>
             </div>
             <div class="member-content-article-items-showcase">
               <div class="member-content-article-items-showcase-list">
-                <div class="member-content-article-items-no">1</div>
+                <div class="member-content-article-items-no kor">1</div>
                 <div class="member-content-article-items-check_btn"><input type="checkbox"></div>
-                <div class="member-content-article-items-product">[brand] 뉴 스트레이트 데님 팬츠</div>
-                <div class="member-content-article-items-price">89,000</div>
-                <div class="member-content-article-items-membership_discount">-4,450</div>
+                <div class="member-content-article-items-product kor">[brand] 뉴 스트레이트 데님 팬츠</div>
+                <div class="member-content-article-items-price kor">89,000</div>
+                <div class="member-content-article-items-membership_discount kor">-4,450</div>
                 <div class="member-content-article-items-Quantity">
                   <button><i class="far fa-minus-square fa-2x"></i></button>
                   <input type="text" value="1" readonly="readonly">
                   <button><i class="far fa-plus-square fa-2x"></i></button>
                 </div>
-                <div class="member-content-article-items-order_price">84,550</div>
-                <div class="member-content-article-items-order_state"><button>삭제하기</button></div>
+                <div class="member-content-article-items-order_price kor">84,550</div>
+                <div class="member-content-article-items-order_state kor"><button>삭제하기</button></div>
                 <div class="member-content-article-items-delivery_fee">
                   택배배송 <br>
                   <b>배송비무료</b> <br>
@@ -68,19 +68,19 @@
               </div>
             </div>
             <div class="member-content-article-items-showcase-list">
-              <div class="member-content-article-items-no">2</div>
+              <div class="member-content-article-items-no kor">2</div>
               <div class="member-content-article-items-check_btn"><input type="checkbox"></div>
-              <div class="member-content-article-items-product">[brand] 솔리드 옥스퍼드 셔츠</div>
-              <div class="member-content-article-items-price">44,000</div>
-              <div class="member-content-article-items-membership_discount">-1,320</div>
+              <div class="member-content-article-items-product kor">[brand] 솔리드 옥스퍼드 셔츠</div>
+              <div class="member-content-article-items-price kor">44,000</div>
+              <div class="member-content-article-items-membership_discount kor">-1,320</div>
               <div class="member-content-article-items-Quantity">
                 <button><i class="far fa-minus-square fa-2x"></i></button>
                 <input type="text" value="1" readonly="readonly">
                 <button><i class="far fa-plus-square fa-2x"></i></button>
               </div>
-              <div class="member-content-article-items-order_price">42,680</div>
-              <div class="member-content-article-items-order_state"><button>삭제하기</button></div>
-              <div class="member-content-article-items-delivery_fee">
+              <div class="member-content-article-items-order_price kor">42,680</div>
+              <div class="member-content-article-items-order_state kor"><button>삭제하기</button></div>
+              <div class="member-content-article-items-delivery_fee kor">
                 택배배송 <br>
                 <b>배송비무료</b> <br>
               </div>

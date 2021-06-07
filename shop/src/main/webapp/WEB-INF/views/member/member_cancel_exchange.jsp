@@ -34,51 +34,47 @@
 
         <!-- article -->
         <div class="member-content-article-container">
-          <div class="member-content-article-header">취소 / 교환 / 반품 조회</div>
+          <div class="member-content-article-header kor">취소 / 교환 / 반품 조회</div>
 
-          <div class="member-content-article-options">
+          <div class="member-content-article-options kor">
             총 2건
             <select>
-              <option>날짜순</option>
-              <option>1개월</option>
-              <option>3개월</option>
-              <option>6개월</option>
+              <option class="kor">날짜순</option>
+              <option class="kor">1개월</option>
+              <option class="kor">3개월</option>
+              <option class="kor">6개월</option>
             </select>
           </div>
-
           <div class="member-content-article-items">
             <div class="member-content-article-items-header">
-                <div class="member-content-article-items-header-sub1">주문일</div>
-                <div class="member-content-article-items-header-sub2">주문번호</div>
-                <div class="member-content-article-items-header-sub3">상품정보</div>
-                <div class="member-content-article-items-header-sub4">수량</div>
-                <div class="member-content-article-items-header-sub5">상품금액</div>
-                <div class="member-content-article-items-header-sub6">진행상황</div>
-                <div class="member-content-article-items-header-sub7">상품평</div>
+                <div class="member-content-article-items-header-sub1 kor">주문일</div>
+                <div class="member-content-article-items-header-sub2 kor">주문번호</div>
+                <div class="member-content-article-items-header-sub3 kor">상품정보</div>
+                <div class="member-content-article-items-header-sub4 kor">수량</div>
+                <div class="member-content-article-items-header-sub5 kor">상품금액</div>
+                <div class="member-content-article-items-header-sub6 kor">진행상황</div>
+                <div class="member-content-article-items-header-sub7 kor">상품평</div>
             </div>
-
             <div class="member-content-article-items-showcase">
               <div class="member-content-article-items-showcase-list">
-                <div class="member-content-article-items-option1">2021.05.13</div>
-                <div class="member-content-article-items-option2">202105130001</div>
-                <div class="member-content-article-items-option3">티셔츠</div>
-                <div class="member-content-article-items-option4">1</div>
-                <div class="member-content-article-items-option5">89000</div>
-                <div class="member-content-article-items-option6">진행상황</div>
-                <div class="member-content-article-items-option7">상품평</div>
+                <div class="member-content-article-items-option1 kor">2021.05.13</div>
+                <div class="member-content-article-items-option2 kor">202105130001</div>
+                <div class="member-content-article-items-option3 kor">티셔츠</div>
+                <div class="member-content-article-items-option4 kor">1</div>
+                <div class="member-content-article-items-option5 kor">89000</div>
+                <div class="member-content-article-items-option6 kor">진행상황</div>
+                <div class="member-content-article-items-option7 kor">상품평</div>
               </div>
             </div>
-
             <div class="member-content-article-items-showcase-list">
-              <div class="member-content-article-items-option1">2021.05.13</div>
-              <div class="member-content-article-items-option2">202105130001</div>
-              <div class="member-content-article-items-option3">티셔츠</div>
-              <div class="member-content-article-items-option4">1</div>
-              <div class="member-content-article-items-option5">89000</div>
-              <div class="member-content-article-items-option6">진행상황</div>
-              <div class="member-content-article-items-option7">상품평</div>
+              <div class="member-content-article-items-option1 kor">2021.05.13</div>
+              <div class="member-content-article-items-option2 kor">202105130001</div>
+              <div class="member-content-article-items-option3 kor">티셔츠</div>
+              <div class="member-content-article-items-option4 kor">1</div>
+              <div class="member-content-article-items-option5 kor">89000</div>
+              <div class="member-content-article-items-option6 kor">진행상황</div>
+              <div class="member-content-article-items-option7 kor">상품평</div>
             </div>
-
           </div>
         </div>
       </div>

@@ -15,13 +15,11 @@
   padding-left: 50px;
 }
 .member-content-article-header {
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
   font-weight: bolder;
 }
 
 .member-content-article-options {
-  font: var(--font-kor);
   font-weight: bold;
   display: flex;
   justify-content: flex-end;
@@ -29,7 +27,6 @@
   margin-top: 80px;
 }
 .member-content-article-options > select {
-  font: var(--font-kor);
   width: 150px;
   height: 30px;
   margin-left: 15px;
@@ -75,7 +72,6 @@
 }
 
 .member-content-article-items-showcase {
-  font: var(--font-kor);
   padding: 18px 0 18px 0;
 }
 .member-content-article-items-showcase-list {

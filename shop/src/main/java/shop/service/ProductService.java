@@ -57,4 +57,8 @@ public class ProductService {
 	public int getProductCount(ProductBean product) throws Exception {
 		return pd.getProductCount(product);
 	}
+	/* 상품 조회수 증가 */
+	public void upViewCount(int product_id) throws Exception {
+		pd.upViewCount(product_id);
+	}
 }

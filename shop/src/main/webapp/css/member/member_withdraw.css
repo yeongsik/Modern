@@ -18,7 +18,6 @@
   padding-left: 50px;
 }
 .member-content-article-header {
-  font: var(--font-kor);
   font-size: var(--font-size-h4);
   font-weight: bolder;
 }
@@ -29,7 +28,6 @@
 }
 .member-content-article-inputarea-comment {
   margin-top: 180px;
-  font: var(--font-kor);
   font-size: var(--font-size-h5);
 }
 .member-content-article-inputarea-pw {
@@ -51,7 +49,6 @@
   height: 40px;
   background-color: var(--color-grey);
   border: none;
-  font: var(--font-kor);
   color: var(--color-white);
   font-weight: bold;
 }
