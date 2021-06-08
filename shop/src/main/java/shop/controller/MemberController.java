@@ -165,7 +165,6 @@ public class MemberController {
 		member.setAccept_mail(accept_mail);
 		
 		service.insertMember(member);
-
 		return "member/register_result";
 	}
 	

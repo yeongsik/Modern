@@ -8,7 +8,7 @@ public class MemberBean {
 	private String phone;
 	private int birth;
 	private int gender;
-	private String nickname;
+	private String name;
 	private int accept_mail;
 	private int purchase_point;
 	private int grade_point;
@@ -57,11 +57,11 @@ public class MemberBean {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getAccept_mail() {
 		return accept_mail;

@@ -10,12 +10,12 @@
     <!--회원가입 -->
     <insert id="member_register" parameterType="member">
     insert into member values (#{member_id}, #{pw}, #{email}, 0, 
-    #{phone}, #{birth}, #{gender}, #{nickname}, #{accept_mail}, 0, 0, sysdate,'bronze')
+    #{phone}, #{birth}, #{gender}, #{name}, #{accept_mail}, 0, 0, sysdate,'bronze')
     </insert>
    
     <!--아이디 찾기  -->
     <select id="findid" parameterType="member" resultType="member">
-    	select * from member where nickname=#{nickname} and email=#{email}
+    	select * from member where name=#{name} and email=#{email}
     </select>
     
     <!--비밀번호 찾기  -->

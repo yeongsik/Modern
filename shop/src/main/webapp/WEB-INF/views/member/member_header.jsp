@@ -5,7 +5,7 @@
 		<div class="member-content-header-memberinfo">
 			<div class="member-content-header-memberinfo-grade eng">GOLD</div>
 			<div class="member-content-header-memberinfo-content kor">
-				<span>${m.nickname}</span>님 안녕하세요 <input class="kor" type="button" value="등급 혜택 보기">
+				<span>${m.name}</span>님 안녕하세요 <input class="kor" type="button" value="등급 혜택 보기">
 			</div>
 		</div>
 		<div class="member-content-hedaer-coupon">

@@ -27,7 +27,7 @@ public class MemberService {
 		//아이디 찾기
 		public MemberBean findid(MemberBean mba)throws Exception {
 			System.out.println("서비스닉네임");
-			System.out.println("닉네임 :"+mba.getNickname() );
+			System.out.println("이름 :"+mba.getName() );
 			return md.findid(mba);
 			
 		}

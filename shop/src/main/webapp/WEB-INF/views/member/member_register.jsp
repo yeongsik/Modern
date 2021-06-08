@@ -96,7 +96,7 @@
 											</li>
 											<li class="register-verify-box-check-list3">
 												<input type="checkbox" class="register-verify-box-check-4 kor"
-													id="accept_mail" name="accept_mail"> 
+													id="accept_mail" name="accept_mail_value"> 
 													[선택]광고성 정보 수신 및 마케팅 활용 동의 
 												<a href="#" class="register-verify-box-check-a kor">보기</a>
 											</li>

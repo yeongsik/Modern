@@ -3,5 +3,5 @@
 
 <script>
 	alert("회원가입을 환영합니다!");
-	location.href="./member_login.shop";
+	location.href="login.shop";
 </script>
