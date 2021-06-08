@@ -10,28 +10,34 @@ import shop.model.NoticeBean;
 
 @Service
 public class NoticeServiceImple implements NoticeService {
-  
-  @Autowired
-  private NoticeDAO noticeDao;
-  
-  @Override
-  public int getListCount() throws Exception {
-    return noticeDao.getListCount();
-  }
-  
-  @Override 
-  public List getBoardList(int page) throws Exception {
-    return noticeDao.getBoardList(page);
-  }
 
-  @Override
-  public void updateView(int notice_id) throws Exception {
-    noticeDao.updateView(notice_id);
-  }
-  
-  @Override
-  public NoticeBean noticeDetail(int notice_id) throws Exception {
-    NoticeBean board = noticeDao.getNoticeDetail(notice_id);
-    return board;
-  }
+	@Autowired
+	private NoticeDAO noticeDao;
+
+	@Override
+	public int getListCount() throws Exception {
+		return noticeDao.getListCount();
+	}
+
+	@Override
+	public List getBoardList(int page) throws Exception {
+		return noticeDao.getBoardList(page);
+	}
+
+	@Override
+	public void updateView(int notice_id) throws Exception {
+		noticeDao.updateView(notice_id);
+	}
+
+	@Override
+	public NoticeBean noticeDetail(int notice_id) throws Exception {
+		NoticeBean board = noticeDao.getNoticeDetail(notice_id);
+		return board;
+	}
+
+	// 푸터 공지사항 출력
+	public List getFooterBoardList() throws Exception {
+		return noticeDao.getFooterBoardList();
+	}
+
 }
