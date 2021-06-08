@@ -19,7 +19,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
-  <%@ include file="../main/header.jsp"%>  
+  <%@ include file="../main/header.jsp"%>
+  <form action="member_withdraw.shop" method="post">  
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
@@ -32,12 +33,11 @@
         
         <!-- article -->
         <div class="member-content-article-container">
-          <div class="member-content-article-header kor">
-          	회원탈퇴
-          </div>
-          <div class="member-content-article-msg kor">
-          	닉네임님 사용하실 수 있는 쿠폰과 포인트가 남아있습니다.
-       	  </div>
+
+          <input type="hidden" name="member_id">
+          <div class="member-content-article-header kor">회원탈퇴</div>
+          <div class="member-content-article-msg">${m.name}님 사용하실 수 있는 쿠폰과 포인트가 남아있습니다.</div>
+
           <div class="member-content-article-msg_box">
             <div class="member-content-article-msg_box-item1 kor">Point: 3,300p</div>
             <div class="member-content-article-msg_box-item2 kor">Coupon: 2개</div>
@@ -49,11 +49,15 @@
           <div class="member-content-article-terms-btn kor">
             <input type="checkbox" id="check">회원탈퇴에 동의합니다.
           </div>
-          <div class="member-content-article-btn kor"><button id="btn" class="kor">확인</button></div>
+
+          <div class="member-content-article-btn"><input type="submit" id="btn" value="확인"></div>
         </div>
       </div>
-  	</div>	
-  </section>  
-  <%@ include file="../main/footer.jsp"%>  
+    </div>
+    </div>
+  </section>
+  </form>  
+   <%@ include file="../main/footer.jsp"%>  
+
 </body>
 </html>

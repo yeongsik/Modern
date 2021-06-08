@@ -2,6 +2,7 @@ package shop.controller;
 
 import java.io.PrintWriter;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,10 +45,12 @@ public class MemberController {
   }
 
   // 회원정보 수정
-  @RequestMapping("member_profile.shop")
-  public String memberInfo() {
-    return "member/member_update";
+	
+  @RequestMapping("member_profile.shop") 
+  public String memberInfo() { 
+	return "member/member_update"; 
   }
+	 
 
   // 배송지 관리 
   @RequestMapping("member_address.shop")
@@ -55,11 +58,6 @@ public class MemberController {
     return "member/member_update";
   }
   
-  // 회원 탈퇴  
-  @RequestMapping("member_withdraw.shop")
-  public String withDraw() {
-    return "member/member_withdraw";
-  }
  
   // 회원 등급
   @RequestMapping("member_membership.shop")
@@ -366,6 +364,7 @@ public class MemberController {
 		}
  
 	}
+	
   
   // 관심상품 등록
 	@RequestMapping("product_likey.shop")
@@ -393,4 +392,41 @@ public class MemberController {
     /* return "product/product_detail"; */
 	}
   
+	//회원정보수정페이지이동
+	@RequestMapping("member_update_view.shop")
+	public String member_update_view() {
+		return "member/member_update2";
+	}
+	
+	//회원수정
+	@RequestMapping("member_update.shop")
+	public String member_update(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
+		String member_id = (String) session.getAttribute("member_id");
+		
+		model.addAttribute("member_id", member_id);
+		
+		service.updatepw(member);
+		service.updateEmail(member);
+		return "member/update_result";
+	}
+	
+	//회원탈퇴 페이지이동
+	@RequestMapping("member_withdraw_view.shop") 
+	public String member_withdraw_view() {
+	  
+	    return "member/member_withdraw2"; }
+	 
+	//회원탈퇴 
+	@RequestMapping("member_withdraw.shop")
+	public String member_withdraw(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
+		String member_id = (String) session.getAttribute("member_id");
+			
+		model.addAttribute("member_id", member_id);
+		
+		service.withdrawMember(member);
+
+		session.invalidate();  //세션 종료
+		
+		return "member/withdraw_result";
+	}
 }

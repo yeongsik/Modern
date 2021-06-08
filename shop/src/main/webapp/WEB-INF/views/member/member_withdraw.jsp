@@ -34,7 +34,9 @@
             <div class="member-content-article-inputarea">
               <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
               <input type="password" class="member-content-article-inputarea-pw">
-              <input type="button" class="member-content-article-inputarea-btn kor" value="확인">
+
+              <input type="button" class="member-content-article-inputarea-btn" onclick="location='member_withdraw_view.shop'" value="확인">
+
             </div>
           </div>
         </div>

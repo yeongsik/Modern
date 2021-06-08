@@ -35,8 +35,8 @@
           <div class="member-content-article-header kor">회원 정보 수정</div>
           <div class="member-content-article-inputarea">
             <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
-            <input type="password" class="member-content-article-inputarea-pw kor">
-            <input type="button" class="member-content-article-inputarea-btn kor" value="확인">
+            <input type="password" name="pw" class="member-content-article-inputarea-pw kor">
+            <input type="submit" class="member-content-article-inputarea-btn kor" onclick="location='member_update_view.shop'" value="확인">
           </div>
         </div>
       </div>
