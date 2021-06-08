@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.catalina.valves.rewrite.InternalRewriteMap.UpperCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import shop.model.ProductBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
+import shop.model.SizeBean;
 import shop.service.ProductService;
 
 @Controller
@@ -54,29 +56,39 @@ public class ProductController {
 		
 		return "product/productlistadd";
 	}
+	// 상품 세부 
 	@RequestMapping("product_detail.shop") 
 	public String product_detail(@RequestParam int product_id , Model model) throws Exception {
 		System.out.println("product_detail");
 		
 		ProductBean product = new ProductBean();
 		product = ProductService.getProductOne(product_id);
+		SizeBean size = new SizeBean();
 		
+		System.out.println(product.getSize_id());
 		
-		// 조회수 증가 
-		/* ProductService.upViewCount(product_id); */
+		// 조회수 증가
+		ProductService.upViewCount(product_id);
+		
+		// 제품 사이즈 구하기 
+		size = ProductService.getSize(product.getSize_id());
+		String size_name = size.getSize_name();
+		String[] size_model =  size_name.split(",");
+		for (int i=0; i<size_model.length; i++) {
+			String upper = size_model[i].toUpperCase();
+			size_model[i] = upper;
+		}
+ 		
 		// 적립금 구하기
 		int buyingPoint = (int) (product.getProduct_price() *0.01);
-		
-		// 사이즈 구하기 
 		
 		// 리뷰 게시판 목록 리스트 
 		List<ReviewBean> review = new ArrayList<ReviewBean>();
 		
-		
-		
 		// Q&A 게시판 목록 리스트 
 		List<QuestionBean> question = new ArrayList<QuestionBean>();
 		
+		model.addAttribute("size", size_model);
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);
 		System.out.println(product_id);

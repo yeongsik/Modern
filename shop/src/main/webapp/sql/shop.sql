@@ -13,6 +13,10 @@ select * from stock;
 select * from review;
 delete from heart;
 select * from heart;
+select * from address;
+select * from seq;
+select * from notice;
+select  from cols where table_name = 'notice'; 
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,
