@@ -23,3 +23,13 @@ $(document).ready(function() {
    		location.href="product_likey.shop?product_id="+product_id
    	}
 } 
+// 오더 디테일 테이블에 등록
+function handleOnChange() {
+	// 선택된 데이터 가져오기
+	const value = e.value;
+	if(e.value !="default") {
+	} 
+		
+	document.getElementById('result').innerText
+	= value;
+}

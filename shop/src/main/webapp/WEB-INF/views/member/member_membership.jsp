@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="css/member/member_membership.css">
   <!-- 구글 폰트 -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>  
