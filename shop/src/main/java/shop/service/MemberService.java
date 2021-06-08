@@ -1,6 +1,7 @@
 package shop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.wiring.ClassNameBeanWiringInfoResolver;
 import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
@@ -37,24 +38,36 @@ public class MemberService {
 			System.out.println("임시비밀번호 :"+m.getPw() );
 			return md.findpw(m);
 		}
-		//임시비밀번호 저장
+		//비밀번호 저장
 		public void updatepw(MemberBean mem)throws Exception {
 			
-			System.out.println("임시비밀번호1 :"+mem.getPw() );
+			System.out.println("비밀번호 저장 :"+mem.getPw() );
 			md.updatepw(mem);
 		}
 		// 로그인 검사
-			public MemberBean userCheck(String loginId)throws Exception{
+		public MemberBean userCheck(String loginId)throws Exception{
 				return md.userCheck(loginId);
 		}
 	
-			// 관심상품 등록
-			public int enrollLikey(HeartBean hb) throws Exception {
+		// 관심상품 등록
+		public int enrollLikey(HeartBean hb) throws Exception {
 		    return md.enrollLikey(hb);
-		  }
+		}
 		  
-		  // 관심상품 등록 여부 확인
-		  public int likeyState(HeartBean hb) throws Exception {
+		// 관심상품 등록 여부 확인
+		public int likeyState(HeartBean hb) throws Exception {
 		    return md.likeyState(hb);
-		  }
+		}
+		
+		//회원정보수정 이메일
+		public void updateEmail(MemberBean mb) throws Exception {
+			System.out.println("비밀번호 저장 :"+mb.getEmail() );
+			md.updateEmail(mb);
+		}
+		
+		//회원삭제 
+		public void withdrawMember(MemberBean mb) throws Exception {
+			System.out.println("회원삭제 :"+mb.getMember_id() );
+			md.withdrawMember(mb);
+		}
 }

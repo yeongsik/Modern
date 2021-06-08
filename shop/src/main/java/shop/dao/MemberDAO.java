@@ -41,9 +41,9 @@ public class MemberDAO {
 		return (MemberBean) session.selectOne("findpw", pm);
 	}
 	
-	//임시 비밀번호 저장
+	// 비밀번호 저장
 	public void updatepw(MemberBean mem) throws Exception {
-		System.out.println("임시비번 저장"+mem.getPw());
+		System.out.println("비번 저장 : "+mem.getPw());
 		 session.update("updatepw",mem);;
 	}
 	
@@ -66,4 +66,15 @@ public class MemberDAO {
 	  return state;
 	}
 	
+	//회원정보수정 이메일
+	public void updateEmail(MemberBean mb) throws Exception {
+		System.out.println("비밀번호 저장 :"+mb.getEmail() );
+		session.update("update_member_email",mb);
+	}
+	
+	//회원정보삭제
+	public void withdrawMember(MemberBean mb) throws Exception {
+		System.out.println("회원삭제dao :"+mb.getMember_id() );
+		session.delete("deleteMember", mb);
+	}
 }
