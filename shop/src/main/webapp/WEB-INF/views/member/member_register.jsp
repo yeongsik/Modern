@@ -112,14 +112,12 @@
 						<div class="register-secondpage-box-wrapper" id="secondPageup">
 							<div class="register-secondpage-input-contents">
 								<ol class="register-nickname-box">
-									<li class="register-nickname-title kor">닉네임 
+									<li class="register-nickname-title kor">이름 
 										<i class="fas fa-check" id="nicknameCheckComplete"></i>
 									</li>
 									<li class="register-nickname-input-wrapper">
 										<input type="text" class="register-nickname-input kor" id="nickname"
-											name="nickname" maxlength="12" placeholder="닉네임을 입력해주세요.">
-										<input type="button" class="register-nickname-input-button kor"
-											value="중복 체크" onclick="nickname_check()">
+											name="name" maxlength="12" placeholder="이름을 입력해주세요.">
 										<div class="result-divs kor" id="nicknameResult"></div>
 									</li>
 								</ol>

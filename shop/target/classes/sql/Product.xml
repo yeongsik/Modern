@@ -24,7 +24,7 @@
     	on product.product_detail = product_detail.product_detail where product_id = #{product_id}
     </select>
     
-    <update id="upViewCount" parameterType="int">
+   <!--  <update id="upViewCount" parameterType="int">
     	update product set view_count = view_count +1 where product_id = #{product_id} 
-    </update>
+    </update> -->
 </mapper>

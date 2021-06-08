@@ -28,11 +28,6 @@
 	update member set pw = #{pw} where member_id = #{member_id}
 	</update>
     
-    <!--닉네임 중복체크  -->
-    <select id="nickname_check" parameterType="String" resultType="member">
-    	select * from member where nickname=#{nickname}
-    </select>
-    
     <!-- 관심상품 등록 -->
     <insert id="enroll_likey" parameterType="heart">
 	    insert into heart values (heart_seq.nextval, #{member_id}, #{product_id})

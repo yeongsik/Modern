@@ -128,16 +128,6 @@ public class MemberController {
 		return "member/idcheckResult";
 	}
 
-	// 닉네임 중복
-	@RequestMapping(value = "/member_nickcheck.shop", method = RequestMethod.POST)
-	public String member_nicknamecheck(@RequestParam("memnickname") String nick, Model model) throws Exception {
-
-		int result1 = service.checkNickname(nick);
-		model.addAttribute("result1", result1);
-
-		return "member/nickcheckResult";
-	}
-
 	// 아이디 찾기
 	@RequestMapping("member_findid.shop")
 	public String findid() {

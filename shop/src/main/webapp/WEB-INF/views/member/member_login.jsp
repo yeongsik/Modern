@@ -14,27 +14,21 @@
 <script src="js/member/login.js"></script>
 <script> 
 	function member_findid(){
-	 window.open("member_findid.shop","아이디찾기","width=460,height=320");
+	 window.open("member_findid.shop?type='id'","아이디찾기","width=460,height=320");
 	}
 	
 	function member_findpw(){
-	  	 window.open("member_findpw.shop","비밀번호찾기","width=460,height=320");
+	  	 window.open("member_findpw.shop?type='pw'","비밀번호찾기","width=460,height=320");
 	}
 </script>
 <title>로그인</title>
 </head>
 <body>
 	<%@ include file="../main/header.jsp" %>
-<%-- 
-<% 
-String member_id = (String)session.getAttribute("member_id");
-%>	 
---%>
 	<div class="container">
 	    <section class="main-content-wrapper">
 	        <div class="main-section-container">
 	            <form method="POST"  action="member_login_check.shop" onsubmit="return loginCheck()">
-	               <%--  <input type="hidden" name="member_id" value="<%=member_id%>"> --%>
                     <div class="login-main-text kor">
                         로그인
                     </div>

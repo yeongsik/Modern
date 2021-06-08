@@ -13,13 +13,14 @@ import shop.model.ProductBean;
 public class ProductDAO {
 	@Autowired
 	private SqlSession session;
-	
+
 	/* 상품 목록 */
 	public List<ProductBean> getProductList(ProductBean input) throws Exception {
 		System.out.println("DAO");
 		List<ProductBean> list = session.selectList("Productns.productlist", input);
 		return list;
 	}
+
 //	public List<ProductBean> getProductList_Top_shirts(int page ) throws Exception {
 //		List<ProductBean> list = session.selectList("Product.productlist_top_shirts",page);
 //		return list;
@@ -62,17 +63,17 @@ public class ProductDAO {
 //		return list;
 //	}/	
 	public ProductBean getProductOne(int product_id) throws Exception {
-		ProductBean product = session.selectOne("Productns.product_detail", product_id);		
+		ProductBean product = session.selectOne("Productns.product_detail", product_id);
 		return product;
 	}
-	
+
 	public int getProductCount(@ModelAttribute ProductBean product) throws Exception {
 		int count = 0;
-		count = ((Integer) session.selectOne("Productns.productcount" , product)).intValue();
+		count = ((Integer) session.selectOne("Productns.productcount", product)).intValue();
 		return count;
 	}
-	/* 상품 조회수 증가 */
-	public void upViewCount(int product_id) throws Exception {
-		session.update("Productns.upReadCount" , product_id);
-	}
+	/*
+	 * 상품 조회수 증가 public void upViewCount(int product_id) throws Exception {
+	 * session.update("Productns.upReadCount" , product_id); }
+	 */
 }

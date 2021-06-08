@@ -23,10 +23,7 @@ public class MemberService {
 		public int checkMemberId(String id) throws Exception{
 			return md.checkMemberId(id);
 		}
-		//중복닉네임 체크
-		public int checkNickname(String nick) throws Exception{
-			return md.checkNickname(nick);
-		}
+		
 		//아이디 찾기
 		public MemberBean findid(MemberBean mba)throws Exception {
 			System.out.println("서비스닉네임");

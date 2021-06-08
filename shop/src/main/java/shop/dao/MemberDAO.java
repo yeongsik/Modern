@@ -22,14 +22,6 @@ public class MemberDAO {
 			re = 1; 	// 중복id
 		return re;
 	}
-	//닉네임 중복 체크  
-	public int checkNickname(String nick) throws Exception {
-		int re1 = -1;	// 사용 가능한 ID
-		MemberBean mb = (MemberBean) session.selectOne("nickname_check", nick);
-		if (mb != null)
-			re1 = 1; 	// 중복id
-		return re1;
-	}
 	
 	// 회원 가입
 	public void insertMember(MemberBean m) throws Exception {

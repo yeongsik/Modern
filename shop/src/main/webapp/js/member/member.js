@@ -128,35 +128,6 @@ function id_check() {
 		}
 	});//$.ajax
 }
-
-//닉네임 중복확인
-function nickname_check() {
-	var memnickname = $("#nickname").val();
-
-	$.ajax({
-		type: "POST",
-		url: "member_nickcheck.shop",
-		data: { "memnickname": memnickname },        //키 벨류값
-		success: function(data) {
-			if (data == 1) {	//중복 ID
-				var newtext = '<font color="red">중복 닉네임입니다.</font>';
-				$("#nicknameResult").text('');
-				$("#nicknameResult").show();
-				$("#nicknameResult").append(newtext);
-				$("#nickname").val('').focus();
-				return false;
-
-			} else {	//사용 가능한 ID
-				var newtext = '<font color="blue">사용가능한 닉네임입니다.</font>';
-				$("#nicknameResult").text('');
-				$("#nicknameResult").show();
-				$("#nicknameResult").append(newtext);
-				$("#email").focus();
-			}
-		}
-	});//$.ajax
-}
-
 $(function() {
 	$("#idCheckComplete").hide();
 	$("#pw1CheckComplete").hide();

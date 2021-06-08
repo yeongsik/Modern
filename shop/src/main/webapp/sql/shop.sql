@@ -10,13 +10,8 @@ select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
-<<<<<<< HEAD
 select * from review;
-=======
-
 delete from heart;
->>>>>>> branch 'version1.0.2' of https://github.com/youngsik0266/modern.git
-
 select * from heart;
 create table stock (
 				stock_id varchar2(100) primary key,
@@ -113,8 +108,7 @@ insert into size_table values ('outer_jacket' , 's,m,l' , 'outer_jacket_size');
 insert into size_table values ('acc_shoes' , '260,270,280,290' , 'acc_shoes_size');
 insert into size_table values ('acc_socks' , 's,m,l' , 'acc_sokcs_size');
 insert into size_table values ('acc_jewelry' , 's,m,l' , 'acc_jewelry_size');
-
 update product set product_name = 'cashmere round knit deep blue' where product_id = 35;
 update product set color = 10 where product_id = 35;
-
 alter table product add (page number);
+alter table member rename column nickname to name;
