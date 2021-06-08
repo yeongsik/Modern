@@ -23,8 +23,7 @@
 		<section class="main-content-wrapper">
 			<div class="main-section-container">
 				<form method="POST" action="member_complete.shop" onsubmit="return joinCheck1()">
-					<input type="hidden" name="accept_mail_value"
-						id="accept_mail_value" value="n">
+					<input type="hidden" name="accept_mail_value" id="accept_mail_value" value="n">
 					<div class="register-main-wrapper">
 						<div class="register-main-text kor">회원가입</div> 
 					</div>
@@ -37,10 +36,8 @@
 											<i class="fas fa-check" id="idCheckComplete"></i>
 										</li>
 										<li class="register-id-input-wrapper">
-											<input type="text" class="register-id-input kor" id="joinId" name="member_id"
-												maxlength="12" placeholder="아이디 입력"> 
-											<input type="button" class="register-id-auth-input-button kor"
-												value="중복 확인" onclick="id_check()">
+											<input type="text" class="register-id-input kor" id="joinId" name="member_id" maxlength="12" placeholder="아이디 입력"> 
+											<input type="button" class="register-id-auth-input-button kor" value="중복 확인" onclick="id_check()">
 											<div class="result-divs kor" id="idCheckResult"></div>
 										</li>
 									</ol>
@@ -49,8 +46,7 @@
 											<i class="fas fa-check" id="pw1CheckComplete"></i>
 										</li>
 										<li class="register-pw-input-wrapper">
-											<input type="password" maxlength="12" class="register-pw-input kor" 
-										 		id="joinPw1" name="pw" placeholder="비밀번호 입력">
+											<input type="password" maxlength="12" class="register-pw-input kor" id="joinPw1" name="pw" placeholder="비밀번호 입력">
 											<div class="result-divs kor" id="pwCheckResult1"></div>
 										</li>
 									</ol>

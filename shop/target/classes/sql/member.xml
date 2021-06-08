@@ -15,15 +15,15 @@
    
     <!--아이디 찾기  -->
     <select id="findid" parameterType="member" resultType="member">
-    	select * from member where name=#{name} and email=#{email}
+    	select * from member where name=#{name} and email = #{email}
     </select>
     
     <!--비밀번호 찾기  -->
     <select id="findpw" parameterType="member" resultType="member">
-    	select * from member where member_id=#{member_id} and email=#{email}
+    	select * from member where member_id=#{member_id} and email = #{email}
     </select>
     
-    <!--임시 비밀번호 저장  -->
+    <!--비밀번호 저장  -->
     <update id="updatepw" parameterType="member" >
 	update member set pw = #{pw} where member_id = #{member_id}
 	</update>
@@ -35,8 +35,23 @@
     
     <!-- 관심상품 등록 여부 확인 -->
     <select id="likey_state" parameterType="heart" resultType="heart">
-    	select * from heart where member_id=#{member_id} and product_id=#{product_id}
+    	select * from heart where member_id=#{member_id} and product_id = #{product_id}
     </select>
+    
+    <!--회원비번 변경  -->
+    <update id="update_member_pw" parameterType="member">
+    	update member set pw=#{pw} where member_id = #{member_id}
+    </update>
+    
+    <!--회원 이메일 및 마케팅 변경  -->
+    <update id="update_member_email" parameterType="member">
+    	update member set email = #{email} where member_id = #{member_id}
+    </update>
+    
+    <!--회원삭제  -->
+    <delete id="deleteMember" parameterType="member">
+		delete from member where member_id = #{member_id}
+	</delete>
 </mapper>
 
     

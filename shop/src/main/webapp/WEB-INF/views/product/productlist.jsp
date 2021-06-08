@@ -150,7 +150,7 @@
                     </div>
                   </c:if>
                     <div class="product-list-content-container" id="product_list_section">
-                    	<%-- <c:forEach items ="${productlist }" var ="product">
+                    	<c:forEach items ="${productlist }" var ="product">
                         <div class="product-list-detail-wrapper" id="product_id" onClick="location.href='product_detail.shop?product_id=${product.product_id}'">
                             <div class="product-list-img-wrapper">
                                 <img class="product-list-img" src="product_images/${product.product_thumbnail}.png">
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                         </div>
-                    	</c:forEach> --%>
+                    	</c:forEach> 
                     	<%@ include file="/WEB-INF/views/product/productlistadd.jsp"%>
                     </div>
                 </div>

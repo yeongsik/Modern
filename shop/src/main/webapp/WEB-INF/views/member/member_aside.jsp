@@ -8,7 +8,7 @@
 	    <li class="member-content-nav-items-subtitle"><a href="member_cancel.shop" id="cancel" class="kor">취소 / 교환 / 반품조회</a></li>
 	    <li class="member-content-nav-items-title kor">나의 정보</li>
 	    <li class="member-content-nav-items-subtitle"><a href="member_profile.shop" id="info" class="kor">회원정보 수정</a></li>
-	    <li class="member-content-nav-items-subtitle"><a href="member_withdraw.shop" id="withdraw" class="kor">회원탈퇴</a></li>
+	    <li class="member-content-nav-items-subtitle"><a href="member_withdraw_view.shop" id="withdraw" class="kor">회원탈퇴</a></li>
 	    <li class="member-content-nav-items-title kor">활동 내역</li>
 	    <li class="member-content-nav-items-subtitle"><a href="member_membership.shop" id="grade" class="kor">회원 등급</a></li>
 	    <li class="member-content-nav-items-subtitle"><a href="member_board.shop" id="review" class="kor">구매 후기</a></li>

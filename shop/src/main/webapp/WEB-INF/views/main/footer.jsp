@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	 <footer>
         <div class="footer-container">
             <div class="footer-site">
@@ -14,27 +16,15 @@
                 <div class="footer-notice-subject kor">
                     <a class="footer-notice-subject kor" href="notice.shop">Notice</a>
                 </div>
-                <div class="footer-notice-content-wrapper kor">
-                    <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
-                    <span class="notice-content kor"><a class="notice-content" href="">2021-05-17</a></span>
-                </div>
-                <div class="footer-notice-content-wrapper kor">
-                    <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
-                    <span class="notice-content kor"><a class="notice-content" href="">2021-05-17</a></span>
-                </div>
-                <div class="footer-notice-content-wrapper kor">
-                    <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
-                    <span class="notice-content kor"><a class="notice-content" href="">2021-05-17</a></span>
-                </div>
-                <div class="footer-notice-content-wrapper kor">
-                    <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
-                    <span class="notice-content kor"><a class="notice-content" href="">2021-05-17</a></span>
-                </div>
-                <div class="footer-notice-content-wrapper kor">
-                    <span class="notice-content kor"><a class="notice-content" href="">공지사항</a></span>
-                    <span class="notice-content kor"><a class="notice-content" href="">2021-05-17</a></span>
-                </div>
-                
+
+				<c:forEach var="f" items="${footerList}">
+					<div class="footer-notice-content-wrapper">
+						<a class="notice-content" href="notice_detail.shop?notice_id=${f.notice_id}">${f.notice_subject}</a>
+						<span class="notice-content">
+							<fmt:formatDate value="${f.notice_date}" pattern="yyyy-MM-dd"/>
+						</span>
+					</div>
+				</c:forEach>
             </div>
             <div class="footer-info">
                 <div class="footer-info-number kor footer-info-content">

@@ -14,7 +14,6 @@
 	<script src="js/main.js"></script>
 	<!-- 구글 폰트 -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -36,8 +35,8 @@
           <div class="member-content-article-header kor">회원 정보 수정</div>
           <div class="member-content-article-inputarea">
             <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
-            <input type="password" class="member-content-article-inputarea-pw kor">
-            <input type="button" class="member-content-article-inputarea-btn kor" value="확인">
+            <input type="password" name="pw" class="member-content-article-inputarea-pw kor">
+            <input type="submit" class="member-content-article-inputarea-btn kor" onclick="location='member_update_view.shop'" value="확인">
           </div>
         </div>
       </div>
