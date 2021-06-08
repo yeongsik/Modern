@@ -27,7 +27,7 @@
             <div class="main-content-view">
                 <div class="main-content-view1 main-content-view-wrapper" onclick="location.href='notice.shop'">
                     <div class="main-content-view-img-wrapper">
-                        <img class="main-content-view-img" src="image/update.jpg">
+                        <img class="main-content-view-img" src="product_images/update.jpg">
                     </div>
                     <div class="main-content-view-desc eng">
                         <div class="main-content-view-desc-subject">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="main-content-view1 main-content-view-wrapper" onclick="location.href='about.shop'">
                     <div class="main-content-view-img-wrapper">
-                        <img class="main-content-view-img" src="image/update.jpg">
+                        <img class="main-content-view-img" src="product_images/update.jpg">
                     </div>
                     <div class="main-content-view-desc desc2 eng">
                         <div class="main-content-view-desc-subject">

@@ -46,6 +46,15 @@ select distinct product_name ,
 
 select * from notice;
 
+insert into notice values('28', '공지사항 테스트8', '관리자', '공지테스트입니다8', sysdate, 0);
+select * from notice where rownum <= 5  order by notice_date desc;
+select * from 
+		 (select rownum rnum,notice_id, notice_subject,notice_writer, notice_content,
+		 notice_date, notice_view from (select * from notice order by notice_date desc)) 
+	   		 where rnum <= 5
+
+select * from seq;
+
 create Sequence product_seq;
 create sequence product_detail_seq;
 
@@ -96,6 +105,7 @@ select * from
 		 (select rownum rnum, p.* from
 	  	 (select * from product left outer join product_detail on product.product_detail  = product_detail.product_detail where category_id = 'top_knit' order by product_date desc) p)
 	  	 where rnum >=1 and rnum <= 2;
+	  	 
 delete from size_table;
 
 insert into size_table values ('top_tshirts' , 's,m,l' , 'top_tshirts_size' );

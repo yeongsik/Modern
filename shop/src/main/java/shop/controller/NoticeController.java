@@ -62,7 +62,11 @@ public class NoticeController {
 	public String detail(@RequestParam("page") String page, 
 	                     @RequestParam("notice_id") int notice_id, 
 	                      Model model) throws Exception {
-
+	
+		
+	if ((page) == null || (page).equals("")) {
+			page = "1";
+	}
     /* 조회수 증가 */
 	  noticeService.updateView(notice_id);
 	  
