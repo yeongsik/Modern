@@ -58,7 +58,6 @@
 						</div>
 						<div class="notice-content-list-item-name">${n.notice_writer}</div>
 						<div class="notice-content-list-item-date">
-							<%-- <fmt:formatDate value="${n.notice_date}" dateStyle="medium"/> --%>
 							<fmt:formatDate value="${n.notice_date}" pattern="yyyy-MM-dd"/> 
 						</div>
 						<div class="notice-content-list-item-view">${n.notice_view}</div>

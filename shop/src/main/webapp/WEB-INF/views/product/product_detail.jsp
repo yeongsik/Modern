@@ -61,20 +61,25 @@
                             적립금 : ${buyingPoint}P
                         </div>
                         <div class="product-detail-product_description kor">
-                        배송 정보
+                        	배송 정보
                             <div class="delivery-notice kor">100,000원 이상 구매시 무료배송 ( 미만시 배송비 3000원 발생 )
                                 <br><br>제주도를 포함한 도서/산간지역은 추가배송비 3,000원
                             </div>
                         </div>
                         <div class="product-detail-size-choice">
-                            <select class="product_detail-size-select eng" id="product_select">
-                                <option>SIZE</option>
-                                <option id="product_size_s">S</option>
-                                <option id="product_size_m">M</option>
-                                <option id="product_size_l">L</option>
+                            <select class="product_detail-size-select eng" id="product_select" name="size" onChange="handleOnChange()">
+                                <option value="default">SIZE</option>
+	                        	<c:forEach var="size" items="${size}">
+                                <option id="product_size_option+${size}" value="${size}">${size}</option>
+	                            </c:forEach>
                             </select>
                         </div>
-                        <div class="product-detail-count-wrapper" id="product-count">
+                        <div class="product-detail-count-wrapper kor" id="product-count">
+                        	
+                        </div>
+                        <div class="product-totalprice-wrapper kor">
+                        	<div class="">총 상품 금액</div>
+                        	<div></div>
                         </div>
                         <div class="product-detail-order-wrapper">
                             <input type="button" class="product-detail-btn cart-btn eng" value="Cart">

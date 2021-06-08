@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="css/member/member_update2.css">
   <!-- 구글 폰트 -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>
+  <form action="member_update.shop" method="post">
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
@@ -39,23 +39,23 @@
               <div class="member-content-article-section-info_area">
                 <div class="member-content-article-section-info_area-id">
                   <div class="member-content-article-section-info_area-id-subtitle kor">아이디</div>
-                  <input type="text" value="test_id" readonly>
+                  <input type="text" value="${m.member_id }" name="member_id" readonly>
                 </div>
                 <div class="member-content-article-section-info_area-pw">
                   <div class="member-content-article-section-info_area-id-subtitle kor">비밀번호</div>
-                  <input type="password"> <br>
-                  <button>비밀번호 변경</button> 
+                  <input type="password" name="pw"> <br>
+                  <button >비밀번호 변경</button> 
                 </div>
-                <div class="member-content-article-section-info_area-nickname">
+                <!-- <div class="member-content-article-section-info_area-nickname">
                   <div class="member-content-article-section-info_area-id-subtitle kor">닉네임</div>
                   <input type="text" value="test_nickname"> <br>
                   <button>닉네임 변경</button> <br>
-                </div>
+                </div> -->
                 <div class="member-content-article-section-info_area-email kor">
                   <div class="member-content-article-section-info_area-id-subtitle kor">이메일</div>
-                  <input type="email" value="test@naver.com"> <br>
+                  <input type="email" value="${m.email}" name="email"> <br>
                   <button>이메일 변경</button> <br>
-                  <input type="checkbox"> 마케팅 수신 동의
+                  <input type="checkbox" value="${m.accept_mail }" name="accept_mail_value" > 마케팅 수신 동의
                 </div>
               </div>
             </div>
@@ -96,6 +96,7 @@
       </div>
     </div>
   </section>
+  </form>
    <%@ include file="../main/footer.jsp"%>    
 </body>
 </html>
