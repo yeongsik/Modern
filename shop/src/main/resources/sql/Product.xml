@@ -23,8 +23,14 @@
     	select * from product left outer join product_detail 
     	on product.product_detail = product_detail.product_detail where product_id = #{product_id}
     </select>
-    
-   <!--  <update id="upViewCount" parameterType="int">
+    <!-- 상품 사이즈 데이터 가져오기 -->
+    <select id="getSize" parameterType="String" resultType="size_table">
+    	select * from size_table where size_id = #{size_id}
+    </select>
+  	<!-- 상품 조회수 증가 -->
+  	<update id="upViewCount" parameterType="int">
     	update product set view_count = view_count +1 where product_id = #{product_id} 
-    </update> -->
+    </update> 
+    
+    
 </mapper>

@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="css/member/member_withdraw.css">
   <!-- 구글 폰트 -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
   <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>  
@@ -30,16 +30,15 @@
           
           <!-- article -->
           <div class="member-content-article-container">
-            <div class="member-content-article-header">회원탈퇴</div>
+            <div class="member-content-article-header kor">회원탈퇴</div>
             <div class="member-content-article-inputarea">
-              <div class="member-content-article-inputarea-comment">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
+              <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
               <input type="password" class="member-content-article-inputarea-pw">
-              <input type="button" class="member-content-article-inputarea-btn" value="확인">
+              <input type="button" class="member-content-article-inputarea-btn kor" value="확인">
             </div>
           </div>
         </div>
       </div>
-    </div>
   </section>  
    <%@ include file="../main/footer.jsp"%>  
 </body>
