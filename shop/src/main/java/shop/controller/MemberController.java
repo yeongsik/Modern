@@ -104,6 +104,7 @@ public class MemberController {
   // 관심상품
   @RequestMapping("member_interest.shop")
   public String interest() {
+	  
     return "member/member_interest";
   }
   
@@ -192,7 +193,8 @@ public class MemberController {
 				 * session.setAttribute("purchase_point", m.getPurchase_point());
 				 */
 				session.setAttribute("m", m);
-				
+				MemberBean membertest = (MemberBean) session.getAttribute("m");
+				System.out.println(membertest.getMember_id());
 				return "main/main";
 			} else {
 				result = 2;

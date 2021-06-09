@@ -19,7 +19,7 @@
 
 				<c:forEach var="f" items="${footerList}">
 					<div class="footer-notice-content-wrapper">
-						<a class="notice-content" href="notice_detail.shop?notice_id=${f.notice_id}">${f.notice_subject}</a>
+						<a class="notice-content" href="notice_detail.shop?notice_id=${f.notice_id}&page=${page}">${f.notice_subject}</a>
 						<span class="notice-content">
 							<fmt:formatDate value="${f.notice_date}" pattern="yyyy-MM-dd"/>
 						</span>
