@@ -23,7 +23,7 @@
     <%@ include file="../main/header.jsp"%>
     <div class="container">
         <section class="main-content-wrapper">
-             <form method="POST" action ="">
+             <form method="POST" action ="./order.shop">
                 <div class="product-detail-first-wrapper">
                     <div class="product-detail-first-product_img">
                         <img class="product-detail-product_img" src="product_images/${product.product_thumbnail}.png">
