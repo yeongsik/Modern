@@ -26,10 +26,30 @@ $(document).ready(function() {
 // 오더 디테일 테이블에 등록
 function handleOnChange() {
 	// 선택된 데이터 가져오기
-	const value = e.value;
-	if(e.value !="default") {
-	} 
-		
-	document.getElementById('result').innerText
-	= value;
+	
+
+	var choose_size = $("#product_select option:selected").val();
+	if(choose_size != "default" && !$("#product_select option:selected").hasClass("productActive")) {
+		alert(choose_size);
+		$("#product_select option:selected").addClass("productActive");
+		const url = new URL(window.location.href);
+			const urlParams = url.searchParams;
+			var product_id = parseInt(urlParams.get('product_id'));
+			alert("product_id :" +typeof product_id);
+			alert(product_id);
+			
+			$.ajax({
+				url: "orderdetailadd.shop",
+				type: "post",
+				data : {"product_id" : product_id ,
+						"choose_size" : choose_size},
+				success:function(data) {
+					$("#product-count").append(data);
+				},
+				error:function(){
+					alert("오류오류")
+				}
+			})
+			
+	}
 }

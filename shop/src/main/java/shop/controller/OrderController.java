@@ -1,35 +1,78 @@
 package shop.controller;
 
+
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import shop.model.OrderBean;
+
+import shop.model.OrderDetailBean;
+import shop.model.ProductBean;
 import shop.service.OrderService;
+import shop.service.ProductService;
+import shop.model.OrderBean;
+
+
 
 @Controller
 public class OrderController {
 	
 	@Autowired
-	private OrderService OrderService;
+	private OrderService os;
+	@Autowired
+	private ProductService ps;
+
 	
 	@RequestMapping("order.shop")
 	public String order(@RequestParam String product_id, Model model) throws Exception {
 		
 		OrderBean order = new OrderBean();
-		order = OrderService.getOrderOne(product_id);
+		order = os.getOrderOne(product_id);
 		
 		model.addAttribute("order", order);
 		
 		return "order/order";
 	}
 	
+
+	// 오더 디테일 추가 
+	@RequestMapping ("orderdetailadd.shop")
+	public String orderDetailAdd (int product_id , String choose_size , Model model) throws Exception {
+		System.out.println("OrderDetailAdd.shop");
+		Random random = new Random();
+		int orderDetail_pk = product_id + random.nextInt(10000);
+		OrderDetailBean order = new OrderDetailBean();
+		ProductBean product = new ProductBean();
+		order.setOrder_detail_pk(orderDetail_pk);
+		order.setProduct_id(product_id);
+		order.setCoupon_id(0);
+		order.setPurchase_number(1);
+		order.setOrder_id("");
+		order.setChoose_size(choose_size);
+		System.out.println(product_id);
+		System.out.println(choose_size);
+		os.orderDetailAdd(order);
+		
+		order = os.getOrderDetail(orderDetail_pk);
+		product = ps.getProductOne(product_id);
+		
+		System.out.println(order);
+		System.out.println(product);
+		model.addAttribute("orderDetail", order);
+		model.addAttribute("orderProduct" , product);
+		
+		
+		return "order/orderDetailAddResult";
+	}
+
 	@RequestMapping ("order-result.shop")
 	public String orderResult() {
 		
 		return "order/order-result";
 	}
 	
+
 }

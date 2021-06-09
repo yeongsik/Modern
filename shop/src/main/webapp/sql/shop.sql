@@ -126,3 +126,7 @@ update product set product_name = 'cashmere round knit deep blue' where product_
 update product set color = 10 where product_id = 35;
 alter table product add (page number);
 alter table member rename column nickname to name;
+
+alter table ORDER_DETAIL add (choose_size varchar2(30));
+
+create sequence order_detail_seq;
