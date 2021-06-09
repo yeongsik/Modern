@@ -1,17 +1,21 @@
 package shop.controller;
 
-import java.util.Random;
 
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 import shop.service.OrderService;
 import shop.service.ProductService;
+import shop.model.OrderBean;
+
+
 
 @Controller
 public class OrderController {
@@ -20,12 +24,20 @@ public class OrderController {
 	private OrderService os;
 	@Autowired
 	private ProductService ps;
+
 	
-	@RequestMapping ("order.shop")
-	public String main() {
+	@RequestMapping("order.shop")
+	public String order(@RequestParam String product_id, Model model) throws Exception {
+		
+		OrderBean order = new OrderBean();
+		order = os.getOrderOne(product_id);
+		
+		model.addAttribute("order", order);
+		
 		return "order/order";
 	}
 	
+
 	// 오더 디테일 추가 
 	@RequestMapping ("orderdetailadd.shop")
 	public String orderDetailAdd (int product_id , String choose_size , Model model) throws Exception {
@@ -55,4 +67,12 @@ public class OrderController {
 		
 		return "order/orderDetailAddResult";
 	}
+
+	@RequestMapping ("order-result.shop")
+	public String orderResult() {
+		
+		return "order/order-result";
+	}
+	
+
 }
