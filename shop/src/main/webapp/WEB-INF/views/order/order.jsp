@@ -9,8 +9,10 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/order.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
+    </script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/stickyfilljs@2.1.0/dist/stickyfill.min.js"></script>
 	<script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script type="text/javascript">
@@ -59,6 +61,7 @@
 	           <div class="left-content">
 	               <!-- 배송정보 -->
 	               <div class="left-content-wrapper">
+	               <%-- <input type="text" value="${order.product_name}"/> --%>
 	                   <div class="content-table-title">
 	                       <p class="content-title">배송정보</p>
 	                       <p class="content-dscr">
