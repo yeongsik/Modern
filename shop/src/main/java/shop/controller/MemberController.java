@@ -106,8 +106,19 @@ public class MemberController {
 
   // 관심상품
   @RequestMapping("member_interest.shop")
-  public String interest(@ModelAttribute("list") ProductBean product, @ModelAttribute("member_id") String member_id, Model model) throws Exception {
-    product.setMember_id(member_id);
+  public String interest(@ModelAttribute("list") ProductBean product, HttpSession session, @ModelAttribute("member_id") String member_id, Model model) throws Exception {
+    // JS에서 받아온 변수로 이름 설정
+    // product.setMember_id(member_id);
+    
+    // session에서 받아온 값으로 이름 설정
+    MemberBean mb = (MemberBean)session.getAttribute("m");
+    String name = mb.getName();
+    String id = mb.getMember_id();
+    System.out.println("name : " + name);
+    System.out.println("id : " + id);    
+    product.setMember_id(id);
+    
+    
     List<ProductBean> list = new ArrayList<ProductBean>(); 
     
     list = service.getLikeList(product);
