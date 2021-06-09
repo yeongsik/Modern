@@ -50,7 +50,13 @@ public class MemberController {
   public String memberInfo() { 
 	return "member/member_update"; 
   }
-	 
+  
+  // 회원정보 삭제
+	
+ @RequestMapping("member_withdraw_view.shop") 
+ public String memberdelete() { 
+	return "member/member_withdraw"; 
+ }
 
   // 배송지 관리 
   @RequestMapping("member_address.shop")
@@ -392,13 +398,13 @@ public class MemberController {
     /* return "product/product_detail"; */
 	}
   
-	//회원정보수정페이지이동
+	//회원페이지1->2로
 	@RequestMapping("member_update_view.shop")
 	public String member_update_view() {
 		return "member/member_update2";
 	}
 	
-	//회원수정
+	//회원페이지2->결과페이지
 	@RequestMapping("member_update.shop")
 	public String member_update(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
 		String member_id = (String) session.getAttribute("member_id");
@@ -411,13 +417,16 @@ public class MemberController {
 	}
 	
 	//회원탈퇴 페이지이동
-	@RequestMapping("member_withdraw_view.shop") 
-	public String member_withdraw_view() {
+	
+	  @RequestMapping("member_withdraw.shop") 
+	  public String member_withdraw_view() {
 	  
-	    return "member/member_withdraw2"; }
+	  return "member/member_withdraw2"; }
+	 
+	
 	 
 	//회원탈퇴 
-	@RequestMapping("member_withdraw.shop")
+	@RequestMapping("member_withdraw_result.shop")
 	public String member_withdraw(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
 		String member_id = (String) session.getAttribute("member_id");
 			

@@ -17,6 +17,16 @@
 	   		 where rnum >= ((#{page}-1) * 10+1)  and rnum <= (#{page} * 10)
 		]]>
     </select>
+
+    <!-- 푸터 게시판 목록 -->
+    <select id="footer_board_list" resultType="notice">
+   	 	<![CDATA[
+		select * from 
+		 (select rownum rnum,notice_id, notice_subject,notice_writer, notice_content,
+		 notice_date, notice_view from (select * from notice order by notice_date desc)) 
+	   		 where rnum <= 5
+		]]>
+    </select>
     
     <!-- 조회수 증가 -->
     <update id="updateView" parameterType="int">
