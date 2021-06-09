@@ -24,6 +24,12 @@ public class NoticeServiceImple implements NoticeService {
 		return noticeDao.getBoardList(page);
 	}
 
+	// 푸터 공지사항 출력
+	@Override
+	public List getFooterBoardList() throws Exception {
+		return noticeDao.getFooterBoardList();
+	}
+	
 	@Override
 	public void updateView(int notice_id) throws Exception {
 		noticeDao.updateView(notice_id);
@@ -35,9 +41,5 @@ public class NoticeServiceImple implements NoticeService {
 		return board;
 	}
 
-	// 푸터 공지사항 출력
-	public List getFooterBoardList() throws Exception {
-		return noticeDao.getFooterBoardList();
-	}
 
 }

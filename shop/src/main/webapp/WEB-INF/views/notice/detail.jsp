@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- css -->
   <link rel="stylesheet" href="css/notice/notice_detail.css">
+  <link rel="stylesheet" href="css/main.css">
   <!-- js -->
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="js/notice/detail.js"></script>

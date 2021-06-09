@@ -27,7 +27,7 @@ public class MainController {
 		footerList = noticeService.getFooterBoardList();
 
 		session.setAttribute("footerList", footerList);
-	
+		
 		return "main/main";
 	}
 	
