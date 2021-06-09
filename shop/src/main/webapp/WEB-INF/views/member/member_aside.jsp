@@ -18,7 +18,7 @@
 	    <li class="member-content-nav-items-subtitle"><a href="member_coupon.shop" id="coupon" class="kor">쿠폰</a></li>
 	    <li class="member-content-nav-items-subtitle"><a href="member_point.shop" id="point" class="kor">포인트</a></li>
 	    <li class="member-content-nav-items-title"><a href="member_cart.shop" id="cart" class="kor">장바구니</a></li>
-	    <li class="member-content-nav-items-title"><a href="member_interest.shop" id="likey" class="kor">관심상품</a></li>
+	    <li class="member-content-nav-items-title"><a href="member_interest.shop" class="kor" id="interest">관심상품</a></li>
 	  </ul>
 	</div>
 </div>

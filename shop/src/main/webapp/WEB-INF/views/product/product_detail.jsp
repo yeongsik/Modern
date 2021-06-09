@@ -17,6 +17,9 @@
     <script>
       <c:set var="product_id" value="${product.product_id}" />
       var p_id = '<c:out value='${product_id}'/>';
+      
+      <c:set var="member_id" value="${m.member_id}"/>
+      var m_id = '<c:out value='${member_id}'/>';
     </script>
 </head>
 <body>
@@ -35,7 +38,7 @@
                             </div>
                             <div class="product-detail-product-heart">
 	                            <c:if test="${likeyState == 1}">
-									<i class="fas fa-heart product-heart"></i>
+									<i class="fas fa-heart product-heart" onClick="cancel()"></i>
 								</c:if>    
 	                            <c:if test="${likeyState != 1}"> 
 									<i class="far fa-heart product-heart" onClick="enroll()"></i>
