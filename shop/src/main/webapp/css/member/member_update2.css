@@ -1,27 +1,16 @@
 @charset "UTF-8";
-@import url("../main.css");
-@import url(member_header.css);
+@import url(member_main.css);
 @import url(member_aside.css);
 
 /* aside */
 #info {
 	font-weight :600 !important;
 }
-.member-content-main-container {
-  display: flex;
-  justify-content: space-between;
-}
-/* article */
-.member-content-article-container {
-  width: 80%;
-  margin-top: 60px;
-  padding-left: 50px;
-}
-.member-content-article-header {
+/* .member-content-article-header {
   font-size: var(--font-size-h5);
   font-weight: bolder;
   display: flex;
-}
+} */
 .member-content-article-header-member_update,
 .member-content-article-header-address_management {
   width: 50%;
@@ -87,7 +76,18 @@
   height: 30px;
   border-radius: 5px;
 }
-
+.pw-button{
+  width: 182px;
+  margin-bottom: 20px;
+  padding: 5px 3px 5px 10px;
+  background-color: var(--color-black);
+  border: none;
+  text-align: center;
+  color: var(--color-white);
+  width: 208px;
+  height: 30px;
+  border-radius: 5px;
+}
 /* 배송지 관리 */
 .member-content-article-section-address_area-basic-title {
   font-weight: bold;

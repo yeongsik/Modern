@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
     <%@ include file="../main/header.jsp"%>
     <div class="container">
         <section class="main-content-wrapper">
-             <form method="POST" action ="">
+             <form method="POST" action ="./order.shop">
                 <div class="product-detail-first-wrapper">
                     <div class="product-detail-first-product_img">
                         <img class="product-detail-product_img" src="product_images/${product.product_thumbnail}.png">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="product-detail-product-price kor">
-                            &#8361; ${product.product_price}
+                            &#8361;<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" var="productPrice"/> 
                         </div>
                         <div class="product-detail-product_description kor">
                             상품 설명
@@ -78,7 +78,6 @@
                             </select>
                         </div>
                         <div class="product-detail-count-wrapper kor" id="product-count">
-                        	
                         </div>
                         <div class="product-totalprice-wrapper kor">
                         	<div class="">총 상품 금액</div>

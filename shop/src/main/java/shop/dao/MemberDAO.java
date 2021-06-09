@@ -47,7 +47,7 @@ public class MemberDAO {
 	// 비밀번호 저장
 	public void updatepw(MemberBean mem) throws Exception {
 		System.out.println("비번 저장 : "+mem.getPw());
-		 session.update("updatepw",mem);;
+		 session.update("updatepw", mem);
 	}
 	
 	// 로그인 검사

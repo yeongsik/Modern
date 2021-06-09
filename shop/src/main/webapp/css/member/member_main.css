@@ -2,7 +2,9 @@
 @import url("../main.css");
 @import url("member_header.css");
 
+
 /* member-content-section */
+
 .member-content-section {
   display: flex;
   justify-content: space-between;
@@ -10,7 +12,7 @@
   margin: 80px 2px 0 2px;
 }
 
-/* 공통 속성 설정 */
+/*공통 속성 설정 */
 .mypage-main-section-wrapper {
   width: 30%;
   height: 300px;
@@ -35,4 +37,21 @@
 }
 .mypage-main-section-wrapper:hover {
   cursor: pointer;
+} 
+
+
+.member-content-main-container {
+  display: flex;
+  justify-content: space-between;
+} 
+
+/* article */
+.member-content-article-container {
+  width: 80%;
+  margin-top: 60px;
+  padding-left: 50px;
+}
+.member-content-article-header {
+  font-size: var(--font-size-h5);
+  font-weight: bolder;
 }
