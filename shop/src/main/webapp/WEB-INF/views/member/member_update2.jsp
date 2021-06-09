@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="js/member/member.js"></script>
   <title>Modern</title>
   <!-- css -->
   <link rel="stylesheet" href="css/member/member_update2.css">
@@ -39,27 +41,27 @@
               <div class="member-content-article-section-info_area">
                 <div class="member-content-article-section-info_area-id">
                   <div class="member-content-article-section-info_area-id-subtitle kor">아이디</div>
-                  <input type="text" value="${m.member_id }" name="member_id" readonly>
+                  <input type="text" value="${m.member_id}" name="member_id" readonly>
                 </div>
-                <div class="member-content-article-section-info_area-pw">
-                  <div class="member-content-article-section-info_area-id-subtitle kor">비밀번호</div>
-                  <input type="password" name="pw"> <br>
-                  <button >비밀번호 변경</button> 
+                  <button type="button" class="pw-button" id="pwbtn" >비밀번호 변경</button> 
+                  <div class="member-content-article-section-info_area-pw" id="pwdivs">
+                  <div class="member-content-article-section-info_area-id-subtitle kor">새로운 비밀번호</div>
+                  <input type="password" id="pwddiv" name="pw" > <br>
+                  <div class="member-content-article-section-info_area-id-subtitle kor">새로운 비밀번호 확인 </div>
+                  <input type="password"> <br>
+                  </div>
+                <div class="member-content-article-section-info_area-nickname">
+                  <div class="member-content-article-section-info_area-id-subtitle kor">휴대폰 번호</div>
+                  <input type="text" value="${m.phone}"> <br>
                 </div>
-                <!-- <div class="member-content-article-section-info_area-nickname">
-                  <div class="member-content-article-section-info_area-id-subtitle kor">닉네임</div>
-                  <input type="text" value="test_nickname"> <br>
-                  <button>닉네임 변경</button> <br>
-                </div> -->
                 <div class="member-content-article-section-info_area-email kor">
                   <div class="member-content-article-section-info_area-id-subtitle kor">이메일</div>
                   <input type="email" value="${m.email}" name="email"> <br>
-                  <button>이메일 변경</button> <br>
-                  <input type="checkbox" value="${m.accept_mail }" name="accept_mail_value" > 마케팅 수신 동의
+                  <input type="checkbox" value="${m.accept_mail}" name="accept_mail_value" > 마케팅 수신 동의 <br>
+                  <button type="submit">회원정보 수정</button>
                 </div>
               </div>
             </div>
-            
             <div class="member-content-article-section-address_area">
               <div class="member-content-article-section-address_area-basic">
                 <div class="member-content-article-section-address_area-basic-title kor">기본 배송지</div>

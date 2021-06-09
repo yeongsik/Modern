@@ -20,7 +20,7 @@
 </head>
 <body>
   <%@ include file="../main/header.jsp"%>
-  <form action="member_withdraw.shop" method="post">  
+  <form action="member_withdraw_result.shop" method="post">  
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
