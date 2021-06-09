@@ -53,10 +53,10 @@ function openDaumPostcodeNew() {
 
 $(document).ready(function(){
 	/* 우측 상품/금액정보 스크롤 */
-/*	$(window).on("scroll", function(){
+	$(window).on("scroll", function(){
 	    var elements = $('.sticky');
 	    Stickyfill.add(elements);
-	})*/
+	});
 
 	/* 기존배송지 클릭 */
 	$("#tab1").click(function(){

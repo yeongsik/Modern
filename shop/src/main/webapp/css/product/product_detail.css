@@ -161,3 +161,14 @@ li.current , .product-description-tab-link:hover {
 span.detail-content {
     margin : 2px 0;
 }
+.orderDetail-content-wrapper {
+	display:flex;
+	justify-content: space-between;
+}
+.order-Detail-content {
+	color:var(--color-black);
+	font-size : 12px;
+}
+.product-totalprice-wrapper {
+	border-top : 2px solid var(--color-black);
+}
