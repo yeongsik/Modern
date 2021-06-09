@@ -20,6 +20,8 @@ public class ProductBean {
 	private String product_img3;
 	private String product_description;
 	
+	// 멤버이름 추가
+	private String member_id;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -117,4 +119,12 @@ public class ProductBean {
 	public void setProduct_description(String product_description) {
 		this.product_description = product_description;
 	}
+
+	// 멤버 
+  public String getMember_id() {
+    return member_id;
+  }
+  public void setMember_id(String member_id) {
+    this.member_id = member_id;
+  }
 }	

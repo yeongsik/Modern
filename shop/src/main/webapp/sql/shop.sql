@@ -11,12 +11,15 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 select * from review;
-delete from heart;
+
 select * from heart;
+delete from heart;
+
 select * from address;
 select * from seq;
 select * from notice;
-select  from cols where table_name = 'notice'; 
+select  from cols where table_name = 'notice';
+
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,

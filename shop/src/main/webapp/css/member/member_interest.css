@@ -22,6 +22,7 @@
 /* 구분선 */
 .contour {
   margin-top: 20px;
+  margin-bottom : 10px;
   padding: 5px;
   border: none;
   border-bottom: 3px solid var(--color-grey);
@@ -42,12 +43,13 @@
   margin-right: 8px;
   margin-bottom: 5px;
 }
-.member-content-article-item-brand {
-  margin-bottom: 3px;
+.member-content-article-item-img > img {
+  width : 125px;
+  height : 125px;
 }
 .member-content-article-item-product {
   font: var(--font-kor);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .member-content-article-item-price {
   font: var(--font-kor);
