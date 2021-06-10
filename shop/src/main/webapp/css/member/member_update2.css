@@ -76,7 +76,18 @@
   height: 30px;
   border-radius: 5px;
 }
-
+.pw-button{
+  width: 182px;
+  margin-bottom: 20px;
+  padding: 5px 3px 5px 10px;
+  background-color: var(--color-black);
+  border: none;
+  text-align: center;
+  color: var(--color-white);
+  width: 208px;
+  height: 30px;
+  border-radius: 5px;
+}
 /* 배송지 관리 */
 .member-content-article-section-address_area-basic-title {
   font-weight: bold;

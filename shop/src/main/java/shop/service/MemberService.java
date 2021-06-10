@@ -1,5 +1,7 @@
 package shop.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.wiring.ClassNameBeanWiringInfoResolver;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import shop.dao.MemberDAO;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.ProductBean;
 
 
 @Service
@@ -57,6 +60,16 @@ public class MemberService {
 		// 관심상품 등록 여부 확인
 		public int likeyState(HeartBean hb) throws Exception {
 		    return md.likeyState(hb);
+		}
+		
+		// 관심상품 등록 취소
+		public int cancelLikey(HeartBean hb) throws Exception {
+		  return md.cancelLikey(hb);
+		}
+		
+		// 관심상품 리스트 가져오기
+		public List<ProductBean> getLikeList(ProductBean product) throws Exception {
+		  return md.getLikeList(product);
 		}
 		
 		//회원정보수정 이메일

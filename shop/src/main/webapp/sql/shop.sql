@@ -11,12 +11,15 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 select * from review;
-delete from heart;
+
 select * from heart;
+delete from heart;
+
 select * from address;
 select * from seq;
 select * from notice;
-select  from cols where table_name = 'notice'; 
+select  from cols where table_name = 'notice';
+
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,
@@ -46,7 +49,7 @@ select distinct product_name ,
 
 select * from notice;
 
-insert into notice values('28', '공지사항 테스트8', '관리자', '공지테스트입니다8', sysdate, 0);
+insert into notice values('30', '공지사항 테스트10', '관리자', '공지테스트입니다10', sysdate, 0);
 select * from notice where rownum <= 5  order by notice_date desc;
 select * from 
 		 (select rownum rnum,notice_id, notice_subject,notice_writer, notice_content,
