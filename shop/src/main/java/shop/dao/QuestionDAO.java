@@ -1,11 +1,14 @@
 package shop.dao;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Repository
-public class QuestionDAO {
-	@Autowired
-	private SqlSession session;
+import shop.model.QuestionBean;
+
+public interface QuestionDAO {
+
+	public int getListCount() throws Exception;
+
+	public List<QuestionBean> getBoardList(int page) throws Exception; 
+
+	public QuestionBean getQuestionDetail(int question_id) throws Exception;
 }

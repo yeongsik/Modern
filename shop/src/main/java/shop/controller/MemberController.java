@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
+import shop.model.QuestionBean;
 import shop.service.MemberService;
 
 @Controller
@@ -81,10 +82,20 @@ public class MemberController {
   }
   
   // 상품 문의
-  @RequestMapping("member_item_question.shop")
-  public String question() {
-    return "member/member_item_question";
-  }
+	
+	/*
+	 * @RequestMapping("member_item_question.shop") public String
+	 * question(HttpServletRequest request, HttpSession session) throws Exception {
+	 * 
+	 * List<QuestionBean> itemQuestion = new ArrayList<QuestionBean>();
+	 * 
+	 * itemQuestion = questionService.getQuestionList();
+	 * 
+	 * session.setAttribute("itemQuestion", itemQuestion);
+	 * 
+	 * return "member/member_item_question"; }
+	 */
+	 
   
   // 1:1 문의
   @RequestMapping("member_personal_question.shop")
