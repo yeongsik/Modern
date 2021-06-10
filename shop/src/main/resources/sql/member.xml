@@ -10,7 +10,7 @@
     <!--회원가입 -->
     <insert id="member_register" parameterType="member">
     insert into member values (#{member_id}, #{pw}, #{email}, 0, 
-    #{phone}, #{birth}, #{gender}, #{name}, #{accept_mail}, 0, 0, sysdate,'bronze')
+    #{phone}, #{birth}, #{gender}, #{name}, #{accept_mail}, 0, 0, sysdate,'Bronze')
     </insert>
    
     <!--아이디 찾기  -->

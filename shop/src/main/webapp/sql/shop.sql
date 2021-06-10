@@ -11,15 +11,14 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 select * from review;
-
+select * from coupon;
 select * from heart;
 delete from heart;
 
 select * from address;
 select * from seq;
 select * from notice;
-select  from cols where table_name = 'notice';
-
+insert into coupon values ( 412318, '가입기념쿠폰', 10, sysdate, sysdate, 'test001');
 create table stock (
 				stock_id varchar2(100) primary key,
 				stock_s number,

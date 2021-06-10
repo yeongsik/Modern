@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -192,6 +193,7 @@ public class MemberController {
 		member.setAccept_mail(accept_mail);
 		
 		service.insertMember(member);
+		
 		return "member/register_result";
 	}
 	
