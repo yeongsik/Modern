@@ -1,26 +1,12 @@
 @charset "UTF-8";
-@import url("../main.css");
-@import url(member_header.css);
+@import url(member_main.css);
 @import url(member_aside.css);
 
 /* aside */
 #order {
 	font-weight :600 !important;
 }
-.member-content-main-container {
-  display: flex;
-  justify-content: space-between;
-}
-/* article */
-.member-content-article-container {
-  width: 80%;
-  margin-top: 60px;
-  padding-left: 50px;
-}
-.member-content-article-header {
-  font-size: var(--font-size-h5);
-  font-weight: bolder;
-}
+
 .member-content-article-procedure {
   display: flex;
   justify-content: center;

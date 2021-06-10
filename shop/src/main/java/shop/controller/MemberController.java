@@ -1,6 +1,8 @@
 package shop.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.ProductBean;
 import shop.service.MemberService;
 
 @Controller
@@ -50,7 +53,13 @@ public class MemberController {
   public String memberInfo() { 
 	return "member/member_update"; 
   }
-	 
+  
+  // 회원정보 삭제
+	
+ @RequestMapping("member_withdraw_view.shop") 
+ public String memberdelete() { 
+	return "member/member_withdraw"; 
+ }
 
   // 배송지 관리 
   @RequestMapping("member_address.shop")
@@ -103,8 +112,27 @@ public class MemberController {
 
   // 관심상품
   @RequestMapping("member_interest.shop")
-  public String interest() {
-	  
+
+  public String interest(@ModelAttribute("list") ProductBean product, HttpSession session, @ModelAttribute("member_id") String member_id, Model model) throws Exception {
+    // JS에서 받아온 변수로 이름 설정
+    // product.setMember_id(member_id);
+    
+    // session에서 받아온 값으로 이름 설정
+    MemberBean mb = (MemberBean)session.getAttribute("m");
+    String name = mb.getName();
+    String id = mb.getMember_id();
+    System.out.println("name : " + name);
+    System.out.println("id : " + id);    
+    product.setMember_id(id);
+    
+    
+    List<ProductBean> list = new ArrayList<ProductBean>(); 
+    
+    list = service.getLikeList(product);
+    
+    model.addAttribute("list", list);
+    
+
     return "member/member_interest";
   }
   
@@ -368,16 +396,13 @@ public class MemberController {
 	}
 	
   
-  // 관심상품 등록
-	@RequestMapping("product_likey.shop")
-  public String likey(
-      /* @RequestParam("member_id") String member_id, */ @RequestParam("product_id") int product_id, Model model) throws Exception {
-    /* System.out.println("member_id : " + member_id); */
-	  System.out.println("product_id : " + product_id);
+  // 관심상품 등록 - confirm:확인
+	@RequestMapping("product_likey_confirm_agree.shop")
+  public String goMemberInterest(
+       @RequestParam("member_id") String member_id, @RequestParam("product_id") int product_id, Model model) throws Exception {
 	  
 	  HeartBean hb = new HeartBean();
-    /* hb.setMember_id(member_id); */
-	  hb.setMember_id("hama");
+    hb.setMember_id(member_id); 
 	  hb.setProduct_id(product_id);
 	  
 	  int result = service.enrollLikey(hb);
@@ -390,17 +415,70 @@ public class MemberController {
 	  model.addAttribute("hb",hb);
 	  model.addAttribute("likeyState",likeyState);
 	  
-    return "forward:product_detail.shop";
-    /* return "product/product_detail"; */
+    return "forward:member_interest.shop";
+	  
+	  
 	}
   
+   //관심상품 등록 - cofirm:취소
+   @RequestMapping("product_likey_confirm_cancel.shop")
+   public String reloadProductDetail(
+        @RequestParam("member_id") String member_id, @RequestParam("product_id") int product_id, Model model) throws Exception {
+
+     HeartBean hb = new HeartBean();
+     hb.setMember_id(member_id); 
+     hb.setProduct_id(product_id);
+     
+     int result = service.enrollLikey(hb);
+     System.out.println("result : " + result);
+     
+     // 관심상품 등록 여부 확인
+     int likeyState = service.likeyState(hb);
+     System.out.println("likeyState : " + likeyState);
+     
+     model.addAttribute("hb",hb);
+     model.addAttribute("likeyState",likeyState);
+     
+       return "forward:product_detail.shop";
+     
+   }
+   
+   //관심상품 등록 취소
+   @RequestMapping("product_likey_cancel.shop")
+   public String deleteLikeProduct(
+        @RequestParam("member_id") String member_id, @RequestParam("product_id") int product_id, Model model) throws Exception {
+     
+     HeartBean hb = new HeartBean();
+     hb.setMember_id(member_id); 
+     hb.setProduct_id(product_id);
+     
+     int result = service.cancelLikey(hb);
+     if(result == 1) {
+       System.out.println("관심상품 삭제 성공");
+     } else {
+       System.out.println("관심상품 삭제 실패");
+     }
+     
+     // 관심상품 등록 여부 확인
+     /* int likeyState = 0; */
+     int likeyState = service.likeyState(hb);
+     System.out.println("likeyState : " + likeyState);
+     
+     model.addAttribute("hb",hb);
+     model.addAttribute("likeyState",likeyState);
+     
+       return "forward:product_detail.shop";
+     
+   }
+ 
 	//회원정보수정페이지이동
+	//회원페이지1->2로
 	@RequestMapping("member_update_view.shop")
 	public String member_update_view() {
 		return "member/member_update2";
 	}
 	
-	//회원수정
+	//회원페이지2->결과페이지
 	@RequestMapping("member_update.shop")
 	public String member_update(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
 		String member_id = (String) session.getAttribute("member_id");
@@ -413,13 +491,16 @@ public class MemberController {
 	}
 	
 	//회원탈퇴 페이지이동
-	@RequestMapping("member_withdraw_view.shop") 
-	public String member_withdraw_view() {
+	
+	  @RequestMapping("member_withdraw.shop") 
+	  public String member_withdraw_view() {
 	  
-	    return "member/member_withdraw2"; }
+	  return "member/member_withdraw2"; }
+	 
+	
 	 
 	//회원탈퇴 
-	@RequestMapping("member_withdraw.shop")
+	@RequestMapping("member_withdraw_result.shop")
 	public String member_withdraw(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
 		String member_id = (String) session.getAttribute("member_id");
 			

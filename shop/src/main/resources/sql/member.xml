@@ -38,6 +38,16 @@
     	select * from heart where member_id=#{member_id} and product_id = #{product_id}
     </select>
     
+    <!-- 관심상품 등록 취소 -->
+    <delete id="cancel_likey" parameterType="heart">
+    	delete from heart where member_id = #{member_id} and product_id = #{product_id}
+    </delete>
+    
+    <!-- 관심상품 리스트 가져오기 -->
+    <select id="like_list" parameterType="product" resultType="product">
+    	select pd.product_thumbnail, p.product_name, p.product_price from product_detail pd natural join heart h join product p on (pd.product_detail = h.product_id and h.product_id = p.product_id) where h.member_id = #{member_id}
+    </select>
+    
     <!--회원비번 변경  -->
     <update id="update_member_pw" parameterType="member">
     	update member set pw=#{pw} where member_id = #{member_id}

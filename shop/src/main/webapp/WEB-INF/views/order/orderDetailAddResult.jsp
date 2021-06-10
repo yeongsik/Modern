@@ -5,5 +5,5 @@
 <div class="orderDetail-content-wrapper">
 	<div class="order-Detail-content eng">${orderProduct.product_name }</div>
 	<div class="order-Detail-content eng">${orderDetail.choose_size}</div>
-	<div class="order-Detail-content kor">수량:${orderDetail.purchase_number}</div>
+	<div class="order-Detail-content kor">수량:${orderDetail.purchase_number }</div>
 </div>

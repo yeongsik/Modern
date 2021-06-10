@@ -1,5 +1,7 @@
 package shop.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.ProductBean;
 
 @Repository
 public class MemberDAO {
@@ -44,7 +47,7 @@ public class MemberDAO {
 	// 비밀번호 저장
 	public void updatepw(MemberBean mem) throws Exception {
 		System.out.println("비번 저장 : "+mem.getPw());
-		 session.update("updatepw",mem);;
+		 session.update("updatepw", mem);
 	}
 	
 	// 로그인 검사
@@ -64,6 +67,16 @@ public class MemberDAO {
 	  HeartBean result = (HeartBean) session.selectOne("likey_state", hb);
 	  if(result != null) state = 1; // 등록 상태
 	  return state;
+	}
+	
+	// 관심상품 등록 취소
+	public int cancelLikey(HeartBean hb) throws Exception {
+	  return session.delete("cancel_likey", hb);
+	}
+	
+	// 관심상품 리스트 가져오기
+	public List<ProductBean> getLikeList(ProductBean product) throws Exception {
+	  return session.selectList("like_list", product);
 	}
 	
 	//회원정보수정 이메일
