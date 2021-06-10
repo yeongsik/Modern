@@ -4,7 +4,7 @@
 <mapper namespace="Orderns">
     
     <!-- 주문자 정보 -->
-    <select id="orderUser" parameterType="String" resultType="order">
+    <select id="orderUser" parameterType="String" resultType="order_table">
     	select * from product where product_id = 62
     </select>
     

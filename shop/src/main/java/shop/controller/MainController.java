@@ -25,7 +25,7 @@ public class MainController {
 		List<NoticeBean> footerList = new ArrayList<NoticeBean>();
 		
 		footerList = noticeService.getFooterBoardList();
-
+		
 		session.setAttribute("footerList", footerList);
 		
 		return "main/main";

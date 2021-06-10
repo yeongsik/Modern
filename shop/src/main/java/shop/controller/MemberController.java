@@ -112,6 +112,7 @@ public class MemberController {
 
   // 관심상품
   @RequestMapping("member_interest.shop")
+
   public String interest(@ModelAttribute("list") ProductBean product, HttpSession session, @ModelAttribute("member_id") String member_id, Model model) throws Exception {
     // JS에서 받아온 변수로 이름 설정
     // product.setMember_id(member_id);
@@ -131,6 +132,7 @@ public class MemberController {
     
     model.addAttribute("list", list);
     
+
     return "member/member_interest";
   }
   
@@ -219,7 +221,8 @@ public class MemberController {
 				 * session.setAttribute("purchase_point", m.getPurchase_point());
 				 */
 				session.setAttribute("m", m);
-				
+				MemberBean membertest = (MemberBean) session.getAttribute("m");
+				System.out.println(membertest.getMember_id());
 				return "main/main";
 			} else {
 				result = 2;
