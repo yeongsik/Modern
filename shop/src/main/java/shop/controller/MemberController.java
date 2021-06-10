@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -318,8 +319,7 @@ public class MemberController {
 		/* BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); */	//암호화 인코더
 		
 		
-		  String key = ""; for (int i = 0; i < 12; i++) { key += (char) ((Math.random()
-		  * 26) + 97); }
+		  String key = ""; for (int i = 0; i < 12; i++) { key += (char) ((Math.random() * 26) + 97); }
 		 
 		MemberBean member = service.findpw(mem);
 		
@@ -480,13 +480,26 @@ public class MemberController {
 	
 	//회원페이지2->결과페이지
 	@RequestMapping("member_update.shop")
-	public String member_update(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
-		String member_id = (String) session.getAttribute("member_id");
+	public String member_update(@ModelAttribute MemberBean member, HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		//String member_id = (String) session.getAttribute("member_id");
+		// String pw = (String) session.getAttribute("pw");
 		
-		model.addAttribute("member_id", member_id);
 		
-		service.updatepw(member);
-		service.updateEmail(member);
+		//service.updateEmail(member);
+		// service.updatePhone(member);
+		// model.addAttribute("member_id", member_id); 
+		//model.addAttribute("pw", pw);
+		 
+		// 동적 sql문
+		service.updateMember(member);
+		
+		/* service.memberAddress(address); */ 
+		//섹션은 갱신을 안해준 상태라 다시 한번 db를 조회를 해서 정보를 다시 가져와야함
+		MemberBean m = service.userCheck(member.getMember_id());
+		
+		
+		session.setAttribute("m", m);
+	
 		return "member/update_result";
 	}
 	
@@ -495,7 +508,8 @@ public class MemberController {
 	  @RequestMapping("member_withdraw.shop") 
 	  public String member_withdraw_view() {
 	  
-	  return "member/member_withdraw2"; }
+	  return "member/member_withdraw2"; 
+	}
 	 
 	
 	 

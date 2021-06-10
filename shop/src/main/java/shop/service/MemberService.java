@@ -7,6 +7,7 @@ import org.springframework.beans.factory.wiring.ClassNameBeanWiringInfoResolver;
 import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
+import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -44,9 +45,14 @@ public class MemberService {
 		//비밀번호 저장
 		public void updatepw(MemberBean mem)throws Exception {
 			
-			System.out.println("비밀번호 저장 :"+mem.getPw() );
+			System.out.println("비밀번호 저장1 :"+mem.getPw() );
 			md.updatepw(mem);
 		}
+		// 회원정보 수정 test1
+		public void updateMember(MemberBean mem) throws Exception {
+			md.updateMember(mem);
+		}
+		
 		// 로그인 검사
 		public MemberBean userCheck(String loginId)throws Exception{
 				return md.userCheck(loginId);
@@ -74,7 +80,7 @@ public class MemberService {
 		
 		//회원정보수정 이메일
 		public void updateEmail(MemberBean mb) throws Exception {
-			System.out.println("비밀번호 저장 :"+mb.getEmail() );
+			System.out.println("이메일 저장 :"+mb.getEmail() );
 			md.updateEmail(mb);
 		}
 		
@@ -82,5 +88,16 @@ public class MemberService {
 		public void withdrawMember(MemberBean mb) throws Exception {
 			System.out.println("회원삭제 :"+mb.getMember_id() );
 			md.withdrawMember(mb);
+		}
+		
+		//배송지 등록
+		/*
+		 * public AddressBean memberAddress(String ma) throws Exception {
+		 * 
+		 * return md.memberAddress(ma); }
+		 */
+		public void memberAddress(AddressBean address) {
+			md.memberAddress(address);
+			
 		}
 }

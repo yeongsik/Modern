@@ -88,6 +88,9 @@
   height: 30px;
   border-radius: 5px;
 }
+.pw-button:hover{
+  cursor: pointer;
+}
 /* 배송지 관리 */
 .member-content-article-section-address_area-basic-title {
   font-weight: bold;

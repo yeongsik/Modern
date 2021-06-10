@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -20,6 +21,7 @@
 <body>
   <%@ include file="../main/header.jsp"%>
   <form action="member_update.shop" method="post">
+  <%-- <c:if test= ${address1} == null> --%>
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
@@ -46,27 +48,27 @@
                   <button type="button" class="pw-button" id="pwbtn" >비밀번호 변경</button> 
                   <div class="member-content-article-section-info_area-pw" id="pwdivs">
                   <div class="member-content-article-section-info_area-id-subtitle kor">새로운 비밀번호</div>
-                  <input type="password" id="pwddiv" name="pw" > <br>
+                  <input type="password" id="pwddiv" name="pw" value=""> <br>
                   <div class="member-content-article-section-info_area-id-subtitle kor">새로운 비밀번호 확인 </div>
-                  <input type="password"> <br>
+                  <input type="password" value=""> <br>
                   </div>
                 <div class="member-content-article-section-info_area-nickname">
                   <div class="member-content-article-section-info_area-id-subtitle kor">휴대폰 번호</div>
-                  <input type="text" value="${m.phone}"> <br>
+                  <input type="text" value="${m.phone}" name="phone"> <br>
                 </div>
                 <div class="member-content-article-section-info_area-email kor">
                   <div class="member-content-article-section-info_area-id-subtitle kor">이메일</div>
                   <input type="email" value="${m.email}" name="email"> <br>
                   <input type="checkbox" value="${m.accept_mail}" name="accept_mail_value" > 마케팅 수신 동의 <br>
-                  <button type="submit">회원정보 수정</button>
+                  <button class="pw-button" type="submit">회원정보 수정</button>
                 </div>
               </div>
             </div>
             <div class="member-content-article-section-address_area">
               <div class="member-content-article-section-address_area-basic">
-                <div class="member-content-article-section-address_area-basic-title kor">기본 배송지</div>
-                <div class="member-content-article-section-address_area-basic-content kor">서울특별시 마포구 푸르지오 401동 1301호</div>
-                <div class="member-content-article-section-address_area-basic-btn kor"><button>기본 배송지 변경</button></div>
+                <div class="member-content-article-section-address_area-basic-title kor" >기본 배송지</div>
+                <div class="member-content-article-section-address_area-basic-content kor" value="${address1}"></div>
+                <div class="member-content-article-section-address_area-basic-btn kor"><button type="button">기본 배송지 변경</button></div>
               </div>
               <div class="member-content-article-section-address_area-list">
                 <div class="member-content-article-section-address_area-list-title kor">추가 배송지</div>
@@ -98,6 +100,7 @@
       </div>
     </div>
   </section>
+ <%--  </c:if> --%>
   </form>
    <%@ include file="../main/footer.jsp"%>    
 </body>

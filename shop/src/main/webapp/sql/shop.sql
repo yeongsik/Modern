@@ -11,7 +11,7 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 select * from review;
-
+select * from ADDRESS;
 select * from heart;
 delete from heart;
 
@@ -41,6 +41,8 @@ select * from (select rownum rnum , * from
 		where rnum >= 1 and rnum <=9;
 alter table product rename column stock to stock_id;
 alter table product modify stock_id varchar2(100);
+
+insert into ADDRESS values(add_pk_seq.nextval, 53223, '서울시 은평구 은평로', '빌딩 303호', 'test00' );
 
 select distinct product_name , 
 				product_price , 

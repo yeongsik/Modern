@@ -313,22 +313,7 @@ $(function() {
 		$("#pwbtn").hide();
 	});
 	
-//휴대폰번호 자릿수
-	$("#phoneNum").keyup(function() {
-		var inputPhone = $("#phoneNum").val();
-		var phoneTest = /^01(?:0|1|[6-9])([0-9]{3,4})([0-9]{4})$/;
-		if (phoneTest.test(inputPhone)) {
-			$("#phoneCheckComplete").show();
-			$("#phoneCheckResult").empty();
-			//완료표시 show
-		} else if (inputPhone.length > 0) {
-			$("#phoneCheckComplete").hide();
-			$("#phoneCheckResult").text("올바른 휴대폰 번호를 입력해주세요");
-			$("#phoneCheckResult").css("color", "red");
-			$("#phoneCheckResult").focus();
-			return false;
-		} else {
-			$("#phoneCheckResult").empty();
-		}
-	});
+	if($("#pwddivs").val() == "") {
+		$("#pwddivs").replacewith('<input id="hidepw" name="pw">');
+	}
 });
