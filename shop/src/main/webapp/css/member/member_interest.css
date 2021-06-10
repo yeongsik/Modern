@@ -20,6 +20,8 @@
   width: 25%;
   margin-top: 10px;
   margin-bottom: 10px;
+  display : flex;  
+  justify-content : space-between;
 }
 .member-content-article-item-img {
   float: left;
@@ -30,10 +32,15 @@
   width : 125px;
   height : 125px;
 }
+.member-content-article-item-detail {
+  display : flex;
+  flex-direction : column;
+}
+
 .member-content-article-item-product {
   margin-bottom: 10px;
-}
-.member-content-article-item-price {
+  font-size : 18px;
+  cursor : pointer;
 }
 .member-content-article-item-heart {
   margin-top: 5px;

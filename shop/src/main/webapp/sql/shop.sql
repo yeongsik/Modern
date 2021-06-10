@@ -13,7 +13,11 @@ select * from stock;
 select * from review;
 
 select * from heart;
-delete from heart;
+
+select * from heart where member_id='hama';
+select * from heart where member_id='noru';
+
+delete from heart where member_id='noru';
 
 select * from address;
 select * from seq;

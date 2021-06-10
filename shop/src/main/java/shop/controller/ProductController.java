@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.valves.rewrite.InternalRewriteMap.UpperCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.model.HeartBean;
+import shop.model.MemberBean;
 import shop.model.ProductBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
 import shop.model.SizeBean;
+import shop.service.MemberService;
 import shop.service.ProductService;
 
 @Controller
@@ -26,8 +30,11 @@ public class ProductController {
 	@Autowired
 	private ProductService ProductService;
 	
+	@Autowired
+  private MemberService MemberService;
+	
 	@RequestMapping ("productlist.shop")
-	public String productlist(@ModelAttribute ProductBean product ,HttpServletRequest request , Model model) throws Exception{
+	public String productlist(@ModelAttribute ProductBean product ,HttpSession session, HttpServletRequest request , Model model) throws Exception{
 		System.out.println("productlist.shop");
 		System.out.println(product.getCategory_id());
 		
@@ -36,6 +43,26 @@ public class ProductController {
 		int page = 1;
 		product.setPage(page);
 		productlist = ProductService.getProductList(product);
+		
+		// 관심상품 등록 여부 확인
+		MemberBean mb = (MemberBean)session.getAttribute("m");
+		
+		if(mb != null) {
+		  String id = mb.getMember_id();
+		  
+		  
+		  List<HeartBean> wishState = MemberService.getWishList(id);
+		  
+		  model.addAttribute("wish", wishState);
+		  
+      
+      if(wishState.isEmpty()) { int state = 1; System.out.println("널");
+      
+      model.addAttribute("state", state);
+     
+      }
+		}
+		
 		
 		model.addAttribute("productlist",productlist);
 		model.addAttribute("currentPage" , page);

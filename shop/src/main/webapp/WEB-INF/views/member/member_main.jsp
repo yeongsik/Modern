@@ -56,9 +56,9 @@
 					</div>
 				</div>
 				<div class="mypage-main-section-wrapper">
-					<div class="mypage-main-section-title eng">ADDRESS</div>
+					<div class="mypage-main-section-title eng">WISH</div>
 					<div class="mypage-main-section-subtitle">
-						<a href="member_address.shop" class="kor">배송지 관리</a>
+						<a href="member_interest.shop" class="kor">관심상품</a>
 					</div>
 				</div>
 			</div>

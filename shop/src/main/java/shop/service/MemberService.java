@@ -57,9 +57,14 @@ public class MemberService {
 		    return md.enrollLikey(hb);
 		}
 		  
-		// 관심상품 등록 여부 확인
+		// 관심상품 등록 여부 확인 - 마이페이지
 		public int likeyState(HeartBean hb) throws Exception {
 		    return md.likeyState(hb);
+		}
+		
+		// 관심상품 등록 여부 확인 - 상품리스트
+		public List<HeartBean> getWishList(String id) throws Exception {
+		  return md.getWishList(id);
 		}
 		
 		// 관심상품 등록 취소

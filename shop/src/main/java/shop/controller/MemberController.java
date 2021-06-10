@@ -61,13 +61,6 @@ public class MemberController {
 	return "member/member_withdraw"; 
  }
 
-  // 배송지 관리 
-  @RequestMapping("member_address.shop")
-  public String address() {
-    return "member/member_update";
-  }
-  
- 
   // 회원 등급
   @RequestMapping("member_membership.shop")
   public String membership() {
@@ -433,7 +426,7 @@ public class MemberController {
      System.out.println("result : " + result);
      
      // 관심상품 등록 여부 확인
-     int likeyState = service.likeyState(hb);
+     int likeyState = service.likeyState(hb); 
      System.out.println("likeyState : " + likeyState);
      
      model.addAttribute("hb",hb);
@@ -460,7 +453,6 @@ public class MemberController {
      }
      
      // 관심상품 등록 여부 확인
-     /* int likeyState = 0; */
      int likeyState = service.likeyState(hb);
      System.out.println("likeyState : " + likeyState);
      

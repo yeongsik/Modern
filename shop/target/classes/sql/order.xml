@@ -4,8 +4,16 @@
 <mapper namespace="Orderns">
     
     <!-- 주문자 정보 -->
-    <select id="orderUser" parameterType="String" resultType="order_table">
+    <!-- <select id="orderUser" parameterType="String" resultType="order_table">
     	select * from product where product_id = 62
+    </select> -->
+    
+    <insert id="orderDetailAdd" parameterType="order_detail">
+        insert into order_detail values ( #{order_detail_pk} , #{product_id} , #{coupon_id} , #{purchase_number} , #{order_id} ,#{choose_size})
+    </insert>
+
+    <select id="getOrderDetail" parameterType="int" resultType="order_detail">
+        select * from order_detail where order_detail_pk = #{order_detail_pk}
     </select>
     
 </mapper>

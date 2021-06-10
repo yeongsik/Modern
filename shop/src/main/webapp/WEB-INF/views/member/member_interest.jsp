@@ -38,12 +38,12 @@
           <div class="member-content-article-items">
           	<c:forEach var="list" items="${list}">
 	            <div class="member-content-article-item">
-	              <div class="member-content-article-item-img">
-	                <img src="product_images/${list.product_thumbnail}.png">
+	              <div class="member-content-article-item-img"><img src="product_images/${list.product_thumbnail}.png"></div>
+	              <div class="member-content-article-item-detail">
+	              	<div class="member-content-article-item-product kor" onClick="location.href='product_detail.shop?product_id=${list.product_id}'">${list.product_name}</div>
+	              	<div class="member-content-article-item-price kor">&#8361; ${list.product_price}</div>
+	              	<div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
 	              </div>
-	              <div class="member-content-article-item-product kor"><b>${list.product_name}</b></div>
-	              <div class="member-content-article-item-price kor">${list.product_price}</div>
-	              <div class="member-content-article-item-heart kor"><i class="fas fa-heart"></i>344</div>
 	            </div>
             </c:forEach>
           </div>
