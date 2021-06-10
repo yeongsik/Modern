@@ -16,12 +16,12 @@ public class OrderDAO {
 
 
 	public void orderDetailAdd(OrderDetailBean order) {
-		session.insert("Order.orderDetailAdd", order);
+		session.insert("Orderns.orderDetailAdd", order);
 	}
 
 	public OrderDetailBean getOrderDetail(int order_detail_pk) {
 		OrderDetailBean orderDetail = new OrderDetailBean();
-		orderDetail = session.selectOne("Order.getOrderDetail", order_detail_pk);
+		orderDetail = session.selectOne("Orderns.getOrderDetail", order_detail_pk);
 		return orderDetail;
 	}
 
