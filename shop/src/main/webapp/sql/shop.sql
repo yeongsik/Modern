@@ -12,6 +12,7 @@ select * from grade;
 select * from stock; 
 select * from review;
 
+select * from address;
 select * from heart;
 delete from heart;
 
@@ -133,3 +134,6 @@ alter table member rename column nickname to name;
 alter table ORDER_DETAIL add (choose_size varchar2(30));
 
 create sequence order_detail_seq;
+
+select * from order_detail;
+delete from order_detail;

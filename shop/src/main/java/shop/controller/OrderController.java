@@ -2,18 +2,18 @@ package shop.controller;
 
 
 import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import shop.model.OrderBean;
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 import shop.service.OrderService;
 import shop.service.ProductService;
-import shop.model.OrderBean;
 
 
 
@@ -46,6 +46,7 @@ public class OrderController {
 		int orderDetail_pk = product_id + random.nextInt(10000);
 		OrderDetailBean order = new OrderDetailBean();
 		ProductBean product = new ProductBean();
+		
 		order.setOrder_detail_pk(orderDetail_pk);
 		order.setProduct_id(product_id);
 		order.setCoupon_id(0);
@@ -66,6 +67,30 @@ public class OrderController {
 		
 		
 		return "order/orderDetailAddResult";
+	}
+	
+	@RequestMapping ("removeOrderDetail.shop")
+	public void removeOrderDetail(int order_detail_pk) throws Exception{
+		System.out.println(order_detail_pk);
+		os.removeOrderDetail(order_detail_pk);
+	}
+	
+	@RequestMapping ("updatePurchaseNumber.shop")
+	public String updatePurchaseNumber(int purchase_number , int order_detail_pk ,Model model) throws Exception {
+		System.out.println(purchase_number);
+		System.out.println(order_detail_pk);
+		OrderDetailBean orderDetail = new OrderDetailBean();
+		orderDetail.setOrder_detail_pk(order_detail_pk);
+		orderDetail.setPurchase_number(purchase_number);
+		
+		orderDetail.getOrder_detail_pk();
+		orderDetail.getPurchase_number();
+		os.updatePurchaseNumber(orderDetail);
+		
+		orderDetail = os.getOrderDetail(order_detail_pk);
+		model.addAttribute("orderDetail", orderDetail);
+		
+		return "order/updatePurchaseNumberResult";
 	}
 
 	@RequestMapping ("order-result.shop")

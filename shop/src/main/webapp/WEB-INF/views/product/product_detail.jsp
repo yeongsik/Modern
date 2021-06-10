@@ -26,7 +26,7 @@
     <%@ include file="../main/header.jsp"%>
     <div class="container">
         <section class="main-content-wrapper">
-             <form method="POST" action ="./order.shop">
+             <form method="POST" action ="orderAdd.shop">
                 <div class="product-detail-first-wrapper">
                     <div class="product-detail-first-product_img">
                         <img class="product-detail-product_img" src="product_images/${product.product_thumbnail}.png">
@@ -71,17 +71,18 @@
                         </div>
                         <div class="product-detail-size-choice">
                             <select class="product_detail-size-select eng" id="product_select" name="size" onChange="handleOnChange()">
-                                <option value="default">SIZE</option>
+                                <option value="default" id="select_size_default">SIZE</option>
 	                        	<c:forEach var="size" items="${size}">
-                                <option id="product_size_option+${size}" value="${size}">${size}</option>
+                                <option id="product_size_option${size}" value="${size}">${size}</option>
 	                            </c:forEach>
                             </select>
                         </div>
                         <div class="product-detail-count-wrapper kor" id="product-count">
                         </div>
-                        <div class="product-totalprice-wrapper kor">
-                        	<div class="">총 상품 금액</div>
-                        	<div></div>
+                        <div class="product-totalprice-wrapper kor" id="order-total-price">
+                        	<div class="total-price-subject kor">총 상품 금액</div>
+                        	<div>
+                        	</div>
                         </div>
                         <div class="product-detail-order-wrapper">
                             <input type="button" class="product-detail-btn cart-btn eng" value="Cart">

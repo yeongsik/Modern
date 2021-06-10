@@ -181,7 +181,7 @@ public class MemberController {
 	public String register_complete(@ModelAttribute MemberBean member, HttpServletRequest request) throws Exception {
 		
 		String accept_mail1 = request.getParameter("accept_mail_value");
-
+		
 		int accept_mail;
 
 		if (accept_mail1.equals("y")) {
@@ -192,6 +192,7 @@ public class MemberController {
 		member.setAccept_mail(accept_mail);
 		
 		service.insertMember(member);
+		MemberBean member2 = service.userCheck(member.getMember_id());
 		return "member/register_result";
 	}
 	

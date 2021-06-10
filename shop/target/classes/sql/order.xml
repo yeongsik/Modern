@@ -16,4 +16,12 @@
     <select id="getOrderDetail" parameterType="int" resultType="order_detail">
     	select * from order_detail where order_detail_pk = #{order_detail_pk}
     </select>
+    
+    <delete id="removeOrderDetail" parameterType="int">
+    	delete from order_detail where order_detail_pk = #{order_detail_pk}
+    </delete>
+    
+    <update id="updatePurchaseNumber" parameterType="order_detail">
+    	update order_detail set purchase_number = #{purchase_number} where order_detail_pk = #{order_detail_pk}
+    </update>
 </mapper>
