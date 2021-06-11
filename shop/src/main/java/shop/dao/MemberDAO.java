@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -90,4 +91,27 @@ public class MemberDAO {
 		System.out.println("회원삭제dao :"+mb.getMember_id() );
 		session.delete("deleteMember", mb);
 	}
+	
+	// 쿠폰 등록
+	public int addCoupon(CouponBean cp) throws Exception {
+		return  session.insert("addCoupon", cp);
+	}
+	
+	// 쿠폰 개수 조회
+	public int countCoupon(CouponBean cp) throws Exception{
+		System.out.println("countCoupon_MemberDAO");
+		int count = 0;
+		count = ((Integer) session.selectOne("countCoupon",cp)).intValue();
+		System.out.println("count_dao:"+count);
+		return count;
+	}
+	
+	// 쿠폰 리스트 조회
+	public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
+		System.out.println("couponList_MemberDAO");
+		System.out.println(cp.getMember_id());
+		return session.selectList("couponList", cp);
+	}
+	
+	
 }

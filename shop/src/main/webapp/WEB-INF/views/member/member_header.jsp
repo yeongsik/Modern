@@ -11,7 +11,7 @@
 		<div class="member-content-hedaer-common">
 			<div class="member-content-header-coupon-header kor">쿠폰</div>
 			<div class="member-content-header-coupon-content kor">
-				<a href="member_coupon.shop"><span>0 </span>개</a>
+				<a href="member_coupon.shop"><span>${countCoupon} </span>개</a>
 			</div>
 		</div>
 		<div class="member-content-hedaer-common">

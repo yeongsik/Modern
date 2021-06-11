@@ -62,6 +62,27 @@
     <delete id="deleteMember" parameterType="member">
 		delete from member where member_id = #{member_id}
 	</delete>
+	
+	<!-- 가입 환영 쿠폰 생성 -->
+	<insert id="addCoupon" parameterType="coupon">
+		insert into coupon values ( #{coupon_id}, #{coupon_name}, #{coupon_discount}, 
+			sysdate, sysdate + (interval '30'day), #{member_id} )
+			<!-- to_date(#{coupon_date}), to_date(#{coupon_expiration}), #{member_id} ) -->
+			<!-- #{coupon_date, #{coupon_expiration}, #{member_id} ) -->
+			<!-- to_date(#{coupon_date}, 'YYYY-MM-DD HH24:mi'), to_date(#{coupon_expiration}, 'YYYY-MM-DD HH24:mi'), #{member_id} ) -->
+	</insert>
+	
+	<!-- 쿠폰개수 조회 -->
+	<select id="countCoupon" parameterType="coupon" resultType="int">
+		<!-- select count(decode(member_id, #{member_id}, 1)) from coupon -->
+		select count(*) from coupon where member_id = #{member_id}
+	</select>
+	
+	<!-- 쿠폰리스트 조회 -->
+	<select id="couponList" parameterType="coupon" resultType="coupon">
+		select * from coupon where member_id = #{member_id}
+	</select>
+	
 </mapper>
 
     

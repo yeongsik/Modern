@@ -1,10 +1,13 @@
 package shop.controller;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,12 +32,23 @@ public class MemberController {
   @Autowired
   private MemberService service;
   
-  // 마이페이지 메인화면
-  @RequestMapping("member_main.shop")
-  public String main() {
-	  
-    return "member/member_main";
-  }
+  	// 마이페이지 메인화면
+	@RequestMapping("member_main.shop")
+	public String main(HttpSession session) throws Exception {
+		System.out.println("마이페이지 진입");
+		
+		CouponBean cp = new CouponBean();
+		MemberBean member = (MemberBean) session.getAttribute("m");
+		cp.setMember_id(member.getMember_id());
+		System.out.println("member_id:"+cp.getMember_id());
+		
+		int countCoupon = service.countCoupon(cp);
+		System.out.println("countCoupon_controller:"+countCoupon);
+		
+		session.setAttribute("countCoupon", countCoupon);
+	
+		return "member/member_main";
+	}
 
   // 주문 배송 조회
   @RequestMapping("member_order.shop")
@@ -93,11 +107,27 @@ public class MemberController {
     return "member/member_personal_question";
   }
   
-  // 쿠폰
-  @RequestMapping("member_coupon.shop")
-  public String coupon() {
-    return "member/member_coupon";
-  }
+	// 쿠폰페이지
+	@RequestMapping("member_coupon.shop")
+	public String coupon(HttpSession session, Model model) throws Exception {
+		System.out.println("member_coupon_controller");
+		
+		// 쿠폰 리스트 출력
+		List<CouponBean> cpList = new ArrayList<CouponBean>();
+
+		CouponBean cp = new CouponBean();
+		MemberBean member = (MemberBean) session.getAttribute("m");
+		cp.setMember_id(member.getMember_id());
+		System.out.println("member_id:" + cp.getMember_id());
+
+		cpList = service.getcouponList(cp);
+		System.out.println("service 후 session 전 cpList:" + cpList);
+		
+		// session.setAttribute("cpList:", cpList);
+		model.addAttribute("cpList", cpList);
+
+		return "member/member_coupon";
+	}
 
   // 포인트
   @RequestMapping("member_point.shop")
@@ -127,7 +157,7 @@ public class MemberController {
     product.setMember_id(id);
     
     
-    List<ProductBean> list = new ArrayList<ProductBean>(); 
+    List<ProductBean> list = new ArrayList<ProductBean>();
     
     list = service.getLikeList(product);
     
@@ -191,12 +221,44 @@ public class MemberController {
 			accept_mail = 0;
 		}
 		member.setAccept_mail(accept_mail);
-		
+		System.out.println("가입전");
 		service.insertMember(member);
+		System.out.println("가입후");
+		
+		
+		// 가입환영쿠폰
+		MemberBean member2 = service.userCheck(member.getMember_id());
+		System.out.println(member2.getMember_id());
+		
+		CouponBean coupon = new CouponBean();
+		/*
+		// 컨트롤러에서 처리 할 시
+		String day = null;
+		Date date = new Date();
+		System.out.println("date:" + date);
+
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		cal.setTime(date);
+		cal2.setTime(date);
+		cal2.add(Calendar.DATE, 30);
+		day = sdformat.format(cal2.getTime());
+		*/
+		Random random = new Random();
+		int coupon_code = 3300000 + random.nextInt(10000);
+		
+		coupon.setCoupon_id(coupon_code);
+		coupon.setCoupon_name("회원가입 축하 쿠폰");
+		coupon.setCoupon_discount(10);
+		//coupon.setCoupon_date(sdformat.format(cal.getTime()));
+		//coupon.setCoupon_expiration(day);
+		coupon.setMember_id(member2.getMember_id());
+		
+		service.addCoupon(coupon);
 		
 		return "member/register_result";
 	}
-	
 
 	// 로그인 검사
 	@RequestMapping(value = "/member_login_check.shop", method = RequestMethod.POST)
@@ -514,4 +576,11 @@ public class MemberController {
 		
 		return "member/withdraw_result";
 	}
+	
+	// 쿠폰 개수 조회
+	//public int 
+	
+	// 쿠폰 리스트 조회
+	
+	
 }
