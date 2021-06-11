@@ -68,8 +68,8 @@ public class MemberDAO {
 	public int enrollLikey(HeartBean hb) throws Exception {
 		return session.insert("enroll_likey", hb);
 	}
-
-	// 관심상품 등록 여부 확인
+	
+	// 관심상품 등록 여부 확인 - 마이페이지
 	public int likeyState(HeartBean hb) throws Exception {
 		int state = -1; // 미등록 상태
 		HeartBean result = (HeartBean) session.selectOne("likey_state", hb);
@@ -77,6 +77,13 @@ public class MemberDAO {
 			state = 1; // 등록 상태
 		return state;
 	}
+	
+	// 관심상품 등록 여부 확인 - 상품리스트
+	public List<HeartBean> getWishList(String id) throws Exception {
+	  return session.selectList("getWishList", id);
+	}
+	
+	
 
 	// 관심상품 등록 취소
 	public int cancelLikey(HeartBean hb) throws Exception {

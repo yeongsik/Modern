@@ -64,3 +64,10 @@ $(document).ready(function() {
 		}
 	})
 })
+
+/*$(function(){
+	let result = success;
+	if(result==1) {
+		$('.fail_heart').css("display","none");
+	}
+})*/

@@ -13,9 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
     <script src="js/product/list.js"></script>
-    <script 
-    src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous">
-    </script>
+    <script src="https://kit.fontawesome.com/78e568182c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <%@ include file="/WEB-INF/views/main/header.jsp"%>
@@ -163,7 +161,38 @@
                                     ${product.product_price}
                                 </span>
                                 <div class="product-detail-heart product-detail eng">
-                                    <i class="far fa-heart like-product"></i>
+									<!-- 로그인하지 않은 경우  --> 
+									<c:if test="${wish eq null}"> 
+										<i class="far fa-heart like-product"></i>
+									</c:if>
+									
+									<!-- 로그인한 경우 -->
+									<c:if test="${wish ne null}">
+										<c:set var="loop_flag" value="false" />
+										
+										<!-- 관심상품으로 등록되어 있는 경우 -->
+										<c:forEach var="wish" items="${wish}">
+											<c:if test="${not loop_flag}">
+												<c:if test="${product.product_id eq wish.product_id}">
+													<i class="fas fa-heart like-product"></i>
+													<c:set var="loop_flag" value="true"/>
+												</c:if>
+											</c:if>
+										</c:forEach>
+										
+										<!-- 관심상품으로 등록되어 있지 않은 경우 -->
+										<%-- <c:if test="${product.product_id ne wish.product_id}"> --%>
+										<c:forEach var="wish" items="${wish}">
+											<c:if test="${not loop_flag}">
+												<c:if test="${product.product_id ne wish.product_id}">
+													<i class="far fa-heart like-product"></i>
+													<c:set var="loop_flag" value="true"/>
+												</c:if>
+											</c:if>
+										</c:forEach>
+										
+									</c:if> 
+									
                                 </div>
                             </div>
                         </div>

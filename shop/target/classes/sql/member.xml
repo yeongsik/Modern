@@ -2,59 +2,57 @@
  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberns">
-	<!--로그인 -->
-	<select id="login_check" parameterType="String"
-		resultType="member">
-		select * from member where member_id = #{member_id}
-	</select>
-
-	<!--회원가입 -->
-	<insert id="member_register" parameterType="member">
-		insert into member
-		values (#{member_id}, #{pw}, #{email}, 0,
-		#{phone}, #{birth},
-		#{gender}, #{name}, #{accept_mail}, 0, 0, sysdate,'bronze')
-	</insert>
-
-	<!--아이디 찾기 -->
-	<select id="findid" parameterType="member" resultType="member">
-		select *
-		from member where name=#{name} and email = #{email}
-	</select>
-
-	<!--비밀번호 찾기 -->
-	<select id="findpw" parameterType="member" resultType="member">
-		select *
-		from member where member_id=#{member_id} and email = #{email}
-	</select>
-
-	<!--비밀번호 저장 -->
-	<update id="updatepw" parameterType="member">
-		update member set pw = #{pw}
-		where member_id = #{member_id}
+	<!--로그인  -->
+    <select id="login_check" parameterType="String" resultType="member">
+    	select * from member where member_id = #{member_id}
+    </select>
+    
+    <!--회원가입 -->
+    <insert id="member_register" parameterType="member">
+    insert into member values (#{member_id}, #{pw}, #{email}, 0, 
+    #{phone}, #{birth}, #{gender}, #{name}, #{accept_mail}, 0, 0, sysdate,'Bronze')
+    </insert>
+   
+    <!--아이디 찾기  -->
+    <select id="findid" parameterType="member" resultType="member">
+    	select * from member where name=#{name} and email = #{email}
+    </select>
+    
+    <!--비밀번호 찾기  -->
+    <select id="findpw" parameterType="member" resultType="member">
+    	select * from member where member_id=#{member_id} and email = #{email}
+    </select>
+    
+    <!--비밀번호 저장  -->
+    <update id="updatepw" parameterType="member" >
+	update member set pw = #{pw} where member_id = #{member_id}
 	</update>
-
-	<!-- 관심상품 등록 -->
-	<insert id="enroll_likey" parameterType="heart">
-		insert into heart values
-		(heart_seq.nextval, #{member_id}, #{product_id})
-	</insert>
-
-	<!-- 관심상품 등록 여부 확인 -->
-	<select id="likey_state" parameterType="heart"
-		resultType="heart">
-		select * from heart where member_id=#{member_id} and
-		product_id =
-		#{product_id}
-	</select>
-
-	<!-- 관심상품 등록 취소 -->
-	<delete id="cancel_likey" parameterType="heart">
-		delete from heart where
-		member_id = #{member_id} and product_id =
-		#{product_id}
-	</delete>
-
+    
+    <!-- 관심상품 등록 -->
+    <insert id="enroll_likey" parameterType="heart">
+	    insert into heart values (heart_seq.nextval, #{member_id}, #{product_id})
+    </insert>
+    
+    <!-- 마이페이지 -> 관심상품 등록 여부 확인 -->
+    <select id="likey_state" parameterType="heart" resultType="heart">
+    	select * from heart where member_id=#{member_id} and product_id = #{product_id}
+    </select>
+    
+    <!-- 상품리스트 -> 관심상품 등록 여부 확인 -->
+    <select id="getWishList" parameterType="String" resultType="heart">
+    	select * from heart where member_id=#{member_id}
+    </select>
+    
+    <!-- 관심상품 등록 취소 -->
+    <delete id="cancel_likey" parameterType="heart">
+    	delete from heart where member_id = #{member_id} and product_id = #{product_id}
+    </delete>
+    
+    <!-- 관심상품 리스트 가져오기 -->
+    <select id="like_list" parameterType="product" resultType="product">
+    	select pd.product_thumbnail, p.product_name, p.product_price, p.product_id from product_detail pd natural join heart h join product p on (pd.product_detail = h.product_id and h.product_id = p.product_id) where h.member_id = #{member_id}
+    </select>
+    
 	<!-- 관심상품 리스트 가져오기 -->
 	<select id="like_list" parameterType="product"
 		resultType="product">
@@ -101,6 +99,27 @@
 		delete from member where
 		member_id = #{member_id}
 	</delete>
+	
+	<!-- 가입 환영 쿠폰 생성 -->
+	<insert id="addCoupon" parameterType="coupon">
+		insert into coupon values ( #{coupon_id}, #{coupon_name}, #{coupon_discount}, 
+			sysdate, sysdate + (interval '30'day), #{member_id} )
+			<!-- to_date(#{coupon_date}), to_date(#{coupon_expiration}), #{member_id} ) -->
+			<!-- #{coupon_date, #{coupon_expiration}, #{member_id} ) -->
+			<!-- to_date(#{coupon_date}, 'YYYY-MM-DD HH24:mi'), to_date(#{coupon_expiration}, 'YYYY-MM-DD HH24:mi'), #{member_id} ) -->
+	</insert>
+	
+	<!-- 쿠폰개수 조회 -->
+	<select id="countCoupon" parameterType="coupon" resultType="int">
+		<!-- select count(decode(member_id, #{member_id}, 1)) from coupon -->
+		select count(*) from coupon where member_id = #{member_id}
+	</select>
+	
+	<!-- 쿠폰리스트 조회 -->
+	<select id="couponList" parameterType="coupon" resultType="coupon">
+		select * from coupon where member_id = #{member_id}
+	</select>
+	
 </mapper>
 
     
