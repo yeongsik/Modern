@@ -33,7 +33,11 @@ public class OrderService {
 	public void removeOrderDetail(int order_detail_pk) throws Exception {
 		od.removeOrderDetail(order_detail_pk);
 	}
-	public void updatePurchaseNumber(OrderDetailBean orderDetail) throws Exception {
-		od.updatePurchaseNumber(orderDetail);
+	public void updateOrderDetail(OrderDetailBean orderDetail) throws Exception {
+		od.updateOrderDetail(orderDetail);
+	}
+
+	public void insertOrder(OrderBean addOrder) throws Exception {
+		od.insertOrder(addOrder);
 	}
 }

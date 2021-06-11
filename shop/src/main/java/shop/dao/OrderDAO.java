@@ -29,13 +29,17 @@ public class OrderDAO {
 		System.out.println("삭제성공");
 	}
 	
-	public void updatePurchaseNumber(OrderDetailBean orderDetail) throws Exception {
-		session.update("Orderns.updatePurchaseNumber" , orderDetail);
+	public void updateOrderDetail(OrderDetailBean orderDetail) throws Exception {
+		session.update("Orderns.updateOrderDetail" , orderDetail);
 		System.out.println("계산");
 	}
 	public OrderBean getOrderOne(String product_id) throws Exception {
 		OrderBean order = session.selectOne("Orderns.orderUser", product_id);
 		return order;
+	}
+
+	public void insertOrder(OrderBean addOrder) throws Exception {
+		session.insert("Orderns.insertOrder", addOrder);
 	}
 
 	

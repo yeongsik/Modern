@@ -21,7 +21,23 @@
     	delete from order_detail where order_detail_pk = #{order_detail_pk}
     </delete>
     
-    <update id="updatePurchaseNumber" parameterType="order_detail">
-    	update order_detail set purchase_number = #{purchase_number} where order_detail_pk = #{order_detail_pk}
+    <update id="updateOrderDetail" parameterType="order_detail">
+    	update order_detail
+    	<set>
+    		<if test="purchase_number != null">
+    			purchase_number = #{purchase_number},	
+    		</if>
+    		<if test="order_id != null">
+    			order_id = #{order_id},
+    		</if>
+    	</set>
+    	 where order_detail_pk = #{order_detail_pk}
     </update>
+    
+    <insert id="insertOrder" parameterType="order_table">
+    	insert into order_table values ( #{order_id},#{member_id},#{receiver_name},#{receiver_tel},#{receiver_post}
+    									,#{receiver_addr1},#{receiver_addr_detail},#{order_date},#{used_point},
+   										#{total_price},#{order_state},#{delivery_price},#{invoice_num})
+    </insert>
+	    
 </mapper>

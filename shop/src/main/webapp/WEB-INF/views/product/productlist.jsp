@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  
 <!DOCTYPE html>
 <html>
@@ -160,7 +161,7 @@
                                     ${product.product_name}
                                 </span>
                                 <span class="product-detail-price product-detail eng">
-                                    ${product.product_price}
+                                    &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${product.product_price}" />
                                 </span>
                                 <div class="product-detail-heart product-detail eng">
                                     <i class="far fa-heart like-product"></i>

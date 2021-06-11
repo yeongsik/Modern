@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="product-detail-product-price kor">
-                            &#8361;<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.product_price}" var="productPrice"/> 
+                            &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${product.product_price}" /> 
                         </div>
                         <div class="product-detail-product_description kor">
                             상품 설명

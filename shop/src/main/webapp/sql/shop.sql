@@ -137,3 +137,4 @@ create sequence order_detail_seq;
 
 select * from order_detail;
 delete from order_detail;
+select * from order_table;
