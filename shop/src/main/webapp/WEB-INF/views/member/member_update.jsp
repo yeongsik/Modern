@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
+<!--폼 생성   -->
   <%@ include file="../main/header.jsp"%>
   <section class="container">
     <!-- content header -->
@@ -36,7 +37,7 @@
           <div class="member-content-article-inputarea">
             <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
             <input type="password" name="pw" class="member-content-article-inputarea-pw kor">
-            <input type="submit" class="member-content-article-inputarea-btn kor" onclick="location='member_update_view.shop'" value="확인">
+            <input type="submit" class="member-content-article-inputarea-btn kor" onclick="location='member_update_view.shop'" value="확인"><!--온클릭 삭제  -->
           </div>
         </div>
       </div>

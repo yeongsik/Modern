@@ -24,15 +24,14 @@
 	        	</div>
 	       	</c:if> 
 			<c:if test="${sessionScope.m != null }">
-				<div class="header-member-section-content header-member-section-cart">
+				<div class="header-member-section-content header-member-section-cart header-cart">
 					<a href="member_cart.shop"><i class="fas fa-shopping-cart"></i></a>
 				</div>
 				<div class="header-member-section-content header-member-section-member header-member">
 					<a href="member_main.shop"><i class="fas fa-user"></i></a>
 					<ul class="header-login-dropdown">
 						<li class="dropdown-nickname kor">${m.name}님,<br><br>환영합니다.<br><hr></li>
-						<li class="header-member-mypage eng"><a href="member_main.shop">MyPage</a><br><hr></li>
-						<!-- <li class="header-member-section-content header-member-section-heart"><a href="member_interest.shop">Heart</a></li> -->
+						<li class="dropdown-mypage eng"><a href="member_main.shop">MyPage</a><br><hr></li>
 						<li class="dropdown-logout eng"><a href="member_logout.shop">Logout</a></li>
 					</ul>
 				</div>
