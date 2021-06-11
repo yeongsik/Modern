@@ -72,7 +72,25 @@
 .member-content-article-items-subject {
   width: 40%;
 }
-
+/* 문의 상세 내용 */
+.member-content-article-items-detail1 {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(247, 247, 247);
+  padding: 24px 0 24px 0;
+  border-bottom: 1px solid rgb(237, 237, 237);
+}
+.member-content-article-items-detail-content {
+  width: 40%;
+}
+.blank1 {
+  width: 15%;
+  height: 21px;
+}
+.blank2 {
+  width: 45%;
+  height: 21px;
+}
 /* 문의 답변 CSS */
 .member-content-article-answer_area-items1,
 .member-content-article-answer_area-items2 {

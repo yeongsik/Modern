@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.model.ProductBean;
 import shop.model.QuestionBean;
@@ -28,8 +29,6 @@ public class QuestionController {
 	public String question(HttpServletRequest request, Model model) throws Exception {
 		
 		List<QuestionBean> qList = new ArrayList<QuestionBean>();
-		
-		
 
 		int page = 1;
 		int limitPage = 10;
@@ -44,13 +43,15 @@ public class QuestionController {
 
 		int listCount = questionService.getListCount();
 		
+		
+		/* List<ProductBean> pList = new ArrayList<ProductBean>(); */
+		qList = questionService.getBoardList(page);
 		/*
-		 * List<ProductBean> pList = new ArrayList<ProductBean>(); qList =
-		 * questionService.getBoardList(page); ProductBean product = new ProductBean();
-		 * for(int i = 0 ; i<qList.size(); i++) { product =
-		 * ps.getProductOne(qList[i].getProduct_id); pList.add(product); }
-		 * model.addAttribute("pList", pList);
+		 * ProductBean product = new ProductBean(); for (int i=0; i<qList.size(); i++) {
+		 * product = ps.getProductOne((qList.get(i)).getProduct_id());
+		 * pList.add(product); } model.addAttribute("pList", pList);
 		 */
+		 
 		
 		int maxPage = (int) ((double) listCount / limitPage + 0.95);
 
@@ -68,20 +69,22 @@ public class QuestionController {
 		model.addAttribute("listCount", listCount);
 		model.addAttribute("qList", qList);
 
+		
 		return "member/member_item_question";
 	}
 
-	// 세부내용
-
-	/*
-	 * 게시글 상세정보 NoticeBean board = noticeService.noticeDetail(notice_id);
-	 * 
-	 * 게시글 내용에 띄어쓰기 추가 String noticeContent =
-	 * board.getNotice_content().replace("\n", "<br>");
-	 * 
-	 * model.addAttribute("board", board); model.addAttribute("page", page);
-	 * model.addAttribute("noticeContent", noticeContent);
-	 * 
-	 * return "notice/detail"; }
-	 */
+	public String detail(@RequestParam("page") String page, @RequestParam("question_id") int question_id, Model model)
+			throws Exception {
+		// 게시글 상세정보
+		QuestionBean board = questionService.getQuestionDetail(question_id);		
+		
+		// 게시글 내용에 띄어쓰기 추가 
+		String questionContent = board.getQuestion_content().replace("\n", "<br>");
+		
+		model.addAttribute("board", board);
+		model.addAttribute("questionContent", questionContent);
+		
+		return "member/member_item_question";
+	}
+	 
 }

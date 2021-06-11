@@ -11,6 +11,7 @@ public class QuestionBean {
 	  private String question_content;
 	  private Date question_date;
 	  private int question_state;
+	  private String question_type;
 	  
 	public int getQuestion_id() {
 		return question_id;
@@ -54,6 +55,13 @@ public class QuestionBean {
 	public void setQuestion_state(int question_state) {
 		this.question_state = question_state;
 	}
+	public String getQuestion_type() {
+		return question_type;
+	}
+	public void setQuestion_type(String question_type) {
+		this.question_type = question_type;
+	}
+
 	  
 	  
 	  

@@ -12,15 +12,15 @@
     <select id="question_list" parameterType="int" resultType="question">
    	 	<![CDATA[
 		select * from 
-		 (select rownum rnum, product_id, question_subject, question_content,
-		 question_date, question_state from (select * from question order by question_id desc)) 
-	   		 where rnum >= ((#{page}-1) * 10+1)  and rnum <= (#{page} * 10)
+		 (select rownum rnum, product_id, question_id, question_content, question_subject, question_date, question_state, question_type
+		 from (select * from question order by question_id desc)) 
+	   		 where rnum < 12
 		]]>
     </select>
     
     <!-- 세부내용 -->
-    <select id="questionDetail" parameterType="int" resultType="question">
+<!--     <select id="questionDetail" parameterType="int" resultType="question">
     	select * from question where question_id = #{question_id}
-    </select>
+    </select> -->
     
 </mapper>
