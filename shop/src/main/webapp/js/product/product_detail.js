@@ -48,17 +48,12 @@ $(document).ready(function() {
 // 오더 디테일 테이블에 등록
 function handleOnChange() {
 	// 선택된 데이터 가져오기
-	
-
 	var choose_size = $("#product_select option:selected").val();
 	if(choose_size != "default" && !$("#product_select option:selected").hasClass("productActive")) {
-		alert(choose_size);
 		$("#product_select option:selected").addClass("productActive");
 		const url = new URL(window.location.href);
 			const urlParams = url.searchParams;
 			var product_id = parseInt(urlParams.get('product_id'));
-			alert("product_id :" +typeof product_id);
-			alert(product_id);
 			
 			$.ajax({
 				url: "orderdetailadd.shop",
@@ -72,6 +67,60 @@ function handleOnChange() {
 					alert("오류오류")
 				}
 			})
-			
 	}
+}
+
+// 오더 디테일 삭제
+function removeOrderDetail(e,choose_size) {
+	alert(e);
+	alert(typeof e);
+	alert(typeof choose_size);
+	$("#"+e).remove();
+	alert("product_size"+choose_size);
+	$("#product_size_option"+choose_size).removeClass("productActive");
+	
+	
+	$.ajax({
+		url:"removeOrderDetail.shop",
+		type:"post",
+		data : {"order_detail_pk" : e },
+		success:function() {
+		},
+	})
+}
+function minusPurchaseNumber(purchase_number ,order_detail_pk) {
+	alert(order_detail_pk);
+	alert(typeof order_detail_pk);
+	alert(purchase_number);
+	alert(typeof purchase_number);
+	if(purchase_number >1) {
+		purchase_number = purchase_number -1;
+		$.ajax({
+			url:"updatePurchaseNumber.shop",
+			type:"post",
+			data : {"purchase_number" : purchase_number ,
+					"order_detail_pk" : order_detail_pk},
+			success:function(data){
+				$("#order_purchase_content"+order_detail_pk).html(data);
+			}
+		})
+	}
+}
+function plusPurchaseNumber(purchase_number ,order_detail_pk) {
+	alert(order_detail_pk);
+	alert(typeof order_detail_pk);
+	alert(purchase_number);
+	alert(typeof purchase_number);
+	purchase_number = purchase_number +1;
+	$.ajax({
+		url:"updatePurchaseNumber.shop",
+		type:"post",
+		data : {"purchase_number" : purchase_number ,
+				"order_detail_pk" : order_detail_pk},
+		success:function(data){
+				$("#order_purchase_content"+order_detail_pk).html(data);
+		}
+	})
+	alert(purchase_number);
+	alert(typeof purchase_number);
 }

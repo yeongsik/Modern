@@ -14,6 +14,7 @@
     width : 70%;
     object-fit: cover;
     padding-top : 20px;
+    height : 580px;
 }
 .product-detail-first-product_subject {
 
@@ -161,14 +162,36 @@ li.current , .product-description-tab-link:hover {
 span.detail-content {
     margin : 2px 0;
 }
+
+.order-container{
+	margin: 5px 0;
+}
 .orderDetail-content-wrapper {
 	display:flex;
 	justify-content: space-between;
+	padding : 10px 0;
 }
 .order-Detail-content {
 	color:var(--color-black);
-	font-size : 12px;
+	font-size : 15px;
 }
 .product-totalprice-wrapper {
 	border-top : 2px solid var(--color-black);
+	display : none;
 }
+.detail-subject {
+	
+}
+.detail-choose-size {
+	width:20px;
+	text-align:center;
+}
+.detail-purchase-number{
+	display:flex;
+	justify-content: space-between;
+	width : 50px;
+}
+.detail-exit {
+	
+}
+

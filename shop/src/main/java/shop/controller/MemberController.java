@@ -221,7 +221,7 @@ public class MemberController {
 	public String register_complete(@ModelAttribute MemberBean member, HttpServletRequest request) throws Exception {
 		
 		String accept_mail1 = request.getParameter("accept_mail_value");
-
+		
 		int accept_mail;
 
 		if (accept_mail1.equals("y")) {
