@@ -85,7 +85,7 @@ public class ProductController {
 	}
 	// 상품 세부 
 	@RequestMapping("product_detail.shop") 
-	public String product_detail(@RequestParam int product_id , Model model) throws Exception {
+	public String product_detail(@RequestParam int product_id , HttpSession session, Model model) throws Exception {
 		System.out.println("product_detail");
 		
 		ProductBean product = new ProductBean();
@@ -115,6 +115,19 @@ public class ProductController {
 		// Q&A 게시판 목록 리스트 
 		List<QuestionBean> question = new ArrayList<QuestionBean>();
 		
+		
+		// 관심상품 등록 여부 확인
+    MemberBean mb = (MemberBean) session.getAttribute("m");
+    
+    HeartBean hb = new HeartBean();
+    hb.setMember_id(mb.getMember_id()); 
+    hb.setProduct_id(product_id);
+    
+    int likeyState = MemberService.likeyState(hb);
+    System.out.println("likeyState : " + likeyState);
+    
+    model.addAttribute("likeyState",likeyState);
+    
 		model.addAttribute("size", size_model);
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);
