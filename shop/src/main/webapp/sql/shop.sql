@@ -156,3 +156,7 @@ alter table member rename column nickname to name;
 alter table ORDER_DETAIL add (choose_size varchar2(30));
 
 create sequence order_detail_seq;
+
+select * from order_detail;
+delete from order_detail;
+select * from order_table;

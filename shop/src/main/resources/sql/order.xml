@@ -4,13 +4,35 @@
 <mapper namespace="Orderns">
 
     
-    <!-- 주문자 정보 -->
+    <!-- 오더 디테일값 추가  -->
     <insert id="orderDetailAdd" parameterType="order_detail">
-        insert into order_detail values ( #{order_detail_pk} , #{product_id} , #{coupon_id} , #{purchase_number} , #{order_id} ,#{choose_size})
+    	insert into order_detail values ( #{order_detail_pk} , #{product_id} , #{coupon_id} , #{purchase_number} , #{order_id} ,#{choose_size})
     </insert>
     
     <select id="getOrderDetail" parameterType="int" resultType="order_detail">
-        select * from order_detail where order_detail_pk = #{order_detail_pk}
+    	select * from order_detail where order_detail_pk = #{order_detail_pk}
     </select>
-
+    
+    <delete id="removeOrderDetail" parameterType="int">
+    	delete from order_detail where order_detail_pk = #{order_detail_pk}
+    </delete>
+    
+    <update id="updateOrderDetail" parameterType="order_detail">
+    	update order_detail
+    	<set>
+    		<if test="purchase_number != null">
+    			purchase_number = #{purchase_number},	
+    		</if>
+    		<if test="order_id != null">
+    			order_id = #{order_id},
+    		</if>
+    	</set>
+    	 where order_detail_pk = #{order_detail_pk}
+    </update>
+    
+    <insert id="insertOrder" parameterType="order_table">
+    	insert into order_table values ( #{order_id},#{member_id},#{receiver_name},#{receiver_tel},#{receiver_post}
+    									,#{receiver_addr1},#{receiver_addr_detail},#{order_date},#{used_point},
+   										#{total_price},#{order_state},#{delivery_price},#{invoice_num})
+    </insert>
 </mapper>

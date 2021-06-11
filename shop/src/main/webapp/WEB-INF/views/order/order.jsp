@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주문하기</title>
+    <title>Modern</title>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/order.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
@@ -86,7 +86,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box">
-		                              <input type="text" class="input-text" value="홍길동">
+		                              <input type="text" class="input-text" value="${order.receiver_name}">
 		                           </div>
 		                       </div>
 		                   </div>
@@ -97,7 +97,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box-zip" style="border: 0">
-		                              <input type="text" class="input-zip" id="postZone" value="04104" readonly>
+		                              <input type="text" class="input-zip" id="postZone" value="${order.receiver_post}" readonly>
 		                              <button type="button" class="zip-btn" onclick="openDaumPostcode()">우편번호 검색</button>
 		                           </div>
 		                       </div>
@@ -108,7 +108,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box">
-		                              <input type="text" class="input-text" id="address" value="서울 마포구 신촌로 176" readonly>
+		                              <input type="text" class="input-text" id="address" value="${order.receiver_addr1 }" readonly>
 		                           </div>
 		                       </div>
 		                   </div>
