@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
 import shop.model.CouponBean;
+import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -45,9 +46,14 @@ public class MemberService {
 		//비밀번호 저장
 		public void updatepw(MemberBean mem)throws Exception {
 			
-			System.out.println("비밀번호 저장 :"+mem.getPw() );
+			System.out.println("비밀번호 저장1 :"+mem.getPw() );
 			md.updatepw(mem);
 		}
+		// 회원정보 수정 
+		public void updateMember(MemberBean mem) throws Exception {
+			md.updateMember(mem);
+		}
+		
 		// 로그인 검사
 		public MemberBean userCheck(String loginId)throws Exception{
 				return md.userCheck(loginId);
@@ -75,7 +81,7 @@ public class MemberService {
 		
 		//회원정보수정 이메일
 		public void updateEmail(MemberBean mb) throws Exception {
-			System.out.println("비밀번호 저장 :"+mb.getEmail() );
+			System.out.println("이메일 저장 :"+mb.getEmail() );
 			md.updateEmail(mb);
 		}
 		
@@ -98,4 +104,14 @@ public class MemberService {
 		public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
 			return md.getcouponList(cp);
 		}
+		//주소 조회
+		public List<AddressBean> addressList(String add) throws Exception {
+			return md.addressList(add);
+		}
+		
+		//주소 조회 for id
+		public AddressBean addressCheck(String id) {
+			return md.addressCheck(id);
+		}
+		
 }

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -21,10 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import shop.model.CouponBean;
+import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
+import shop.model.ReviewBean;
 import shop.service.MemberService;
 
 @Controller
@@ -264,6 +268,7 @@ public class MemberController {
 	@RequestMapping(value = "/member_login_check.shop", method = RequestMethod.POST)
 	public String member_login_check(@RequestParam(value = "loginId") String loginId, 
 									@RequestParam(value = "loginPw") String loginPw,
+									@ModelAttribute AddressBean address,
 									HttpSession session, Model model) throws Exception {
 		
 		int result = 0;
@@ -285,6 +290,20 @@ public class MemberController {
 				 * session.setAttribute("purchase_point", m.getPurchase_point());
 				 */
 				session.setAttribute("m", m);
+				
+				// 로그인 성공시 address도 세션 등록  
+				AddressBean add = service.addressCheck(m.getMember_id());
+				session.setAttribute("add", add);
+				
+				//후보 배송지 리스트
+				List<AddressBean> addlist = new ArrayList<AddressBean>();
+				addlist = service.addressList(m.getMember_id());
+				
+				session.setAttribute("addlist", addlist);
+				
+				
+				
+				
 				MemberBean membertest = (MemberBean) session.getAttribute("m");
 				System.out.println(membertest.getMember_id());
 				return "main/main";
@@ -298,7 +317,7 @@ public class MemberController {
 	
 	// 로그아웃
 	@RequestMapping("member_logout.shop")
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session) { 
 		
 		session.invalidate();
 		
@@ -382,8 +401,7 @@ public class MemberController {
 		/* BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); */	//암호화 인코더
 		
 		
-		  String key = ""; for (int i = 0; i < 12; i++) { key += (char) ((Math.random()
-		  * 26) + 97); }
+		  String key = ""; for (int i = 0; i < 12; i++) { key += (char) ((Math.random() * 26) + 97); }
 		 
 		MemberBean member = service.findpw(mem);
 		
@@ -466,7 +484,7 @@ public class MemberController {
        @RequestParam("member_id") String member_id, @RequestParam("product_id") int product_id, Model model) throws Exception {
 	  
 	  HeartBean hb = new HeartBean();
-    hb.setMember_id(member_id); 
+	  hb.setMember_id(member_id); 
 	  hb.setProduct_id(product_id);
 	  
 	  int result = service.enrollLikey(hb);
@@ -539,18 +557,26 @@ public class MemberController {
 	//회원페이지1->2로
 	@RequestMapping("member_update_view.shop")
 	public String member_update_view() {
+		//비번 비교, 배송지 정보랑 세션으로 , 체크 박스도 수정
+		
 		return "member/member_update2";
 	}
 	
 	//회원페이지2->결과페이지
 	@RequestMapping("member_update.shop")
-	public String member_update(@ModelAttribute MemberBean member, HttpSession session, Model model) throws Exception {
-		String member_id = (String) session.getAttribute("member_id");
+	public String member_update(@ModelAttribute MemberBean member, @ModelAttribute AddressBean address, 
+			HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		
-		model.addAttribute("member_id", member_id);
+		 	service.updateMember(member);
 		
-		service.updatepw(member);
-		service.updateEmail(member);
+		
+		
+		//세션은 갱신을 안해준 상태라 다시 한번 db를 조회를 해서 정보를 다시 가져와야함
+		MemberBean m = service.userCheck(member.getMember_id());
+		session.setAttribute("m", m);
+		
+		
+		
 		return "member/update_result";
 	}
 	
@@ -559,7 +585,8 @@ public class MemberController {
 	  @RequestMapping("member_withdraw.shop") 
 	  public String member_withdraw_view() {
 	  
-	  return "member/member_withdraw2"; }
+	  return "member/member_withdraw2"; 
+	}
 	 
 	
 	 
