@@ -11,14 +11,29 @@ select * from order_detail;
 select * from grade;
 select * from stock; 
 select * from review;
+select * from coupon;
 select * from ADDRESS;
 select * from heart;
 delete from heart;
-
 select * from address;
 select * from seq;
 select * from notice;
-select  from cols where table_name = 'notice';
+
+-- 쿠폰관련 -- 
+SELECT * FROM nls_session_parameters WHERE PARAMETER LIKE '%DATE%' OR PARAMETER LIKE '%LANG%'; 
+
+insert into coupon values ( 9900004, '사장님 몰래 드리는 쿠폰2', 15000, sysdate, sysdate + (interval '2'day), 'cptest18');
+
+-- 쿠폰수 조회
+select count(decode(member_id,'cptest18', 1)) count from coupon
+select count(*) from coupon where member_id = 'cptest18'
+
+-- id 기준 쿠폰리스트 조회
+select * from coupon where member_id = 'cptest18'
+
+-- id 별 쿠폰수 조화
+select member_id, count(*) 개수 from coupon group by member_id
+----
 
 create table stock (
 				stock_id varchar2(100) primary key,

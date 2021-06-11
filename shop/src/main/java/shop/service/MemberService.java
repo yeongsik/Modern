@@ -7,6 +7,7 @@ import org.springframework.beans.factory.wiring.ClassNameBeanWiringInfoResolver;
 import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
+import shop.model.CouponBean;
 import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
@@ -89,6 +90,20 @@ public class MemberService {
 			System.out.println("회원삭제 :"+mb.getMember_id() );
 			md.withdrawMember(mb);
 		}
+		// 쿠폰 등록
+		public void addCoupon(CouponBean cp) throws Exception {
+			md.addCoupon(cp);
+		}
+		
+		// 쿠폰 개수 조회
+		public int countCoupon(CouponBean cp) throws Exception{
+			return md.countCoupon(cp);
+		}
+		
+		// 쿠폰 리스트 조회
+		public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
+			return md.getcouponList(cp);
+		}
 		//주소 조회
 		public List<AddressBean> addressList(String add) throws Exception {
 			return md.addressList(add);
@@ -98,6 +113,5 @@ public class MemberService {
 		public AddressBean addressCheck(String id) {
 			return md.addressCheck(id);
 		}
-		
 		
 }
