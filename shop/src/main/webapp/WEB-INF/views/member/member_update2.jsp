@@ -66,33 +66,35 @@
             </div>
             <div class="member-content-article-section-address_area">
               <div class="member-content-article-section-address_area-basic">
-                <div class="member-content-article-section-address_area-basic-title kor" >기본 배송지</div>
-                <div class="member-content-article-section-address_area-basic-content kor" value="${address1}"></div>
+                <div class="member-content-article-section-address_area-basic-title kor" >${add.address1} , ${add.address2}</div>
+                <div class="member-content-article-section-address_area-basic-content kor"></div>
                 <div class="member-content-article-section-address_area-basic-btn kor"><button type="button">기본 배송지 변경</button></div>
               </div>
               <div class="member-content-article-section-address_area-list">
                 <div class="member-content-article-section-address_area-list-title kor">추가 배송지</div>
                 <div class="member-content-article-section-address_area-list-function kor">
-                  <button>추가</button>
-                  <button>수정</button>
-                  <button>삭제</button>
+                  <button type="button">추가</button>
+                  <button type="button">수정</button>
+                  <button type="button">삭제</button>
+                </div>
+                 <c:forEach var="address" items="${addlist}">
+                <div class="member-content-article-section-address_area-list-item">
+                  <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
+                  <div class="member-content-article-section-address_area-list-item-address kor">${addlist} </div>
+                </div>
+                <!-- <div class="member-content-article-section-address_area-list-item">
+                  <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
+                  <div class="member-content-article-section-address_area-list-item-address kor"></div>
                 </div>
                 <div class="member-content-article-section-address_area-list-item">
                   <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
-                  <div class="member-content-article-section-address_area-list-item-address kor">서울특별시 마포구 푸르지오 401동 1301호</div>
+                  <div class="member-content-article-section-address_area-list-item-address kor"></div>
                 </div>
                 <div class="member-content-article-section-address_area-list-item">
                   <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
-                  <div class="member-content-article-section-address_area-list-item-address kor">서울특별시 마포구 푸르지오 402동 1302호</div>
-                </div>
-                <div class="member-content-article-section-address_area-list-item">
-                  <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
-                  <div class="member-content-article-section-address_area-list-item-address kor">서울특별시 마포구 푸르지오 403동 1303호</div>
-                </div>
-                <div class="member-content-article-section-address_area-list-item">
-                  <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
-                  <div class="member-content-article-section-address_area-list-item-address kor">서울특별시 마포구 푸르지오 404동 1304호</div>
-                </div>
+                  <div class="member-content-article-section-address_area-list-item-address kor"></div>
+                </div> -->
+             </c:forEach>
               </div>
             </div>
           </div>
@@ -100,7 +102,6 @@
       </div>
     </div>
   </section>
- <%--  </c:if> --%>
   </form>
    <%@ include file="../main/footer.jsp"%>    
 </body>

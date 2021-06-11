@@ -98,8 +98,23 @@ public class MemberDAO {
 		System.out.println("회원삭제dao :" + mb.getMember_id());
 		session.delete("deleteMember", mb);
 	}
-	
-	public void memberAddress(AddressBean address) {
-		session.selectOne("selectAddress", address);
+	//주소 조회
+	public void addressCheck(AddressBean add) { 
+		System.out.println("회원주소dao");
+		session.selectList("checkAddress",add); 
 	}
+	//후보 배송지 조회 
+	public List<AddressBean> addressList(String add) throws Exception {
+		System.out.println("DAO");
+		List<AddressBean> list = session.selectList("checkAddress", add);
+		return list;
+	}
+	
+	//기본 배송지 조회
+	public AddressBean addressCheck(String id) {
+		return (AddressBean)session.selectOne("checkAddressFromId", id);
+	}
+
+	
+	
 }

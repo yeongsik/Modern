@@ -101,12 +101,6 @@
 		delete from member where
 		member_id = #{member_id}
 	</delete>
-	
-	<!--배송지-->
-	<select id="selectAddress" parameterType="address" resultType="address">
-		select *
-		from address where member_id = #{member_id} and address_state = 1;
-	</select>
 </mapper>
 
     

@@ -317,3 +317,4 @@ $(function() {
 		$("#pwddivs").replacewith('<input id="hidepw" name="pw">');
 	}
 });
+

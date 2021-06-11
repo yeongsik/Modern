@@ -48,7 +48,7 @@ public class MemberService {
 			System.out.println("비밀번호 저장1 :"+mem.getPw() );
 			md.updatepw(mem);
 		}
-		// 회원정보 수정 test1
+		// 회원정보 수정 
 		public void updateMember(MemberBean mem) throws Exception {
 			md.updateMember(mem);
 		}
@@ -89,15 +89,15 @@ public class MemberService {
 			System.out.println("회원삭제 :"+mb.getMember_id() );
 			md.withdrawMember(mb);
 		}
-		
-		//배송지 등록
-		/*
-		 * public AddressBean memberAddress(String ma) throws Exception {
-		 * 
-		 * return md.memberAddress(ma); }
-		 */
-		public void memberAddress(AddressBean address) {
-			md.memberAddress(address);
-			
+		//주소 조회
+		public List<AddressBean> addressList(String add) throws Exception {
+			return md.addressList(add);
 		}
+		
+		//주소 조회 for id
+		public AddressBean addressCheck(String id) {
+			return md.addressCheck(id);
+		}
+		
+		
 }
