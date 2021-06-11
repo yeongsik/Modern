@@ -4,8 +4,8 @@ $(function() {
   let count = 0;
   
   // default
+  $('.member-content-article-items-detail1').hide();
   $('.member-content-article-answer_area-items1').hide();
-  $('.member-content-article-answer_area-items2').hide();
 
   // background-color change
   $('#items1').mouseover(function(){
@@ -28,23 +28,31 @@ $(function() {
   });
 
   // click action
-  $('#items1').click(function() {
+/*  $('#items1').click(function() {
     count = count + 1;
 
     if(count % 2 == 1) {
+   	  $('.member-content-article-items-detail1').show();
       $('.member-content-article-answer_area-items1').show();
     } else {
+      $('.member-content-article-items-detail1').hide();
       $('.member-content-article-answer_area-items1').hide();
     }
-  });
+  });*/
 
-  $('#items2').click(function() {
-    count = count + 1;
-
-    if(count % 2 == 1) {
-      $('.member-content-article-answer_area-items2').show();
-    } else {
-      $('.member-content-article-answer_area-items2').hide();
-    }
-  });
 });
+
+function open(question_id) {
+
+	alert(typeof question_id);
+
+	count = count + 1;
+	
+	if(count % 2 == 1) {
+		$('#question-content' + question_id).show();
+		$('#question-answer' + question_id).show();
+	} else {
+		$('#question-content' + question_id).hide();
+		$('#question-answer' + question_id).hide();
+	};
+};

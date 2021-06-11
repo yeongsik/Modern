@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.model.HeartBean;
+import shop.model.MemberBean;
 import shop.model.ProductBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
 import shop.model.SizeBean;
+import shop.service.MemberService;
 import shop.service.ProductService;
 
 @Controller
@@ -25,8 +29,11 @@ public class ProductController {
 	@Autowired
 	private ProductService ProductService;
 	
+	@Autowired
+  private MemberService MemberService;
+	
 	@RequestMapping ("productlist.shop")
-	public String productlist(@ModelAttribute ProductBean product ,HttpServletRequest request , Model model) throws Exception{
+	public String productlist(@ModelAttribute ProductBean product ,HttpSession session, HttpServletRequest request , Model model) throws Exception{
 		System.out.println("productlist.shop");
 		System.out.println(product.getCategory_id());
 		
@@ -35,6 +42,26 @@ public class ProductController {
 		int page = 1;
 		product.setPage(page);
 		productlist = ProductService.getProductList(product);
+		
+		// 관심상품 등록 여부 확인
+		MemberBean mb = (MemberBean)session.getAttribute("m");
+		
+		if(mb != null) {
+		  String id = mb.getMember_id();
+		  
+		  
+		  List<HeartBean> wishState = MemberService.getWishList(id);
+		  
+		  model.addAttribute("wish", wishState);
+		  
+      
+      if(wishState.isEmpty()) { int state = 1; System.out.println("널");
+      
+      model.addAttribute("state", state);
+     
+      }
+		}
+		
 		
 		model.addAttribute("productlist",productlist);
 		model.addAttribute("currentPage" , page);
@@ -57,7 +84,7 @@ public class ProductController {
 	}
 	// 상품 세부 
 	@RequestMapping("product_detail.shop") 
-	public String product_detail(@RequestParam int product_id , Model model) throws Exception {
+	public String product_detail(@RequestParam int product_id , HttpSession session, Model model) throws Exception {
 		System.out.println("product_detail");
 		
 		ProductBean product = new ProductBean();
@@ -87,6 +114,19 @@ public class ProductController {
 		// Q&A 게시판 목록 리스트 
 		List<QuestionBean> question = new ArrayList<QuestionBean>();
 		
+		
+		// 관심상품 등록 여부 확인
+    MemberBean mb = (MemberBean) session.getAttribute("m");
+    
+    HeartBean hb = new HeartBean();
+    hb.setMember_id(mb.getMember_id()); 
+    hb.setProduct_id(product_id);
+    
+    int likeyState = MemberService.likeyState(hb);
+    System.out.println("likeyState : " + likeyState);
+    
+    model.addAttribute("likeyState",likeyState);
+    
 		model.addAttribute("size", size_model);
 		model.addAttribute("product", product);
 		model.addAttribute("buyingPoint", buyingPoint);

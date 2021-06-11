@@ -1,12 +1,16 @@
 package shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import shop.dao.QuestionDAO;
+import shop.model.QuestionBean;
 
-@Service
-public class QuestionService {
-	@Autowired
-	private QuestionDAO qd;
+public interface QuestionService {
+
+	public int getListCount() throws Exception;
+
+	public List<QuestionBean> getBoardList(int page) throws Exception;
+
+	public QuestionBean getQuestionDetail(int question_id) throws Exception;
+
+	
 }
