@@ -299,16 +299,7 @@ public class MemberController {
 				// 로그인 성공시 address도 세션 등록  
 				AddressBean add = service.addressCheck(m.getMember_id());
 				session.setAttribute("add", add);
-				
-				//후보 배송지 리스트
-				List<AddressBean> addlist = new ArrayList<AddressBean>();
-				addlist = service.addressList(m.getMember_id());
-				
-				session.setAttribute("addlist", addlist);
-				
-				
-				
-				
+			
 				MemberBean membertest = (MemberBean) session.getAttribute("m");
 				System.out.println(membertest.getMember_id());
 				return "main/main";
@@ -560,8 +551,21 @@ public class MemberController {
 	//회원정보수정페이지이동
 	//회원페이지1->2로
 	@RequestMapping("member_update_view.shop")
-	public String member_update_view() {
+	public String member_update_view(@ModelAttribute AddressBean address, HttpSession session, Model model  ) throws Exception {
 		//비번 비교, 배송지 정보랑 세션으로 , 체크 박스도 수정
+		MemberBean member = (MemberBean) session.getAttribute("m");
+		
+		String member_id = member.getMember_id();
+		
+		List<AddressBean>addlist = null;
+		
+		addlist = service.addressList(address);
+		
+		addlist.forEach((n) -> System.out.println(n)); 
+		
+		model.addAttribute("member_id", member_id);
+		model.addAttribute("addlist", addlist);
+		model.addAttribute("addless1", address);
 		
 		return "member/member_update2";
 	}

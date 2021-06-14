@@ -3,7 +3,7 @@
  
  <mapper namespace="addressns">
 	<!--후보 배송지  -->
-	<select id="checkAddress" parameterType="String" resultType="address">
+	<select id="checkAddress" resultType="address">
 		select * from address where member_id = #{member_id}
 	</select>
     

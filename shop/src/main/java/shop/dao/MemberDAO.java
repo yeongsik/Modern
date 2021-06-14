@@ -133,10 +133,10 @@ public class MemberDAO {
 		session.selectList("checkAddress",add); 
 	}
 	//후보 배송지 조회 
-	public List<AddressBean> addressList(String add) throws Exception {
+	public List<AddressBean> addressList(AddressBean add) throws Exception {
 		System.out.println("DAO");
-		List<AddressBean> list = session.selectList("checkAddress", add);
-		return list;
+		return session.selectList("checkAddress", add);
+	
 	}
 	
 	//기본 배송지 조회

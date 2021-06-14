@@ -21,7 +21,6 @@
 <body>
   <%@ include file="../main/header.jsp"%>
   <form action="member_update.shop" method="post">
-  <%-- <c:if test= ${address1} == null> --%>
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
@@ -77,10 +76,10 @@
                   <button type="button">수정</button>
                   <button type="button">삭제</button>
                 </div>
-                 <c:forEach var="address" items="${addlist}">
+                 <c:forEach var="add" items="${addlist}">
                 <div class="member-content-article-section-address_area-list-item">
                   <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>
-                  <div class="member-content-article-section-address_area-list-item-address kor">${addlist} </div>
+                  <div class="member-content-article-section-address_area-list-item-address kor">${m.address1} </div>
                 </div>
                 <!-- <div class="member-content-article-section-address_area-list-item">
                   <div class="member-content-article-section-address_area-list-item-chk"><input type="checkbox"></div>

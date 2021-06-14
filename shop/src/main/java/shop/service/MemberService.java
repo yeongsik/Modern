@@ -110,7 +110,7 @@ public class MemberService {
 			return md.getcouponList(cp);
 		}
 		//주소 조회
-		public List<AddressBean> addressList(String add) throws Exception {
+		public List<AddressBean> addressList(AddressBean add) throws Exception {
 			return md.addressList(add);
 		}
 		
