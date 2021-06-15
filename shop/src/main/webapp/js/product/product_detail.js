@@ -6,6 +6,7 @@ $(document).ready(function() {
         $(this).addClass("current");
         $("#"+tab_id).addClass("current");
     })
+	$("#order-total-price").hide();
 })
 
 
@@ -54,7 +55,6 @@ function handleOnChange() {
 		const url = new URL(window.location.href);
 			const urlParams = url.searchParams;
 			var product_id = parseInt(urlParams.get('product_id'));
-			
 			$.ajax({
 				url: "orderdetailadd.shop",
 				type: "post",
@@ -62,37 +62,59 @@ function handleOnChange() {
 						"choose_size" : choose_size},
 				success:function(data) {
 					$("#product-count").append(data);
+					var sum=0;
+					var count =$(".total_price").length;
+					for(var i=0; i<count; i++) {
+						sum += parseInt($(".total_price")[i].value);
+						alert(parseInt($(".total_price")[i].value));
+						alert(count);
+						alert(sum);
+					}
+					$(".total-price-content").html("&#8361; " +sum.toLocaleString('ko-KR')+"원");
 				},
 				error:function(){
 					alert("오류오류")
 				}
 			})
-	}
+		$("#order-total-price").show();
+	} 
 }
 
 // 오더 디테일 삭제
 function removeOrderDetail(e,choose_size) {
-	alert(e);
+/*	alert(e);
 	alert(typeof e);
-	alert(typeof choose_size);
+	alert(typeof choose_size);*/
 	$("#"+e).remove();
 	alert("product_size"+choose_size);
 	$("#product_size_option"+choose_size).removeClass("productActive");
-	
 	
 	$.ajax({
 		url:"removeOrderDetail.shop",
 		type:"post",
 		data : {"order_detail_pk" : e },
-		success:function() {
-		},
+		success:function(data) {
+			console.log(data);
+			var sum=0;
+			var count =$(".total_price").length;
+			for(var i=0; i<count; i++) {
+				sum += parseInt($(".total_price")[i].value);
+				alert(parseInt($(".total_price")[i].value));
+				alert(count);
+				alert(sum);
+			}
+			$(".total-price-content").html("&#8361; " +sum.toLocaleString('ko-KR')+"원");
+		}
 	})
+	if(!$("#product_select option").hasClass("productActive")) {
+	$("#order-total-price").hide();
+	}
 }
 function minusPurchaseNumber(purchase_number ,order_detail_pk) {
-	alert(order_detail_pk);
+	/*alert(order_detail_pk);
 	alert(typeof order_detail_pk);
 	alert(purchase_number);
-	alert(typeof purchase_number);
+	alert(typeof purchase_number);*/
 	if(purchase_number >1) {
 		purchase_number = purchase_number -1;
 		$.ajax({
@@ -102,15 +124,24 @@ function minusPurchaseNumber(purchase_number ,order_detail_pk) {
 					"order_detail_pk" : order_detail_pk},
 			success:function(data){
 				$("#order_purchase_content"+order_detail_pk).html(data);
+				var sum=0;
+					var count =$(".total_price").length;
+					for(var i=0; i<count; i++) {
+						sum += parseInt($(".total_price")[i].value);
+						alert(parseInt($(".total_price")[i].value));
+						alert(count);
+						alert(sum);
+					}
+					$(".total-price-content").html("&#8361; " +sum.toLocaleString('ko-KR')+"원");
 			}
 		})
 	}
 }
 function plusPurchaseNumber(purchase_number ,order_detail_pk) {
-	alert(order_detail_pk);
+	/*alert(order_detail_pk);
 	alert(typeof order_detail_pk);
 	alert(purchase_number);
-	alert(typeof purchase_number);
+	alert(typeof purchase_number);*/
 	purchase_number = purchase_number +1;
 	$.ajax({
 		url:"updatePurchaseNumber.shop",
@@ -119,8 +150,17 @@ function plusPurchaseNumber(purchase_number ,order_detail_pk) {
 				"order_detail_pk" : order_detail_pk},
 		success:function(data){
 				$("#order_purchase_content"+order_detail_pk).html(data);
+				var sum=0;
+					var count =$(".total_price").length;
+					for(var i=0; i<count; i++) {
+						sum += parseInt($(".total_price")[i].value);
+						alert(parseInt($(".total_price")[i].value));
+						alert(count);
+						alert(sum);
+					}
+					$(".total-price-content").html("&#8361; " +sum.toLocaleString('ko-KR')+"원");
 		}
 	})
-	alert(purchase_number);
-	alert(typeof purchase_number);
+/*	alert(purchase_number);
+	alert(typeof purchase_number);*/
 }

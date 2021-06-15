@@ -77,9 +77,10 @@ public class OrderController {
 	}
 	
 	@RequestMapping ("removeOrderDetail.shop")
-	public void removeOrderDetail(int order_detail_pk) throws Exception{
+	public String removeOrderDetail(int order_detail_pk) throws Exception{
 		System.out.println(order_detail_pk);
 		os.removeOrderDetail(order_detail_pk);
+		return "deletesuccess";
 	}
 	
 	@RequestMapping ("updatePurchaseNumber.shop")
@@ -87,6 +88,7 @@ public class OrderController {
 		System.out.println(purchase_number);
 		System.out.println(order_detail_pk);
 		OrderDetailBean orderDetail = new OrderDetailBean();
+		ProductBean product = new ProductBean();
 		orderDetail.setOrder_detail_pk(order_detail_pk);
 		orderDetail.setPurchase_number(purchase_number);
 		
@@ -95,8 +97,10 @@ public class OrderController {
 		os.updateOrderDetail(orderDetail);
 		
 		orderDetail = os.getOrderDetail(order_detail_pk);
+		product = ps.getProductOne(orderDetail.getProduct_id());
 		model.addAttribute("orderDetail", orderDetail);
-		
+		model.addAttribute("orderProduct" , product);
+		System.out.println(product.getProduct_price()*orderDetail.getPurchase_number());
 		return "order/updatePurchaseNumberResult";
 	}
 	
@@ -136,6 +140,7 @@ public class OrderController {
 		
 		
 		List<ProductBean> productList = new ArrayList<ProductBean>();
+		List<OrderDetailBean> orderList = new ArrayList<OrderDetailBean>();
 		OrderDetailBean orderDetail = new OrderDetailBean();
 		System.out.println(order_detail_pk);
 		for (int i=0; i<order_detail_pk.length; i++) {
@@ -144,11 +149,12 @@ public class OrderController {
 			productList.add(product);
 			orderDetail.setOrder_id(newOrder_id);
 			os.updateOrderDetail(orderDetail);
+			orderList.add(orderDetail);
 		}
 		
 		model.addAttribute("order" , addOrder);
 		model.addAttribute("productList", productList);
-		model.addAttribute("orderDetail", orderDetail);
+		model.addAttribute("orderList", orderList);
 		System.out.println(member.getMember_id());
 		
 		return "order/order";

@@ -177,10 +177,6 @@ span.detail-content {
 }
 .product-totalprice-wrapper {
 	border-top : 2px solid var(--color-black);
-	display : none;
-}
-.detail-subject {
-	
 }
 .detail-choose-size {
 	width:20px;
@@ -189,9 +185,9 @@ span.detail-content {
 .detail-purchase-number{
 	display:flex;
 	justify-content: space-between;
-	width : 50px;
+	width : 200px;
 }
-.detail-exit {
-	
+.detail-product-price{
+	width : 150px;
+	text-align : center;
 }
-
