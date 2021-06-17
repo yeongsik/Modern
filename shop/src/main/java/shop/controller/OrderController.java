@@ -60,6 +60,7 @@ public class OrderController {
 		order.setPurchase_number(1);
 		order.setOrder_id("");
 		order.setChoose_size(choose_size);
+		order.setDetail_state(0);
 		System.out.println(product_id);
 		System.out.println(choose_size);
 		os.orderDetailAdd(order);

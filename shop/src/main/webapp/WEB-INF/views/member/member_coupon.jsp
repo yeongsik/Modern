@@ -35,13 +35,17 @@
 				<!-- article -->
 				<div class="member-content-article-container">
 					<div class="member-content-article-header kor">쿠폰</div>
-
-					<div class="member-content-article-options kor">
-						${countCoupon}개 <select>
+					<!-- 관리자 쿠폰 발급페이지 이동버튼 테스트용, 추후 가리고 관리자페이지로 넘기기 -->
+					<div style="display:flex; justify-content: flex-end; align-items: center;margin:10px;">
+						<input type="button" value="쿠폰발급" onclick="location.href='member_coupon_management.shop'">
+					</div>
+					<div class="member-content-coupon-count kor">총 ${countCoupon}개</div>
+					<%-- <div class="member-content-article-options kor">
+						 <select>
 							<option class="kor">최신순</option>
 							<option class="kor">할인순</option>
 						</select>
-					</div>
+					</div> --%>
 					<div class="member-content-article-items">
 						<div class="member-content-article-items-header">
 							<div class="member-content-article-items-header-coupon_num kor">쿠폰 번호</div>
@@ -56,18 +60,17 @@
 									<div class="member-content-article-items-coupon_num kor">${c.coupon_id}</div>
 									<div class="member-content-article-items-coupon_name kor">${c.coupon_name}</div>
 									<c:if test="${c.coupon_discount > 100}">
-										<div class="member-content-article-items-coupon_discount kor">${c.coupon_discount}원</div>
+										<div class="member-content-article-items-coupon_discount kor">
+										<!-- &#8361; --> 
+										<fmt:formatNumber type="number" maxFractionDigits="3"  value="${c.coupon_discount}" />원 </div>
 									</c:if>
 									<c:if test="${c.coupon_discount < 100}">
 										<div class="member-content-article-items-coupon_discount kor">${c.coupon_discount}%</div>
 									</c:if>
 									<div class="member-content-article-items-coupon_available_area kor">일부 상품</div>
-									<div class="member-content-article-items-coupon_valid_date">
-										<div class="member-content-article-items-coupon_valid_date-date kor">${c.coupon_date} - ${c.coupon_expiration}</div>
-<%-- 										<fmt:formatDate pattern="yyyy-MM-dd" value="${c.coupon_date }"/> - 
-										<fmt:formatDate pattern="yyyy-MM-dd" value="${c.coupon_expiration}"/> --%>
-										<br><span class="kor">30일 남음</span><!-- 미구현 -->
-										<%-- <fmt:formatDate dateStyle="short" value="${c.coupon_expiration}-${c.coupon_date}"/> --%>
+									<div class="member-content-article-items-coupon_valid_date kor">
+										<fmt:formatDate pattern="yyyy-MM-dd" value="${c.coupon_date }"/> - 
+										<fmt:formatDate pattern="yyyy-MM-dd" value="${c.coupon_expiration}"/>
 									</div>
 								</div>
 							</c:forEach>

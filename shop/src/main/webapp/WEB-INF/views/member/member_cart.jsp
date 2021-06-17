@@ -51,7 +51,7 @@
               <div class="member-content-article-items-showcase-list">
                 <div class="member-content-article-items-no kor">1</div>
                 <div class="member-content-article-items-check_btn"><input type="checkbox"></div>
-                <div class="member-content-article-items-product kor">[brand] 뉴 스트레이트 데님 팬츠</div>
+                <div class="member-content-article-items-product kor">${pb.getProduct_name()}</div>
                 <div class="member-content-article-items-price kor">89,000</div>
                 <div class="member-content-article-items-membership_discount kor">-4,450</div>
                 <div class="member-content-article-items-Quantity">

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import shop.model.CouponBean;
 import shop.model.AddressBean;
+import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -127,6 +128,12 @@ public class MemberDAO {
 		System.out.println(cp.getMember_id());
 		return session.selectList("couponList", cp);
 	}
+	
+	// 관리자 쿠폰 생성
+	public int createCoupon(CouponBean cp) throws Exception{
+		return session.insert("createCoupon", cp);
+	}
+	
 	//주소 조회
 	public void addressCheck(AddressBean add) { 
 		System.out.println("회원주소dao");
@@ -144,4 +151,8 @@ public class MemberDAO {
 		return (AddressBean)session.selectOne("checkAddressFromId", id);
 	}
 	
+	// 장바구니
+	public List<ProductBean> getCartList(CartBean cb) throws Exception{
+		return session.selectList("cartList", cb);
+	}
 }

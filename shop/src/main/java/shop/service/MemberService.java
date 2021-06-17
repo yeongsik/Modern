@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import shop.dao.MemberDAO;
 import shop.model.CouponBean;
 import shop.model.AddressBean;
+import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.ProductBean;
@@ -109,6 +110,12 @@ public class MemberService {
 		public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
 			return md.getcouponList(cp);
 		}
+		
+		// 관리자 쿠폰 생성
+		public void createCoupon(CouponBean cp) throws Exception{
+			md.createCoupon(cp);
+		}
+		
 		//주소 조회
 		public List<AddressBean> addressList(String add) throws Exception {
 			return md.addressList(add);
@@ -119,4 +126,8 @@ public class MemberService {
 			return md.addressCheck(id);
 		}
 		
+		// 장바구니
+		public List<ProductBean> getCartList(CartBean cb) throws Exception{
+			return md.getCartList(cb);
+		}
 }

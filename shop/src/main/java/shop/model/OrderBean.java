@@ -17,7 +17,23 @@ public class OrderBean {
 	private int order_state;
 	private int delivery_price;
 	private int invoice_num;
+	private int receiver_tel2;
+	private String order_memo;
+
 	
+	
+	public int getReceiver_tel2() {
+		return receiver_tel2;
+	}
+	public void setReceiver_tel2(int receiver_tel2) {
+		this.receiver_tel2 = receiver_tel2;
+	}
+	public String getOrder_memo() {
+		return order_memo;
+	}
+	public void setOrder_memo(String order_memo) {
+		this.order_memo = order_memo;
+	}
 	public String getOrder_id() {
 		return order_id;
 	}

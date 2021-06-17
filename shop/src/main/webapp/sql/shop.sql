@@ -14,6 +14,8 @@ select * from review;
 select * from coupon;
 select * from ADDRESS;
 select * from heart;
+select * from cart;
+
 
 select * from heart where member_id='hama';
 select * from heart where member_id='noru';
