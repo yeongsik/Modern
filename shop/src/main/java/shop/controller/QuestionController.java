@@ -51,7 +51,6 @@ public class QuestionController {
 		 * product = ps.getProductOne((qList.get(i)).getProduct_id());
 		 * pList.add(product); } model.addAttribute("pList", pList);
 		 */
-		 
 		
 		int maxPage = (int) ((double) listCount / limitPage + 0.95);
 

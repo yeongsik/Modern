@@ -81,7 +81,8 @@
                         </div>
                         <div class="product-totalprice-wrapper kor" id="order-total-price">
                         	<div class="total-price-subject kor">총 상품 금액</div>
-                        	<div>
+                        	<div class="total-price-content kor">
+                        		
                         	</div>
                         </div>
                         <div class="product-detail-order-wrapper">

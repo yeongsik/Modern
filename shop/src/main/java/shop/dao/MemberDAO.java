@@ -159,6 +159,13 @@ public class MemberDAO {
 	public void updateAddressState1(AddressBean add) {
 		session.update("updateAddressState1", add);
 	}
+
+	
+	// 쿠폰 selectOne
+	public CouponBean getCouponOne(int coupon_id) {
+		CouponBean coupon = session.selectOne("memberns.getCouponOne", coupon_id);
+		return coupon;
+	}
 	
 	//배송지 추가
 	public void addressInsert(AddressBean address) throws Exception {

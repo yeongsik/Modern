@@ -1,0 +1,51 @@
+@charset "UTF-8";
+@import url("../main.css");
+
+body {
+	width: 600px;
+	padding : 10px;
+}
+.subject {
+	color:var(--color-black);
+	font-size:20px;
+	padding : 20px 15px;
+	border-bottom : 2px solid var(--color-grey);
+}
+.couponlist-container{
+	margin-top : 20px;
+}
+.couponlist-nav-wrapper ,.couponlist-content-wrapper {
+	color:var(--color-black);
+	font-size:13px;
+	display: grid;
+	grid-template-columns: 1fr 1.2fr 1fr 1fr 1.5fr;
+	grid-row-gap: 10px;
+	padding: 15px;
+	background-color:var(--color-white);
+	text-align: center;
+}
+.couponlist-nav-wrapper {
+	background-color:var(--color-black);
+	color:var(--color-white);
+	border-radius:3px 3px 0 0 ;
+}
+.couponlist-content {
+	font-size:12px;
+	color:var(--color-black);
+} 
+.couponlist-content-wrapper:hover {
+	cursor:pointer;
+	background-color:var(--color-lightgrey);
+}
+.close-btn {
+	margin: 30px;
+	display:flex;
+	justify-content:center;
+}
+button {
+	width : 80px;
+	color:var(--color-white);
+	background-color:var(--color-black);
+	border-radius: 5px;
+	cursor:pointer;
+}

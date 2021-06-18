@@ -8,7 +8,7 @@ public class OrderDetailBean {
 	private String order_id;
 	private String choose_size;
 	private int detail_state;
-
+	// 0 , 1 , 2
 	
 	public int getOrder_detail_pk() {
 		return order_detail_pk;

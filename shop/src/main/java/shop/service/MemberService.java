@@ -110,6 +110,10 @@ public class MemberService {
 		public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
 			return md.getcouponList(cp);
 		}
+		// 쿠폰 SelectOne
+		public CouponBean getCouponOne(int coupon_id) {
+			return md.getCouponOne(coupon_id);
+		}
 		
 		// 관리자 쿠폰 생성
 		public void createCoupon(CouponBean cp) throws Exception{
