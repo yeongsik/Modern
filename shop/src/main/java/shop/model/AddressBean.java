@@ -44,4 +44,10 @@ public class AddressBean {
 	public void setAddress_state(int address_state) {
 		this.address_state = address_state;
 	}
+	
+	@Override
+	public String toString() {
+	return "add_pk : " + add_pk + "\npost : " + post + "\naddress1 : " + address1 + "\naddress2 : " + address2
+	+ "\nmember_id : " + member_id + "\naddress_state : " + address_state;
+	}
 }

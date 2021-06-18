@@ -22,7 +22,7 @@
 	<div class="container">
 		<section class="main-content-wrapper">
 			<div class="main-section-container">
-				<form method="POST" action="member_complete.shop" onsubmit="return joinCheck1()">
+				<form method="POST" action="member_complete.shop" onsubmit="return pwCheck()">
 					<input type="hidden" name="accept_mail_value" id="accept_mail_value" value="n">
 					<div class="register-main-wrapper">
 						<div class="register-main-text kor">회원가입</div> 

@@ -59,7 +59,7 @@
 		pw=#{pw} where member_id = #{member_id}
 	</update>
 
-	<!--회원 이메일 및 마케팅 변경 -->
+	<!--회원 이메일  -->
 	<update id="update_member_email" parameterType="member">
 		update member set
 		email = #{email} where member_id = #{member_id}
@@ -108,6 +108,11 @@
 		select * from coupon where member_id = #{member_id}
 	</select>
 	
+	<!--마케팅 동의  -->
+	 <update id="email_check" parameterType="member" >
+	update member set accept_mail = #{accept_mail} where member_id = #{member_id}
+	</update> 
+
 	<!-- 관리자 쿠폰 생성 -->
 	<insert id="createCoupon" parameterType="coupon">
 		insert into coupon values ( #{coupon_id}, #{coupon_name}, #{coupon_discount}, 
@@ -131,7 +136,7 @@
 		select * from order_detail a left outer join cart b 
 		on a.order_detail_pk = b.order_detail_pk where b.member_id = #{member_id}
 	</select>
-	
+
 	
 </mapper>
 

@@ -15,13 +15,12 @@ import shop.model.MemberBean;
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
-
 @Service
 public class MemberService {
-	
+
 	@Autowired
 	private MemberDAO md;
-	
+
 		//회원가입
 		public void insertMember(MemberBean member) throws Exception{
 			md.insertMember(member);
@@ -117,11 +116,6 @@ public class MemberService {
 			md.createCoupon(cp);
 		}
 		
-		//주소 조회
-		public List<AddressBean> addressList(String add) throws Exception {
-			return md.addressList(add);
-		}
-		
 		//주소 조회 for id
 		public AddressBean addressCheck(String id) {
 			return md.addressCheck(id);
@@ -139,5 +133,28 @@ public class MemberService {
 		// 장바구니 order_detail 리스트
 		public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
 			return md.getDetailList(cb);
+		}
+		// 기본 배송지를 후보 배송지로 변경
+		public void updateAddressState0(String id) {
+			md.updateAddressState0(id);
+		}
+
+		// 후보 배송지를 기본 배송지로 변경
+		public void updateAddressState1(AddressBean add) {
+			md.updateAddressState1(add);
+		}
+		
+		//배송지 추가
+		public void addressInsert(AddressBean address) throws Exception {
+			md.addressInsert(address);
+		}
+		// 마케팅 동의
+		public MemberBean emailCheck(MemberBean member) throws Exception {
+			return md.emailCheck(member);
+		}
+
+		// 주소 조회
+		public List<AddressBean> addressList(AddressBean add) throws Exception {
+			return md.addressList(add);
 		}
 }
