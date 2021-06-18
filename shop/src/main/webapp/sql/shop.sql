@@ -10,7 +10,7 @@ select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
-select * from review;
+select * from item_review;
 select * from coupon;
 select * from ADDRESS;
 select * from heart;

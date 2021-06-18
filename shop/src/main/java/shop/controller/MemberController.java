@@ -1,11 +1,7 @@
 package shop.controller;
 
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -22,16 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import shop.model.CouponBean;
 import shop.model.AddressBean;
+import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.PersonalQuestionBean;
 import shop.model.ProductBean;
-
 import shop.model.ReviewBean;
-
 import shop.service.MemberService;
+import shop.service.PersonalQuestionService;
+import shop.service.ReviewService;
 
 @Controller
 public class MemberController {
@@ -89,10 +85,50 @@ public class MemberController {
   }
   
   // 구매후기
-  @RequestMapping("member_board.shop")
-  public String board() {
-    return "member/member_item_review";
-  }
+	@Autowired
+	private ReviewService rs;
+	
+	@RequestMapping("member_board.shop")
+	public String review(HttpServletRequest request, Model model) throws Exception {
+		
+		List<ReviewBean> rList = new ArrayList<ReviewBean>();
+		int page = 1;
+		int limitPage = 10;
+		int listCount = rs.getListCount();
+	
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+	
+		if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
+			page = 1;
+		}
+	
+		rList = rs.getBoardList(page);
+		
+		int maxPage = (int) ((double) listCount / limitPage + 0.95);
+	
+		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+	
+		int endPage = maxPage;
+	
+		if (endPage > startPage + 10 - 1)
+			endPage = startPage + 10 - 1;
+	
+		model.addAttribute("page", page);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("rList", rList);
+	
+	
+		/* 내용 줄바꿈 */
+		model.addAttribute("br", "<br/>");
+		model.addAttribute("cn", "\n");
+		
+		return "member/member_item_review";
+	}
   
   // 상품 문의
 	
@@ -111,10 +147,51 @@ public class MemberController {
 	 
   
   // 1:1 문의
-  @RequestMapping("member_personal_question.shop")
-  public String personalQuestion() {
-    return "member/member_personal_question";
-  }
+	@Autowired
+	private PersonalQuestionService pqs;
+
+	// 상품문의 메인
+	@RequestMapping("member_personal_question.shop")
+	public String question(HttpServletRequest request, Model model) throws Exception {
+		
+		List<PersonalQuestionBean> pqList = new ArrayList<PersonalQuestionBean>();
+
+		int page = 1;
+		int limitPage = 10;
+		int listCount = pqs.getListCount();
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
+			page = 1;
+		}
+
+		pqList = pqs.getBoardList(page);
+		
+		int maxPage = (int) ((double) listCount / limitPage + 0.95);
+
+		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+
+		int endPage = maxPage;
+
+		if (endPage > startPage + 10 - 1)
+			endPage = startPage + 10 - 1;
+
+		model.addAttribute("page", page);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("pqList", pqList);
+		/* 내용 줄바꿈 */
+		model.addAttribute("br", "<br/>");
+		model.addAttribute("cn", "\n");
+		
+		return "member/member_personal_question";
+	}
+
   
 	// 쿠폰페이지
 	@RequestMapping("member_coupon.shop")

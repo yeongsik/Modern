@@ -2,47 +2,41 @@ $(function() {
   
   // variable
   let count = 0;
+  let idx = 0;
   
   // default
-  $('.member-content-article-items-detail1').hide();
+/*  $('.member-content-article-items-detail1').hide();
   $('.member-content-article-answer_area-items1').hide();
-
+*/
   // background-color change
-  $('#items1').mouseover(function(){
+  $('.member-content-article-items-showcase-list').mouseover(function(){
     $(this).css("background-color","rgb(247,247,247");
   });
-  $('#items1').mouseout(function() {
-    $(this).css("background-color","#ffffff");
+  $('.member-content-article-items-showcase-list').mouseout(function() {
+    $(this).css("background-color","transparent");
   });
 
-  $('#items2').mouseover(function(){
-    $(this).css("background-color","rgb(247,247,247");
-  });
-  $('#items2').mouseout(function() {
-    $(this).css("background-color","#ffffff");
-  });
 
-  // cursor change
-  $('.member-content-article-items-option2').hover(function() {
-    $(this).css("cursor","pointer");
-  });
 
   // click action
-/*  $('#items1').click(function() {
-    count = count + 1;
 
+
+
+  $('#items'+idx).click(function() {
+    count = count + 1;
     if(count % 2 == 1) {
-   	  $('.member-content-article-items-detail1').show();
-      $('.member-content-article-answer_area-items1').show();
+   	  $('#content'+idx).addClass('show');
+      $('#answer'+idx).addClass('show');
     } else {
-      $('.member-content-article-items-detail1').hide();
-      $('.member-content-article-answer_area-items1').hide();
+      $('#content'+idx).removeClass('show');
+      $('#answer'+idx).removeClass('show');
+/*		idx = idx + 1;*/
     }
-  });*/
+  });
 
 });
 
-function open(question_id) {
+/*function open(question_id) {
 
 	alert(typeof question_id);
 
@@ -55,4 +49,4 @@ function open(question_id) {
 		$('#question-content' + question_id).hide();
 		$('#question-answer' + question_id).hide();
 	};
-};
+};*/

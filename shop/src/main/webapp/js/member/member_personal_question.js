@@ -2,57 +2,45 @@ $(function() {
   
   // variable
   let count = 0;
-  
-  // default
-  $('.member-content-article-items-detail1').hide();
-  $('.member-content-article-items-detail2').hide();
-  $('.member-content-article-answer_area-items1').hide();
-  $('.member-content-article-answer_area-items2').hide();
+  var size = $('#size').val();
+  var idx = 0;
+
+	for(var i=0; i<=size; i++){
+		idx + i;
+	  $('#items'+idx).click(function() {
+	    count = count + 1;
+	
+	    if(count % 2 == 1) {
+	      $('#detail'+idx).css("display", "flex");
+	      $('#answer'+idx).css("display", "flex");
+	    } else {
+	      $('#detail'+idx).css("display", "none");
+	      $('#answer'+idx).css("display", "none");
+	    }
+	  });
+	}
 
   // background-color change
-  $('#items1').mouseover(function(){
+  $('.member-content-article-items-showcase-list').mouseover(function(){
     $(this).css("background-color","rgb(247,247,247");
   });
-  $('#items1').mouseout(function() {
-    $(this).css("background-color","#ffffff");
-  });
-
-  $('#items2').mouseover(function(){
-    $(this).css("background-color","rgb(247,247,247");
-  });
-  $('#items2').mouseout(function() {
-    $(this).css("background-color","#ffffff");
-  });
-
-  // cursor change
-  $('.member-content-article-items-option2').hover(function() {
-    $(this).css("cursor","pointer");
+  $('.member-content-article-items-showcase-list').mouseout(function() {
+    $(this).css("background-color","transparent");
   });
 
   // click action
-  $('#items1').click(function() {
+/*  $('#items'+question_id).click(function() {
     count = count + 1;
 
     if(count % 2 == 1) {
-      $('.member-content-article-items-detail1').show();
-      $('.member-content-article-answer_area-items1').show();
+      $('#detail'+question_id).css("display", "flex");
+      $('#answer'+question_id).css("display", "flex");
     } else {
-      $('.member-content-article-items-detail1').hide();
-      $('.member-content-article-answer_area-items1').hide();
+      $('#detail'+question_id).css("display", "none");
+      $('#answer'+question_id).css("display", "none");
     }
-    
-    
-  });
+  });*/
+
+
   
-  $('#items2').click(function() {
-    count = count + 1;
-    
-    if(count % 2 == 1) {
-      $('.member-content-article-items-detail2').show();
-      $('.member-content-article-answer_area-items2').show();
-    } else {
-      $('.member-content-article-items-detail2').hide();
-      $('.member-content-article-answer_area-items2').hide();
-    }
-  });
 });
