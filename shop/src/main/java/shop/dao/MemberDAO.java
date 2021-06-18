@@ -12,6 +12,7 @@ import shop.model.AddressBean;
 import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
 @Repository
@@ -151,8 +152,18 @@ public class MemberDAO {
 		return (AddressBean)session.selectOne("checkAddressFromId", id);
 	}
 	
-	// 장바구니
-	public List<ProductBean> getCartList(CartBean cb) throws Exception{
-		return session.selectList("cartList", cb);
+	// 장바구니 추가
+	public int addCart(CartBean cb) throws Exception{
+		return session.insert("addCart", cb);
+	}
+	
+	// 장바구니 리스트
+	public List<ProductBean> getProductList(CartBean cb) throws Exception{
+		return session.selectList("productcartlist", cb);
+	}
+	
+	// 장바구니 order_detail 리스트
+	public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
+		return session.selectList("detailList", cb);
 	}
 }

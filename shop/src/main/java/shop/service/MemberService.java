@@ -12,6 +12,7 @@ import shop.model.AddressBean;
 import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
 
@@ -126,8 +127,17 @@ public class MemberService {
 			return md.addressCheck(id);
 		}
 		
-		// 장바구니
-		public List<ProductBean> getCartList(CartBean cb) throws Exception{
-			return md.getCartList(cb);
+		// 장바구니 추가
+		public void addCart(CartBean cb) throws Exception{
+			md.addCart(cb);
+		}
+		
+		// 장바구니 product 리스트
+		public List<ProductBean> getProductList(CartBean cb) throws Exception{
+			return md.getProductList(cb);
+		}
+		// 장바구니 order_detail 리스트
+		public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
+			return md.getDetailList(cb);
 		}
 }

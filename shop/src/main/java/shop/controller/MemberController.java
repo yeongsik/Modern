@@ -25,14 +25,23 @@ import shop.model.CartBean;
 import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 import shop.service.MemberService;
+import shop.service.OrderService;
+import shop.service.ProductService;
 
 @Controller
 public class MemberController {
   @Autowired
   private MemberService service;
   
+	@Autowired
+	private OrderService os;
+	
+	@Autowired
+	private ProductService ps;
+	
   	// 마이페이지 메인화면
 	@RequestMapping("member_main.shop")
 	public String main(HttpSession session) throws Exception {
@@ -184,22 +193,45 @@ public class MemberController {
     return "member/member_point";
   }
   
-	// 장바구니
-	@RequestMapping("member_cart.shop")
-	public String cart(HttpSession session, Model model) throws Exception {
-		
-		MemberBean mb = (MemberBean)session.getAttribute("m");
-		
+	// 장바구니 추가
+	@RequestMapping("member_addcart.shop")
+	public String addcart(HttpSession session) throws Exception {
+		System.out.println("addCart진입");
+		MemberBean mb = (MemberBean) session.getAttribute("m");
 		CartBean cb = new CartBean();
 		cb.setMember_id(mb.getMember_id());
-		
-		List<ProductBean> list = new ArrayList<ProductBean>();
-		
-		
-		list = service.getCartList(cb);
-		
-		model.addAttribute("cartlist",list);
-		
+		System.out.println("member_id: " + cb.getMember_id());
+
+		OrderDetailBean od = (OrderDetailBean) session.getAttribute("orderDetail11");
+		cb.setOrder_detail_pk(od.getOrder_detail_pk());
+		System.out.println("order_detail_pk:" + cb.getOrder_detail_pk());
+
+		service.addCart(cb);
+
+		return "forward:member_cartlist.shop";
+	}
+
+	// 장바구니 리스트
+	@RequestMapping("member_cartlist.shop")
+	public String cartlist(HttpSession session) throws Exception {
+		System.out.println("cartList진입");
+		MemberBean mb = (MemberBean) session.getAttribute("m");
+		CartBean cb = new CartBean();
+		cb.setMember_id(mb.getMember_id());
+		System.out.println("member_id: " + cb.getMember_id());
+
+		OrderDetailBean od = (OrderDetailBean) session.getAttribute("orderDetail11");
+		cb.setOrder_detail_pk(od.getOrder_detail_pk());
+		List<ProductBean> productlist = new ArrayList<ProductBean>();
+		List<OrderDetailBean> detaillist = new ArrayList<OrderDetailBean>();
+
+		productlist = service.getProductList(cb);
+		detaillist = service.getDetailList(cb);
+
+		session.setAttribute("productlist", productlist);
+		session.setAttribute("detaillist", detaillist);
+		session.setAttribute("orderDetail", od.getOrder_detail_pk());
+
 		return "member/member_cart";
 	}
 
