@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,7 @@
 			});
 		};
 	</script>
-    <script src="./js/order/order.js"></script>
+    <script src="js/order/order.js"></script>
 
 </head>
 <body>
@@ -283,24 +284,11 @@
 	               <!-- 쿠폰/포인트 -->
 	               <div class="left-content-wrapper">
 	                    <div class="content-table-title">
-	                        <p class="content-title">쿠폰 / 포인트</p>
+	                        <p class="content-title">포인트</p>
 	                    </div>
 	                    <div class="content-table">
 	                        <div class="inf-label">
-	                            쿠폰
-	                        </div>
-	                        <div class="inf-input">
-	                            <div class="input-box">
-	                                <select name="" id="" class="memo-select">
-	                                    <option value="" selected>사용할 쿠폰을 선택해주세요.</option>
-	                                    <option value="">가입환영 10% 쿠폰</option>
-	                                </select>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="content-table">
-	                        <div class="inf-label">
-	                            포인트
+	                           사용할 포인트
 	                        </div>
 	                        <div class="inf-input">
 	                            <div class="input-box-point">
@@ -314,7 +302,7 @@
 	
 	                        </div>
 	                        <div class="inf-input">
-	                            <div class="usable-point">보유 포인트 <span style="font-weight: 700; font-size: 0.9rem; padding-left: 4px;"> 0p</span></div>
+	                            <div class="usable-point">보유 포인트 : <span style="font-weight: 700; font-size: 0.9rem; padding-left: 4px;"> ${m.purchase_point}p</span></div>
 	                        </div>
 	                    </div>
 	               </div>
@@ -406,7 +394,24 @@
 	                        <p class="content-title">주문상품 정보</p>
 	                    </div>
 	                    <div class="product-list">
+                            <c:forEach var="orderDetail" items="${orderList}" varStatus="status">
 	                        <div class="product-inf-table">
+	                            <div class="product-inf-tr">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="product_images/${productList[status.index].product_thumbnail}.png" alt=""> 
+                                        </div>
+                                        <div class="product-inf" id="${orderDetail.order_detail_pk}">
+                                            <p class="product-name eng">${productList[status.index].product_name}</p>
+                                            <p class="product-option">수량 : ${orderDetail.purchase_number } / 사이즈 : ${orderDetail.choose_size}</p>
+                                            <p class="product-price">가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${productList[status.index].product_price*orderDetail.purchase_number}" /></p>
+                                            <button class="coupon_btn kor" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>
+                                        </div>
+                                    </div>
+	                            </div>
+	                        </div>
+                            </c:forEach>
+	                       <!--  <div class="product-inf-table">
 	                            <div class="product-inf-tr">
 	                                <a href="#">
 	                                    <div class="product">
@@ -437,34 +442,22 @@
 	                                    </div>
 	                                </a>
 	                            </div>
-	                        </div>
-	                        <div class="product-inf-table">
-	                            <div class="product-inf-tr">
-	                                <a href="#">
-	                                    <div class="product">
-	                                        <div class="product-img">
-	                                            <img src="image/Tydi crop jeans.jpg" alt="">
-	                                        </div>
-	                                        <div class="product-inf">
-	                                            <p class="product-name eng">Tydi crop jeans 3</p>
-	                                            <p class="product-option">수량 1개 / 사이즈 M</p>
-	                                            <p class="product-price">28,000원</p>
-	                                        </div>
-	                                    </div>
-	                                </a>
-	                            </div>
-	                        </div>
+	                        </div> -->
 	                    </div>
 	                </div>
 	                <!-- 금액 안내 -->
 	                <div class="right-content-block">
 	                    <div class="content-table">
 	                        <div class="price-label">
-	                            총 상품금액
+	                            총 상품금액 :
 	                        </div>
 	                        <div class="price-input">
+	                        <c:set var="totalPrice" value="0" />
 	                            <div class="price-box">
-	                               84,000원
+	                            <c:forEach var="orderDetail" items="${orderList}" varStatus="status">
+	                            	<c:set var="totalPrice" value="${totalPrice+orderDetail.purchase_number * productList[status.index].product_price }"/>
+	                            </c:forEach>
+	                            	 &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${totalPrice}" />
 	                            </div>
 	                        </div>
 	                    </div>
@@ -484,7 +477,7 @@
 	                        </div>
 	                        <div class="price-input">
 	                            <div class="price-box">
-	                               - 0원
+	                              - 0원
 	                            </div>
 	                        </div>
 	                    </div>
@@ -494,7 +487,7 @@
 	                        </div>
 	                        <div class="price-input">
 	                            <div class="price-box">
-	                               + 2,500원
+	                               &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${order.delivery_price}" /> 원
 	                            </div>
 	                        </div>
 	                    </div>
@@ -504,7 +497,8 @@
 	                        </div>
 	                        <div class="totalinf-input">
 	                            <div class="totalprice-box">
-	                               86,500원
+	                               <c:set var="orderTotalPrice" value="${totalPrice+order.delivery_price}"></c:set>
+	                               &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${orderTotalPrice}" /> 원
 	                            </div>
 	                        </div>
 	                    </div>

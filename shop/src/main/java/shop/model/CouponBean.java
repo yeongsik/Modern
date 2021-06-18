@@ -1,11 +1,13 @@
 package shop.model;
 
+import java.util.Date;
+
 public class CouponBean {
 	private int coupon_id;
 	private String coupon_name;
 	private int coupon_discount;
-	private String coupon_date;
-	private String coupon_expiration;
+	private Date coupon_date;
+	private Date coupon_expiration;
 	private String member_id;
 	
 	public int getCoupon_id() {
@@ -26,16 +28,16 @@ public class CouponBean {
 	public void setCoupon_discount(int coupon_discount) {
 		this.coupon_discount = coupon_discount;
 	}
-	public String getCoupon_date() {
+	public Date getCoupon_date() {
 		return coupon_date;
 	}
-	public void setCoupon_date(String coupon_date) {
+	public void setCoupon_date(Date coupon_date) {
 		this.coupon_date = coupon_date;
 	}
-	public String getCoupon_expiration() {
+	public Date getCoupon_expiration() {
 		return coupon_expiration;
 	}
-	public void setCoupon_expiration(String coupon_expiration) {
+	public void setCoupon_expiration(Date coupon_expiration) {
 		this.coupon_expiration = coupon_expiration;
 	}
 	public String getMember_id() {
@@ -44,5 +46,4 @@ public class CouponBean {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
-}
+	}

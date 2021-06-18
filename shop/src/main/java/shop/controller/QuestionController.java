@@ -49,7 +49,7 @@ public class QuestionController {
 			product = ps.getProductOne((qList.get(i)).getProduct_id());
 			pList.add(product);
 		}
-		
+    
 		int maxPage = (int) ((double) listCount / limitPage + 0.95);
 
 		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;

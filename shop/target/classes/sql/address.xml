@@ -3,7 +3,7 @@
  
  <mapper namespace="addressns">
 	<!--후보 배송지  -->
-	<select id="checkAddress" parameterType="String" resultType="address">
+	<select id="checkAddress" resultType="address">
 		select * from address where member_id = #{member_id}
 	</select>
     
@@ -11,5 +11,21 @@
     <select id="checkAddressFromId" parameterType="String" resultType="address">
 		select * from address where member_id = #{member_id} and address_state = 1
 	</select>
+	
+	<!-- 기존 배송지를 후보 배송지로 -->
+	<update id="updateAddressState0">
+		update address SET address_state = 0 WHERE member_id = #{id} and address_state = 1
+	</update>
+	
+	 <!-- 후보 배송지를 기본 배송지로 변경 -->
+	<update id="updateAddressState1" parameterType="address">
+		update address SET address_state = 1 WHERE member_id = #{member_id} and add_pk = #{add_pk}
+	</update>
+	
+	<!--주소 추가 -->
+    <!-- <insert id="addressInsert" parameterType="address">
+    insert into address values (add_pk_seq.nextval, #{post}, #{address1},#{address2},#{member_id},0)
+    </insert> -->
+	
 </mapper>
  
