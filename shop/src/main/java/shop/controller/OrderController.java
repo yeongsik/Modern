@@ -51,7 +51,7 @@ public class OrderController {
 
 	// 오더 디테일 추가 
 	@RequestMapping ("orderdetailadd.shop")
-	public String orderDetailAdd (int product_id , String choose_size , Model model) throws Exception {
+	public String orderDetailAdd (int product_id , String choose_size , Model model, HttpSession session) throws Exception {
 		System.out.println("OrderDetailAdd.shop");
 		Random random = new Random();
 		int orderDetail_pk = product_id + random.nextInt(10000);
@@ -76,7 +76,7 @@ public class OrderController {
 		System.out.println(product);
 		model.addAttribute("orderDetail", order);
 		model.addAttribute("orderProduct" , product);
-		
+		session.setAttribute("orderDetail11", order);
 		
 		return "order/orderDetailAddResult";
 	}

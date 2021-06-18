@@ -9,17 +9,18 @@ import org.springframework.stereotype.Service;
 import shop.dao.MemberDAO;
 import shop.model.CouponBean;
 import shop.model.AddressBean;
+import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
-
 
 @Service
 public class MemberService {
-	
+
 	@Autowired
 	private MemberDAO md;
-	
+
 		//회원가입
 		public void insertMember(MemberBean member) throws Exception{
 			md.insertMember(member);
@@ -109,9 +110,14 @@ public class MemberService {
 		public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
 			return md.getcouponList(cp);
 		}
-		//주소 조회
-		public List<AddressBean> addressList(String add) throws Exception {
-			return md.addressList(add);
+		// 쿠폰 SelectOne
+		public CouponBean getCouponOne(int coupon_id) {
+			return md.getCouponOne(coupon_id);
+		}
+		
+		// 관리자 쿠폰 생성
+		public void createCoupon(CouponBean cp) throws Exception{
+			md.createCoupon(cp);
 		}
 		
 		//주소 조회 for id
@@ -119,10 +125,40 @@ public class MemberService {
 			return md.addressCheck(id);
 		}
 		
-		
-		// 쿠폰 SelectOne
-		public CouponBean getCouponOne(int coupon_id) {
-			return md.getCouponOne(coupon_id);
+		// 장바구니 추가
+		public void addCart(CartBean cb) throws Exception{
+			md.addCart(cb);
 		}
 		
+		// 장바구니 product 리스트
+		public List<ProductBean> getProductList(CartBean cb) throws Exception{
+			return md.getProductList(cb);
+		}
+		// 장바구니 order_detail 리스트
+		public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
+			return md.getDetailList(cb);
+		}
+		// 기본 배송지를 후보 배송지로 변경
+		public void updateAddressState0(String id) {
+			md.updateAddressState0(id);
+		}
+
+		// 후보 배송지를 기본 배송지로 변경
+		public void updateAddressState1(AddressBean add) {
+			md.updateAddressState1(add);
+		}
+		
+		//배송지 추가
+		public void addressInsert(AddressBean address) throws Exception {
+			md.addressInsert(address);
+		}
+		// 마케팅 동의
+		public MemberBean emailCheck(MemberBean member) throws Exception {
+			return md.emailCheck(member);
+		}
+
+		// 주소 조회
+		public List<AddressBean> addressList(AddressBean add) throws Exception {
+			return md.addressList(add);
+		}
 }

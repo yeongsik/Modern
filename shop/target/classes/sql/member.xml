@@ -52,7 +52,6 @@
     <select id="like_list" parameterType="product" resultType="product">
     	select pd.product_thumbnail, p.product_name, p.product_price, p.product_id from product_detail pd natural join heart h join product p on (pd.product_detail = h.product_id and h.product_id = p.product_id) where h.member_id = #{member_id}
     </select>
-    
 
 	<!--회원비번 변경 -->
 	<update id="update_member_pw" parameterType="member">
@@ -60,7 +59,7 @@
 		pw=#{pw} where member_id = #{member_id}
 	</update>
 
-	<!--회원 이메일 및 마케팅 변경 -->
+	<!--회원 이메일  -->
 	<update id="update_member_email" parameterType="member">
 		update member set
 		email = #{email} where member_id = #{member_id}
@@ -113,6 +112,35 @@
 	<select id="getCouponOne" parameterType="int" resultType="coupon">
 		select * from coupon where coupon_id =#{coupon_id}
 	</select>
+	<!--마케팅 동의  -->
+	 <update id="email_check" parameterType="member" >
+	update member set accept_mail = #{accept_mail} where member_id = #{member_id}
+	</update> 
+
+	<!-- 관리자 쿠폰 생성 -->
+	<insert id="createCoupon" parameterType="coupon">
+		insert into coupon values ( #{coupon_id}, #{coupon_name}, #{coupon_discount}, 
+			#{coupon_date}, #{coupon_expiration}, #{member_id} )
+			<!-- to_date(#{coupon_date}, 'YYYY-MM-DD HH24:mi'), to_date(#{coupon_expiration}, 'YYYY-MM-DD HH24:mi'), #{member_id}  ) -->
+	</insert>
+	
+	<!-- 장바구니 추가-->
+	<insert id="addCart" parameterType="cart">
+		insert into cart values (cart_seq.nextval, #{member_id}, #{order_detail_pk})
+	</insert>
+	
+	<!-- 장바구니 product 리스트-->
+	<select id="productcartlist" parameterType="product" resultType="product">
+		select * from product a left outer join order_detail b
+		on a.product_id = b.product_id left outer join cart c 
+		on b.order_detail_pk = c.order_detail_pk where c.member_id = #{member_id}
+	</select>
+	<!-- 장바구니 detail 리스트-->
+	<select id="detailList" parameterType="order_detail" resultType="order_detail">
+		select * from order_detail a left outer join cart b 
+		on a.order_detail_pk = b.order_detail_pk where b.member_id = #{member_id}
+	</select>
+
 	
 </mapper>
 

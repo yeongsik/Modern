@@ -42,12 +42,7 @@ function joinCheck1() {
 		$("#checkbox2").focus();
 		return false;
 	}
-	//선택적 수신동의
-	if ($("#accept_mail").is(":checked")) {
-		$("#accept_mail_value").val('y');
-	} else {
-		$("#accept_mail_value").val('n');
-	}
+	
 
 	//2페이지 유효성 검사
 	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -179,7 +174,7 @@ $(function() {
 			return false;
 		} else if (inputPw.length > 0) {
 			$("#pw1CheckComplete").hide();
-			$("#pwCheckResult1").text("대소문자+숫자+특수문자로 가능합니다.");
+			$("#pwCheckResult1").text("대소문자+숫자+특수문자로 가능");
 			$("#pwCheckResult1").css("color", "red")
 			$("#joinPw1").focus();
 			return false;
@@ -242,14 +237,14 @@ $(function() {
 			$("#secondPageup").hide();
 		} else if ($("#checkbox1").is(":checked") && $("#checkbox2").is(":checked")) {
 			$("#secondPageup").show();
-		} else if (($("#accept_mail").is(":checked")==true)) {
+		} else if (($("#accept_mail").is(":checked") == true)) {
 			$("#secondPageup").hide();
 		} else {
 			$("#secondPageup").hide()
 			$("#afterSending").hide();
 		}
 	});
-	
+
 	// 닉네임 중복확인 검사 추가 필요
 	$("#nickname").keyup(function() {
 		if ($("#nickname").val() == "") {
@@ -308,13 +303,139 @@ $(function() {
 //회원정보 수정페이지 비밀번호버튼 동작
 $(function() {
 	$("#pwdivs").hide();
-	$("#pwbtn").click(function(){
+	$("#pwbtn").click(function() {
 		$("#pwdivs").show();
 		$("#pwbtn").hide();
 	});
-	
-	if($("#pwddivs").val() == "") {
+
+	if ($("#pwddivs").val() == "") {
 		$("#pwddivs").replacewith('<input id="hidepw" name="pw">');
 	}
+	
+});
+//수정페이지 들어가기전 비번 체크
+function pwCheck() {
+	
+	var userpwd = $("#userpw").val();
+	var pwd = $("#hiddenPw").val();
+
+	if (userpwd.length == 0) {
+		alert("비밀번호를 입력해주세요");
+		$("#userpwd").focus();
+		
+	}else if(userpwd != pwd){
+		alert("틀린 비밀번호입니다");
+		$("#userpwd").focus();
+	}
+	
+}
+$(function() {
+	// 비밀번호 정규식 8~16자 영어대소문자,숫자,특수문자 하나 이상
+	$("#pwddiv").keyup(function() {
+		var inputPw = $("#pwddiv").val();
+		var pwTest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}$/;
+		if (pwTest.test(inputPw)) {
+			$("#pwCheckResult1").empty();
+		} else if ((inputPw.length < 8) && (inputPw.length > 0)) {
+			$("#pwCheckResult1").text("8~16자 사이로 입력해주세요");
+			$("#pwCheckResult1").css("color", "red");
+			$("#pwddiv").focus();
+			return false;
+		} else if (inputPw.length > 0) {
+			$("#pwCheckResult1").text("대소문자+숫자+특수문자로 가능합니다.");
+			$("#pwCheckResult1").css("color", "red")
+			$("#pwddiv").focus();
+			return false;
+		} else {
+			$("#pwCheckResult1").empty();
+		}
+	});
+	// 비밀번호 일치여부 div노출
+	$("#pwddiv2").keyup(function() {
+		var inputPw = $("#pwddiv").val();
+		var pwTest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}$/;
+		if (($("#pwddiv2").val()) == "") {
+			$("#pwCheckResult2").empty();
+		} else if (!pwTest.test(inputPw)) {
+			$("#pwCheckResult2").text("올바른 비밀번호를 입력해주세요.");
+			$("#pwCheckResult2").css("color", "red");
+			return false;
+		} else if ($.trim($("#pwddiv").val()) != $.trim($("#pwddiv2").val())) {
+			$("#pwCheckResult2").text("비밀번호가 일치하지 않습니다.");
+			$("#pwCheckResult2").css("color", "red");
+			$("#pwddiv2").focus();
+			return false;
+		} else if ($("#pwddiv2").val().length > 0) {
+			$("#pwCheckResult2").empty();
+			//완료표시 show
+		}
+	});
+
 });
 
+//기본 배송지 변경버튼 눌렀을 시 추가배송지 checkbox의 주소로 변경
+$(function() {
+	$("#addressButton").click(function() {
+		var checkboxValues = [];
+		var member_id = $("input[name='member_id']").val();
+
+		$("input[name='chkbox']:checked").each(function(i) {
+			checkboxValues.push($(this).val());
+		});
+
+		var datas = { "member_id": member_id, "checkArray": checkboxValues };
+
+		$.ajax({
+			url: "member_update_address.shop",
+			type: 'post',
+			data: datas,
+
+			success: function(data) {
+				alert("배송지가 변경되었습니다.");
+				location.href = "member_update_view.shop";
+			},
+
+			error: function() {
+				alert("error");
+			}
+		});
+		
+		
+	});
+});
+function emailCheck() {
+//마케팅 수신동의
+	if ($("#accept_mail").is(":checked")) {
+		$("#accept_mail").val('1');
+		
+	} else {
+		$("#accept_mail").val('0');
+	}
+	
+}	
+/* 우편번호 검색 */
+function openDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('update_post').value = data.zonecode;
+            document.getElementById("update_add1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("update_add2").focus();
+        }
+    }).open();
+};

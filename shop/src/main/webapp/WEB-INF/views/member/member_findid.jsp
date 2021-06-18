@@ -13,7 +13,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="./js/member/member_find.js"></script>
+<script src="/js/member/member_find.js"></script>
 <title>아이디 찾기</title>
 </head>
 <body>
@@ -30,9 +30,9 @@
 						<div class="register-box-wrapper">
 							<div class="register-input-contents">
 								<ol class="register-phone-box">
-									<li class="register-phone-title kor">닉네임</li>
+									<li class="register-phone-title kor">이름</li>
 									<li class="register-phone-input-wrapper">
-										<input class="register-phone-input-first" id="authNick" name="nickname"
+										<input class="register-phone-input-first" id="authNick" name="name"
 											placeholder="닉네임을 입력해주세요.">
 										<div class="result-divs kor" id="nickInputCheck"></div>
 									</li>

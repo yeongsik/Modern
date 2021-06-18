@@ -13,7 +13,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="./js/member/member_find.js"></script>
+<script src="/js/member/member_find.js"></script>
 <title>비밀번호 찾기</title>
 </head>  
 <body> 

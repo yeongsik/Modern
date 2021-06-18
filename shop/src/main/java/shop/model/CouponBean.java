@@ -46,5 +46,4 @@ public class CouponBean {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
-}
+	}

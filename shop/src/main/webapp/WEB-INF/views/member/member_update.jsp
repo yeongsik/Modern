@@ -17,15 +17,17 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Raleway&display=swap">
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<script src="js/member/member.js"></script>
 </head>
 <body>
 <!--폼 생성   -->
+  <form action="member_update_view.shop" onsubmit="return pwCheck()" method="post"> 
+  <input type="hidden" id="hiddenPw" value="${m.pw }">
   <%@ include file="../main/header.jsp"%>
   <section class="container">
     <!-- content header -->
     <div class="main-content-wrapper">
       <%@ include file="../member/member_header.jsp"%>  
-
       <!-- content main -->
       <div class="member-content-main-container">
         <!-- aside -->
@@ -36,13 +38,14 @@
           <div class="member-content-article-header kor">회원 정보 수정</div>
           <div class="member-content-article-inputarea">
             <div class="member-content-article-inputarea-comment kor">회원정보 확인을 위해 비밀번호를 입력해주세요.</div>
-            <input type="password" name="pw" class="member-content-article-inputarea-pw kor">
-            <input type="submit" class="member-content-article-inputarea-btn kor" onclick="location='member_update_view.shop'" value="확인"><!--온클릭 삭제  -->
+            <input type="password" id="userpw" name="pw"  class="member-content-article-inputarea-pw kor">
+            <input type="submit" id="submitBtn" class="member-content-article-inputarea-btn kor" value="확인">
           </div>
         </div>
       </div>
     </div>
-  </section>  
+  </section> 
+  </form>
    <%@ include file="../main/footer.jsp"%>  
 </body>
 </html>
