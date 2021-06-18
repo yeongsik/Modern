@@ -52,6 +52,7 @@
 }
 .member-content-article-items-showcase {
   font: var(--font-kor);
+  cursor: pointer;
 }
 .member-content-article-items-showcase-list {
   display: flex;
@@ -73,8 +74,8 @@
   width: 40%;
 }
 /* 문의 상세 내용 */
-.member-content-article-items-detail1 {
-  display: flex;
+.member-content-article-items-detail {
+  display: none;
   justify-content: center;
   background-color: rgb(247, 247, 247);
   padding: 24px 0 24px 0;
@@ -92,9 +93,8 @@
   height: 21px;
 }
 /* 문의 답변 CSS */
-.member-content-article-answer_area-items1,
-.member-content-article-answer_area-items2 {
-  display: flex;
+.member-content-article-answer_area-items {
+  display: none;
   padding-bottom: 10px;
   background-color: rgb(247, 247, 247);
   border-bottom: 1px solid rgb(237, 237, 237);
@@ -111,4 +111,7 @@
 .member-content-article-answer-content {
   width: 55%;
   padding-top: 10px;
+}
+.show {
+	display: flex;
 }

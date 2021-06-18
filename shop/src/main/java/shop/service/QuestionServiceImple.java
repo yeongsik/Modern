@@ -24,10 +24,10 @@ public class QuestionServiceImple implements QuestionService {
 		return questionDao.getBoardList(page);
 	}
 
-	@Override
-	public QuestionBean getQuestionDetail(int question_id) throws Exception {
-		QuestionBean board = questionDao.getQuestionDetail(question_id);
-		return board;
-	}
+//	@Override
+//	public QuestionBean getQuestionDetail(int question_id) throws Exception {
+//		QuestionBean board = questionDao.getQuestionDetail(question_id);
+//		return board;
+//	}
 
 }

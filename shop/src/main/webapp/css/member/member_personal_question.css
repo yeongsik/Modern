@@ -47,9 +47,10 @@
 }
 .member-content-article-items-showcase-list {
   display: flex;
-  /* margin-bottom: 20px; */
+  justify-content: space-around;
   padding: 25px 0 25px 0;
   border-bottom: 1px solid rgb(237, 237, 237);
+  cursor: pointer;
 }
 .member-content-article-items-type,
 .member-content-article-items-order_number,
@@ -63,9 +64,8 @@
 }
 
 /* 문의 상세 내용 */
-.member-content-article-items-detail1,
-.member-content-article-items-detail2 {
-  display: flex;
+.member-content-article-items-detail {
+  display: none;
   justify-content: center;
   background-color: rgb(247, 247, 247);
   padding: 24px 0 24px 0;
@@ -84,9 +84,8 @@
 }
 
 /* 문의 답변 CSS */
-.member-content-article-answer_area-items1,
-.member-content-article-answer_area-items2 {
-  display: flex;
+.member-content-article-answer_area-items {
+  display: none;
   padding-bottom: 10px;
   background-color: rgb(247, 247, 247);
   border-bottom: 1px solid rgb(237, 237, 237);

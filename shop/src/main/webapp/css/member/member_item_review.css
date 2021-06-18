@@ -69,10 +69,13 @@
 
 /* 상품후기 상세 내용 */
 .member-content-article-items-detail {
-  display: flex;
+  display: none;
   justify-content: center;
   background-color: rgb(247, 247, 247);
   padding: 24px 0 24px 0;
+}
+.review-img {
+	width: 100%;
 }
 .member-content-article-items-detail-content {
   width: 55%;
@@ -84,4 +87,7 @@
 .blank2 {
   width: 15%;
   height: 21px;
+}
+.show {
+	display: flex;
 }
