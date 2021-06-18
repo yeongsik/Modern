@@ -50,7 +50,7 @@
 			});
 		};
 	</script>
-    <script src="./js/order/order.js"></script>
+    <script src="js/order/order.js"></script>
 
 </head>
 <body>
@@ -284,24 +284,11 @@
 	               <!-- 쿠폰/포인트 -->
 	               <div class="left-content-wrapper">
 	                    <div class="content-table-title">
-	                        <p class="content-title">쿠폰 / 포인트</p>
+	                        <p class="content-title">포인트</p>
 	                    </div>
 	                    <div class="content-table">
 	                        <div class="inf-label">
-	                            쿠폰
-	                        </div>
-	                        <div class="inf-input">
-	                            <div class="input-box">
-	                                <select name="" id="" class="memo-select">
-	                                    <option value="" selected>사용할 쿠폰을 선택해주세요.</option>
-	                                    <option value="">가입환영 10% 쿠폰</option>
-	                                </select>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="content-table">
-	                        <div class="inf-label">
-	                            포인트
+	                           사용할 포인트
 	                        </div>
 	                        <div class="inf-input">
 	                            <div class="input-box-point">
@@ -315,7 +302,7 @@
 	
 	                        </div>
 	                        <div class="inf-input">
-	                            <div class="usable-point">보유 포인트 <span style="font-weight: 700; font-size: 0.9rem; padding-left: 4px;"> 0p</span></div>
+	                            <div class="usable-point">보유 포인트 : <span style="font-weight: 700; font-size: 0.9rem; padding-left: 4px;"> ${m.purchase_point}p</span></div>
 	                        </div>
 	                    </div>
 	               </div>
@@ -410,18 +397,17 @@
                             <c:forEach var="orderDetail" items="${orderList}" varStatus="status">
 	                        <div class="product-inf-table">
 	                            <div class="product-inf-tr">
-	                                <a href="#">
-	                                    <div class="product">
-	                                        <div class="product-img">
-	                                            <img src="product_images/${productList[status.index].product_thumbnail}.png" alt=""> 
-	                                        </div>
-	                                        <div class="product-inf">
-	                                            <p class="product-name eng">${productList[status.index].product_name}</p>
-	                                            <p class="product-option">수량 : ${orderDetail.purchase_number } / 사이즈 : ${orderDetail.choose_size}</p>
-	                                            <p class="product-price">가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${productList[status.index].product_price*orderDetail.purchase_number}" /></p>
-	                                        </div>
-	                                    </div>
-	                                </a>
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="product_images/${productList[status.index].product_thumbnail}.png" alt=""> 
+                                        </div>
+                                        <div class="product-inf" id="${orderDetail.order_detail_pk}">
+                                            <p class="product-name eng">${productList[status.index].product_name}</p>
+                                            <p class="product-option">수량 : ${orderDetail.purchase_number } / 사이즈 : ${orderDetail.choose_size}</p>
+                                            <p class="product-price">가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${productList[status.index].product_price*orderDetail.purchase_number}" /></p>
+                                            <button class="coupon_btn kor" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>
+                                        </div>
+                                    </div>
 	                            </div>
 	                        </div>
                             </c:forEach>

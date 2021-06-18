@@ -12,7 +12,7 @@
 <!-- css -->
 <link rel="stylesheet" href="css/member/member_coupon.css">
 <!-- js -->
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://code.jque	ry.com/jquery-latest.js"></script>
 <script src="js/member/member_coupon.js"></script>
 <script src="js/main.js"></script>
 <!-- 구글 폰트 -->

@@ -464,3 +464,13 @@ button:focus {
     color: var(--color-white);
     font-size: var(--font-size-h4);
 }
+.coupon_btn {
+	cursor:pointer;
+	border :0; 
+	color:var(--color-black);
+	font-size: 12px;
+	margin : 20px , 0;
+	padding : 5px;
+		
+	
+}

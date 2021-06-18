@@ -143,5 +143,12 @@ public class MemberDAO {
 	public AddressBean addressCheck(String id) {
 		return (AddressBean)session.selectOne("checkAddressFromId", id);
 	}
+
+	
+	// 쿠폰 selectOne
+	public CouponBean getCouponOne(int coupon_id) {
+		CouponBean coupon = session.selectOne("memberns.getCouponOne", coupon_id);
+		return coupon;
+	}
 	
 }

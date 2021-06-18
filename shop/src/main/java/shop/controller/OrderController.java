@@ -1,6 +1,7 @@
 package shop.controller;
 
 
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,10 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.model.CouponBean;
 import shop.model.MemberBean;
 import shop.model.OrderBean;
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
+import shop.service.MemberService;
 import shop.service.OrderService;
 import shop.service.ProductService;
 
@@ -31,7 +34,8 @@ public class OrderController {
 	private OrderService os;
 	@Autowired
 	private ProductService ps;
-
+	@Autowired
+	private MemberService ms;
 	
 	@RequestMapping("order.shop")
 	public String order(@RequestParam String product_id, Model model) throws Exception {
@@ -60,6 +64,7 @@ public class OrderController {
 		order.setPurchase_number(1);
 		order.setOrder_id("");
 		order.setChoose_size(choose_size);
+		order.setDetail_state(0);
 		System.out.println(product_id);
 		System.out.println(choose_size);
 		os.orderDetailAdd(order);
@@ -108,7 +113,13 @@ public class OrderController {
 	public String orderAdd(Model model , int[] order_detail_pk ,HttpSession session) throws Exception {
 		System.out.println("orderAdd");
 		Random rnd = new Random();
-		MemberBean member = (MemberBean)session.getAttribute("m");
+		MemberBean member = new MemberBean();
+		
+		//if(session.getAttribute("m")== null) 
+		
+			
+		member = (MemberBean)session.getAttribute("m");
+		
 		OrderBean addOrder = new OrderBean();
 		ProductBean product = new ProductBean();
 		String newOrder_id = "";
@@ -136,6 +147,7 @@ public class OrderController {
 		addOrder.setOrder_state(0);
 		addOrder.setDelivery_price(2500);
 		addOrder.setInvoice_num(0);
+		addOrder.setOrder_memo("");
 		os.insertOrder(addOrder);
 		
 		
@@ -148,6 +160,7 @@ public class OrderController {
 			product = ps.getProductOne(orderDetail.getProduct_id());
 			productList.add(product);
 			orderDetail.setOrder_id(newOrder_id);
+			orderDetail.setDetail_state(1);
 			os.updateOrderDetail(orderDetail);
 			orderList.add(orderDetail);
 		}
@@ -166,5 +179,36 @@ public class OrderController {
 		return "order/order-result";
 	}
 	
-
+	@RequestMapping ("orderSelectCoupon.shop")
+	public String orderSelectCoupon(Model model, HttpSession session, int order_detail_pk) throws Exception {
+		System.out.println(order_detail_pk);
+		MemberBean member = (MemberBean)session.getAttribute("m");
+		List<CouponBean> cpList = new ArrayList<CouponBean>();
+		CouponBean coupon = new CouponBean();
+		coupon.setMember_id(member.getMember_id());
+		cpList = ms.getcouponList(coupon);
+		
+		model.addAttribute("couponList", cpList);
+		model.addAttribute("order_detail_pk",order_detail_pk);
+		
+		return "order/orderSelectCoupon";
+	}
+	@RequestMapping ("couponAction.shop")
+	public String couponAction(Model model, int order_detail_pk , int coupon_id) throws Exception {
+		System.out.println("couponAction");
+		System.out.println(order_detail_pk);
+		System.out.println(coupon_id);
+		
+		OrderDetailBean orderDetail = os.getOrderDetail(order_detail_pk);
+		orderDetail.setCoupon_id(coupon_id);
+		CouponBean coupon = ms.getCouponOne(coupon_id);
+		ProductBean product = ps.getProductOne(orderDetail.getProduct_id());
+		
+		
+		model.addAttribute("coupon", coupon);
+		model.addAttribute("orderDetail", orderDetail);
+		model.addAttribute("product", product);
+		return "order/couponAction";
+	}
+	
 }

@@ -119,4 +119,10 @@ public class MemberService {
 			return md.addressCheck(id);
 		}
 		
+		
+		// 쿠폰 SelectOne
+		public CouponBean getCouponOne(int coupon_id) {
+			return md.getCouponOne(coupon_id);
+		}
+		
 }

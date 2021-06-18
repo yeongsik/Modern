@@ -128,7 +128,7 @@ public class MemberController {
 		MemberBean member = (MemberBean) session.getAttribute("m");
 		cp.setMember_id(member.getMember_id());
 		System.out.println("member_id:" + cp.getMember_id());
-
+		
 		cpList = service.getcouponList(cp);
 		System.out.println("service 후 session 전 cpList:" + cpList);
 		

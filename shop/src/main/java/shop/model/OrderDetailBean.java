@@ -7,7 +7,15 @@ public class OrderDetailBean {
 	private int purchase_number;
 	private String order_id;
 	private String choose_size;
+	private int detail_state;
+	// 0 , 1 , 2
 	
+	public int getDetail_state() {
+		return detail_state;
+	}
+	public void setDetail_state(int detail_state) {
+		this.detail_state = detail_state;
+	}
 	public int getOrder_detail_pk() {
 		return order_detail_pk;
 	}
