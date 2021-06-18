@@ -112,7 +112,7 @@
 										<i class="fas fa-check" id="nicknameCheckComplete"></i>
 									</li>
 									<li class="register-nickname-input-wrapper">
-										<input type="text" class="register-nickname-input kor" id="nickname"
+										<input type="text" class="register-nickname-input kor" id="name"
 											name="name" maxlength="12" placeholder="이름을 입력해주세요.">
 										<div class="result-divs kor" id="nicknameResult"></div>
 									</li>
