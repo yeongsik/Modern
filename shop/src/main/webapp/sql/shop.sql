@@ -14,7 +14,15 @@ select * from review;
 select * from coupon;
 select * from ADDRESS;
 select * from heart;
+select * from cart;
 
+
+select * from order_detail b
+		left outer join cart c 
+		on b.order_detail_pk = c.order_detail_pk where c.member_id = 'cptest13'
+
+
+select * from product where member_id ='cptest18'
 select * from heart where member_id='hama';
 select * from heart where member_id='noru';
 
