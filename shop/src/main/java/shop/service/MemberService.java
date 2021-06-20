@@ -3,7 +3,6 @@ package shop.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.wiring.ClassNameBeanWiringInfoResolver;
 import org.springframework.stereotype.Service;
 
 import shop.dao.MemberDAO;
@@ -12,6 +11,7 @@ import shop.model.AddressBean;
 import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.PointBean;
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
@@ -123,6 +123,16 @@ public class MemberService {
 		//주소 조회 for id
 		public AddressBean addressCheck(String id) {
 			return md.addressCheck(id);
+		}
+		
+		// 포인트 내역 개수 조회
+		public int getPointListCount(String member_id) throws Exception {
+		  return md.getPointListCount(member_id);
+		}
+		
+		// 포인트 내역 조회
+		public List<PointBean> getPointList(PointBean pb) throws Exception {
+		  return md.getPointList(pb);
 		}
 		
 		// 장바구니 추가

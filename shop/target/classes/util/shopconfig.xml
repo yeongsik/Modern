@@ -16,9 +16,11 @@
 		<typeAlias alias="product" type="shop.model.ProductBean" />		
 		<typeAlias alias="product_detail" type="shop.model.ProductDetailBean" />		
 		<typeAlias alias="question" type="shop.model.QuestionBean" />		
+		<typeAlias alias="personal_question" type="shop.model.PersonalQuestionBean" />		
 		<typeAlias alias="review" type="shop.model.ReviewBean" />		
 		<typeAlias alias="size_table" type="shop.model.SizeBean" />		
-		<typeAlias alias="cart" type="shop.model.CartBean" />	
+		<typeAlias alias="cart" type="shop.model.CartBean" />
+		<typeAlias alias="point" type="shop.model.PointBean" />		
 	</typeAliases>
 	
 </configuration>

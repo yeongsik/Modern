@@ -12,6 +12,7 @@ import shop.model.AddressBean;
 import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.PointBean;
 import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
@@ -167,6 +168,20 @@ public class MemberDAO {
 		return coupon;
 	}
 	
+	//포인트 내역 개수 조회
+  public int getPointListCount(String member_id) throws Exception {
+    int count = 0;
+    
+    count = ((Integer) session.selectOne("Point_ListCount", member_id)).intValue();
+    
+    return count;
+  }
+  // 포인트 내역 조회
+  public List<PointBean> getPointList(PointBean pb) throws Exception {
+    List<PointBean> list = session.selectList("Point_List", pb);
+    return list;
+  }
+  
 	//배송지 추가
 	public void addressInsert(AddressBean address) throws Exception {
 		session.insert("addressInsert",address);
