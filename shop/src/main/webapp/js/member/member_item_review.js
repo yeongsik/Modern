@@ -3,32 +3,23 @@ $(function() {
 	// variable
 	let count = 0;
 
-	// default
-	$('.member-content-article-items-detail').hide();
-
 	// background-color change
-	$('#items1').mouseover(function() {
+	$('.member-content-article-items-showcase-list').mouseover(function() {
 		$(this).css("background-color", "rgb(247,247,247");
 	});
-	$('#items1').mouseout(function() {
-		$(this).css("background-color", "#ffffff");
+	$('.member-content-article-items-showcase-list').mouseout(function() {
+		$(this).css("background-color", "transparent");
 	});
 
-	$('#items2').mouseover(function() {
-		$(this).css("background-color", "rgb(247,247,247");
-	});
-	$('#items2').mouseout(function() {
-		$(this).css("background-color", "#ffffff");
-	});
 
 	// click action
-	$('#items1').click(function() {
+	$('.member-content-article-items-showcase-list').click(function() {
 		count = count + 1;
 
 		if (count % 2 == 1) {
-			$('.member-content-article-items-detail').show();
+			$('.member-content-article-items-detail').addClass("show");
 		} else {
-			$('.member-content-article-items-detail').hide();
+			$('.member-content-article-items-detail').removeClass("show");
 		}
 	});
 });

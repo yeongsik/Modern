@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import shop.model.CouponBean;
 import shop.model.AddressBean;
+import shop.model.CartBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.PointBean;
+import shop.model.OrderDetailBean;
 import shop.model.ProductBean;
 
 @Repository
@@ -69,7 +71,7 @@ public class MemberDAO {
 	public int enrollLikey(HeartBean hb) throws Exception {
 		return session.insert("enroll_likey", hb);
 	}
-	
+
 	// 관심상품 등록 여부 확인 - 마이페이지
 	public int likeyState(HeartBean hb) throws Exception {
 		int state = -1; // 미등록 상태
@@ -78,13 +80,11 @@ public class MemberDAO {
 			state = 1; // 등록 상태
 		return state;
 	}
-	
+
 	// 관심상품 등록 여부 확인 - 상품리스트
 	public List<HeartBean> getWishList(String id) throws Exception {
-	  return session.selectList("getWishList", id);
+		return session.selectList("getWishList", id);
 	}
-	
-	
 
 	// 관심상품 등록 취소
 	public int cancelLikey(HeartBean hb) throws Exception {
@@ -107,42 +107,65 @@ public class MemberDAO {
 		System.out.println("회원삭제dao :" + mb.getMember_id());
 		session.delete("deleteMember", mb);
 	}
-	
+
 	// 쿠폰 등록
 	public int addCoupon(CouponBean cp) throws Exception {
-		return  session.insert("addCoupon", cp);
+		return session.insert("addCoupon", cp);
 	}
-	
+
 	// 쿠폰 개수 조회
-	public int countCoupon(CouponBean cp) throws Exception{
+	public int countCoupon(CouponBean cp) throws Exception {
 		System.out.println("countCoupon_MemberDAO");
 		int count = 0;
-		count = ((Integer) session.selectOne("countCoupon",cp)).intValue();
-		System.out.println("count_dao:"+count);
+		count = ((Integer) session.selectOne("countCoupon", cp)).intValue();
+		System.out.println("count_dao:" + count);
 		return count;
 	}
-	
+
 	// 쿠폰 리스트 조회
-	public List<CouponBean> getcouponList(CouponBean cp) throws Exception{
+	public List<CouponBean> getcouponList(CouponBean cp) throws Exception {
 		System.out.println("couponList_MemberDAO");
 		System.out.println(cp.getMember_id());
 		return session.selectList("couponList", cp);
 	}
-	//주소 조회
-	public void addressCheck(AddressBean add) { 
-		System.out.println("회원주소dao");
-		session.selectList("checkAddress",add); 
-	}
-	//후보 배송지 조회 
-	public List<AddressBean> addressList(String add) throws Exception {
-		System.out.println("DAO");
-		List<AddressBean> list = session.selectList("checkAddress", add);
-		return list;
+
+	// 마케팅 동의
+	public MemberBean emailCheck(MemberBean member) throws Exception {
+		return (MemberBean) session.selectOne("email_check", member);
 	}
 	
-	//기본 배송지 조회
+	// 관리자 쿠폰 생성
+	public int createCoupon(CouponBean cp) throws Exception{
+		return session.insert("createCoupon", cp);
+	}
+
+	// 후보 배송지 조회
+	public List<AddressBean> addressList(AddressBean add) throws Exception {
+		System.out.println("DAO");
+		return session.selectList("checkAddress", add);
+
+	}
+
+	// 기본 배송지 조회
 	public AddressBean addressCheck(String id) {
-		return (AddressBean)session.selectOne("checkAddressFromId", id);
+		return (AddressBean) session.selectOne("checkAddressFromId", id);
+	}
+
+	// 기본 배송지를 후보 배송지로 변경
+	public void updateAddressState0(String id) {
+		session.update("updateAddressState0", id);
+	}
+
+	// 후보 배송지를 기본 배송지로 변경
+	public void updateAddressState1(AddressBean add) {
+		session.update("updateAddressState1", add);
+	}
+
+	
+	// 쿠폰 selectOne
+	public CouponBean getCouponOne(int coupon_id) {
+		CouponBean coupon = session.selectOne("memberns.getCouponOne", coupon_id);
+		return coupon;
 	}
 	
 	//포인트 내역 개수 조회
@@ -159,4 +182,23 @@ public class MemberDAO {
     return list;
   }
   
+	//배송지 추가
+	public void addressInsert(AddressBean address) throws Exception {
+		session.insert("addressInsert",address);
+	}
+	
+	// 장바구니 추가
+	public int addCart(CartBean cb) throws Exception{
+		return session.insert("addCart", cb);
+	}
+	
+	// 장바구니 리스트
+	public List<ProductBean> getProductList(CartBean cb) throws Exception{
+		return session.selectList("productcartlist", cb);
+	}
+	
+	// 장바구니 order_detail 리스트
+	public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
+		return session.selectList("detailList", cb);
+	}
 }

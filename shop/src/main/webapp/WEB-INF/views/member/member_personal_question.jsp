@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +39,8 @@
           <div class="member-content-article-header kor">1:1 문의</div>
 
           <div class="member-content-article-options kor">
-            총 2건
+            <c:set var="cnt" value="${listCount}" />
+            총 ${cnt} 건
             <select>
               <option class="kor">날짜순</option>
               <option class="kor">1개월</option>
@@ -45,79 +50,53 @@
           </div>
           <div class="member-content-article-items">
             <div class="member-content-article-items-header">
-                <div class="member-content-article-items-header-type kor">문의 유형</div>
                 <div class="member-content-article-items-header-subject kor">내용</div>
-                <div class="member-content-article-items-header-order_number kor">주문 정보</div>
+                <div class="member-content-article-items-header-type kor">문의 유형</div>
                 <div class="member-content-article-items-header-date kor">작성일</div>
                 <div class="member-content-article-items-header-state kor">문의 상황</div>
             </div>
-
+            <c:forEach var="pq" items="${pqList}" varStatus="st">
+            <c:set var="id" value="${pq.question_id}"/>
             <!-- 문의 -->
-            <div class="member-content-article-items-showcase">
-              <div class="member-content-article-items-showcase-list" id="items1">
-                <div class="member-content-article-items-type kor">교환</div>
-                <div class="member-content-article-items-subject kor">교환 문의</div>
-                <div class="member-content-article-items-order_number kor">202105140002</div>
-                <div class="member-content-article-items-date kor">2021.05.14</div>
-                <div class="member-content-article-items-state kor">답변 대기</div>
-              </div>
-
-              <!-- 문의 상세 내용 -->
-              <div class="member-content-article-items-detail1">
-                <div class="blank1"></div>
-                <div class="member-content-article-items-detail-content kor">
-                  일주일 만에 왔어요
-                </div>
-                <div class="blank2"></div>
-              </div>
-              <!-- 문의 답변 -->
-              <div class="member-content-article-answer_area-items1">
-                <div class="member-content-article-answer-manager kor">교환처리 담당자</div>
-                <div class="member-content-article-answer-content kor">
-                  ※ 반드시 주문자 성함으로 입금 부탁드립니다. <br><br>
-                  ※ 입금 내역은 입금하신 다음 날(영업일 기준) 확인되며, <br>
-                  &emsp; 확인 후 최대한 빠른 처리를 위해 노력하겠습니다. <br><br>
-
-                  다른 불편사항이나 도움이 필요하시다면 <br>
-                  1:1 문의 또는 고객센터(15xx-xxxx)로 문의 부탁드립니다. 감사합니다.
-                </div>
-                <div class="member-content-article-answer-date kor">2021.05.14</div>
-                <div class="member-content-article-answer-procedure kor">답변 완료</div>
-              </div>
-
-              <!-- 문의 -->
-              <div class="member-content-article-items-showcase-list" id="items2">
-                <div class="member-content-article-items-type kor">배송</div>
-                <div class="member-content-article-items-subject kor">배송 문의</div>
-                <div class="member-content-article-items-order_number kor">202105140001</div>
-                <div class="member-content-article-items-date kor">2021.05.13</div>
-                <div class="member-content-article-items-state kor">답변 완료</div>
-              </div>
-
-                <!-- 문의 상세 내용 -->
-                <div class="member-content-article-items-detail2">
-                  <div class="blank1"></div>
-                  <div class="member-content-article-items-detail-content kor">
-                    일주일 만에 왔어요
-                  </div>
-                  <div class="blank2"></div>
-                </div>
-
-              <!-- 문의 답변 -->
-              <div class="member-content-article-answer_area-items2">
-                <div class="member-content-article-answer-manager kor">교환처리 담당자</div>
-                <div class="member-content-article-answer-content kor">
-                  ※ 반드시 주문자 성함으로 입금 부탁드립니다. <br><br>
-                  ※ 입금 내역은 입금하신 다음 날(영업일 기준) 확인되며, <br>
-                  &emsp; 확인 후 최대한 빠른 처리를 위해 노력하겠습니다. <br><br>
-
-                  다른 불편사항이나 도움이 필요하시다면 <br>
-                  1:1 문의 또는 고객센터(15xx-xxxx)로 문의 부탁드립니다. 감사합니다.
-                </div>
-                <div class="member-content-article-answer-date kor">2021.05.14</div>
-                <div class="member-content-article-answer-procedure kor">답변 완료</div>
-              </div>
-            </div>
+	            <div class="member-content-article-items-showcase">
+            	<input type="text" value="${st.index}" id="qId"/>
+            	<input type="hidden" value="${pqList.size()}" id="size" />
+	              <div class="member-content-article-items-showcase-list items${id}" id="items${st.index}">
+	                <div class="member-content-article-items-subject kor">${pq.question_subject}</div>
+	                <div class="member-content-article-items-type kor">${pq.question_type}</div>
+	                <div class="member-content-article-items-date kor">
+	                	<fmt:formatDate value="${pq.question_date}" pattern="yyyy.MM.dd" />
+	                </div>
+	                <div class="member-content-article-items-state kor">
+	                	<c:if test="${pq.question_state == 1}">답변 완료</c:if>
+	              		<c:if test="${pq.question_state == 0}">답변 대기</c:if>
+                	</div>
+	              </div>
+	
+	              <!-- 문의 상세 내용 -->
+	              <div class="member-content-article-items-detail detail${id}" id="detail${st.index}">
+	                <div class="blank1"></div>
+	                <div class="member-content-article-items-detail-content kor">
+	                	${fn:replace(pq.question_content, cn, br) }
+	                </div>
+	                <div class="blank2"></div>
+	              </div>
+	              <!-- 문의 답변 -->
+	              <div class="member-content-article-answer_area-items answer${id}" id="answer${st.index}">
+	                <div class="member-content-article-answer-manager kor">교환처리 담당자</div>
+	                <div class="member-content-article-answer-content kor">
+	                  ※ 반드시 주문자 성함으로 입금 부탁드립니다. <br><br>
+	                  ※ 입금 내역은 입금하신 다음 날(영업일 기준) 확인되며, <br>
+	                  &emsp; 확인 후 최대한 빠른 처리를 위해 노력하겠습니다. <br><br>
+	
+	                  다른 불편사항이나 도움이 필요하시다면 <br>
+	                  1:1 문의 또는 고객센터(15xx-xxxx)로 문의 부탁드립니다. 감사합니다.
+	                </div>
+	                <div class="member-content-article-answer-date kor">2021.05.14</div>
+	                <div class="member-content-article-answer-procedure kor">답변 완료</div>
+	              </div>
+	            </div>
+            </c:forEach>
           </div>
           </div>
         </div>

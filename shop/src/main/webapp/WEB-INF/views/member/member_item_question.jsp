@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,10 +61,13 @@
 			
             <div class="member-content-article-items-showcase">
               <!-- 상품 문의  -->
-           	  <c:forEach var="q" items="${qList}" >
+           	  <c:forEach var="q" items="${qList}" varStatus="st" >
+           	  <c:set var="p" value="${pList}"/>
 	            <div class="member-content-article-items-showcase">
-	              <div class="member-content-article-items-showcase-list" id="items1" onclick="open(${q.question_id})">
-	                <div class="member-content-article-items-product kor">${q.product_id}</div>
+	              <div class="member-content-article-items-showcase-list" id="items${st.index}">
+
+	                <div class="member-content-article-items-product kor">${p[st.index].product_name}</div>
+
 	                <div class="member-content-article-items-subject kor">${q.question_subject}</div>
 	                <div class="member-content-article-items-type kor">${q.question_type}</div>
 	                <div class="member-content-article-items-date kor">	                
@@ -73,17 +78,18 @@
 	              		<c:if test="${q.question_state == 0}">답변 대기</c:if>
 		            </div>
 	              </div>
+	              
 
               <!-- 문의 상세 내용 -->
-	              <div class="member-content-article-items-detail1" id="question-content${q.question_id}">
+	              <div class="member-content-article-items-detail" id="content${st.index}">
 	                <div class="blank1"></div>
 	                <div class="member-content-article-items-detail-content kor">
-	                ${q.question_content}
+	                	${fn:replace(q.question_content, cn, br) }
 	                </div>
 	                <div class="blank2"></div>
 	              </div>
               <!-- 문의 답변 -->
-	              <div class="member-content-article-answer_area-items1" id="question-answer${q.question_id}">
+	              <div class="member-content-article-answer_area-items" id="answer${st.index}">
 	                <div class="member-content-article-answer-manager kor">교환처리 담당자</div>
 	                <div class="member-content-article-answer-content kor">
 	                  ※ 반드시 주문자 성함으로 입금 부탁드립니다. <br><br>
@@ -96,10 +102,11 @@
 	                <div class="member-content-article-answer-date kor">2021.05.14</div>
 	                <div class="member-content-article-answer-procedure kor">답변 완료</div>
 	              </div>
+
 	             </div>
+	             
+
               </c:forEach>
-
-
             </div>
           </div>
           </div>

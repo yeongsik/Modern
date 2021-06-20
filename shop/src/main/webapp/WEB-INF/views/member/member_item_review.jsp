@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,7 +41,8 @@
           <div class="member-content-article-header kor">구매 후기</div>
 
           <div class="member-content-article-options kor">
-            총 2건
+            <c:set var="cnt" value="${listCount}" />
+            총 ${cnt} 건
             <select>
               <option class="kor">최신순</option>
               <option class="kor">1개월</option>
@@ -53,29 +59,30 @@
             </div>
 
             <div class="member-content-article-items-showcase">
+            
+            <c:forEach var="r" items="${rList}">
               <!-- 상품후기 -->
-              <div class="member-content-article-items-showcase-list" id="items1">
-                <div class="member-content-article-items-product kor">커프스 스트라이프 셔츠</div>
-                <div class="member-content-article-items-subject kor">배송이 좀 느리네요</div>
-                <div class="member-content-article-items-date kor">2021.05.16</div>
+              <div class="member-content-article-items-showcase-list" id="items">
+                <div class="member-content-article-items-product kor">${r.product_id}</div>
+                <div class="member-content-article-items-subject kor">${r.review_subject}</div>
+                <div class="member-content-article-items-date kor">
+               		<fmt:formatDate value="${r.review_date}" pattern="yyyy.MM.dd" />
+               	</div>
               </div>
               <!-- 상품후기 상세 내용 -->
               <div class="member-content-article-items-detail">
                 <div class="blank1"></div>
                 <div class="member-content-article-items-detail-content kor">
-                  일주일 만에 왔어요
+	                <c:if test="${r.review_img != null}">
+	                	<img src="${r.review_img}" alt="이미지" class="review-img"/>
+	                </c:if>
+	                ${fn:replace(r.review_content, cn, br) }
                 </div>
                 <div class="blank2"></div>
               </div>
-              
-              <!-- 상품후기 -->
-              <div class="member-content-article-items-showcase-list" id="items2">
-                <div class="member-content-article-items-product kor">베이직 옥스퍼드 셔츠</div>
-                <div class="member-content-article-items-subject kor">너무 좋아요~</div>
-                <div class="member-content-article-items-date kor">2021.05.14</div>
-              </div>
-              
+             </c:forEach>
             </div>
+            
           </div>
           </div>
         </div>

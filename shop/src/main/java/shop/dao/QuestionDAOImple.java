@@ -20,16 +20,16 @@ public class QuestionDAOImple implements QuestionDAO {
 		return count;
 	};
 
-	
 	public List<QuestionBean> getBoardList(int page) throws Exception {
 	List<QuestionBean> list = session.selectList("Question.question_list", page);
   
-	return list; };
+	return list;
+	};
 	 
 	
-	public QuestionBean getQuestionDetail(int question_id) throws Exception {
-		return (QuestionBean) session.selectOne("Question.questionDetail", question_id);
-	}
+//	public QuestionBean getQuestionDetail(int question_id) throws Exception {
+//		return (QuestionBean) session.selectOne("Question.questionDetail", question_id);
+//	}
 
 
 }

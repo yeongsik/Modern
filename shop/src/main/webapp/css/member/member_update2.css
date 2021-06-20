@@ -19,7 +19,9 @@
 .member-content-article-section-info_area-wrapper {
   border-right: 2px solid var(--color-grey);
 }
-.member-content-article-header-address_management,
+.member-content-article-header-address_management {
+	padding-left: 250px;
+}
 .member-content-article-section-address_area {
   padding-left: 30px;
 }
@@ -146,4 +148,7 @@
 }
 .member-content-article-section-address_area-list-item-address {
   flex-grow: 9;
+}
+.result-divs {
+    height:20px;
 }

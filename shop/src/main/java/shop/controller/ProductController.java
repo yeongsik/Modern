@@ -115,23 +115,22 @@ public class ProductController {
 		List<QuestionBean> question = new ArrayList<QuestionBean>();
 		
 		
-		// 관심상품 등록 여부 확인
-    MemberBean mb = (MemberBean) session.getAttribute("m");
-    
-    HeartBean hb = new HeartBean();
-    hb.setMember_id(mb.getMember_id()); 
-    hb.setProduct_id(product_id);
-    
-    int likeyState = MemberService.likeyState(hb);
-    System.out.println("likeyState : " + likeyState);
-    
-    model.addAttribute("likeyState",likeyState);
-    
-		model.addAttribute("size", size_model);
-		model.addAttribute("product", product);
-		model.addAttribute("buyingPoint", buyingPoint);
-		System.out.println(product_id);
-		
+		// 관심상품 등록 여부 확인 
+		if(session.getAttribute("m")!=null) {
+			MemberBean mb = (MemberBean) session.getAttribute("m");
+			HeartBean hb = new HeartBean();
+			hb.setMember_id(mb.getMember_id()); 
+			hb.setProduct_id(product_id);
+			int likeyState = MemberService.likeyState(hb);
+			System.out.println("likeyState : " + likeyState);
+			model.addAttribute("likeyState",likeyState);
+		}
+	    
+			model.addAttribute("size", size_model);
+			model.addAttribute("product", product);
+			model.addAttribute("buyingPoint", buyingPoint);
+			System.out.println(product_id);
+			
 		return "product/product_detail";
 	}
 }

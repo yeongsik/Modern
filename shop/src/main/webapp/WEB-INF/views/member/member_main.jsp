@@ -40,7 +40,7 @@
 				<div class="mypage-main-section-wrapper mypage-margin-bottom">
 					<div class="mypage-main-section-title eng">CART</div>
 					<div class="mypage-main-section-subtitle">
-						<a href="member_cart.shop" class="kor">쇼핑백</a>
+						<a href="member_cartlist.shop" class="kor">쇼핑백</a>
 					</div>
 				</div>
 				<div class="mypage-main-section-wrapper">

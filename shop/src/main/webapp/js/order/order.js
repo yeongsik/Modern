@@ -175,3 +175,27 @@ $(document).ready(function(){
 		};
 	});
 });
+
+function orderSelectCoupon(order_detail_pk) {
+	alert(order_detail_pk);
+	alert(typeof order_detail_pk);
+	window.open("orderSelectCoupon.shop?order_detail_pk="+order_detail_pk ,"쿠폰리스트" , "width=620px , height=400px");
+}
+function couponSelectOne(coupon_id,order_detail_pk) {
+	alert(coupon_id);
+	alert(order_detail_pk);
+	$.ajax({
+		url:"couponAction.shop",
+		type:"post",
+		data: {"coupon_id" : coupon_id ,
+			   "order_detail_pk" : order_detail_pk},
+		success:function(data) {
+			$(opener.document).find("#"+order_detail_pk).html(data);
+		},
+		error:function(){
+			alert("오류오류")
+		}
+	})
+	close();
+	
+}

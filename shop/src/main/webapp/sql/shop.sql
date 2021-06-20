@@ -9,11 +9,19 @@ select * from order_table;
 select * from order_detail;
 select * from grade;
 select * from stock; 
-select * from review;
+select * from item_review;
 select * from coupon;
 select * from ADDRESS;
 select * from heart;
+select * from cart;
 
+
+select * from order_detail b
+		left outer join cart c 
+		on b.order_detail_pk = c.order_detail_pk where c.member_id = 'cptest13'
+
+
+select * from product where member_id ='cptest18'
 select * from heart where member_id='hama';
 select * from heart where member_id='noru';
 
@@ -170,3 +178,9 @@ create sequence order_detail_seq;
 select * from order_detail;
 delete from order_detail;
 select * from order_table;
+
+alter table order_detail add detail_state number;
+alter table ORDER_TABLE add receiver_tel2 number; 
+alter table order_table add order_memo varchar2(200);
+
+insert into coupon values (123456, '테스트용 쿠폰3' , 40 , sysdate , sysdate+30 , 'dudtlrzz1' );
