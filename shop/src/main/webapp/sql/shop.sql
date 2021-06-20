@@ -4,7 +4,6 @@ select * from product;
 select * from product_detail;
 select * from CATEGORY;
 select * from member;
-select * from member;
 select * from heart;
 select * from order_table;
 select * from order_detail;
@@ -24,6 +23,17 @@ delete from heart;
 select * from address;
 select * from seq;
 select * from notice;
+
+-- point 테이블 생성
+create table point ( member_id varchar2(30) not null, acc_point   number, acc_type    varchar2(50), acc_date        date);
+
+-- point 테이블 내역 추가
+insert into point values('hama',1500,'쇼핑몰 출시 기념 포인트',sysdate);
+insert into point values('hama',500,'회원가입 기념 포인트',sysdate);
+insert into point values('hama',100,'테스트용',sysdate);
+
+-- 포인트 수정
+update member set purchase_point=2000 where member_id='hama'
 
 -- 쿠폰관련 -- 
 SELECT * FROM nls_session_parameters WHERE PARAMETER LIKE '%DATE%' OR PARAMETER LIKE '%LANG%'; 

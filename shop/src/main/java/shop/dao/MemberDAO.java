@@ -11,6 +11,7 @@ import shop.model.CouponBean;
 import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.PointBean;
 import shop.model.ProductBean;
 
 @Repository
@@ -144,4 +145,18 @@ public class MemberDAO {
 		return (AddressBean)session.selectOne("checkAddressFromId", id);
 	}
 	
+	//포인트 내역 개수 조회
+  public int getPointListCount(String member_id) throws Exception {
+    int count = 0;
+    
+    count = ((Integer) session.selectOne("Point_ListCount", member_id)).intValue();
+    
+    return count;
+  }
+  // 포인트 내역 조회
+  public List<PointBean> getPointList(PointBean pb) throws Exception {
+    List<PointBean> list = session.selectList("Point_List", pb);
+    return list;
+  }
+  
 }

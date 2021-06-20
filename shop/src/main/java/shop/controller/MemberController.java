@@ -27,6 +27,7 @@ import shop.model.CouponBean;
 import shop.model.AddressBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.PointBean;
 import shop.model.ProductBean;
 
 import shop.model.ReviewBean;
@@ -37,7 +38,6 @@ import shop.service.MemberService;
 public class MemberController {
   @Autowired
   private MemberService service;
-  
   	// 마이페이지 메인화면
 	@RequestMapping("member_main.shop")
 	public String main(HttpSession session) throws Exception {
@@ -140,7 +140,48 @@ public class MemberController {
 
   // 포인트
   @RequestMapping("member_point.shop")
-  public String point() {
+  public String point(HttpSession session, HttpServletRequest request, Model model) throws Exception {
+    System.out.println("point 로딩 성공");
+
+    MemberBean mb = (MemberBean)session.getAttribute("m");
+    String member_id = mb.getMember_id();
+    
+    List<PointBean> list = new ArrayList<PointBean>();
+    
+    int page = 1;
+    int limitPage = 5;
+    
+    if (request.getParameter("page") != null) {
+      page = Integer.parseInt(request.getParameter("page"));
+    }
+
+    if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
+      page = 1;
+    }
+
+    int listCount = service.getPointListCount(member_id);
+
+    PointBean pb = new PointBean();
+    pb.setMember_id(member_id);
+    pb.setPage(page);
+    
+    list = service.getPointList(pb);
+
+    int maxPage = (int) ((double) listCount / limitPage + 0.95);
+
+    int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+
+    int endPage = maxPage;
+
+    if (endPage > startPage + 10 - 1) endPage = startPage + 10 - 1;
+    
+    model.addAttribute("page", page);
+    model.addAttribute("count", listCount);
+    model.addAttribute("list", list);
+    model.addAttribute("startPage", startPage);
+    model.addAttribute("endPage", endPage);
+    model.addAttribute("maxPage", maxPage);
+    
     return "member/member_point";
   }
   

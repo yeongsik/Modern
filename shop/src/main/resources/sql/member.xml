@@ -52,18 +52,6 @@
     <select id="like_list" parameterType="product" resultType="product">
     	select pd.product_thumbnail, p.product_name, p.product_price, p.product_id from product_detail pd natural join heart h join product p on (pd.product_detail = h.product_id and h.product_id = p.product_id) where h.member_id = #{member_id}
     </select>
-    
-	<!-- 관심상품 리스트 가져오기 -->
-	<select id="like_list" parameterType="product"
-		resultType="product">
-		select pd.product_thumbnail, p.product_name,
-		p.product_price from
-		product_detail pd natural join heart h join
-		product p on
-		(pd.product_detail = h.product_id and h.product_id =
-		p.product_id)
-		where h.member_id = #{member_id}
-	</select>
 
 	<!--회원비번 변경 -->
 	<update id="update_member_pw" parameterType="member">
@@ -120,6 +108,20 @@
 		select * from coupon where member_id = #{member_id}
 	</select>
 	
+	<!-- 포인트 내역 개수 조회 -->
+	<select id="Point_ListCount" parameterType="String" resultType="int">
+		select count(*) from point where member_id=#{member_id}
+	</select>
+	
+	<!-- 포인트 내역 조회 -->
+	<select id="Point_List" parameterType="point" resultType="point">
+		<![CDATA[
+		select * from 
+		 (select rownum rnum,member_id, acc_point, acc_type, acc_date from 
+		 	(select * from point order by acc_date desc)) 
+	   			where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id=#{member_id}
+		]]>
+	</select>
 </mapper>
 
     

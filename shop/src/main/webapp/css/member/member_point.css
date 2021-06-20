@@ -76,3 +76,10 @@
 .member-content-article-items-type {
   width: 70%;
 }
+.member-content-article-items-fail_msg,
+.member-content-article-items-btn {
+  display : flex;
+  justify-content : center;
+  margin-top : 25px;
+}
+
