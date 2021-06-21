@@ -106,7 +106,7 @@
 	<!-- 쿠폰리스트 조회 -->
 	<select id="couponList" parameterType="coupon" resultType="coupon">
 		<![CDATA[
-		select * from coupon where rownum >= ((#{page}-1) * 5+1) and rownum <= (#{page} * 5) and member_id = #{member_id}
+		select * from coupon where rownum >= ((#{page}-1) * 5+1) and rownum <= (#{page} * 5) and member_id = #{member_id} order by coupon_expiration
 		]]>
 	</select>
 	
