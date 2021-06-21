@@ -42,7 +42,7 @@ function joinCheck1() {
 		$("#checkbox2").focus();
 		return false;
 	}
-	
+
 
 	//2페이지 유효성 검사
 	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -101,7 +101,7 @@ function id_check() {
 		url: "member_idcheck.shop",
 		data: { "memid": memid },        //키 벨류값
 		success: function(data) {
-			if (data.cnt > 0) {	//중복 ID
+			if (data == 1) {	//중복 ID
 				var newtext = '<font color="red">중복 아이디입니다.</font>';
 				$("#idCheckResult").text('');
 				$("#idCheckResult").show();
@@ -311,23 +311,39 @@ $(function() {
 	if ($("#pwddivs").val() == "") {
 		$("#pwddivs").replacewith('<input id="hidepw" name="pw">');
 	}
-	
+
 });
 //수정페이지 들어가기전 비번 체크
 function pwCheck() {
-	
+
 	var userpwd = $("#userpw").val();
 	var pwd = $("#hiddenPw").val();
 
 	if (userpwd.length == 0) {
 		alert("비밀번호를 입력해주세요");
 		$("#userpwd").focus();
-		
-	}else if(userpwd != pwd){
+
+	} else if (userpwd != pwd) {
 		alert("틀린 비밀번호입니다");
 		$("#userpwd").focus();
 	}
-	
+
+}
+//탈퇴페이지 들어가기전 비번 체크
+function pwCheck1() {
+
+	var userpwd = $("#userpw").val();
+	var pwd = $("#hiddenPw").val();
+
+	if (userpwd.length == 0) {
+		alert("비밀번호를 입력해주세요");
+		$("#userpw").focus();
+
+	} else if (userpwd != pwd) {
+		alert("틀린 비밀번호입니다");
+		$("#userpw").focus();
+	}
+
 }
 $(function() {
 	// 비밀번호 정규식 8~16자 영어대소문자,숫자,특수문자 하나 이상
@@ -396,46 +412,123 @@ $(function() {
 			},
 
 			error: function() {
+				
+			}
+		});
+
+
+	});
+	//0619 추가 배송지 확인 버튼 클릭시 주소 추가
+	$("#addressConfirm").click(function() {
+		var member_id = $("input[name='member_id']").val(); 
+		var post = 	$("#update_post").val();
+		var address1 = 	$("#update_add1").val();
+		var address2 = 	$("#update_add2").val();
+
+		var datas = { "member_id": member_id, "post" : post,
+		"address1" : address1, "address2":address2 };
+
+		
+			$.ajax({
+				url: "member_update_address_add.shop",
+				type: 'post',
+				data: datas,
+
+				success: function(data) {
+		
+					location.href = "member_update_view.shop";
+				},
+
+				error: function() {
+					alert("배송지를 추가해주세요.");
+				}
+			});
+
+	});
+	
+});
+//회원정보 배송지 추가 버튼 눌렀을 때 숨은 div 활성화
+$(function() {
+	$("#addDiv").hide();
+	$("#addButton").click(function() {
+		$("#addDiv").show();
+	});
+
+});
+//배송지 삭제 버튼 클릭
+$(function() {
+	$("#deleteButton").click(function() {
+		var checkboxValues = [];
+		var member_id = $("input[name='member_id']").val();
+
+		$("input[name='chkbox']:checked").each(function(i) {
+			checkboxValues.push($(this).val());
+		});
+
+		var datas = { "member_id": member_id, "checkArray": checkboxValues };
+
+		$.ajax({
+			url: "member_update_address_del.shop",
+			type: 'post',
+			data: datas,
+
+			success: function(data) {
+				alert("배송지가 삭제되었습니다.");
+				location.href = "member_update_view.shop";
+			},
+
+			error: function() {
 				alert("error");
 			}
 		});
-		
-		
+
+
+		/*
+		if ($("input[name='chkbox']").is(":checked") == true) {
+			alert("삭제되었습니다.");
+		} else {
+			alert("삭제할 배송지를 선택해주세요.");
+		}
+		*/
 	});
+
 });
+
 function emailCheck() {
-//마케팅 수신동의
-	if ($("#accept_mail").is(":checked")) {
-		$("#accept_mail").val('1');
-		
-	} else {
-		$("#accept_mail").val('0');
-	}
-	
-}	
+	//마케팅 수신동의
+	$("#accept_mail").click(function() {
+		if ($("#accept_mail").is(":checked")) {
+			$("#accept_mail").val('1');
+
+		} else {
+			$("#accept_mail").val('0');
+		}
+
+	});
+}
 /* 우편번호 검색 */
 function openDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	new daum.Postcode({
+		oncomplete: function(data) {
+			// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
+			// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+			var addr = ''; // 주소 변수
+			var extraAddr = ''; // 참고항목 변수
 
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
+			//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+			if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+				addr = data.roadAddress;
+			} else { // 사용자가 지번 주소를 선택했을 경우(J)
+				addr = data.jibunAddress;
+			}
 
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('update_post').value = data.zonecode;
-            document.getElementById("update_add1").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("update_add2").focus();
-        }
-    }).open();
+			// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			document.getElementById('update_post').value = data.zonecode;
+			document.getElementById("update_add1").value = addr;
+			// 커서를 상세주소 필드로 이동한다.
+			document.getElementById("update_add2").focus();
+		}
+	}).open();
 };

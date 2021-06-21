@@ -22,10 +22,16 @@
 		update address SET address_state = 1 WHERE member_id = #{member_id} and add_pk = #{add_pk}
 	</update>
 	
-	<!--주소 추가 -->
-    <!-- <insert id="addressInsert" parameterType="address">
-    insert into address values (add_pk_seq.nextval, #{post}, #{address1},#{address2},#{member_id},0)
-    </insert> -->
+	<!--0619배송지 추가 -->
+    <insert id="addressInsert" parameterType="address">
+    insert into address values (add_pk_seq.nextval, #{post}, #{address1}, #{address2}, #{member_id}, 0)
+    </insert>
+    
+    <!--0619배송지삭제  -->
+    <delete id="addressDelete" parameterType="address">
+		delete from address where
+		add_pk = #{add_pk} and member_id = #{member_id}
+	</delete>
 	
 </mapper>
  

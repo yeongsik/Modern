@@ -169,7 +169,13 @@ public class MemberDAO {
 	
 	//배송지 추가
 	public void addressInsert(AddressBean address) throws Exception {
+		System.out.println("배송지추가dao");
 		session.insert("addressInsert",address);
+	}
+	//0619배송지 삭제
+	public void addressDelete(AddressBean ab) throws Exception {
+		System.out.println("배송지삭제dao ");
+		session.delete("addressDelete", ab);
 	}
 	
 	// 장바구니 추가
