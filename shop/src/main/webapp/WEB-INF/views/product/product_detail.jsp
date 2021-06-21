@@ -86,8 +86,10 @@
                         	</div>
                         </div>
                         <div class="product-detail-order-wrapper">
-                            <input type="button" class="product-detail-btn cart-btn eng" value="Cart" onclick="location.href='member_addcart.shop'">
+                            <input type="submit" class="product-detail-btn cart-btn eng" value="Cart" formaction="member_addcart.shop">
                             <input type="submit" class="product-detail-btn order-btn eng" value="Order">
+                            <!-- <input type="button" class="product-detail-btn cart-btn eng" value="Cart" onclick="location.href='member_addcart.shop'">
+                            <input type="submit" class="product-detail-btn order-btn eng" value="Order"> -->
                         </div>
                     </div>
                 </div>

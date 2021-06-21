@@ -138,6 +138,10 @@ public class MemberService {
 		public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
 			return md.getDetailList(cb);
 		}
+		// 장바구니 cart 리스트
+		public List<CartBean> getCartList(CartBean cb) throws Exception{
+			return md.getCartList(cb);
+		}
 		// 기본 배송지를 후보 배송지로 변경
 		public void updateAddressState0(String id) {
 			md.updateAddressState0(id);

@@ -105,7 +105,9 @@
 	
 	<!-- 쿠폰리스트 조회 -->
 	<select id="couponList" parameterType="coupon" resultType="coupon">
-		select * from coupon where member_id = #{member_id}
+		<![CDATA[
+		select * from coupon where rownum >= ((#{page}-1) * 5+1) and rownum <= (#{page} * 5) and member_id = #{member_id}
+		]]>
 	</select>
 	
 	<!-- 쿠폰 정보 가져오기 -->
@@ -140,7 +142,11 @@
 		select * from order_detail a left outer join cart b 
 		on a.order_detail_pk = b.order_detail_pk where b.member_id = #{member_id}
 	</select>
-
+	<!-- 장바구니 cart 리스트-->
+	<select id="cartList" parameterType="cart" resultType="cart">
+		select * from cart where member_id = #{member_id}
+	</select>
+	
 	
 </mapper>
 

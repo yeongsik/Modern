@@ -177,7 +177,7 @@ public class MemberDAO {
 		return session.insert("addCart", cb);
 	}
 	
-	// 장바구니 리스트
+	// 장바구니 product리스트
 	public List<ProductBean> getProductList(CartBean cb) throws Exception{
 		return session.selectList("productcartlist", cb);
 	}
@@ -185,5 +185,9 @@ public class MemberDAO {
 	// 장바구니 order_detail 리스트
 	public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
 		return session.selectList("detailList", cb);
+	}
+	// 장바구니 cart 리스트
+	public List<CartBean> getCartList(CartBean cb) throws Exception{
+		return session.selectList("cartList", cb);
 	}
 }

@@ -2,11 +2,8 @@ package shop.controller;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
-
 import java.util.Calendar;
 import java.util.Date;
-
 import java.util.List;
 import java.util.Random;
 
@@ -24,24 +21,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.model.AddressBean;
-
+import shop.model.CartBean;
 import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
+import shop.model.OrderDetailBean;
 import shop.model.PersonalQuestionBean;
 import shop.model.ProductBean;
 import shop.model.ReviewBean;
 import shop.service.MemberService;
-import shop.service.PersonalQuestionService;
-import shop.service.ReviewService;
-
-import shop.model.CartBean;
-
-
-import shop.model.OrderDetailBean;
-
 import shop.service.OrderService;
+import shop.service.PersonalQuestionService;
 import shop.service.ProductService;
+import shop.service.ReviewService;
 
 
 @Controller
@@ -60,19 +52,6 @@ public class MemberController {
 	@RequestMapping("member_main.shop")
 	public String main(HttpSession session) throws Exception {
 		System.out.println("마이페이지 진입");
-
-		CouponBean cp = new CouponBean();
-		MemberBean member = (MemberBean) session.getAttribute("m");
-		cp.setMember_id(member.getMember_id());
-
-		System.out.println("member_id:" + cp.getMember_id());
-
-		int countCoupon = service.countCoupon(cp);
-
-		System.out.println("countCoupon_controller:" + countCoupon);
-		
-		session.setAttribute("countCoupon", countCoupon);
-
 		return "member/member_main";
 	}
 
@@ -172,8 +151,8 @@ public class MemberController {
 		
 		List<PersonalQuestionBean> pqList = new ArrayList<PersonalQuestionBean>();
 
-		int page = 1;
-		int limitPage = 10;
+			int page = 1;
+			int limitPage = 10;
 		int listCount = pqs.getListCount();
 
 		if (request.getParameter("page") != null) {
@@ -211,22 +190,41 @@ public class MemberController {
 
 	// 쿠폰페이지
 	@RequestMapping("member_coupon.shop")
-	public String coupon(HttpSession session, Model model) throws Exception {
-		System.out.println("member_coupon_controller");
-
-		// 쿠폰 리스트 출력
+	public String coupon(HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		System.out.println("member_coupon 진입");
+		
 		List<CouponBean> cpList = new ArrayList<CouponBean>();
-
-		CouponBean cp = new CouponBean();
 		MemberBean member = (MemberBean) session.getAttribute("m");
+		CouponBean cp = new CouponBean();
 		cp.setMember_id(member.getMember_id());
 		System.out.println("member_id:" + cp.getMember_id());
-		cpList = service.getcouponList(cp);
 
+		// 쿠폰 리스트 출력
+		int page = 1;
+		int limitPage = 5;
+		int listCount = service.countCoupon(cp);
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
+			page = 1;
+		}
+		cp.setPage(page);
+		cpList = service.getcouponList(cp);
+		
 		System.out.println("service 후 session 전 cpList:" + cpList);
 
-
-		// session.setAttribute("cpList:", cpList);
+		int maxPage = (int) ((double) listCount / limitPage + 0.95);
+		int startPage = (((int) ((double) page / 5 + 0.9)) - 1) * 5 + 1;
+		int endPage = maxPage;
+		if (endPage > startPage + 5 - 1) endPage = startPage + 5 - 1;
+		
+		model.addAttribute("page", page);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("listCount", listCount);
 		model.addAttribute("cpList", cpList);
 
 		return "member/member_coupon";
@@ -287,55 +285,56 @@ public class MemberController {
 		return "member/member_coupon_management";
 	}
 
- 
-  
 	// 장바구니 추가
 	@RequestMapping("member_addcart.shop")
-	public String addcart(HttpSession session) throws Exception {
-		System.out.println("addCart진입");
+	public String addcart(Model model, int[] order_detail_pk, HttpSession session) throws Exception {
+		
+	System.out.println("addCart진입");
+	
 		MemberBean mb = (MemberBean) session.getAttribute("m");
 		CartBean cb = new CartBean();
 		cb.setMember_id(mb.getMember_id());
-		System.out.println("member_id: " + cb.getMember_id());
-
-		OrderDetailBean od = (OrderDetailBean) session.getAttribute("orderDetail11");
-		cb.setOrder_detail_pk(od.getOrder_detail_pk());
-		System.out.println("order_detail_pk:" + cb.getOrder_detail_pk());
-
-		service.addCart(cb);
-
+	System.out.println("member_id: " + cb.getMember_id());
+		
+		
+		OrderDetailBean od = new OrderDetailBean();
+	System.out.println("order_detail_pk:" + order_detail_pk);
+		
+		for (int i=0; i<order_detail_pk.length; i++) {
+			od = os.getOrderDetail(order_detail_pk[i]);
+			cb.setOrder_detail_pk(od.getOrder_detail_pk());
+			service.addCart(cb);
+		}
+		
+	System.out.println("od.getOrder_detail_pk:" + od.getOrder_detail_pk());
+	System.out.println("cb.getOrder_detail_pk:" + cb.getOrder_detail_pk());	
+		model.addAttribute("cart", cb);
 		return "forward:member_cartlist.shop";
 	}
 
 	// 장바구니 리스트
 	@RequestMapping("member_cartlist.shop")
-	public String cartlist(HttpSession session) throws Exception {
+	public String cartlist(Model model, HttpSession session) throws Exception {
 		System.out.println("cartList진입");
+		
 		MemberBean mb = (MemberBean) session.getAttribute("m");
 		CartBean cb = new CartBean();
 		cb.setMember_id(mb.getMember_id());
-		System.out.println("member_id: " + cb.getMember_id());
 
-		OrderDetailBean od = (OrderDetailBean) session.getAttribute("orderDetail11");
-		cb.setOrder_detail_pk(od.getOrder_detail_pk());
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		List<OrderDetailBean> detaillist = new ArrayList<OrderDetailBean>();
-
+		List<CartBean> cartList = new ArrayList<CartBean>();
+		
 		productlist = service.getProductList(cb);
 		detaillist = service.getDetailList(cb);
+		cartList = service.getCartList(cb);
 
-		session.setAttribute("productlist", productlist);
-		session.setAttribute("detaillist", detaillist);
-		session.setAttribute("orderDetail", od.getOrder_detail_pk());
+		model.addAttribute("productlist", productlist);
+		model.addAttribute("detaillist", detaillist);
+		model.addAttribute("cartList", cartList);
 
 		return "member/member_cart";
 
-	}
-
-	// 장바구니
-	@RequestMapping("member_cart.shop")
-	public String cart() {
-		return "member/member_cart";
 	}
 
 	// 관심상품
@@ -473,7 +472,14 @@ public class MemberController {
 				 * session.setAttribute("purchase_point", m.getPurchase_point());
 				 */
 				session.setAttribute("m", m);
-
+				
+				//쿠폰개수
+				CouponBean cp = new CouponBean();				
+				cp.setMember_id(m.getMember_id());
+				int countCoupon = service.countCoupon(cp);
+				System.out.println("countCoupon:" + countCoupon);
+				session.setAttribute("countCoupon", countCoupon);
+				
 				// 로그인 성공시 address도 세션 등록
 				AddressBean add = service.addressCheck(m.getMember_id());
 				session.setAttribute("add", add);

@@ -54,32 +54,37 @@
 						</div>
 						
 						<c:forEach var="p" items="${productlist}" varStatus="status">
-							<div class="member-content-article-items-showcase">
-								<div class="member-content-article-items-showcase-list">
-									<div class="member-content-article-items-no kor">1</div>
-									<div class="member-content-article-items-check_btn">
-										<input type="checkbox">
+
+								<div class="member-content-article-items-showcase">
+									<div class="member-content-article-items-showcase-list">
+										<div class="member-content-article-items-no kor">1</div>
+										<div class="member-content-article-items-check_btn">
+											<input type="checkbox">
+										</div>
+										<div class="member-content-article-items-product kor">${p.product_name} (${detaillist[status.index].choose_size})</div>
+										<div class="member-content-article-items-price kor">${p.product_price}</div>
+										<div
+											class="member-content-article-items-membership_discount kor">-4,450</div>
+										<div class="member-content-article-items-Quantity">
+											<button>
+												<i class="far fa-minus-square fa-2x"></i>
+											</button>
+											<input type="text" value="${detaillist[status.index].purchase_number}" readonly="readonly">
+											<button>
+												<i class="far fa-plus-square fa-2x"></i>
+											</button>
+										</div>
+										<div class="member-content-article-items-order_price kor">84,550</div>
+										<div class="member-content-article-items-order_state kor">
+											<button>삭제하기</button>
+										</div>
+										<div class="member-content-article-items-delivery_fee">택배배송 <br> <b>배송비무료</b> <br></div>
 									</div>
-									<div class="member-content-article-items-product kor">${p.product_name} (${detaillist[status.index].choose_size})</div>
-									<div class="member-content-article-items-price kor">${p.product_price}</div>
-									<div
-										class="member-content-article-items-membership_discount kor">-4,450</div>
-									<div class="member-content-article-items-Quantity">
-										<button>
-											<i class="far fa-minus-square fa-2x"></i>
-										</button>
-										<input type="text" value="${detaillist[status.index].purchase_number}" readonly="readonly">
-										<button>
-											<i class="far fa-plus-square fa-2x"></i>
-										</button>
-									</div>
-									<div class="member-content-article-items-order_price kor">84,550</div>
-									<div class="member-content-article-items-order_state kor">
-										<button>삭제하기</button>
-									</div>
-									<div class="member-content-article-items-delivery_fee">택배배송 <br> <b>배송비무료</b> <br></div>
 								</div>
-							</div>
+
+							<c:if test="${cartList[status.index].order_detail_pk eq 0}">
+								<div class="kor">장바구니에 등록된 물품이 없습니다.</div>
+							</c:if>
 						</c:forEach>
 					</div>
 				</div>
