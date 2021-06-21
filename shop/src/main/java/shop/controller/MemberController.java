@@ -171,7 +171,7 @@ public class MemberController {
 	private ReviewService rs;
 
 	@RequestMapping("member_board.shop")
-	public String review(HttpServletRequest request, Model model) throws Exception {
+	public String review(HttpSession session, HttpServletRequest request, Model model) throws Exception {
 
 		List<ReviewBean> rList = new ArrayList<ReviewBean>();
 		List<ProductBean> pList = new ArrayList<ProductBean>();
@@ -236,7 +236,7 @@ public class MemberController {
 
 	// 상품문의 메인
 	@RequestMapping("member_personal_question.shop")
-	public String question(HttpServletRequest request, Model model) throws Exception {
+	public String question(HttpSession session, HttpServletRequest request, Model model) throws Exception {
 
 		List<PersonalQuestionBean> pqList = new ArrayList<PersonalQuestionBean>();
 		PersonalQuestionBean pqb = new PersonalQuestionBean();
