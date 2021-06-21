@@ -81,7 +81,7 @@ select * from (select rownum rnum , * from
 alter table product rename column stock to stock_id;
 alter table product modify stock_id varchar2(100);
 
-insert into ADDRESS values(add_pk_seq.nextval, 52231, '서울시 은평구 진관동', '동수빌딩 303호', 'dora2', 0 );
+insert into ADDRESS values(add_pk_seq.nextval, 52231, '서울시 은평구 진관동', '동수빌딩 303호', 'dora2',  );
 
 select distinct product_name , 
 				product_price , 

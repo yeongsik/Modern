@@ -127,6 +127,7 @@
 	<select id="getCouponOne" parameterType="int" resultType="coupon">
 		select * from coupon where coupon_id =#{coupon_id}
 	</select>
+	
 	<!--마케팅 동의  -->
 	 <update id="email_check" parameterType="member" >
 	update member set accept_mail = #{accept_mail} where member_id = #{member_id}

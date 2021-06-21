@@ -161,8 +161,9 @@ public class MemberService {
 			md.updateAddressState1(add);
 		}
 		
-		//배송지 추가
+		//0619배송지 추가
 		public void addressInsert(AddressBean address) throws Exception {
+			System.out.println("배송지추가service");
 			md.addressInsert(address);
 		}
 		// 마케팅 동의
@@ -200,8 +201,13 @@ public class MemberService {
 			return md.getPersonalQuestionListCount(member_id);
 		}
 
-		
+		// 1대1문의 목록
 		public List<PersonalQuestionBean> getPersonalQuestionBoardList(PersonalQuestionBean pqb) throws Exception {
 			return md.getPersonalQuestionBoardList(pqb);
+
+     //0619배송지 삭제
+		public void addressDelete(AddressBean ab) throws Exception {
+			System.out.println("배송지삭제 service");
+			md.addressDelete(ab);
 		}
 }
