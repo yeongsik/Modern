@@ -4,15 +4,16 @@ import java.util.Date;
 
 public class ReviewBean {
 
-	  private int review_id;
-	  private int product_id;
-	  private String member_id;
-	  private String review_img;
-	  private String review_subject;
-	  private String review_content;
-	  private Date review_date;
+	private int review_id;
+	private int product_id;
+	private String member_id;
+	private String review_img;
+	private String review_subject;
+	private String review_content;
+	private Date review_date;
 	  
-	  
+	private int page;
+
 	public int getReview_id() {
 		return review_id;
 	}
@@ -54,5 +55,11 @@ public class ReviewBean {
 	}
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 }
