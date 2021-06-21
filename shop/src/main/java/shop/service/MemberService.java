@@ -208,6 +208,7 @@ public class MemberService {
 		// 1대1문의 목록
 		public List<PersonalQuestionBean> getPersonalQuestionBoardList(PersonalQuestionBean pqb) throws Exception {
 			return md.getPersonalQuestionBoardList(pqb);
+		}
 
      //0619배송지 삭제
 		public void addressDelete(AddressBean ab) throws Exception {
