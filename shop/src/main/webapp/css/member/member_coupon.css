@@ -71,3 +71,7 @@
 .member-content-article-items-coupon_name {
   width: 28%;
 }
+.member_coupon_paging {
+	display: block;
+	text-align: center;
+}
