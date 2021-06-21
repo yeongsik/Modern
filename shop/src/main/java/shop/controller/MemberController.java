@@ -3,13 +3,13 @@ package shop.controller;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-
 import java.util.Calendar;
 import java.util.Date;
 
 import java.util.List;
 import java.util.Random;
 
+import javax.mail.Address;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,26 +38,24 @@ import shop.service.ReviewService;
 
 import shop.model.CartBean;
 
-
 import shop.model.OrderDetailBean;
 
 import shop.service.OrderService;
 import shop.service.ProductService;
 
-
 @Controller
 public class MemberController {
 
-  @Autowired
-  private MemberService service;
-  
+	@Autowired
+	private MemberService service;
+
 	@Autowired
 	private OrderService os;
-	
+
 	@Autowired
-	private ProductService ps;
-	
-  	// 마이페이지 메인화면
+	private ProductService ps; 
+
+	// 마이페이지 메인화면
 	@RequestMapping("member_main.shop")
 	public String main(HttpSession session) throws Exception {
 		System.out.println("마이페이지 진입");
@@ -71,7 +69,7 @@ public class MemberController {
 		int countCoupon = service.countCoupon(cp);
 
 		System.out.println("countCoupon_controller:" + countCoupon);
-		
+
 		session.setAttribute("countCoupon", countCoupon);
 
 		return "member/member_main";
@@ -102,7 +100,7 @@ public class MemberController {
 	public String memberdelete() {
 		return "member/member_withdraw";
 	}
- 
+
 	// 회원 등급
 	@RequestMapping("member_membership.shop")
 	public String membership() {
@@ -111,66 +109,59 @@ public class MemberController {
 
 	// 상품 문의
 
-
-
-  
-  // 구매후기
+	// 구매후기
 	@Autowired
 	private ReviewService rs;
-	
+
 	@RequestMapping("member_board.shop")
 	public String review(HttpServletRequest request, Model model) throws Exception {
-		
+
 		List<ReviewBean> rList = new ArrayList<ReviewBean>();
 		int page = 1;
 		int limitPage = 10;
 		int listCount = rs.getListCount();
-	
+
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-	
+
 		if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
 			page = 1;
 		}
-	
+
 		rList = rs.getBoardList(page);
-		
+
 		int maxPage = (int) ((double) listCount / limitPage + 0.95);
-	
+
 		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
-	
+
 		int endPage = maxPage;
-	
+
 		if (endPage > startPage + 10 - 1)
 			endPage = startPage + 10 - 1;
-	
+
 		model.addAttribute("page", page);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("listCount", listCount);
 		model.addAttribute("rList", rList);
-	
-	
+
 		/* 내용 줄바꿈 */
 		model.addAttribute("br", "<br/>");
 		model.addAttribute("cn", "\n");
-		
+
 		return "member/member_item_review";
 	}
-  
 
-	 
-  
-  // 1:1 문의
+	// 1:1 문의
 	@Autowired
 	private PersonalQuestionService pqs;
 
 	// 상품문의 메인
 	@RequestMapping("member_personal_question.shop")
 	public String question(HttpServletRequest request, Model model) throws Exception {
-		
+
 		List<PersonalQuestionBean> pqList = new ArrayList<PersonalQuestionBean>();
 
 		int page = 1;
@@ -186,7 +177,7 @@ public class MemberController {
 		}
 
 		pqList = pqs.getBoardList(page);
-		
+
 		int maxPage = (int) ((double) listCount / limitPage + 0.95);
 
 		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
@@ -205,10 +196,9 @@ public class MemberController {
 		/* 내용 줄바꿈 */
 		model.addAttribute("br", "<br/>");
 		model.addAttribute("cn", "\n");
-		
+
 		return "member/member_personal_question";
 	}
-
 
 	// 쿠폰페이지
 	@RequestMapping("member_coupon.shop")
@@ -225,7 +215,6 @@ public class MemberController {
 		cpList = service.getcouponList(cp);
 
 		System.out.println("service 후 session 전 cpList:" + cpList);
-
 
 		// session.setAttribute("cpList:", cpList);
 		model.addAttribute("cpList", cpList);
@@ -289,24 +278,25 @@ public class MemberController {
 	// 쿠폰 발급
 
 	@RequestMapping(value = "/member_coupon_create.shop", method = RequestMethod.POST)
-	public String member_coupon_create(@ModelAttribute CouponBean coupon, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//CouponBean coupon = new CouponBean();
-	System.out.println("쿠폰 생성 컨트롤러");
-		
+	public String member_coupon_create(@ModelAttribute CouponBean coupon, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// CouponBean coupon = new CouponBean();
+		System.out.println("쿠폰 생성 컨트롤러");
+
 		String purpose1 = request.getParameter("purpose");
 		int purpose = Integer.parseInt(purpose1);
-	System.out.println("purpose2: "+purpose1);
-		
+		System.out.println("purpose2: " + purpose1);
+
 		Random random = new Random();
 		int coupon_code = purpose + random.nextInt(10000);
-	System.out.println("coupon_code: "+coupon_code);
-		
+		System.out.println("coupon_code: " + coupon_code);
+
 		Date coupon_expiration = null;
 		Date date = new Date();
-		
+
 		String coupon_expiration_value1 = request.getParameter("coupon_expiration_val");
 		int coupon_expiration_value = Integer.parseInt(coupon_expiration_value1);
-	System.out.println("coupon_expiration_value: "+coupon_expiration_value);
+		System.out.println("coupon_expiration_value: " + coupon_expiration_value);
 
 		Calendar cal = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -314,18 +304,18 @@ public class MemberController {
 		cal2.setTime(date);
 		cal2.add(Calendar.DATE, coupon_expiration_value);
 		coupon_expiration = cal2.getTime();
-	System.out.println("coupon_expiration: "+coupon_expiration);
+		System.out.println("coupon_expiration: " + coupon_expiration);
 		coupon.setCoupon_id(coupon_code);
 		coupon.setCoupon_date(cal.getTime());
 		coupon.setCoupon_expiration(coupon_expiration);
 
 		service.createCoupon(coupon);
-		
+
 		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out = response.getWriter();
 		out.println("<script>alert('쿠폰 발급 완료');</script>");
 		out.flush();
-		
+
 		return "member/member_coupon_management";
 	}
 
@@ -441,7 +431,7 @@ public class MemberController {
 
 		return "member/member_register";
 	}
-	
+
 	// 회원가입 저장
 	@RequestMapping(value = "/member_complete.shop", method = RequestMethod.POST)
 	public String register_complete(@ModelAttribute MemberBean member, HttpServletRequest request) throws Exception {
@@ -476,7 +466,7 @@ public class MemberController {
 		Random random = new Random();
 
 		int coupon_code = 1100000 + random.nextInt(10000);
-		
+
 		coupon.setCoupon_id(coupon_code);
 		coupon.setCoupon_name("회원가입 축하 쿠폰");
 		coupon.setCoupon_discount(10);
@@ -759,19 +749,17 @@ public class MemberController {
 	// 회원정보수정페이지이동
 	// 회원페이지1->2로
 	@RequestMapping("member_update_view.shop")
-	public String member_update_view(String pw, @ModelAttribute AddressBean address, HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, Model model) throws Exception {
-		
+	public String member_update_view(String pw, @ModelAttribute AddressBean address, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session, Model model) throws Exception {
+
 		MemberBean member = (MemberBean) session.getAttribute("m");
 		// 회원정보수정 비번 비교
-		if (pw != null && !pw.equals(member.getPw()) ) {
-			
-			
+		if (pw != null && !pw.equals(member.getPw())) {
+
 			return "redirect:member_profile.shop";
-		}else {
+		} else {
 			//
 		}
-		
 
 		String member_id = member.getMember_id();
 		address.setMember_id(member_id);
@@ -797,7 +785,7 @@ public class MemberController {
 
 		// 세션은 갱신을 안해준 상태라 다시 한번 db를 조회를 해서 정보를 다시 가져와야함
 		MemberBean m = service.userCheck(member.getMember_id()); // 유저 정보를 다시 가져옴.
-		
+
 		// 마케팅 수신동의
 
 		String accept_mail1 = request.getParameter("accept_mail_value");
@@ -805,7 +793,6 @@ public class MemberController {
 		int accept_mail;
 
 		if (accept_mail1.equals("1")) {
-
 			accept_mail = 1;
 		}
 
@@ -813,22 +800,25 @@ public class MemberController {
 			accept_mail = 0;
 		}
 
+		String strPost = request.getParameter("postTmp");
+		if (strPost != null && strPost.matches("^[0-9]+$")) { // 정규식 처리로 숫자형 문자열만 가능하게 끔 해서 throws 예외처리 자체를 회피
+			int postNum = Integer.parseInt(strPost);
+			address.setPost(postNum);
+		}
+
 		session.setAttribute("m", m);
-		
+
 		m.setAccept_mail(accept_mail);
-		
+
 		service.emailCheck(m);
-		
-		//배송지 추가
-		
 
 		return "member/update_result";
 	}
 
 	// 회원페이지2->결과페이지
 	@RequestMapping("member_update_address.shop")
-	public String member_update_address(String member_id,
-			@RequestParam(value = "checkArray[]") List<String> arrayAddressPk, HttpSession session,
+	public String member_update_address(@RequestParam(value = "member_id", required = false) String member_id,
+			@RequestParam(value = "checkArray[]", required = false) List<String> arrayAddressPk, HttpSession session,
 			HttpServletRequest request, Model model) throws Exception {
 
 		AddressBean base_add = (AddressBean) session.getAttribute("add");
@@ -847,13 +837,61 @@ public class MemberController {
 		AddressBean add = service.addressCheck(member_id);
 		session.setAttribute("add", add);
 
+		// 0619배송지 추가
+		AddressBean address_insert = new AddressBean();
+
+		address_insert.setMember_id(add.getMember_id());
+		service.addressInsert(address_insert);
+
+		// 0619배송지 삭제
+		AddressBean address_delete = new AddressBean();
+		service.addressDelete(address_delete);
+
 		return "member/update_result";
 	}
 
-	// 회원탈퇴 페이지이동
+	// 0620배송지 추가 메서드
+	@RequestMapping("member_update_address_add.shop")
+	public String member_update_address_add(@RequestParam(value = "member_id", required = false) String member_id,
+			@ModelAttribute AddressBean address, HttpSession session, HttpServletRequest request, Model model)
+			throws Exception {
+
+		address.setMember_id(member_id);
+		service.addressInsert(address);
+
+		return "member/update_result";
+	}
+
+	// 0620주소 삭제 메서드
+	@RequestMapping("member_update_address_del.shop")
+	public String member_update_address_del(@RequestParam(value = "member_id", required = false) String member_id,
+			@RequestParam(value = "checkArray[]", required = false) List<String> arrayAddressPk, HttpSession session, HttpServletRequest request, Model model)
+			throws Exception {
+		
+		AddressBean address_del = new AddressBean();
+		address_del.setMember_id(member_id);
+		//db에 여러번 접속해서 최적화 필요.
+		for(int i = 0; i < arrayAddressPk.size(); ++i) {
+			address_del.setAdd_pk(arrayAddressPk.get(i));
+			service.addressDelete(address_del);
+		}
+
+		return "member/update_result";
+	}
+
+	// 회원탈퇴 페이지이동 0619 코드 일부 추가
 
 	@RequestMapping("member_withdraw.shop")
-	public String member_withdraw_view() {
+	public String member_withdraw_view(String pw, HttpSession session) throws Exception {
+
+		MemberBean member = (MemberBean) session.getAttribute("m");
+		// 회원정보수정 비번 비교
+		if (pw != null && !pw.equals(member.getPw())) {
+
+			return "redirect:member_withdraw_view.shop";
+		} else {
+			//
+		}
 
 		return "member/member_withdraw2";
 	}

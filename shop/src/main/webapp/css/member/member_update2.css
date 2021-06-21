@@ -11,11 +11,13 @@
   font-weight: bolder;
   display: flex;
 } */
-.member-content-article-header-member_update,
+.member-content-article-header-member_update {
+  width: 50%;	
+}
 .member-content-article-header-address_management {
   width: 50%;
+  margin-left:200px;
 }
-.member-content-article-header-member_update,
 .member-content-article-section-info_area-wrapper {
   border-right: 2px solid var(--color-grey);
 }
@@ -108,7 +110,7 @@
   color: var(--color-white);
   border: none;
   width: 180px;
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
 }
 .member-content-article-section-address_area-basic-btn > button:hover {
@@ -121,12 +123,16 @@
 }
 .member-content-article-section-address_area-list-title {
   font-weight: bold;
+  position: relative;
+  top:28px;
+  
 }
 .member-content-article-section-address_area-list-function {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   border-bottom: 1px solid var(--color-grey);
+  margin-right:30px;
 }
 .member-content-article-section-address_area-list-function > button {
   margin: 0 0 10px 10px;
@@ -151,4 +157,48 @@
 }
 .result-divs {
     height:20px;
+}
+.pw-button-address-change{
+  width: 182px;
+  margin-top: 40px;
+  padding: 5px 3px 5px 10px;
+  background-color: var(--color-black);
+  border: none;
+  text-align: center;
+  color: var(--color-white);
+  width: 208px;
+  height: 30px;
+  border-radius: 5px;
+}
+.pw-button-address-change :hover{
+  cursor: pointer;
+}	
+.pw-button-address-confirm{
+  width: 182px;
+  padding: 5px 3px 5px 10px;
+  background-color: var(--color-black);
+  border: none;
+  text-align: center;
+  color: var(--color-white);
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  margin-left:20px;
+}
+.pw-button-address-confirm :hover{
+  cursor: pointer;
+}	
+.member-content-article-section-address-post{
+  margin-top: 10px;
+  padding: 5px 3px 5px 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 16px;
+}
+.member-content-article-section-address{
+  margin-top: 10px;
+  padding: 5px 3px 5px 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 16px;
 }
