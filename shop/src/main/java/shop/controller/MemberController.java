@@ -53,7 +53,7 @@ public class MemberController {
 	private OrderService os;
 
 	@Autowired
-	private ProductService ps;
+	private ProductService ps; 
 
 	// 마이페이지 메인화면
 	@RequestMapping("member_main.shop")
