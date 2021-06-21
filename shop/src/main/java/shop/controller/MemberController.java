@@ -148,8 +148,8 @@ public class MemberController {
 
 	// 구매후기
 	@RequestMapping("member_board.shop")
-	public String review(HttpServletRequest request,HttpSession session, Model model) throws Exception {
 
+	public String review(HttpServletRequest request,HttpSession session, Model model) throws Exception {
 		List<ReviewBean> rList = new ArrayList<ReviewBean>();
 		List<ProductBean> pList = new ArrayList<ProductBean>();
 		MemberBean member = (MemberBean)session.getAttribute("m");
@@ -211,8 +211,8 @@ public class MemberController {
 
 	// 상품문의 메인
 	@RequestMapping("member_personal_question.shop")
-	public String personalQuestion(HttpSession session, HttpServletRequest request, Model model) throws Exception {
 
+	public String personalQuestion(HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		List<PersonalQuestionBean> pqList = new ArrayList<PersonalQuestionBean>();
 		PersonalQuestionBean pqb = new PersonalQuestionBean();
 		MemberBean member = (MemberBean)session.getAttribute("m");
