@@ -108,6 +108,21 @@
 		select * from coupon where member_id = #{member_id}
 	</select>
 	
+	<!-- 포인트 내역 개수 조회 -->
+	<select id="Point_ListCount" parameterType="String" resultType="int">
+		select count(*) from point where member_id=#{member_id}
+	</select>
+	
+	<!-- 포인트 내역 조회 -->
+	<select id="Point_List" parameterType="point" resultType="point">
+		<![CDATA[
+		select * from 
+		 (select rownum rnum,member_id, acc_point, acc_type, acc_date from 
+		 	(select * from point order by acc_date desc)) 
+	   			where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id=#{member_id}
+		]]>
+	</select>
+	
 	<!-- 쿠폰 정보 가져오기 -->
 	<select id="getCouponOne" parameterType="int" resultType="coupon">
 		select * from coupon where coupon_id =#{coupon_id}
@@ -142,7 +157,6 @@
 		on a.order_detail_pk = b.order_detail_pk where b.member_id = #{member_id}
 	</select>
 
-	
 </mapper>
 
     
