@@ -105,7 +105,9 @@
 	
 	<!-- 쿠폰리스트 조회 -->
 	<select id="couponList" parameterType="coupon" resultType="coupon">
-		select * from coupon where member_id = #{member_id}
+		<![CDATA[
+		select * from coupon where rownum >= ((#{page}-1) * 5+1) and rownum <= (#{page} * 5) and member_id = #{member_id} order by coupon_expiration
+		]]>
 	</select>
 	
 	<!-- 포인트 내역 개수 조회 -->
@@ -156,6 +158,56 @@
 		select * from order_detail a left outer join cart b 
 		on a.order_detail_pk = b.order_detail_pk where b.member_id = #{member_id}
 	</select>
+
+	<!-- 장바구니 cart 리스트-->
+	<select id="cartList" parameterType="cart" resultType="cart">
+		select * from cart where member_id = #{member_id}
+	</select>
+	
+	<!-- 리뷰 수 -->
+    <select id="review_list_count" resultType="int">
+    	select count(*) from review where member_id = #{member_id}
+    </select>
+    
+    <!-- 리뷰 목록 -->
+    <select id="review_list" parameterType="review" resultType="review">
+   	 	<![CDATA[
+		select * from 
+		 (select rownum rnum, member_id, review_id, product_id, review_img, review_subject, review_content, review_date
+		 from (select * from review order by review_id desc)) 
+	   		 where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id = #{member_id}
+		]]>
+    </select>
+    
+    <!-- 상품 문의 수 -->
+    <select id="question_list_count" parameterType="question" resultType="int">
+    	select count(*) from question where member_id = #{member_id}
+    </select>
+    
+    <!-- 상품 문의 목록 -->
+   	<select id="question_list" parameterType="question" resultType="question">
+		<![CDATA[
+		select * from 
+		 (select rownum rnum, product_id, question_id, question_content, member_id, question_subject, question_date, question_state, question_type
+		 from (select * from question order by question_id desc)) 
+	   			where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id = #{member_id}
+		]]>
+	</select>
+	
+	<!-- 1대1 문의 수 -->
+    <select id="Pquestion_list_count" parameterType="personal_question" resultType="int">
+    	select count(*) from personal_question where member_id = #{member_id}
+    </select>
+    
+    <!-- 1대1 문의 목록 -->
+    <select id="Pquestion_list" parameterType="personal_question" resultType="personal_question">
+   	 	<![CDATA[
+		select * from 
+		 (select rownum rnum, member_id, question_id, question_content, question_subject, question_date, question_state, question_type
+		 from (select * from personal_question order by question_id desc)) 
+	   		 where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id = #{member_id}
+		]]>
+    </select>
 
 </mapper>
 

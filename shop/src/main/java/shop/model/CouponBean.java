@@ -9,6 +9,7 @@ public class CouponBean {
 	private Date coupon_date;
 	private Date coupon_expiration;
 	private String member_id;
+	private int page;
 	
 	public int getCoupon_id() {
 		return coupon_id;
@@ -46,4 +47,11 @@ public class CouponBean {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
+	public int getPage() {
+		return page;
 	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	
+}
