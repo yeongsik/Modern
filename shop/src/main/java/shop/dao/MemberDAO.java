@@ -14,7 +14,10 @@ import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.PointBean;
 import shop.model.OrderDetailBean;
+import shop.model.PersonalQuestionBean;
 import shop.model.ProductBean;
+import shop.model.QuestionBean;
+import shop.model.ReviewBean;
 
 @Repository
 public class MemberDAO {
@@ -201,4 +204,53 @@ public class MemberDAO {
 	public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
 		return session.selectList("detailList", cb);
 	}
+	
+	// 구매후기 개수
+	public int getReviewListCount(String member_id) throws Exception {
+		int count = 0;
+		
+		count = ((Integer) session.selectOne("review_list_count", member_id)).intValue();
+
+		return count;
+	};
+	
+	// 구매후기 목록
+	public List<ReviewBean> getReviewBoardList(ReviewBean rb) throws Exception {
+		List<ReviewBean> list = session.selectList("review_list", rb);
+  
+		return list;
+	};
+	
+	// 상품문의 개수
+	public int getItemQuestionListCount(String member_id) throws Exception {
+		int count = 0;
+
+		count = ((Integer) session.selectOne("question_list_count", member_id)).intValue();
+
+		return count;
+	};
+	
+	// 상품문의 목록
+	public List<QuestionBean> getItemQuestionBoardList(QuestionBean qb) throws Exception {
+		List<QuestionBean> list = session.selectList("question_list", qb);
+  
+	return list;
+	};
+
+	
+	// 1대1 문의 개수
+	public int getPersonalQuestionListCount(String member_id) throws Exception {
+		int count = 0;
+
+		count = ((Integer) session.selectOne("Pquestion_list_count", member_id)).intValue();
+
+		return count;
+	};
+
+	// 1대1 문의 목록
+	public List<PersonalQuestionBean> getPersonalQuestionBoardList(PersonalQuestionBean pqb) throws Exception {
+		List<PersonalQuestionBean> list = session.selectList("Pquestion_list", pqb);
+  
+	return list;
+	};
 }

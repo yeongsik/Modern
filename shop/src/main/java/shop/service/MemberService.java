@@ -13,7 +13,10 @@ import shop.model.HeartBean;
 import shop.model.MemberBean;
 import shop.model.PointBean;
 import shop.model.OrderDetailBean;
+import shop.model.PersonalQuestionBean;
 import shop.model.ProductBean;
+import shop.model.QuestionBean;
+import shop.model.ReviewBean;
 
 @Service
 public class MemberService {
@@ -170,5 +173,35 @@ public class MemberService {
 		// 주소 조회
 		public List<AddressBean> addressList(AddressBean add) throws Exception {
 			return md.addressList(add);
+		}
+		
+		// 구매후기 개수
+		public int getReviewListCount(String member_id) throws Exception {
+			return md.getReviewListCount(member_id);
+		}
+
+		// 구매후기 목록
+		public List<ReviewBean> getReviewBoardList(ReviewBean rb) throws Exception {
+			return md.getReviewBoardList(rb);
+		}
+		
+		// 상품문의 개수
+		public int getItemQuestionListCount(String member_id) throws Exception {
+			return md.getItemQuestionListCount(member_id);
+		}
+
+		// 상품문의 목록
+		public List<QuestionBean> getItemQuestionBoardList(QuestionBean qb) throws Exception {
+			return md.getItemQuestionBoardList(qb);
+		}
+		
+		// 1대1문의 개수
+		public int getPersonalQuestionListCount(String member_id) throws Exception {
+			return md.getPersonalQuestionListCount(member_id);
+		}
+
+		
+		public List<PersonalQuestionBean> getPersonalQuestionBoardList(PersonalQuestionBean pqb) throws Exception {
+			return md.getPersonalQuestionBoardList(pqb);
 		}
 }

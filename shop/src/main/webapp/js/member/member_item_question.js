@@ -1,8 +1,8 @@
 $(function() {
   
   // variable
-  let count = 0;
-  let idx = 0;
+
+
   
   // default
 /*  $('.member-content-article-items-detail1').hide();
@@ -22,17 +22,6 @@ $(function() {
 
 
 
-  $('#items'+idx).click(function() {
-    count = count + 1;
-    if(count % 2 == 1) {
-   	  $('#content'+idx).addClass('show');
-      $('#answer'+idx).addClass('show');
-    } else {
-      $('#content'+idx).removeClass('show');
-      $('#answer'+idx).removeClass('show');
-/*		idx = idx + 1;*/
-    }
-  });
 
 });
 

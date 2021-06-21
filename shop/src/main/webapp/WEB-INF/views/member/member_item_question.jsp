@@ -39,8 +39,7 @@
           <div class="member-content-article-header kor">상품 문의</div>
 
           <div class="member-content-article-options kor">
-            <c:set var="cnt" value="${listCount}" />
-            총 ${cnt} 건
+            총 ${listCount} 건
             <select>
               <option class="kor">날짜순</option>
               <option class="kor">1개월</option>
@@ -56,15 +55,28 @@
                 <div class="member-content-article-items-header-date kor">작성일</div>
                 <div class="member-content-article-items-header-state kor">처리 상태</div>
             </div>
-
-
-			
+            <!-- 상품 문의  -->
             <div class="member-content-article-items-showcase">
-              <!-- 상품 문의  -->
+			  <c:if test="${listCount != 0}">
            	  <c:forEach var="q" items="${qList}" varStatus="st" >
+           	  <input type="hidden" name="nn" value="1" />
            	  <c:set var="p" value="${pList}"/>
 	            <div class="member-content-article-items-showcase">
-	              <div class="member-content-article-items-showcase-list" id="items${st.index}">
+	            
+	              <div class="member-content-article-items-showcase-list" id="items${q.question_id}">
+	              <script type="text/javascript">
+		              var count = 0;
+		              $('#items'+${q.question_id}).click(function() {
+		                count = count + 1;
+		                if(count % 2 == 1) {
+		               	  $('#content'+${q.question_id}).addClass('show');
+		                  $('#answer'+${q.question_id}).addClass('show');
+		                } else {
+		                  $('#content'+${q.question_id}).removeClass('show');
+		                  $('#answer'+${q.question_id}).removeClass('show');
+		                }
+		              });
+	              </script>
 
 	                <div class="member-content-article-items-product kor">${p[st.index].product_name}</div>
 
@@ -81,15 +93,17 @@
 	              
 
               <!-- 문의 상세 내용 -->
-	              <div class="member-content-article-items-detail" id="content${st.index}">
-	                <div class="blank1"></div>
+	              <div class="member-content-article-items-detail" id="content${q.question_id}">
+	                <div class="blank1">
+	                	<img alt="상품이미지" src="product_images/${p[st.index].product_thumbnail}.png">
+	                </div>
 	                <div class="member-content-article-items-detail-content kor">
 	                	${fn:replace(q.question_content, cn, br) }
 	                </div>
 	                <div class="blank2"></div>
 	              </div>
               <!-- 문의 답변 -->
-	              <div class="member-content-article-answer_area-items" id="answer${st.index}">
+	              <div class="member-content-article-answer_area-items" id="answer${q.question_id}">
 	                <div class="member-content-article-answer-manager kor">교환처리 담당자</div>
 	                <div class="member-content-article-answer-content kor">
 	                  ※ 반드시 주문자 성함으로 입금 부탁드립니다. <br><br>
@@ -101,12 +115,36 @@
 	                </div>
 	                <div class="member-content-article-answer-date kor">2021.05.14</div>
 	                <div class="member-content-article-answer-procedure kor">답변 완료</div>
-	              </div>
-
+	              </div>		
+				
 	             </div>
-	             
+				</c:forEach>
 
-              </c:forEach>
+              	<!-- 페이지 버튼 -->
+
+				<div class="content-list-btn">
+					<c:if test="${page <= 1}"><i class="fas fa-chevron-left"></i>&nbsp;</c:if>
+					<c:if test="${page > 1}"><a href="member_item_question.shop?page=${page - 1}"><i class="fas fa-chevron-left"></i></a>&nbsp;</c:if>
+					
+					<c:forEach var="pg" begin="${startPage}" end="${endPage}">
+						<c:if test="${pg == page}"><span style="font-weight: bold; font-size: large">${pg}&nbsp;</span></c:if>
+						<c:if test="${pg != page}">
+							<a href="member_item_question.shop?page=${pg}"><span style="font-weight: lighter;">${pg}&nbsp;</span></a>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${page >= maxPage }"><i class="fas fa-chevron-right"></i></c:if>
+					<c:if test="${page < maxPage }"><a href="member_item_question.shop?page=${page + 1}"><i class="fas fa-chevron-right"></i></a></c:if>
+				</div>
+				</c:if>
+				<c:if test="${listCount==0}">
+			  		<div class="empty-content kor">
+				  		작성된 문의 내역이 존재하지 않습니다.
+			  		</div>
+		 		</c:if>
+
+
+              
             </div>
           </div>
           </div>

@@ -13,13 +13,5 @@ $(function() {
 
 
 	// click action
-	$('.member-content-article-items-showcase-list').click(function() {
-		count = count + 1;
 
-		if (count % 2 == 1) {
-			$('.member-content-article-items-detail').addClass("show");
-		} else {
-			$('.member-content-article-items-detail').removeClass("show");
-		}
-	});
 });

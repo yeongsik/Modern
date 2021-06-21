@@ -103,3 +103,13 @@
   width: 55%;
   padding-top: 10px;
 }
+.show {
+	display: flex;
+}
+.content-list-btn {
+	text-align: center;
+}
+.empty-content {
+	padding: 30px;
+	text-align: center;
+}

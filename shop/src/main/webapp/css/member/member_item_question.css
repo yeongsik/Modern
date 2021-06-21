@@ -7,6 +7,13 @@
 	font-weight :600 !important;
 }
 
+img {
+	width: 100%;
+}
+img:hover {
+	transform: none;
+}
+
 .member-content-article-options {
   font: var(--font-kor);
   font-weight: bold;
@@ -52,9 +59,10 @@
 }
 .member-content-article-items-showcase {
   font: var(--font-kor);
-  cursor: pointer;
+
 }
 .member-content-article-items-showcase-list {
+  cursor: pointer;
   display: flex;
   /* margin-bottom: 20px; */
   padding: 25px 0 25px 0;
@@ -85,12 +93,10 @@
   width: 40%;
 }
 .blank1 {
-  width: 15%;
-  height: 21px;
+  width: 24%;
 }
 .blank2 {
-  width: 45%;
-  height: 21px;
+  width: 36%;
 }
 /* 문의 답변 CSS */
 .member-content-article-answer_area-items {
@@ -114,4 +120,11 @@
 }
 .show {
 	display: flex;
+}
+.content-list-btn {
+	text-align: center;
+}
+.empty-content {
+	padding: 30px;
+	text-align: center;
 }

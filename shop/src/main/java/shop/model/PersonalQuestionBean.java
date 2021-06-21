@@ -12,6 +12,8 @@ public class PersonalQuestionBean {
 	  private int question_state;
 	  private String question_type;
 	  
+	  private int page;
+	  
 	public int getQuestion_id() {
 		return question_id;
 	}
@@ -54,6 +56,12 @@ public class PersonalQuestionBean {
 	}
 	public void setQuestion_type(String question_type) {
 		this.question_type = question_type;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	  
