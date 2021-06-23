@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.model.CouponBean;
 import shop.model.MemberBean;
@@ -174,7 +175,16 @@ public class OrderController {
 	}
 
 	@RequestMapping ("order-result.shop")
-	public String orderResult() {
+	public String orderResult(OrderBean order , Model model , HttpSession session) {
+		System.out.println("orderResult");
+		Date date = new Date();
+		
+		System.out.println(order.getMember_id());
+		System.out.println(order.getOrder_id());
+		System.out.println(order.getDelivery_price());
+		System.out.println(order.getTotal_price());
+		order.setOrder_date(date);
+		order.setOrder_state(1);
 		
 		return "order/order-result";
 	}
@@ -193,6 +203,7 @@ public class OrderController {
 		
 		return "order/orderSelectCoupon";
 	}
+	
 	@RequestMapping ("couponAction.shop")
 	public String couponAction(Model model, int order_detail_pk , int coupon_id) throws Exception {
 		System.out.println("couponAction");
@@ -204,6 +215,9 @@ public class OrderController {
 		CouponBean coupon = ms.getCouponOne(coupon_id);
 		ProductBean product = ps.getProductOne(orderDetail.getProduct_id());
 		
+		System.out.println(coupon);
+		System.out.println(product);
+		System.out.println(product.getProduct_price());
 		
 		model.addAttribute("coupon", coupon);
 		model.addAttribute("orderDetail", orderDetail);

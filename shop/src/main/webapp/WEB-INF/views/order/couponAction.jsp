@@ -9,6 +9,6 @@
 <p class="product-price">할인된 가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${product.product_price*orderDetail.purchase_number-coupon.coupon_discount}" /></p>
 </c:if>
 <c:if test="${coupon.coupon_discount <100 }">
-<p class="product-price">할인된 가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${product.product_price*orderDetail.purchase_number-coupon.coupon_discount*(product.product_price*orderDetail.purchase_number)}" /></p>
+<p class="product-price">할인된 가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${product.product_price*orderDetail.purchase_number-(coupon.coupon_discount/100)*(product.product_price*orderDetail.purchase_number)}" /></p>
 </c:if>
-<button class="coupon_btn kor" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>
+<button class="coupon_btn kor" type="button" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>

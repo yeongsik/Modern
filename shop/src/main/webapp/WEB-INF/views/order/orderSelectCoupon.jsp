@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="css/order/order_couponlist.css">
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="js/order/order_couponlist.js"></script>
-<script src="js/order/order.js"></script>
 </head>
 <body>
 	<div class="container">

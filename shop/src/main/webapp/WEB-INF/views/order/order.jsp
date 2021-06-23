@@ -29,8 +29,8 @@
 			    name : '주문명:결제테스트',
 			    amount : 14000,
 			    buyer_email : 'iamport@siot.do',
-			    buyer_name : '',
-			    buyer_tel : '010-1234-5678',
+			    buyer_name : ${order.receiver_name},
+			    buyer_tel : ${order.receiver_tel},
 			    buyer_addr : '서울특별시 강남구 삼성동',
 			    buyer_postcode : '123-456'
 			}, function(rsp) {
@@ -56,10 +56,10 @@
 <body>
 	<%@ include file="/WEB-INF/views/main/header.jsp"%>
     <section class="container kor">
-	    <!-- <form method="POST"  action="order-result.shop"> -->
+	   <form method="POST"  action="order-result.shop">
 	        <div class="main-content-wrapper kor">
-	
 	           <div class="left-content">
+		    	<input type="hidden" name="order_id" value="${order.order_id}">
 	               <!-- 배송정보 -->
 	               <div class="left-content-wrapper">
 	               <%-- <input type="text" value="${order.product_name}"/> --%>
@@ -87,7 +87,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box">
-		                              <input type="text" class="input-text" value="${order.receiver_name}">
+		                              <input type="text" class="input-text" name="receiver_name" value="${order.receiver_name}">
 		                           </div>
 		                       </div>
 		                   </div>
@@ -98,7 +98,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box-zip" style="border: 0">
-		                              <input type="text" class="input-zip" id="postZone" value="${order.receiver_post}" readonly>
+		                              <input type="text" class="input-zip" id="postZone" name="receiver_post" value="${order.receiver_post}" readonly>
 		                              <button type="button" class="zip-btn" onclick="openDaumPostcode()">우편번호 검색</button>
 		                           </div>
 		                       </div>
@@ -109,7 +109,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box">
-		                              <input type="text" class="input-text" id="address" value="${order.receiver_addr1 }" readonly>
+		                              <input type="text" class="input-text" id="address" name="receiver_addr1" value="${order.receiver_addr1}" readonly>
 		                           </div>
 		                       </div>
 		                   </div>
@@ -119,7 +119,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                          <div class="input-box">
-		                              <input type="text" class="input-text" id="detailAddress" placeholder="상세주소 입력" value="3층 302호">
+		                              <input type="text" class="input-text" id="detailAddress" name="receiver_addr_detail" placeholder="상세주소 입력" value="${order.receiver_addr_detail}">
 		                          </div>
 		                       </div>
 		                   </div>
@@ -130,7 +130,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                          <div class="input-box">
-		                              <input type="text" class="input-text" id="detailAddress" value="01012345678">
+		                              <input type="text" class="input-text" id="detailAddress" name="receiver_tel" value="${order.receiver_tel}">
 		                          </div>
 		                       </div>
 		                   </div>
@@ -140,7 +140,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                          <div class="input-box">
-		                              <input type="text" class="input-text" id="detailAddress" value="">
+		                              <input type="text" class="input-text" id="detailAddress" name="receiver_tel2">
 		                          </div>
 		                       </div>
 		                   </div>
@@ -150,7 +150,7 @@
 		                       </div>
 		                       <div class="inf-input">
 		                           <div class="input-box" id="memoGroup">
-		                               <select name="" id="memoSelect" class="memo-select">
+		                               <select name="order_memo" id="memoSelect" class="memo-select">
 		                                   <option value="1" selected>배송 요청사항을 선택해주세요.</option>
 		                                   <option value="2">부재시 연락바랍니다.</option>
 		                                   <option value="3">경비실에 보관바랍니다.</option>
@@ -166,7 +166,7 @@
 		                   		</div>
 		                   		<div class="inf-input" style="padding-top: 0;">
 		                           <div class="input-box-memo" id="inputHidden">
-		                               <textarea name="" id="" class="input-textarea kor" placeholder="배송메모를 입력해주세요.(최대 50자)" maxlength="50"></textarea>
+		                               <textarea name="order_memo" class="input-textarea kor" placeholder="배송메모를 입력해주세요.(최대 50자)" maxlength="50"></textarea>
 		                           </div>
 		                        </div>
 		                   </div>
@@ -292,7 +292,7 @@
 	                        </div>
 	                        <div class="inf-input">
 	                            <div class="input-box-point">
-	                               <input type="text" class="input-point" placeholder="0">
+	                               <input type="text" class="input-point" name="used_point" placeholder="0">
 	                               <button class="point-btn" type="button">모두 사용</button>
 	                            </div>
 	                        </div>
@@ -405,7 +405,7 @@
                                             <p class="product-name eng">${productList[status.index].product_name}</p>
                                             <p class="product-option">수량 : ${orderDetail.purchase_number } / 사이즈 : ${orderDetail.choose_size}</p>
                                             <p class="product-price">가격 : &#8361; <fmt:formatNumber type="number" maxFractionDigits="3"  value="${productList[status.index].product_price*orderDetail.purchase_number}" /></p>
-                                            <button class="coupon_btn kor" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>
+                                            <button class="coupon_btn kor" type="button" onClick="orderSelectCoupon(${orderDetail.order_detail_pk})">쿠폰 조회 / 적용</button>
                                         </div>
                                     </div>
 	                            </div>
@@ -451,7 +451,7 @@
 	                        <div class="price-label">
 	                            총 상품금액 :
 	                        </div>
-	                        <div class="price-input">
+	                        <div class="price-input" id="">
 	                        <c:set var="totalPrice" value="0" />
 	                            <div class="price-box">
 	                            <c:forEach var="orderDetail" items="${orderList}" varStatus="status">
@@ -503,11 +503,10 @@
 	                        </div>
 	                    </div>
 	                </div>
-	
 	                <!-- 서비스 동의 -->
 	                <div class="right-content-block" style="padding-bottom: 0; font-size: var(--font-size-h6);">
 	                    <div class="agree-check">
-	                        <input type="checkbox" name="" id="checkbox">
+	                        <input type="checkbox" id="checkbox">
 	                        <label for="checkbox">상품 및 구매조건을 확인하였으며, 결제대행 서비스에 동의합니다.(필수)</label>
 	                    </div>
 	                    <div>
@@ -520,11 +519,11 @@
 	
 	                <!-- 결제 버튼 -->
 	                <div class="right-content-block" style="padding-bottom: 0; border-top: 0;">
-	                    <button type="button" class="checkout-btn" onclick="pay()">결제하기</button>
+	                    <button type="submit" class="checkout-btn" onclick="pay()">결제하기</button>
 	                </div>
 	           </div>
 	         </div>
-        <!--  </form> -->
+         </form>
     </section>
     <%@ include file="/WEB-INF/views/main/footer.jsp"%>
 </body>

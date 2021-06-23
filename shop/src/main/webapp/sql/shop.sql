@@ -182,5 +182,7 @@ select * from order_table;
 alter table order_detail add detail_state number;
 alter table ORDER_TABLE add receiver_tel2 number; 
 alter table order_table add order_memo varchar2(200);
+alter table order_table add order_memo_detail varchar2(500);
 
+alter table order_table drop column order_memo_detail;
 insert into coupon values (123456, '테스트용 쿠폰3' , 40 , sysdate , sysdate+30 , 'dudtlrzz1' );

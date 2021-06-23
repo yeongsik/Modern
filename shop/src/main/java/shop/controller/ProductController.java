@@ -45,21 +45,13 @@ public class ProductController {
 		
 		// 관심상품 등록 여부 확인
 		MemberBean mb = (MemberBean)session.getAttribute("m");
-		
 		if(mb != null) {
 		  String id = mb.getMember_id();
-		  
-		  
 		  List<HeartBean> wishState = MemberService.getWishList(id);
-		  
 		  model.addAttribute("wish", wishState);
-		  
-      
-      if(wishState.isEmpty()) { int state = 1; System.out.println("널");
-      
-      model.addAttribute("state", state);
-     
-      }
+	      if(wishState.isEmpty()) { int state = 1; System.out.println("널");
+	      model.addAttribute("state", state);
+	      }
 		}
 		
 		
@@ -125,7 +117,7 @@ public class ProductController {
 			System.out.println("likeyState : " + likeyState);
 			model.addAttribute("likeyState",likeyState);
 		}
-	    
+	    	
 			model.addAttribute("size", size_model);
 			model.addAttribute("product", product);
 			model.addAttribute("buyingPoint", buyingPoint);
