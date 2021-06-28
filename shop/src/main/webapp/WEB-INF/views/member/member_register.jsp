@@ -77,7 +77,7 @@
 											<li class="register-verify-box-check-all">
 												<input type="checkbox" class="register-verify-box-check-1 kor"
 													id="checkAll"> 모두 동의 (선택 정보 포함)
-												<div id="checkboxResult"></div>
+												<div class="result-divs kor" id="checkboxResult"></div>
 											</li>
 											<li class="register-verify-box-check-list1">
 												<input type="checkbox" class="register-verify-box-check-2 kor" 
@@ -107,14 +107,14 @@
 						</div>
 						<div class="register-secondpage-box-wrapper" id="secondPageup">
 							<div class="register-secondpage-input-contents">
-								<ol class="register-nickname-box">
-									<li class="register-nickname-title kor">이름 
-										<i class="fas fa-check" id="nicknameCheckComplete"></i>
+								<ol class="register-name-box">
+									<li class="register-name-title kor">이름 
+										<i class="fas fa-check" id="nameCheckComplete"></i>
 									</li>
-									<li class="register-nickname-input-wrapper">
-										<input type="text" class="register-nickname-input kor" id="name"
+									<li class="register-name-input-wrapper">
+										<input type="text" class="register-name-input kor" id="name"
 											name="name" maxlength="12" placeholder="이름을 입력해주세요.">
-										<div class="result-divs kor" id="nicknameResult"></div>
+										<div class="result-divs kor" id="nameResult"></div>
 									</li>
 								</ol>
 								<ol class="register-email-box">

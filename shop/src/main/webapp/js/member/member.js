@@ -6,31 +6,35 @@ function joinCheck1() {
 	if ($.trim($("#joinId").val()) == "") {
 		$("#idCheckResult").text("아이디를 입력해주세요.");
 		$("#idCheckResult").css("color", "red");
+		$("#idCheckComplete").hide();
 		$("#joinId").focus();
 		return false;
 	}
 	if ($.trim($("#joinPw1").val()) == "") {
 		$("#pwCheckResult1").text("비밀번호를 입력해주세요.");
 		$("#pwCheckResult1").css("color", "red");
+		$("#pw1CheckComplete").hide();
 		$("#joinPw1").focus();
 		return false;
 	}
 	if ($.trim($("#joinPw2").val()) == "") {
 		$("#pwCheckResult2").text("비밀번호 확인을 입력해주세요.");
 		$("#pwCheckResult2").css("color", "red");
+		$("#pw2CheckComplete").hide();
 		$("#joinPw2").focus();
 		return false;
 	}
 	if ($.trim($("#phoneNum").val()) == "") {
 		$("#phoneCheckResult").text("휴대폰 번호를 입력해주세요.");
 		$("#phoneCheckResult").css("color", "red");
+		$("#phoneCheckComplete").hide();
 		$("#phoneNum").focus();
 		return false;
 	}
 	if ($("#checkbox1").is(":checked") && $("#checkbox2").is(":checked")) {
 		$("#beforeSending").hide();
 		$("#afterSending").show();
-		$("#phoneAuth").focus();
+		$("#checkboxResult").hide();
 	} else if (!$("#checkbox1").is(":checked")) {
 		$("#checkboxResult").text("이용약관에 동의해주세요.");
 		$("#checkboxResult").css("color", "red");
@@ -42,15 +46,15 @@ function joinCheck1() {
 		$("#checkbox2").focus();
 		return false;
 	}
-
+	
 
 	//2페이지 유효성 검사
 	var emailTest = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 	var genterTest = /^[1-4]{1}$/;
 
-	if ($.trim($("#nickname").val()) == "") {
-		$("#nicknameResult").css("color", "red");
-		$("#nickname").focus();
+	if ($.trim($("#name").val()) == "") {
+		$("#nameResult").css("color", "red");
+		$("#name").focus();
 		return false;
 	}
 	if ($.trim($("#email").val()) == "") {
@@ -106,6 +110,7 @@ function id_check() {
 				$("#idCheckResult").text('');
 				$("#idCheckResult").show();
 				$("#idCheckResult").append(newtext);
+				$("#idCheckComplete").hide();
 				$("#joinId").val('').focus();
 				return false;
 
@@ -118,6 +123,7 @@ function id_check() {
 				$("#idCheckResult").text('');
 				$("#idCheckResult").show();
 				$("#idCheckResult").append(newtext);
+				$("#idCheckComplete").show();
 				$("#joinPw1").focus();
 			}
 		}
@@ -128,9 +134,6 @@ $(function() {
 	$("#pw1CheckComplete").hide();
 	$("#pw2CheckComplete").hide();
 	$("#phoneCheckComplete").hide();
-
-	//인증번호입력란 숨기기
-	$("#afterSending").hide();
 
 	//모두 동의 선택시 3개 체크박스 전체 선택
 	$("#checkAll").click(function() {
@@ -146,7 +149,7 @@ $(function() {
 		var idTest = /^[a-z0-9_-]{4,12}$/;
 		if (idTest.test(inputId)) {
 			$("#idCheckResult").empty();
-			$("#idCheckComplete").show();
+			//$("#idCheckComplete").show();
 		} else if ((inputId.length < 4) && (inputId.length > 0)) {
 			$("#idCheckComplete").hide();
 			$("#idCheckResult").text("4~12자 사이로 입력해주세요");
@@ -157,6 +160,7 @@ $(function() {
 			$("#idCheckResult").css("color", "red");
 		} else {
 			$("#idCheckResult").empty();
+			$("#idCheckComplete").hide();
 		}
 	});
 	// 비밀번호 정규식 8~16자 영어대소문자,숫자,특수문자 하나 이상
@@ -174,12 +178,13 @@ $(function() {
 			return false;
 		} else if (inputPw.length > 0) {
 			$("#pw1CheckComplete").hide();
-			$("#pwCheckResult1").text("대소문자+숫자+특수문자로 가능");
+			$("#pwCheckResult1").text("대소문자+숫자+특수문자로 가능합니다.");
 			$("#pwCheckResult1").css("color", "red")
 			$("#joinPw1").focus();
 			return false;
 		} else {
 			$("#pwCheckResult1").empty();
+			$("#pw1CheckComplete").hide();
 		}
 	});
 	// 비밀번호 일치여부 div노출
@@ -188,6 +193,7 @@ $(function() {
 		var pwTest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}$/;
 		if (($("#joinPw2").val()) == "") {
 			$("#pwCheckResult2").empty();
+			$("#pw2CheckComplete").hide();
 		} else if (!pwTest.test(inputPw)) {
 			$("#pw2CheckComplete").hide();
 			$("#pwCheckResult2").text("올바른 비밀번호를 입력해주세요.");
@@ -221,13 +227,14 @@ $(function() {
 			return false;
 		} else {
 			$("#phoneCheckResult").empty();
+			$("#phoneCheckComplete").hide();
 		}
 	});
 });
 
 //2페이지 소환
 $(function() {
-	$("#nicknameCheckComplete").hide();
+	$("#nameCheckComplete").hide();
 	$("#emailCheckComplete").hide();
 	$("#birthCheckComplete").hide();
 	$("#secondPageup").hide();
@@ -246,15 +253,15 @@ $(function() {
 	});
 
 	// 닉네임 중복확인 검사 추가 필요
-	$("#nickname").keyup(function() {
-		if ($("#nickname").val() == "") {
-			$("#nicknameCheckComplete").hide();
-			$("#nicknameResult").css("color", "red");
-			$("#nickname").focus();
+	$("#name").keyup(function() {
+		if ($("#name").val() == "") {
+			$("#nameCheckComplete").hide();
+			$("#nameResult").css("color", "red");
+			$("#name").focus();
 			return false;
-		} else if ($("#nickname").val().length > 0) {
-			$("#nicknameResult").empty();
-			$("#nicknameCheckComplete").show();
+		} else if ($("#name").val().length > 0) {
+			$("#nameResult").empty();
+			$("#nameCheckComplete").show();
 		}
 	});
 	// 이메일 정규식 검사

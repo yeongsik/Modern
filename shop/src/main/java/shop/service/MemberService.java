@@ -15,6 +15,7 @@ import shop.model.PointBean;
 import shop.model.OrderDetailBean;
 import shop.model.PersonalQuestionBean;
 import shop.model.ProductBean;
+import shop.model.ProductDetailBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
 
@@ -155,6 +156,18 @@ public class MemberService {
 		public List<CartBean> getCartList(CartBean cb) throws Exception{
 			return md.getCartList(cb);
 		}
+		// 장바구니 이미지 리스트
+		public List<ProductDetailBean> getProductDetailList(CartBean cb) throws Exception{
+			return md.getProductDetailList(cb);
+		}	
+		// 장바구니 리스트 카운트
+		public int getCartListCount(String member_id) throws Exception {
+			 return md.getCartListCount(member_id);
+		}
+		/*
+		 * // 장바구니 제품 이미지 가져오기 public int getProductImage(String member_id) throws
+		 * Exception{ return md.getProductImage(member_id); }
+		 */
 		// 기본 배송지를 후보 배송지로 변경
 		public void updateAddressState0(String id) {
 			md.updateAddressState0(id);

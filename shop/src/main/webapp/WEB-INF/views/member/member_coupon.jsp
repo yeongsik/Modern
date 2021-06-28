@@ -40,12 +40,6 @@
 						<input type="button" value="쿠폰발급" onclick="location.href='member_coupon_management.shop'">
 					</div>
 					<div class="member-content-coupon-count kor">총 ${countCoupon}개</div>
-					<%-- <div class="member-content-article-options kor">
-						 <select>
-							<option class="kor">최신순</option>
-							<option class="kor">할인순</option>
-						</select>
-					</div> --%>
 					<div class="member-content-article-items">
 						<div class="member-content-article-items-header">
 							<div class="member-content-article-items-header-coupon_num kor">쿠폰 번호</div>
@@ -54,13 +48,10 @@
 							<div class="member-content-article-items-header-coupon_available_area kor">적용 범위</div>
 							<div class="member-content-article-items-header-coupon_valid_date kor">유효기간</div>
 						</div>
-						<div class="member-content-article-items-showcase">
-							<c:set var="num" value="${listCount-(page-1)*5 }"/>
-							<c:if test="${listCount!=0}">
-								<c:forEach var="c" items="${cpList}">
-									<c:out value="${num}"/>
-									<c:set var="num" value="${num-1}"/>	
-									<div class="member-content-article-items-showcase-list" id="items1">
+						<c:if test="${listCount!=0}">
+							<c:forEach var="c" items="${cpList}">
+								<div class="member-content-article-items-showcase">
+									<div class="member-content-article-items-showcase-list">
 										<div class="member-content-article-items-coupon_num kor">${c.coupon_id}</div>
 										<div class="member-content-article-items-coupon_name kor">${c.coupon_name}</div>
 										<c:if test="${c.coupon_discount > 100}">
@@ -77,29 +68,29 @@
 											<fmt:formatDate pattern="yyyy-MM-dd" value="${c.coupon_expiration}"/>
 										</div>
 									</div>
-								</c:forEach>
-								<div class="member_coupon_paging">
-									<c:if test="${page <=1 }"><i class="fas fa-chevron-left">&ensp;</i></c:if>
-									<c:if test="${page > 1 }"><a href="member_coupon.shop?page=${page-1}"><i class="fas fa-chevron-left"></i></a>&ensp;</c:if>
-									
-									<c:forEach var="m" begin="${startPage}" end="${endPage}">
-										<c:if test="${m == page }">${m}&ensp;</c:if>
-										<c:if test="${m != page and m < maxPage}">
-											<a href="member_coupon.shop?page=${m}">${m}&ensp;</a>
-										</c:if>
-										<c:if test="${m != page and m == maxPage }">
-											<a href="member_coupon.shop?page=${m}">${m}</a>
-										</c:if>
-									</c:forEach>
-									
-									<c:if test="${page >= maxPage }"><i class="fas fa-chevron-right"></i></c:if>
-									<c:if test="${page < maxPage }">&ensp;<a href="member_coupon.shop?page=${page+1}"><i class="fas fa-chevron-right"></i></a></c:if>
 								</div>
-							</c:if>
-							<c:if test="${listCount==0}">
-								<div class="member-content-article-items-fail_msg">보유중인 쿠폰이 없습니다.</div>
-							</c:if>
-						</div>
+							</c:forEach>
+							<div class="member_coupon_paging">
+								<c:if test="${page <=1 }"><i class="fas fa-chevron-left">&ensp;</i></c:if>
+								<c:if test="${page > 1 }"><a href="member_coupon.shop?page=${page-1}"><i class="fas fa-chevron-left"></i></a>&ensp;</c:if>
+								
+								<c:forEach var="m" begin="${startPage}" end="${endPage}">
+									<c:if test="${m == page }">${m}&ensp;</c:if>
+									<c:if test="${m != page and m < maxPage}">
+										<a href="member_coupon.shop?page=${m}">${m}&ensp;</a>
+									</c:if>
+									<c:if test="${m != page and m == maxPage }">
+										<a href="member_coupon.shop?page=${m}">${m}</a>
+									</c:if>
+								</c:forEach>
+								
+								<c:if test="${page >= maxPage }"><i class="fas fa-chevron-right"></i></c:if>
+								<c:if test="${page < maxPage }">&ensp;<a href="member_coupon.shop?page=${page+1}"><i class="fas fa-chevron-right"></i></a></c:if>
+							</div>
+						</c:if>
+						<c:if test="${listCount==0}">
+							<div class="member-content-article-items-fail_msg">보유중인 쿠폰이 없습니다.</div>
+						</c:if>
 					</div>
 				</div>
 			</div>

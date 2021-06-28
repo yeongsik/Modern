@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -40,52 +40,74 @@
 
 					<div class="member-content-article-items">
 						<div class="member-content-article-items-header">
-							<div class="member-content-article-items-header-no kor">번호</div>
 							<div class="member-content-article-items-header-check_btn">
 								<input type="checkbox">
 							</div>
 							<div class="member-content-article-items-header-product kor">상품명(옵션)</div>
+							<div class="member-content-article-items-header-size kor">사이즈</div>
 							<div class="member-content-article-items-header-price kor">판매가</div>
-							<div class="member-content-article-items-header-membership_discount kor">회원 할인</div>
+							<!-- <div class="member-content-article-items-header-membership_discount kor">회원 할인</div> -->
 							<div class="member-content-article-items-header-Quantity kor">수량</div>
-							<div class="member-content-article-items-header-order_price kor">주문 금액<br>(적립 예정)</div>
+							<div class="member-content-article-items-header-order_price kor">주문 금액<!-- <br>(적립 예정) --></div>
 							<div class="member-content-article-items-header-order_state kor">주문 관리</div>
-							<div class="member-content-article-items-header-delivery_fee kor">배송비/배송 형태</div>
+							<!-- <div class="member-content-article-items-header-delivery_fee kor">배송비/배송 형태</div> -->
 						</div>
-						
-						<c:forEach var="p" items="${productlist}" varStatus="status">
-
-								<div class="member-content-article-items-showcase">
-									<div class="member-content-article-items-showcase-list">
-										<div class="member-content-article-items-no kor">1</div>
-										<div class="member-content-article-items-check_btn">
-											<input type="checkbox">
+						<c:if test="${listCount != 0}">
+							<c:forEach var="p" items="${productlist}" varStatus="status">
+	
+									<div class="member-content-article-items-showcase">
+										<div class="member-content-article-items-showcase-list">
+											<!-- <div class="member-content-article-items-no kor">1</div> -->
+											<div class="member-content-article-items-check_btn">
+												<input type="checkbox" id="${cartList[status.index].cart_id}" name="cart_id">
+											</div>
+											<div class="member-content-article-items-product kor" >
+												<a href="http://localhost/shop/product_detail.shop?product_id=${p.product_id }">
+													<div class="member-content-article-items-product-in"><img src="${pd[stasus.index].product_thumnail}.png"></div>
+													<div class="member-content-article-items-product-in" name="product_name">${p.product_name}</div>
+												</a>
+											</div>
+											<div class="member-content-article-items-product-size kor" name="choose_size"> (${detaillist[status.index].choose_size})</div>
+											<div class="member-content-article-items-price kor" name="product_price">${p.product_price}</div>
+											<!-- <div class="member-content-article-items-membership_discount kor">-4,450</div> -->
+											<div class="member-content-article-items-Quantity">
+												<button>
+													<i class="far fa-minus-square fa-2x"></i>
+												</button>
+												<input type="text" value="${detaillist[status.index].purchase_number}" readonly="readonly">
+												<button>
+													<i class="far fa-plus-square fa-2x"></i>
+												</button>
+											</div>
+											<div class="member-content-article-items-order_price kor">${p.product_price}</div>
+											<div class="member-content-article-items-order_state kor">
+												<button onclick="location.href='#'">주문</button>
+												<button onclick="location.href='#'">삭제</button>
+											</div>
+											<!-- <div class="member-content-article-items-delivery_fee">택배배송 <br> <b>배송비무료</b> <br></div> -->
 										</div>
-										<div class="member-content-article-items-product kor">${p.product_name} (${detaillist[status.index].choose_size})</div>
-										<div class="member-content-article-items-price kor">${p.product_price}</div>
-										<div
-											class="member-content-article-items-membership_discount kor">-4,450</div>
-										<div class="member-content-article-items-Quantity">
-											<button>
-												<i class="far fa-minus-square fa-2x"></i>
-											</button>
-											<input type="text" value="${detaillist[status.index].purchase_number}" readonly="readonly">
-											<button>
-												<i class="far fa-plus-square fa-2x"></i>
-											</button>
-										</div>
-										<div class="member-content-article-items-order_price kor">84,550</div>
-										<div class="member-content-article-items-order_state kor">
-											<button>삭제하기</button>
-										</div>
-										<div class="member-content-article-items-delivery_fee">택배배송 <br> <b>배송비무료</b> <br></div>
 									</div>
-								</div>
-
-							<c:if test="${cartList[status.index].order_detail_pk eq 0}">
-								<div class="kor">장바구니에 등록된 물품이 없습니다.</div>
-							</c:if>
-						</c:forEach>
+			
+							</c:forEach>
+							
+							<div class="content-list-btn">
+								<c:if test="${page <= 1}"><i class="fas fa-chevron-left"></i>&nbsp;</c:if>
+								<c:if test="${page > 1}"><a href="member_cartlist.shop?page=${page - 1}"><i class="fas fa-chevron-left"></i></a>&nbsp;</c:if>
+								
+								<c:forEach var="pg" begin="${startPage}" end="${endPage}">
+									<c:if test="${pg == page}">${pg}&nbsp;</c:if>
+									<c:if test="${pg != page}">
+										<a href="member_cartlist.shop?page=${pg}">${pg}&nbsp;</a>
+									</c:if>
+								</c:forEach>
+								
+								<c:if test="${page >= maxPage }"><i class="fas fa-chevron-right"></i></c:if>
+								<c:if test="${page < maxPage }"><a href="member_cartlist.shop?page=${page + 1}"><i class="fas fa-chevron-right"></i></a></c:if>
+							</div>
+						</c:if>
+						<c:if test="${listCount == 0}">
+							<div class="none kor">장바구니에 등록된 물품이 없습니다.</div>
+						</c:if>
 					</div>
 				</div>
 			</div>

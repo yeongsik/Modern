@@ -29,6 +29,7 @@ import shop.model.OrderDetailBean;
 import shop.model.PersonalQuestionBean;
 import shop.model.PointBean;
 import shop.model.ProductBean;
+import shop.model.ProductDetailBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
 import shop.service.MemberService;
@@ -52,6 +53,13 @@ public class MemberController {
 	@RequestMapping("member_main.shop")
 	public String main(HttpSession session) throws Exception {
 		System.out.println("마이페이지 진입");
+		//쿠폰개수
+		MemberBean m = (MemberBean)session.getAttribute("m");
+		CouponBean cp = new CouponBean();				
+		cp.setMember_id(m.getMember_id());
+		int countCoupon = service.countCoupon(cp);
+		System.out.println("countCoupon:" + countCoupon);
+		session.setAttribute("countCoupon", countCoupon);
 		return "member/member_main";
 	}
 
@@ -288,7 +296,7 @@ public class MemberController {
 		System.out.println("service 후 session 전 cpList:" + cpList);
 
 
-		int maxPage = (int) ((double) listCount / limitPage + 0.95);
+		int maxPage = (int) ((double) listCount / limitPage + 1);
 		int startPage = (((int) ((double) page / 5 + 0.9)) - 1) * 5 + 1;
 		int endPage = maxPage;
 		if (endPage > startPage + 5 - 1) endPage = startPage + 5 - 1;
@@ -299,7 +307,7 @@ public class MemberController {
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("listCount", listCount);
 		model.addAttribute("cpList", cpList);
-
+		System.out.println("listCount: "+listCount);
 		return "member/member_coupon";
 	}
 
@@ -409,8 +417,6 @@ public class MemberController {
 		MemberBean mb = (MemberBean) session.getAttribute("m");
 		CartBean cb = new CartBean();
 		cb.setMember_id(mb.getMember_id());
-	System.out.println("member_id: " + cb.getMember_id());
-		
 		
 		OrderDetailBean od = new OrderDetailBean();
 	System.out.println("order_detail_pk:" + order_detail_pk);
@@ -420,38 +426,81 @@ public class MemberController {
 			cb.setOrder_detail_pk(od.getOrder_detail_pk());
 			service.addCart(cb);
 		}
-		
-	System.out.println("od.getOrder_detail_pk:" + od.getOrder_detail_pk());
-	System.out.println("cb.getOrder_detail_pk:" + cb.getOrder_detail_pk());	
 		model.addAttribute("cart", cb);
 		return "forward:member_cartlist.shop";
 	}
 
 	// 장바구니 리스트
 	@RequestMapping("member_cartlist.shop")
-	public String cartlist(Model model, HttpSession session) throws Exception {
+	public String cartlist(Model model, HttpSession session, HttpServletRequest request) throws Exception {
 		System.out.println("cartList진입");
 		
 		MemberBean mb = (MemberBean) session.getAttribute("m");
+		String member_id = mb.getMember_id();
 		CartBean cb = new CartBean();
-		cb.setMember_id(mb.getMember_id());
-
+		cb.setMember_id(member_id);
+		
 		List<ProductBean> productlist = new ArrayList<ProductBean>();
 		List<OrderDetailBean> detaillist = new ArrayList<OrderDetailBean>();
 		List<CartBean> cartList = new ArrayList<CartBean>();
-		
+		List<ProductDetailBean> productdetaillist = new ArrayList<ProductDetailBean>();
 		productlist = service.getProductList(cb);
 		detaillist = service.getDetailList(cb);
 		cartList = service.getCartList(cb);
+		productdetaillist = service.getProductDetailList(cb);
+	    
+	    int page = 1;
+	    int limitPage = 5;
+	    
+	    if (request.getParameter("page") != null) {
+	      page = Integer.parseInt(request.getParameter("page"));
+	    }
+
+	    if (request.getParameter("page") == null || request.getParameter("page").equals("")) {
+	      page = 1;
+	    }
+
+	    int listCount = service.getCartListCount(member_id);
+	    cb.setPage(page);
+
+	    int maxPage = (int) ((double) listCount / limitPage + 0.95);
+	    int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+	    int endPage = maxPage;
+	    if (endPage > startPage + 10 - 1) endPage = startPage + 10 - 1;
 
 		model.addAttribute("productlist", productlist);
 		model.addAttribute("detaillist", detaillist);
 		model.addAttribute("cartList", cartList);
-
+		model.addAttribute("pd",productdetaillist);
+	    model.addAttribute("page", page);
+	    model.addAttribute("listCount", listCount);
+	    model.addAttribute("startPage", startPage);
+	    model.addAttribute("endPage", endPage);
+	    model.addAttribute("maxPage", maxPage);
 		return "member/member_cart";
 
 	}
-
+	
+	// 장바구니 삭제
+	@RequestMapping("member_cartdelete.shop")
+	public String deletecart(@ModelAttribute CartBean cb, Model model, HttpSession session)throws Exception{
+		System.out.println("deletecart 진입");
+		System.out.println(cb.getCart_id());
+		
+		
+		MemberBean mb = (MemberBean) session.getAttribute("m");
+		CartBean cartdelete = new CartBean();
+		cartdelete.setMember_id(mb.getMember_id());
+		//cb.setCart_id(cart_id);
+		System.out.println(cartdelete.getCart_id());
+		
+		//service.deletecart(cb);
+		//model.addAttribute("cart",cb);
+		
+		return "member/member_cart";
+	}
+	
+	
 	// 관심상품
 	@RequestMapping("member_interest.shop")
 

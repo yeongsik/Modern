@@ -29,7 +29,7 @@
   border-bottom: 1px solid var(--color-grey);
   padding: 12px 0 12px 0;
 }
-.member-content-article-items-header-no,
+.member-content-article-items-header-size,
 .member-content-article-items-header-check_btn {
   width: 5%;
   text-align: center;
@@ -37,7 +37,7 @@
   font-weight: 600;
 }
 .member-content-article-items-header-product {
-  width: 25%;
+  width: 30%;
   text-align: center;
   font-size: 15px;
   font-weight: 600;
@@ -48,7 +48,7 @@
 .member-content-article-items-header-order_price,
 .member-content-article-items-header-order_state,
 .member-content-article-items-header-delivery_fee {
-  width: 11%;
+  width: 13%;
   text-align: center;
   font-size: 15px;
   font-weight: 600;
@@ -68,9 +68,17 @@
   font-size: 12px;
 }
 .member-content-article-items-product {
-  width: 25%;
+  width: 30%;
   text-align: center;
   font-size: 12px;
+}
+.member-content-article-items-product-in{
+	display: inline-block;
+}
+.member-content-article-items-product-size{
+	width: 5%;
+	text-align: center;
+	font-size: 12px;
 }
 .member-content-article-items-price,
 .member-content-article-items-membership_discount,
@@ -78,7 +86,7 @@
 .member-content-article-items-order_price,
 .member-content-article-items-order_state,
 .member-content-article-items-delivery_fee {
-  width: 11%;
+  width: 13%;
   text-align: center;
   font-size: 12px;
 }
@@ -92,7 +100,8 @@
   border: none;
   margin: 0;
   padding: 0;
-  height: 26px;
+  height: 20px;
+  font-size: 9px;
 }
 .member-content-article-items-Quantity > input {
   width: 28px;
@@ -105,5 +114,15 @@
 .member-content-article-items-order_state > button {
   background: none;
   border: 1px solid var(--color-grey);
-  padding: 8px;
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+.content-list-btn{
+	display: block;
+	padding-bottom: 20px;
+	text-align: center;
+}
+.none{
+	padding: 30px 0;
+	text-align: center;
 }

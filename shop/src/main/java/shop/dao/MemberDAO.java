@@ -7,15 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import shop.model.CouponBean;
 import shop.model.AddressBean;
 import shop.model.CartBean;
+import shop.model.CouponBean;
 import shop.model.HeartBean;
 import shop.model.MemberBean;
-import shop.model.PointBean;
 import shop.model.OrderDetailBean;
 import shop.model.PersonalQuestionBean;
+import shop.model.PointBean;
 import shop.model.ProductBean;
+import shop.model.ProductDetailBean;
 import shop.model.QuestionBean;
 import shop.model.ReviewBean;
 
@@ -210,7 +211,17 @@ public class MemberDAO {
 	public List<OrderDetailBean> getDetailList(CartBean cb) throws Exception{
 		return session.selectList("detailList", cb);
 	}
-
+	// 장바구니 이미지 리스트
+	public List<ProductDetailBean> getProductDetailList(CartBean cb) throws Exception{
+		return session.selectList("productdetaillist", cb);
+	}
+	// 장바구니 리스트 카운트
+	public int getCartListCount(String member_id) throws Exception {
+	    int count = 0;
+	    count = ((Integer) session.selectOne("cartlistcount", member_id)).intValue();
+	    return count;
+	}
+	
 	// 구매후기 개수
 	public int getReviewListCount(String member_id) throws Exception {
 		int count = 0;

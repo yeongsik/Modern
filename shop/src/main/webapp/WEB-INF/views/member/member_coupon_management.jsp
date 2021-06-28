@@ -30,7 +30,7 @@
                 	<div class="coupon-create-label kor">쿠폰 용도</div>
                 	<select class="coupon-create-content-select" id="pupose" name="purpose">
                 		<option id="self" value="9900000">직접입력</option>
-                		<option id="register" value="1100000">가입축하</option>
+                		<option id="register" value="1100000">회원가입 축하 쿠폰</option>
                 		<option id="birth" value="2200000">생일쿠폰</option>
                 		<option id="bronze" value="3300000">월간쿠폰(Bronze)</option>
                 		<option id="silver" value="4400000">월간쿠폰(Silver)</option>

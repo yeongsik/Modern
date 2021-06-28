@@ -105,8 +105,15 @@
 	
 	<!-- 쿠폰리스트 조회 -->
 	<select id="couponList" parameterType="coupon" resultType="coupon">
-		<![CDATA[
+<!-- 		<![CDATA[
 		select * from coupon where rownum >= ((#{page}-1) * 5+1) and rownum <= (#{page} * 5) and member_id = #{member_id} order by coupon_expiration
+		]]>
+		 -->
+		<![CDATA[
+		select * from
+		(select rownum rnum, coupon_id, coupon_name, coupon_discount, coupon_date, coupon_expiration, member_id from
+		(select * from coupon where member_id = #{member_id} order by coupon_expiration))
+		where rnum >= ((#{page}-1) * 5+1) and rnum <= (#{page} * 5)
 		]]>
 	</select>
 	
@@ -163,6 +170,17 @@
 	<select id="cartList" parameterType="cart" resultType="cart">
 		select * from cart where member_id = #{member_id}
 	</select>
+	<!-- 장바구니 제품 이미지 리스트 -->
+	<select id="productdetaillist" parameterType="product_detail" resultType="product_detail">
+			select * from product_detail a left outer join product b
+		on a.product_detail = b.product_detail left outer join order_detail c
+		on b.product_id = c.product_id left outer join cart d
+		on c.order_detail_pk = d.order_detail_pk where d.member_id = #{member_id}
+	</select>
+	<!-- 장바구니 listCount -->
+	<select id="cartlistcount" resultType="int">
+		select count(*) from cart where member_id = #{member_id}
+	</select>
 	
 	<!-- 리뷰 수 -->
     <select id="review_list_count" resultType="int">
@@ -193,7 +211,7 @@
 	   			where rnum >= ((#{page}-1) * 5+1)  and rnum <= (#{page} * 5) and member_id = #{member_id}
 		]]>
 	</select>
-	
+
 	<!-- 1대1 문의 수 -->
     <select id="Pquestion_list_count" parameterType="personal_question" resultType="int">
     	select count(*) from personal_question where member_id = #{member_id}

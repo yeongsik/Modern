@@ -4,6 +4,7 @@ public class CartBean {
 	public int cart_id;
 	public String member_id;
 	public int order_detail_pk;
+	private int page;
 	
 	public int getCart_id() {
 		return cart_id;
@@ -22,5 +23,11 @@ public class CartBean {
 	}
 	public void setOrder_detail_pk(int order_detail_pk) {
 		this.order_detail_pk = order_detail_pk;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 }

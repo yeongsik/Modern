@@ -15,12 +15,25 @@ select * from ADDRESS;
 select * from heart;
 select * from cart;
 
+select product_thumbnail from product_detail a left outer join product b
+		on a.product_detail = b.product_detail left outer join order_detail c
+		on b.product_id = c.product_id left outer join cart d
+		on c.order_detail_pk = d.order_detail_pk where d.member_id = 'cptest18'
 
+delete from member where member_id = 'test'
+delete from coupon where member_id = 'test'
+delete from cart where member_id = 'test'
 select * from order_detail b
 		left outer join cart c 
 		on b.order_detail_pk = c.order_detail_pk where c.member_id = 'cptest13'
 
-
+		select * from coupon where rownum between 5 and 10 and member_id = 'aaaaa' order by coupon_expiration
+		
+select * from (select rownum as rnum, member_id from coupon where member_id = 'aaaaa') where rnum >=1 and rnum <=5 and member_id='aaaaa'
+		select * from
+		(select rownum rnum, coupon_id, coupon_name, coupon_discount, coupon_date, coupon_expiration, member_id from
+		(select * from coupon where member_id = 'cptest18' order by coupon_expiration))
+		where rnum >= ((2-1) * 5+1) and rnum <= (2 * 5) 
 select * from product where member_id ='cptest18'
 select * from heart where member_id='hama';
 select * from heart where member_id='noru';
